@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Canvas } from './Canvas';
-import circle from './sketch/circle';
+import { Screen } from './Screen';
+import { rogue } from './game';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Canvas sketch={circle} />
+      <Screen sketch={rogue} />
     </div>
   );
 }
