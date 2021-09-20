@@ -1,21 +1,11 @@
-import { ItemBase, ItemSymbol, UsableStatus } from '..';
-import { Player } from '../../actor';
-import { Board } from '../../board';
-import { Item } from '../iItem';
+import { Board } from 'game/board';
+import { Player } from 'game/models/actor';
+import { Item } from '..';
 
-export interface Usable extends Item {
-  status: UsableStatus;
-  use: (user: Player, board: Board) => void;
-}
-
-export abstract class UsableBase extends ItemBase implements Usable {
-  constructor(
-    public x: number,
-    public y: number,
-    public symbol: ItemSymbol,
-    readonly status: UsableStatus
-  ) {
-    super(x, y, symbol, status);
-  }
+export abstract class Usable extends Item {
   abstract use(user: Player, board: Board): void;
+
+  isUsable(): this is Usable {
+    return true;
+  }
 }
