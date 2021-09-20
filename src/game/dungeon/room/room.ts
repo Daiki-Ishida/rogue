@@ -1,6 +1,6 @@
 import p5 from 'p5';
-import { Area } from '..';
-import { Camera } from '../../../drawer';
+import { Area } from '../area';
+import { Camera } from 'game/view';
 
 export interface Room {
   x: number;

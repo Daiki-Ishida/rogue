@@ -1,5 +1,5 @@
-import { BasicRoom, Room } from '.';
 import { RandomUtil } from '../util';
+import { BasicRoom, Room } from './room';
 
 const MIN_WIDTH = 12;
 const MIN_HEIGHT = 12;

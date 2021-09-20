@@ -1,17 +1,11 @@
-import p5 from 'p5';
-import { imageStore } from '../..';
-import { Camera } from '../../drawer';
+import { Camera } from 'game/view';
+import p5, { Image } from 'p5';
 
 export class Corridor {
-  constructor(
-    readonly x: number,
-    readonly y: number,
-    readonly isCorner: boolean
-  ) {}
+  constructor(readonly x: number, readonly y: number, readonly img: Image) {}
 
   draw(p: p5, camera: Camera): void {
-    const img = imageStore.maps.corridor[3];
     const { x, y } = camera.adjust(this.x, this.y);
-    p.image(img, x, y, camera.zoom, camera.zoom);
+    p.image(this.img, x, y, camera.zoom, camera.zoom);
   }
 }

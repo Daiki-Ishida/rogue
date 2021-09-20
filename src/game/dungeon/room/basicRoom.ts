@@ -1,9 +1,9 @@
+import { imageStore } from 'game';
+import { RandomUtil } from 'game/util';
+import { Camera } from 'game/view';
 import p5 from 'p5';
-import { Room } from '.';
-import { Area } from '..';
-import { imageStore } from '../../..';
-import { Camera } from '../../../drawer';
-import { RandomUtil } from '../../util';
+import { Area } from '../area';
+import { Room } from './room';
 
 const MIN_WIDTH = 6;
 const MIN_HEIGHT = 6;

@@ -1,22 +1,26 @@
 import p5 from 'p5';
-import { Area, Corridor, Exit, Room } from '.';
-import { Camera } from '../../drawer';
-import { RandomUtil } from '../util';
+import { Area } from './area';
+import { Room } from './room';
+import { Exit } from './exit';
+import { Corridor } from './corridor';
+import { Camera } from 'game/view';
+import { RandomUtil } from 'game/util';
+import { imageStore } from 'game';
 
 export class Dungeon {
-  constructor(
+  private constructor(
     readonly w: number,
     readonly h: number,
-    public area: Area,
-    public exit: Exit,
-    public rooms: Room[] = [],
-    readonly corridors: Corridor[] = [],
-    public level: number = 1
+    private area: Area,
+    public rooms: Room[],
+    readonly exit: Exit,
+    readonly corridors: Corridor[],
+    public level: number
   ) {}
 
   static init(w: number, h: number): Dungeon {
     const area = Area.init(w, h);
-    const dungeon = new Dungeon(w, h, area, new Exit(0, 0));
+    const dungeon = new Dungeon(w, h, area, [], new Exit(0, 0), [], 1);
     dungeon.generate();
     return dungeon;
   }
@@ -25,7 +29,7 @@ export class Dungeon {
     this.initRooms();
     this.initCorridor();
     const random = RandomUtil.getRandomIntInclusive(0, this.rooms.length - 1);
-    this.exit = Exit.generate(this.rooms[random]);
+    this.exit.spawn(this.rooms[random]);
   }
 
   private reset(): void {
@@ -54,6 +58,8 @@ export class Dungeon {
       const roomsA = this.rooms.filter((r) => r.area.hasAncestor(childA));
       const roomsB = this.rooms.filter((r) => r.area.hasAncestor(childB));
 
+      const img = imageStore.maps.corridor[3];
+
       if (childA.y === childB.y) {
         const border = childA.x + childA.w;
 
@@ -78,13 +84,13 @@ export class Dungeon {
         // roomB.connnectionPoint.push([roomB.x - 1, exit]);
 
         for (let i = roomA.x + roomA.w; i < border; i++) {
-          this.corridors.push(new Corridor(i, entry, false));
+          this.corridors.push(new Corridor(i, entry, img));
         }
         for (let i = roomB.x - 1; i > border; i--) {
-          this.corridors.push(new Corridor(i, exit, false));
+          this.corridors.push(new Corridor(i, exit, img));
         }
         for (let i = Math.min(entry, exit); i <= Math.max(entry, exit); i++) {
-          this.corridors.push(new Corridor(border, i, false));
+          this.corridors.push(new Corridor(border, i, img));
         }
       } else if (childA.x === childB.x) {
         const border = childA.y + childA.h;
@@ -110,13 +116,13 @@ export class Dungeon {
         // roomB.connnectionPoint.push([exit, roomB.y - 1]);
 
         for (let i = roomA.y + roomA.h; i < border; i++) {
-          this.corridors.push(new Corridor(entry, i, false));
+          this.corridors.push(new Corridor(entry, i, img));
         }
         for (let i = roomB.y - 1; i > border; i--) {
-          this.corridors.push(new Corridor(exit, i, false));
+          this.corridors.push(new Corridor(exit, i, img));
         }
         for (let i = Math.min(entry, exit); i <= Math.max(entry, exit); i++) {
-          this.corridors.push(new Corridor(i, border, false));
+          this.corridors.push(new Corridor(i, border, img));
         }
       }
     }
