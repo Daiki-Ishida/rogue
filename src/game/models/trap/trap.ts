@@ -1,24 +1,23 @@
-import { TrapStatus, TrapStatusBase, TrapSymbol } from '.';
+import { Board } from 'game/board';
+import { Image } from 'p5';
+import { TrapStatus, TrapSymbol } from '.';
 import { Actor } from '../actor';
-import { Board } from '../board';
 
-export interface Trap {
-  x: number;
-  y: number;
-  symbol: TrapSymbol;
-  status: TrapStatus;
-  disclose(): void;
-  hide(): void;
-  activate(board: Board): void;
-}
-
-export abstract class TrapBase implements Trap {
-  constructor(
-    public symbol: TrapSymbol,
-    public status: TrapStatus = new TrapStatusBase(),
-    readonly x: number = 0,
-    readonly y: number = 0
+export class Trap {
+  private constructor(
+    readonly x: number,
+    readonly y: number,
+    readonly symbol: TrapSymbol,
+    readonly status: TrapStatus,
+    readonly effect: (actor: Actor, board: Board) => void
   ) {}
+
+  static generate(img: Image, effect: (actor: Actor) => void): Trap {
+    const symbol = TrapSymbol.init(img);
+    const status = TrapStatus.init();
+
+    return new Trap(0, 0, symbol, status, effect);
+  }
 
   disclose(): void {
     this.status.hidden = false;
@@ -36,6 +35,4 @@ export abstract class TrapBase implements Trap {
 
     this.effect(actor, board);
   }
-
-  abstract effect(actor: Actor, board: Board): void;
 }

@@ -1,7 +1,7 @@
-export interface TrapStatus {
-  hidden: boolean;
-}
+export class TrapStatus {
+  private constructor(public hidden: boolean) {}
 
-export class TrapStatusBase implements TrapStatus {
-  constructor(public hidden: boolean = false) {}
+  static init(): TrapStatus {
+    return new TrapStatus(false);
+  }
 }
