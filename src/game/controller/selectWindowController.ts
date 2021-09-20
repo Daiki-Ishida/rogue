@@ -1,6 +1,8 @@
-import { actionController, Controller, ControllerState } from '.';
-import { Game } from '../game';
-import { windowManager } from '..';
+import { windowManager } from 'game';
+import { Game } from 'game/game';
+import { Controller } from './controller';
+import { ControllerState } from './controllerState';
+import { actionController } from './actionController';
 
 class SelectWindowController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {

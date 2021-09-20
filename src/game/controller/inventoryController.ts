@@ -1,12 +1,10 @@
-import {
-  actionController,
-  Controller,
-  ControllerState,
-  selectWindowController,
-} from '.';
-import { windowManager } from '..';
-import { Game } from '../game';
-import { ItemSelectionWindow } from '../gui';
+import { windowManager } from 'game';
+import { Game } from 'game/game';
+import { ItemSelectionWindow } from 'game/view/gui';
+import { Controller } from './controller';
+import { ControllerState } from './controllerState';
+import { actionController } from './actionController';
+import { selectWindowController } from './selectWindowController';
 
 class InventoryController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {

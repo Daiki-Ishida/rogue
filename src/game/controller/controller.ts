@@ -1,4 +1,4 @@
-import { Game } from '../game';
+import { Game } from 'game/game';
 import { actionController } from './actionController';
 import { ControllerState } from './controllerState';
 

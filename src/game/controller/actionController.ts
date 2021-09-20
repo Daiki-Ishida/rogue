@@ -1,15 +1,15 @@
+import { KeyConfig } from 'config';
+import { windowManager } from 'game';
+import { AttackCommand, MoveCommand } from 'game/command';
+import { Game } from 'game/game';
 import { Controller, ControllerState, inventoryController } from '.';
-import { KeyConfig } from '../config/keyConfig';
-import { Game } from '../game';
-import { StandByPhase } from '../game/turn';
-import { AttackCommand, MoveCommand } from '../game/command';
-import { player, windowManager } from '..';
 
 class ActionController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {
-    if (!(game.turn.phase instanceof StandByPhase)) {
-      return;
-    }
+    // if (!(game.turn.phase instanceof StandByPhase)) {
+    //   return;
+    // }
+    const player = game.player;
 
     switch (input) {
       case 'k': {
