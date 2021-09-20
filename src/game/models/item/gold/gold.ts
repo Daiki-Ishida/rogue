@@ -1,28 +1,28 @@
-import { GoldStatus, GoldSymbol, ItemBase } from '..';
-import { Player, Actor } from '../../actor';
+import { Actor, Player } from 'game/models/actor';
+import { Item } from '../item';
+import { GoldStatus } from '../status';
+import { ItemSymbol } from '../symbol';
 
-export class Gold extends ItemBase {
+export class Gold extends Item {
   constructor(
-    public symbol: GoldSymbol,
-    public status: GoldStatus,
-    public x: number = 0,
-    public y: number = 0
+    public x: number,
+    public y: number,
+    public symbol: ItemSymbol,
+    public status: GoldStatus
   ) {
     super(x, y, symbol, status);
   }
 
-  static generate(): Gold {
-    const symbol = GoldSymbol.init();
-    const status = GoldStatus.generate();
-    return new Gold(symbol, status);
-  }
-
   identify(): void {
-    GoldStatus._identified = true;
+    return;
   }
 
   onHit(user: Player, target: Actor): void {
     const dmg = Math.floor(this.status.amount / 10);
     target.damage(dmg);
+  }
+
+  isGold(): this is Gold {
+    return true;
   }
 }
