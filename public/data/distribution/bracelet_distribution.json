@@ -1,0 +1,50 @@
+[
+  {
+    "name": "AntiConfusionBracelet",
+    "ratio": 22
+  },
+  {
+    "name": "AntiPoisonBracelet",
+    "ratio": 22
+  },
+  {
+    "name": "BraceletOfItemDetector",
+    "ratio": 22
+  },
+  {
+    "name": "BraceletOfTrapMaster",
+    "ratio": 22
+  },
+  {
+    "name": "FortuneBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "HealBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "MonsterSummonerBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "ProtectionBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "ScoutBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "StrengthBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "TrapBracelet",
+    "ratio": 21
+  },
+  {
+    "name": "WarpBracelet",
+    "ratio": 21
+  }
+]

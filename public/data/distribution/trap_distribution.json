@@ -1,0 +1,42 @@
+[
+  {
+    "name": "LANDMINE",
+    "ratio": 22
+  },
+  {
+    "name": "HUNGER",
+    "ratio": 28
+  },
+  {
+    "name": "ROCK_SLIDE",
+    "ratio": 39
+  },
+  {
+    "name": "POISON",
+    "ratio": 25
+  },
+  {
+    "name": "SLEEP",
+    "ratio": 32
+  },
+  {
+    "name": "SPIN",
+    "ratio": 18
+  },
+  {
+    "name": "STRIP",
+    "ratio": 24
+  },
+  {
+    "name": "SUMMON",
+    "ratio": 12
+  },
+  {
+    "name": "WARP",
+    "ratio": 32
+  },
+  {
+    "name": "MULTIPLICATION",
+    "ratio": 24
+  }
+]

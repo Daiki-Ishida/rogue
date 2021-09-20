@@ -2,7 +2,7 @@ import p5, { Image } from 'p5';
 import { Room } from '.';
 import { imageStore } from '../..';
 import { Camera } from '../../drawer';
-import { RandomUtil } from '../../util';
+import { RandomUtil } from '../util';
 
 export class Exit {
   constructor(

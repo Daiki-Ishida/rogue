@@ -1,0 +1,38 @@
+[
+  {
+    "name": "SWARD",
+    "ratio": 24
+  },
+  {
+    "name": "ARROW",
+    "ratio": 12
+  },
+  {
+    "name": "SHEILD",
+    "ratio": 25
+  },
+  {
+    "name": "FOOD",
+    "ratio": 13
+  },
+  {
+    "name": "BRACELET",
+    "ratio": 8
+  },
+  {
+    "name": "SCROLL",
+    "ratio": 63
+  },
+  {
+    "name": "STAFF",
+    "ratio": 20
+  },
+  {
+    "name": "HERB",
+    "ratio": 68
+  },
+  {
+    "name": "POT",
+    "ratio": 23
+  }
+]

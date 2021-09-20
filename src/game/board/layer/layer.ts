@@ -1,4 +1,4 @@
-import { GridUtil } from '../../../util';
+import { GridUtil } from '../../util';
 
 export const enum Tile {
   VISITED,

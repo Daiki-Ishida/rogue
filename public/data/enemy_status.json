@@ -1,0 +1,322 @@
+[
+  {
+    "id": "DRAGON_01",
+    "name": "ドラゴン",
+    "group": "DRAGON",
+    "level": 1,
+    "hp": 40,
+    "atk": 30,
+    "def": 15,
+    "exp": 120
+  },
+  {
+    "id": "DRAGON_02",
+    "name": "アークドラゴン",
+    "group": "DRAGON",
+    "level": 2,
+    "hp": 70,
+    "atk": 50,
+    "def": 25,
+    "exp": 1000
+  },
+  {
+    "id": "DRAGON_03",
+    "name": "アビスドラゴン",
+    "group": "DRAGON",
+    "level": 3,
+    "hp": 90,
+    "atk": 75,
+    "def": 28,
+    "exp": 2500
+  },
+  {
+    "id": "INSECTOR_01",
+    "name": "昆虫兵",
+    "group": "INSECTOR",
+    "level": 1,
+    "hp": 8,
+    "atk": 5,
+    "def": 10,
+    "exp": 8
+  },
+  {
+    "id": "INSECTOR_02",
+    "name": "昆虫兵・兵長",
+    "group": "INSECTOR",
+    "level": 2,
+    "hp": 45,
+    "atk": 27,
+    "def": 13,
+    "exp": 80
+  },
+  {
+    "id": "INSECTOR_03",
+    "name": "昆虫兵・団長",
+    "group": "INSECTOR",
+    "level": 3,
+    "hp": 50,
+    "atk": 27,
+    "def": 17,
+    "exp": 220
+  },
+  {
+    "id": "WEREWOLF_01",
+    "name": "ワーウルフ",
+    "group": "WEREWOLF",
+    "level": 1,
+    "hp": 18,
+    "atk": 12,
+    "def": 9,
+    "exp": 10
+  },
+  {
+    "id": "WEREWOLF_02",
+    "name": "レッドワーウルフ",
+    "group": "WEREWOLF",
+    "level": 2,
+    "hp": 36,
+    "atk": 26,
+    "def": 18,
+    "exp": 50
+  },
+  {
+    "id": "WEREWOLF_03",
+    "name": "大神",
+    "group": "WEREWOLF",
+    "level": 3,
+    "hp": 70,
+    "atk": 70,
+    "def": 25,
+    "exp": 1200
+  },
+  {
+    "id": "GOLEM_01",
+    "name": "ゴーレム",
+    "group": "GOLEM",
+    "level": 1,
+    "hp": 15,
+    "atk": 15,
+    "def": 5,
+    "exp": 20
+  },
+  {
+    "id": "GOLEM_02",
+    "name": "ギガントゴーレム",
+    "group": "GOLEM",
+    "level": 2,
+    "hp": 60,
+    "atk": 48,
+    "def": 21,
+    "exp": 500
+  },
+  {
+    "id": "GOLEM_03",
+    "name": "アトラス",
+    "group": "GOLEM",
+    "level": 3,
+    "hp": 80,
+    "atk": 90,
+    "def": 30,
+    "exp": 1200
+  },
+  {
+    "id": "TATSUNOKO_01",
+    "name": "タツノコソルジャー",
+    "group": "TATSUNOKO",
+    "level": 1,
+    "hp": 12,
+    "atk": 11,
+    "def": 11,
+    "exp": 12
+  },
+  {
+    "id": "TATSUNOKO_02",
+    "name": "タツノコナイト",
+    "group": "TATSUNOKO",
+    "level": 2,
+    "hp": 32,
+    "atk": 21,
+    "def": 18,
+    "exp": 45
+  },
+  {
+    "id": "TATSUNOKO_03",
+    "name": "マスタータツノコ",
+    "group": "TATSUNOKO",
+    "level": 3,
+    "hp": 65,
+    "atk": 41,
+    "def": 23,
+    "exp": 240
+  },
+  {
+    "id": "GRIFFIN_01",
+    "name": "グリフォン",
+    "group": "GRIFFIN",
+    "level": 1,
+    "hp": 10,
+    "atk": 7,
+    "def": 3,
+    "exp": 8
+  },
+  {
+    "id": "GRIFFIN_02",
+    "name": "エースグリフォン",
+    "group": "GRIFFIN",
+    "level": 2,
+    "hp": 40,
+    "atk": 27,
+    "def": 16,
+    "exp": 70
+  },
+  {
+    "id": "GRIFFIN_03",
+    "name": "デスグリフォン",
+    "group": "GRIFFIN",
+    "level": 3,
+    "hp": 60,
+    "atk": 50,
+    "def": 30,
+    "exp": 300
+  },
+  {
+    "id": "PIG_MAID_01",
+    "name": "豚メイド Lv.1",
+    "group": "PIG_MAID",
+    "level": 1,
+    "hp": 5,
+    "atk": 3,
+    "def": 3,
+    "exp": 2
+  },
+  {
+    "id": "PIG_MAID_02",
+    "name": "豚メイド Lv.2",
+    "group": "PIG_MAID",
+    "level": 2,
+    "hp": 22,
+    "atk": 15,
+    "def": 18,
+    "exp": 17
+  },
+  {
+    "id": "PIG_MAID_03",
+    "name": "豚メイド Lv.3",
+    "group": "PIG_MAID",
+    "level": 3,
+    "hp": 70,
+    "atk": 36,
+    "def": 26,
+    "exp": 220
+  },
+  {
+    "id": "GOBLIN_01",
+    "name": "ゴブリン",
+    "group": "GOBLIN",
+    "level": 1,
+    "hp": 6,
+    "atk": 3,
+    "def": 4,
+    "exp": 3
+  },
+  {
+    "id": "GOBLIN_02",
+    "name": "ホブゴブリン",
+    "group": "GOBLIN",
+    "level": 2,
+    "hp": 18,
+    "atk": 20,
+    "def": 12,
+    "exp": 18
+  },
+  {
+    "id": "MOFUMOFU_01",
+    "name": "モフモフ",
+    "group": "MOFUMOFU",
+    "level": 1,
+    "hp": 10,
+    "atk": 7,
+    "def": 4,
+    "exp": 10
+  },
+  {
+    "id": "MOFUMOFU_02",
+    "name": "ハイモフモフ",
+    "group": "MOFUMOFU",
+    "level": 2,
+    "hp": 60,
+    "atk": 17,
+    "def": 22,
+    "exp": 75
+  },
+  {
+    "id": "SOLDIER_01",
+    "name": "仮面戦士",
+    "group": "SOLDIER",
+    "level": 1,
+    "hp": 20,
+    "atk": 21,
+    "def": 16,
+    "exp": 30
+  },
+  {
+    "id": "SOLDIER_02",
+    "name": "仮面魔戦士",
+    "group": "SOLDIER",
+    "level": 2,
+    "hp": 65,
+    "atk": 48,
+    "def": 20,
+    "exp": 650
+  },
+  {
+    "id": "PEGASUS_01",
+    "name": "ペガサス",
+    "group": "PEGASUS",
+    "level": 1,
+    "hp": 60,
+    "atk": 39,
+    "def": 15,
+    "exp": 100
+  },
+  {
+    "id": "PEGASUS_02",
+    "name": "ダークペガサス",
+    "group": "PEGASUS",
+    "level": 2,
+    "hp": 70,
+    "atk": 48,
+    "def": 17,
+    "exp": 150
+  },
+  {
+    "id": "SHADOW",
+    "name": "シャドー",
+    "group": "SHADOW",
+    "level": 1,
+    "hp": 60,
+    "atk": 18,
+    "def": 32,
+    "exp": 270
+  },
+  {
+    "id": "MANTICORE",
+    "name": "マンティコア",
+    "group": "MANTICORE",
+    "level": 1,
+    "hp": 90,
+    "atk": 62,
+    "def": 22,
+    "exp": 2000
+  },
+  {
+    "id": "DARK_KNIGHT",
+    "name": "魔界騎士",
+    "group": "DARK_KNIGHT",
+    "level": 1,
+    "hp": 80,
+    "atk": 80,
+    "def": 29,
+    "exp": 1800
+  }
+]

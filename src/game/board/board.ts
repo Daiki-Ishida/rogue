@@ -5,7 +5,7 @@ import { Dungeon, Exit, Room } from '../dungeon';
 import { Actor } from '../actor';
 import { Item } from '../item/iItem';
 import { Trap } from '../trap';
-import { RandomUtil } from '../../util';
+import { RandomUtil } from '../util';
 import { Camera } from '../../drawer';
 
 export interface Board {

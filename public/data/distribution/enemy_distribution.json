@@ -1,0 +1,820 @@
+[
+  {
+    "level": 1,
+    "enemys": [
+      {
+        "id": "GOBLIN_01",
+        "ratio": 128
+      },
+      {
+        "id": "PIG_MAID_01",
+        "ratio": 128
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "enemys": [
+      {
+        "id": "GOBLIN_01",
+        "ratio": 128
+      },
+      {
+        "id": "PIG_MAID_01",
+        "ratio": 128
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "enemys": [
+      {
+        "id": "INSECTOR_01",
+        "ratio": 72
+      },
+      {
+        "id": "MOFUMOFU_01",
+        "ratio": 48
+      },
+      {
+        "id": "GRIFFIN_01",
+        "ratio": 72
+      },
+      {
+        "id": "TATSUNOKO_01",
+        "ratio": 64
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "enemys": [
+      {
+        "id": "INSECTOR_01",
+        "ratio": 72
+      },
+      {
+        "id": "MOFUMOFU_01",
+        "ratio": 48
+      },
+      {
+        "id": "GRIFFIN_01",
+        "ratio": 72
+      },
+      {
+        "id": "TATSUNOKO_01",
+        "ratio": 64
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "enemys": [
+      {
+        "id": "INSECTOR_01",
+        "ratio": 82
+      },
+      {
+        "id": "GRIFFIN_01",
+        "ratio": 72
+      },
+      {
+        "id": "TATSUNOKO_01",
+        "ratio": 102
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "enemys": [
+      {
+        "id": "INSECTOR_01",
+        "ratio": 76
+      },
+      {
+        "id": "WEREWOLF_01",
+        "ratio": 76
+      },
+      {
+        "id": "GRIFFIN_01",
+        "ratio": 19
+      },
+      {
+        "id": "TATSUNOKO_01",
+        "ratio": 32
+      },
+      {
+        "id": "GOLEM_01",
+        "ratio": 53
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "enemys": [
+      {
+        "id": "INSECTOR_01",
+        "ratio": 76
+      },
+      {
+        "id": "WEREWOLF_01",
+        "ratio": 76
+      },
+      {
+        "id": "GRIFFIN_01",
+        "ratio": 19
+      },
+      {
+        "id": "TATSUNOKO_01",
+        "ratio": 32
+      },
+      {
+        "id": "GOLEM_01",
+        "ratio": 53
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "enemys": [
+      {
+        "id": "PIG_MAID_02",
+        "ratio": 59
+      },
+      {
+        "id": "GOBLIN_02",
+        "ratio": 59
+      },
+      {
+        "id": "SOLDIER_01",
+        "ratio": 59
+      },
+      {
+        "id": "WEREWOLF_01",
+        "ratio": 40
+      },
+      {
+        "id": "GOLEM_01",
+        "ratio": 39
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "enemys": [
+      {
+        "id": "PIG_MAID_02",
+        "ratio": 59
+      },
+      {
+        "id": "GOBLIN_02",
+        "ratio": 59
+      },
+      {
+        "id": "SOLDIER_01",
+        "ratio": 59
+      },
+      {
+        "id": "WEREWOLF_01",
+        "ratio": 14
+      },
+      {
+        "id": "GOLEM_01",
+        "ratio": 14
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 51
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "enemys": [
+      {
+        "id": "PIG_MAID_02",
+        "ratio": 59
+      },
+      {
+        "id": "GOBLIN_02",
+        "ratio": 59
+      },
+      {
+        "id": "SOLDIER_01",
+        "ratio": 59
+      },
+      {
+        "id": "WEREWOLF_01",
+        "ratio": 14
+      },
+      {
+        "id": "GOLEM_01",
+        "ratio": 14
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 51
+      }
+    ]
+  },
+  {
+    "level": 11,
+    "enemys": [
+      {
+        "id": "DRAGON_01",
+        "ratio": 28
+      },
+      {
+        "id": "TATSUNOKO_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_02",
+        "ratio": 32
+      },
+      {
+        "id": "GRIFFIN_02",
+        "ratio": 38
+      },
+      {
+        "id": "MOFUMOFU_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_01",
+        "ratio": 24
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 54
+      }
+    ]
+  },
+  {
+    "level": 12,
+    "enemys": [
+      {
+        "id": "DRAGON_01",
+        "ratio": 28
+      },
+      {
+        "id": "TATSUNOKO_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_02",
+        "ratio": 32
+      },
+      {
+        "id": "GRIFFIN_02",
+        "ratio": 38
+      },
+      {
+        "id": "MOFUMOFU_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_01",
+        "ratio": 24
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 54
+      }
+    ]
+  },
+  {
+    "level": 13,
+    "enemys": [
+      {
+        "id": "DRAGON_01",
+        "ratio": 28
+      },
+      {
+        "id": "TATSUNOKO_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_02",
+        "ratio": 32
+      },
+      {
+        "id": "GRIFFIN_02",
+        "ratio": 38
+      },
+      {
+        "id": "MOFUMOFU_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_01",
+        "ratio": 24
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 54
+      }
+    ]
+  },
+  {
+    "level": 14,
+    "enemys": [
+      {
+        "id": "DRAGON_01",
+        "ratio": 28
+      },
+      {
+        "id": "TATSUNOKO_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_02",
+        "ratio": 32
+      },
+      {
+        "id": "GRIFFIN_02",
+        "ratio": 38
+      },
+      {
+        "id": "MOFUMOFU_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_01",
+        "ratio": 24
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 54
+      }
+    ]
+  },
+  {
+    "level": 15,
+    "enemys": [
+      {
+        "id": "DRAGON_01",
+        "ratio": 28
+      },
+      {
+        "id": "TATSUNOKO_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_02",
+        "ratio": 32
+      },
+      {
+        "id": "GRIFFIN_02",
+        "ratio": 38
+      },
+      {
+        "id": "MOFUMOFU_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_01",
+        "ratio": 24
+      },
+      {
+        "id": "INSECTOR_02",
+        "ratio": 54
+      }
+    ]
+  },
+  {
+    "level": 16,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 56
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 56
+      },
+      {
+        "id": "GRIFFIN_03",
+        "ratio": 45
+      },
+      {
+        "id": "PIG_MAID_03",
+        "ratio": 45
+      },
+      {
+        "id": "GOLEM_02",
+        "ratio": 45
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 17,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 56
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 56
+      },
+      {
+        "id": "GRIFFIN_03",
+        "ratio": 45
+      },
+      {
+        "id": "PIG_MAID_03",
+        "ratio": 45
+      },
+      {
+        "id": "GOLEM_02",
+        "ratio": 45
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 18,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 56
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 56
+      },
+      {
+        "id": "GRIFFIN_03",
+        "ratio": 45
+      },
+      {
+        "id": "PIG_MAID_03",
+        "ratio": 45
+      },
+      {
+        "id": "GOLEM_02",
+        "ratio": 45
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 19,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 56
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 56
+      },
+      {
+        "id": "GRIFFIN_03",
+        "ratio": 45
+      },
+      {
+        "id": "PIG_MAID_03",
+        "ratio": 45
+      },
+      {
+        "id": "GOLEM_02",
+        "ratio": 45
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 20,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 56
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 56
+      },
+      {
+        "id": "GRIFFIN_03",
+        "ratio": 45
+      },
+      {
+        "id": "PIG_MAID_03",
+        "ratio": 45
+      },
+      {
+        "id": "GOLEM_02",
+        "ratio": 45
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 21,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 48
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 47
+      },
+      {
+        "id": "SOLDIER_02",
+        "ratio": 48
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 9
+      },
+      {
+        "id": "DRAGON_02",
+        "ratio": 47
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 22,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 48
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 47
+      },
+      {
+        "id": "SOLDIER_02",
+        "ratio": 48
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 9
+      },
+      {
+        "id": "DRAGON_02",
+        "ratio": 47
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 23,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 48
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 47
+      },
+      {
+        "id": "SOLDIER_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 25
+      },
+      {
+        "id": "DRAGON_02",
+        "ratio": 47
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 24,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 42
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 47
+      },
+      {
+        "id": "SOLDIER_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 31
+      },
+      {
+        "id": "DRAGON_02",
+        "ratio": 47
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 25,
+    "enemys": [
+      {
+        "id": "INSECTOR_03",
+        "ratio": 42
+      },
+      {
+        "id": "TATSUNOKO_03",
+        "ratio": 47
+      },
+      {
+        "id": "SOLDIER_02",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 48
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 31
+      },
+      {
+        "id": "DRAGON_02",
+        "ratio": 47
+      },
+      {
+        "id": "SHADOW",
+        "ratio": 9
+      }
+    ]
+  },
+  {
+    "level": 26,
+    "enemys": [
+      {
+        "id": "DRAGON_03",
+        "ratio": 32
+      },
+      {
+        "id": "DARK_KNIGHT",
+        "ratio": 28
+      },
+      {
+        "id": "GOLEM_03",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 82
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 82
+      }
+    ]
+  },
+  {
+    "level": 27,
+    "enemys": [
+      {
+        "id": "DRAGON_03",
+        "ratio": 32
+      },
+      {
+        "id": "DARK_KNIGHT",
+        "ratio": 28
+      },
+      {
+        "id": "GOLEM_03",
+        "ratio": 32
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 82
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 82
+      }
+    ]
+  },
+  {
+    "level": 28,
+    "enemys": [
+      {
+        "id": "DRAGON_03",
+        "ratio": 38
+      },
+      {
+        "id": "DARK_KNIGHT",
+        "ratio": 42
+      },
+      {
+        "id": "GOLEM_03",
+        "ratio": 36
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 60
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 74
+      }
+    ]
+  },
+  {
+    "level": 29,
+    "enemys": [
+      {
+        "id": "DRAGON_03",
+        "ratio": 38
+      },
+      {
+        "id": "DARK_KNIGHT",
+        "ratio": 42
+      },
+      {
+        "id": "GOLEM_03",
+        "ratio": 36
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 60
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 74
+      }
+    ]
+  },
+  {
+    "level": 30,
+    "enemys": [
+      {
+        "id": "DRAGON_03",
+        "ratio": 38
+      },
+      {
+        "id": "DARK_KNIGHT",
+        "ratio": 42
+      },
+      {
+        "id": "GOLEM_03",
+        "ratio": 36
+      },
+      {
+        "id": "PEGASUS_02",
+        "ratio": 60
+      },
+      {
+        "id": "WEREWOLF_03",
+        "ratio": 74
+      }
+    ]
+  }
+]

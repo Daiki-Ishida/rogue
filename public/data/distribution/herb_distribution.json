@@ -1,0 +1,58 @@
+[
+  {
+    "name": "GreenHerb",
+    "ratio": 45
+  },
+  {
+    "name": "SuperHerb",
+    "ratio": 38
+  },
+  {
+    "name": "PoisonHerb",
+    "ratio": 13
+  },
+  {
+    "name": "ConfusionHerb",
+    "ratio": 13
+  },
+  {
+    "name": "SleepyHerb",
+    "ratio": 13
+  },
+  {
+    "name": "FortuneSeed",
+    "ratio": 9
+  },
+  {
+    "name": "UnfortuneSeed",
+    "ratio": 9
+  },
+  {
+    "name": "StomachExpander",
+    "ratio": 15
+  },
+  {
+    "name": "StomachShrinker",
+    "ratio": 15
+  },
+  {
+    "name": "LifeHerb",
+    "ratio": 18
+  },
+  {
+    "name": "SightHerb",
+    "ratio": 22
+  },
+  {
+    "name": "AntidoteHerb",
+    "ratio": 9
+  },
+  {
+    "name": "DragonHerb",
+    "ratio": 24
+  },
+  {
+    "name": "Weed",
+    "ratio": 13
+  }
+]

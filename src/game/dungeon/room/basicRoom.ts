@@ -3,7 +3,7 @@ import { Room } from '.';
 import { Area } from '..';
 import { imageStore } from '../../..';
 import { Camera } from '../../../drawer';
-import { RandomUtil } from '../../../util';
+import { RandomUtil } from '../../util';
 
 const MIN_WIDTH = 6;
 const MIN_HEIGHT = 6;

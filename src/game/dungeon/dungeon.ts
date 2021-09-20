@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { Area, Corridor, Exit, Room } from '.';
 import { Camera } from '../../drawer';
-import { RandomUtil } from '../../util';
+import { RandomUtil } from '../util';
 
 export class Dungeon {
   constructor(

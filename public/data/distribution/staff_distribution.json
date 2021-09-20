@@ -1,0 +1,46 @@
+[
+  {
+    "name": "KnockbackStaff",
+    "ratio": 51
+  },
+  {
+    "name": "FortuneStaff",
+    "ratio": 26
+  },
+  {
+    "name": "UnfortuneStaff",
+    "ratio": 26
+  },
+  {
+    "name": "PinningStaff",
+    "ratio": 26
+  },
+  {
+    "name": "OrdinaryStaff",
+    "ratio": 26
+  },
+  {
+    "name": "LightningStaff",
+    "ratio": 25
+  },
+  {
+    "name": "SwapStaff",
+    "ratio": 52
+  },
+  {
+    "name": "MageStaff",
+    "ratio": 25
+  },
+  {
+    "name": "ParalysisStaff",
+    "ratio": 26
+  },
+  {
+    "name": "PostponeStaff",
+    "ratio": 25
+  },
+  {
+    "name": "SealingStaff",
+    "ratio": 26
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "IdentifyScroll",
+    "ratio": 72
+  },
+  {
+    "name": "NavigationScroll",
+    "ratio": 30
+  },
+  {
+    "name": "LostScroll",
+    "ratio": 11
+  },
+  {
+    "name": "BlastwaveScroll",
+    "ratio": 30
+  },
+  {
+    "name": "FixerScroll",
+    "ratio": 21
+  },
+  {
+    "name": "SlumberScroll",
+    "ratio": 20
+  },
+  {
+    "name": "FateScroll",
+    "ratio": 21
+  },
+  {
+    "name": "EarthScroll",
+    "ratio": 10
+  },
+  {
+    "name": "ConfusionScroll",
+    "ratio": 21
+  },
+  {
+    "name": "SealingScroll",
+    "ratio": 20
+  },
+  {
+    "name": "TrapScroll",
+    "ratio": 20
+  },
+  {
+    "name": "ExplosionScroll",
+    "ratio": 20
+  },
+  {
+    "name": "ExorcismScroll",
+    "ratio": 20
+  },
+  {
+    "name": "PotGodScroll",
+    "ratio": 20
+  },
+  {
+    "name": "ExtractionScroll",
+    "ratio": 20
+  }
+]
