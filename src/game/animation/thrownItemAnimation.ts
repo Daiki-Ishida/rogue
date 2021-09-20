@@ -1,6 +1,6 @@
+import { Item } from 'game/models/item';
 import { Animation } from '.';
-import { Camera } from '../drawer';
-import { Item } from '../game/item/iItem';
+import { Camera } from '../view';
 
 export class ThrownItemAnimation implements Animation {
   constructor(

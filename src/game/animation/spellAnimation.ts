@@ -1,6 +1,6 @@
+import { Player } from 'game/models/actor';
 import { Animation } from '.';
-import { Camera } from '../drawer';
-import { Player } from '../game/actor';
+import { Camera } from '../view';
 
 export class SpellAnimation implements Animation {
   constructor(

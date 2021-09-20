@@ -1,7 +1,7 @@
+import { Actor } from 'game/models/actor';
 import p5 from 'p5';
 import { Animation } from '.';
-import { Camera } from '../drawer';
-import { Actor } from '../game/actor';
+import { Camera } from '../view';
 
 const F = 5;
 
@@ -48,7 +48,7 @@ export class AttackAnimation implements Animation {
     if (this.frame <= 0) return;
 
     const effect = this.actor.symbol.attackEffect;
-    const { x, y } = camera.adjust(this.actor.nextX, this.actor.nextY);
+    const { x, y } = camera.adjust(this.actor.next.x, this.actor.next.y);
 
     p.image(effect[this.frame - 1], x, y, camera.zoom * 1.5, camera.zoom * 1.5);
   }

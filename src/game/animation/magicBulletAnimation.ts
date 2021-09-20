@@ -1,5 +1,5 @@
 import { Animation } from '.';
-import { Camera } from '../drawer';
+import { Camera } from '../view';
 
 export class MagicBulletAnimation implements Animation {
   constructor(public frame: number, readonly done: boolean) {}
