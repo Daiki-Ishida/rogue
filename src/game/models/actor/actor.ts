@@ -1,5 +1,21 @@
+import {
+  animationManager,
+  AttackAnimation,
+  WalkAnimation,
+} from 'game/animation';
+import { Battle } from 'game/battle';
+import { Board } from 'game/board';
+import { Exit } from 'game/dungeon/exit';
+import { Room } from 'game/dungeon/room';
+import { Item } from '../item';
+import { Trap } from '../trap';
+import { Conditions } from './condition';
+import { Direction, DirectionKey } from './direction';
+import { Enemy } from './enemy';
+import { Player } from './player';
 import { ActorStatus } from './status';
 import { ActorSymbol } from './symbol';
+import { Visibility } from './visibility';
 
 interface IActor {
   x: number;
@@ -13,18 +29,18 @@ interface IActor {
   isDead: boolean;
   setAt(x: number, y: number): void;
   underneath(board: Board): Item | Trap | Room | Exit | undefined;
-  updateVisibility(): void;
-  move(): void;
-  canMove(): boolean;
+  // updateVisibility(): void;
+  move(board: Board): void;
+  canMove(board: Board): boolean;
   turnTo(direction: DirectionKey): void;
-  attack(): void;
+  attack(board: Board): void;
   damage(value: number): void;
   heal(value: number): void;
   levelUp(): void;
   levelDown(): void;
   isPlayer(): this is Player;
   isEnemy(): this is Enemy;
-  spawn(): void;
+  spawn(board: Board): void;
 }
 
 export abstract class Actor implements IActor {
@@ -34,9 +50,7 @@ export abstract class Actor implements IActor {
     public x: number = 0,
     public y: number = 0,
     readonly conditions: Conditions = Conditions.init(),
-    readonly visibility: Visibility = new Visibility(
-      new SingleRangeVisibility(0, 0)
-    ),
+    readonly visibility: Visibility = Visibility.init(),
     readonly d: Direction = Direction.init()
   ) {}
 
@@ -50,13 +64,16 @@ export abstract class Actor implements IActor {
     return this.status.hp <= 0;
   }
 
+  abstract levelUp(): void;
+  abstract levelDown(): void;
+
   setAt(x: number, y: number): void {
     this.x = x;
     this.y = y;
     this.symbol.setAt(x, y);
   }
 
-  spawn(): void {
+  spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
   }
@@ -72,21 +89,8 @@ export abstract class Actor implements IActor {
       : (this.status.dmg -= value);
   }
 
-  updateVisibility(): void {
-    const underneath = this.underneath();
-
-    // todo
-    if (underneath instanceof BasicRoom) {
-      const v = new RoomRangeVisibility(underneath);
-      this.visibility.switchRange(v);
-    } else {
-      const v = new ActorRangeVisibility(this);
-      this.visibility.switchRange(v);
-    }
-  }
-
-  move(): void {
-    if (!this.canMove()) {
+  move(board: Board): void {
+    if (!this.canMove(board)) {
       return;
     }
 
@@ -98,8 +102,7 @@ export abstract class Actor implements IActor {
     animationManager.push(animation);
   }
 
-  canMove(): boolean {
-    const board = game.board;
+  canMove(board: Board): boolean {
     const { x, y } = this.next;
     const blocked = board.isBlock(x, y);
     if (blocked) return false;
@@ -115,9 +118,8 @@ export abstract class Actor implements IActor {
     this.symbol.turnTo(direction);
   }
 
-  attack(): void {
-    const board = game.board;
-    const target = board.findActor(this.nextX, this.nextY);
+  attack(board: Board): void {
+    const target = board.findActor(this.next.x, this.next.y);
     const animation = AttackAnimation.generate(this);
     animationManager.push(animation);
 
@@ -127,8 +129,7 @@ export abstract class Actor implements IActor {
     }
   }
 
-  underneath(): Item | Trap | Room | Exit | undefined {
-    const board = game.board;
+  underneath(board: Board): Item | Trap | Room | Exit | undefined {
     const exit = board.findExit(this.x, this.y);
     if (exit) {
       return exit;
@@ -152,8 +153,11 @@ export abstract class Actor implements IActor {
     return undefined;
   }
 
-  abstract isPlayer(): this is Player;
-  abstract isEnemy(): this is Enemy;
-  abstract levelUp(): void;
-  abstract levelDown(): void;
+  isPlayer(): this is Player {
+    return false;
+  }
+
+  isEnemy(): this is Enemy {
+    return false;
+  }
 }

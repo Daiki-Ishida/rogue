@@ -1,10 +1,10 @@
-import { EnemyStatus, EnemySymbol } from '.';
-import { Actor, ActorBase } from '..';
-import { game, player } from '../../..';
-import { enemyDataStore } from '../../../store';
+import { enemyDataStore } from 'game/store';
+import { Actor } from './actor';
+import { EnemyStatus } from './status';
 import { basicStrategy, Strategy } from './strategy';
+import { EnemySymbol } from './symbol';
 
-export interface Enemy extends Actor {
+export interface IEnemy {
   targetX?: number;
   targetY?: number;
   strategy: Strategy;
@@ -18,7 +18,7 @@ export interface Enemy extends Actor {
   turnAround(): void;
 }
 
-export abstract class EnemyBase extends ActorBase implements Enemy {
+export abstract class Enemy extends Actor implements IEnemy {
   constructor(
     public symbol: EnemySymbol,
     public status: EnemyStatus,
@@ -57,7 +57,7 @@ export abstract class EnemyBase extends ActorBase implements Enemy {
   }
 
   isAttackable(): boolean {
-    return this.nextX === player.x && this.nextY === player.y;
+    return this.next.x === player.x && this.next.y === player.y;
   }
 
   // 左を向く

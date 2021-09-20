@@ -1,9 +1,10 @@
 import p5, { Image } from 'p5';
-import { ActorSymbolBase, DirectionKey } from '..';
-import { imageStore } from '../../..';
-import { Camera } from '../../../drawer';
+import { imageStore } from 'game';
+import { Camera } from 'game/view';
+import { ActorSymbol } from '.';
+import { DirectionKey } from '../direction';
 
-export class EnemySymbol extends ActorSymbolBase {
+export class EnemySymbol extends ActorSymbol {
   static init(id: string): EnemySymbol {
     let img: Image[];
     let attackImg: Image[];

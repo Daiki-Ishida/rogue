@@ -1,7 +1,7 @@
-import { ActorStatusBase } from '..';
-import { enemyDataStore } from '../../../store';
+import { enemyDataStore } from 'game/store';
+import { ActorStatus } from './actorStatus';
 
-export class EnemyStatus extends ActorStatusBase {
+export class EnemyStatus extends ActorStatus {
   constructor(
     readonly name: string,
     readonly group: string,

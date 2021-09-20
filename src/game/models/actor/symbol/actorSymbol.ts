@@ -1,4 +1,6 @@
 import p5, { Image } from 'p5';
+import { Camera } from 'game/view';
+import { DirectionKey } from '../direction';
 
 export interface IActorSymbol {
   x: number;

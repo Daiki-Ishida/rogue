@@ -1,4 +1,4 @@
-export type DirectionKey = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
+import { DirectionKey } from './directionKey';
 
 export class Direction {
   constructor(public key: DirectionKey) {}

@@ -1,4 +1,4 @@
-import { Condition, ConditionType } from '.';
+import { Condition, ConditionType } from './condition';
 
 export class Conditions {
   conditions: Condition[];

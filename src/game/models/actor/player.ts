@@ -1,3 +1,5 @@
+import { Board } from 'game/board';
+import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
 import { PlayerStatus } from './status';
 import { PlayerSymbol } from './symbol';
@@ -43,11 +45,11 @@ export class Player extends Actor {
     this.status.level--;
   }
 
-  throw(item: Item): void {
+  throw(item: Item, board: Board): void {
     item.throw(this, board);
   }
 
-  use(item: Usable): void {
+  use(item: Usable, board: Board): void {
     item.use(this, board);
   }
 
@@ -80,5 +82,9 @@ export class Player extends Actor {
     if (equipment.isShield()) {
       this.status.shield = undefined;
     }
+  }
+
+  isPlayer(): this is Player {
+    return true;
   }
 }

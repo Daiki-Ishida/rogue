@@ -1,5 +1,5 @@
+import { imageStore } from 'game';
 import { Image } from 'p5';
-import { imageStore } from '../../..';
 
 export class Condition {
   value: ConditionType;

@@ -1,3 +1,4 @@
+import { Shield, Sward } from 'game/models/item';
 import { ActorStatus } from '.';
 
 export class PlayerStatus extends ActorStatus {

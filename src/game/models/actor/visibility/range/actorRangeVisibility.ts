@@ -1,5 +1,5 @@
 import { VisibilityRange } from '.';
-import { Actor } from '../..';
+import { Actor } from '../../actor';
 
 // 視界半径
 const R = 1;

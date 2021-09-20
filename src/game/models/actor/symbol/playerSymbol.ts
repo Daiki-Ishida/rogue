@@ -1,4 +1,8 @@
+import p5 from 'p5';
+import { imageStore } from 'game';
+import { Camera } from 'game/view';
 import { ActorSymbol } from '.';
+import { DirectionKey } from '../direction';
 
 export class PlayerSymbol extends ActorSymbol {
   static init(): PlayerSymbol {

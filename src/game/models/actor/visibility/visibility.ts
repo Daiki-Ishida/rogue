@@ -1,3 +1,17 @@
+import { Board } from 'game/board';
+import { Room } from 'game/dungeon/room';
+import { ItemSymbol } from 'game/models/item/symbol';
+import { TrapSymbol } from 'game/models/trap';
+import { Actor } from '../actor';
+import { ActorSymbol } from '../symbol';
+import {
+  ActorRangeVisibility,
+  FullRangeVisibility,
+  RoomRangeVisibility,
+  SingleRangeVisibility,
+  VisibilityRange,
+} from './range';
+
 interface Symbols {
   traps: TrapSymbol[];
   items: ItemSymbol[];
@@ -7,8 +21,21 @@ interface Symbols {
 export class Visibility {
   constructor(public range: VisibilityRange) {}
 
-  switchRange(range: VisibilityRange): void {
-    this.range = range;
+  static init(): Visibility {
+    const range = new SingleRangeVisibility(0, 0);
+    return new Visibility(range);
+  }
+
+  setRoomRange(room: Room): void {
+    this.range = new RoomRangeVisibility(room);
+  }
+
+  setActorRange(actor: Actor): void {
+    this.range = new ActorRangeVisibility(actor);
+  }
+
+  setFullRange(): void {
+    this.range = new FullRangeVisibility();
   }
 
   get x(): number {
@@ -27,7 +54,7 @@ export class Visibility {
     return this.range.h;
   }
 
-  listSymbolsInRange(): Symbols {
+  listSymbolsInRange(board: Board): Symbols {
     const traps: TrapSymbol[] = [];
     const items: ItemSymbol[] = [];
     const actors: ActorSymbol[] = [];
