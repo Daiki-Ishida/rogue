@@ -1,4 +1,4 @@
-import { LayerBase, Tile } from '.';
+import { LayerBase, Tile } from './layer';
 import { Dungeon } from '../../dungeon';
 
 export class DungeonLayer extends LayerBase {

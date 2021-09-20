@@ -1,4 +1,4 @@
-import { LayerBase, Tile } from '.';
+import { LayerBase, Tile } from './layer';
 
 export class BaseLayer extends LayerBase {
   static init(w: number, h: number): BaseLayer {

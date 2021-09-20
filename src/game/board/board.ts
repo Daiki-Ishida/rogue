@@ -1,12 +1,14 @@
 import p5 from 'p5';
-import { imageStore } from '../..';
-import { BaseLayer, DungeonLayer, Layer, Tile } from '.';
-import { Dungeon, Exit, Room } from '../dungeon';
-import { Actor } from '../actor';
-import { Item } from '../item/iItem';
-import { Trap } from '../trap';
-import { RandomUtil } from '../util';
-import { Camera } from '../../drawer';
+import { imageStore } from 'game';
+import { Dungeon } from 'game/dungeon';
+import { Exit } from 'game/dungeon/exit';
+import { Room } from 'game/dungeon/room';
+import { Actor } from 'game/models/actor';
+import { Item } from 'game/models/item';
+import { Trap } from 'game/models/trap';
+import { RandomUtil } from 'game/util';
+import { Camera } from 'game/view';
+import { BaseLayer, DungeonLayer, Layer, Tile } from './layer';
 
 export interface Board {
   readonly w: number;
@@ -30,7 +32,7 @@ export interface Board {
   draw(p: p5, camera: Camera): void;
 }
 
-export class BoardBase implements Board {
+export class Board implements Board {
   constructor(
     readonly w: number,
     readonly h: number,
@@ -46,7 +48,7 @@ export class BoardBase implements Board {
     const dungeon = Dungeon.init(w, h);
     const dungeonLayer = DungeonLayer.init(w, h);
     dungeonLayer.apply(dungeon);
-    return new BoardBase(
+    return new Board(
       w,
       h,
       dungeon,
