@@ -1,21 +1,21 @@
-import { ItemBase } from '../item';
-import { ItemSymbol } from '../itemSymbol';
-import { Equipment, EquipmentStatus, Shield, Sward } from './iEquipment';
+import { Bracelet, Shield, Sward } from '.';
+import { Item } from '../item';
+import { EquipmentStatus } from '../status';
+import { ItemSymbol } from '../symbol';
 
-export abstract class EquipmentBase extends ItemBase implements Equipment {
+export abstract class Equipment extends Item {
   constructor(
+    public x: number,
+    public y: number,
     public symbol: ItemSymbol,
-    public status: EquipmentStatus,
-    public x: number = 0,
-    public y: number = 0
+    public status: EquipmentStatus
   ) {
     super(x, y, symbol, status);
   }
-  abstract isSward(): this is Sward;
-  abstract isShield(): this is Shield;
 
   identify(): void {
-    this.status.fullIdentify();
+    // todo
+    return;
   }
 
   equip(): void {
@@ -42,5 +42,21 @@ export abstract class EquipmentBase extends ItemBase implements Equipment {
 
   uncurse(): void {
     this.status.cursed = false;
+  }
+
+  isEquipment(): this is Equipment {
+    return true;
+  }
+
+  isSward(): this is Sward {
+    return false;
+  }
+
+  isShield(): this is Shield {
+    return false;
+  }
+
+  isBracelet(): this is Bracelet {
+    return false;
   }
 }
