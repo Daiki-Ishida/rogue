@@ -1,6 +1,4 @@
 export * from './item';
-export * from './itemStatus';
-export * from './itemSymbol';
-
-export * from './gold';
+export * from './equipment';
 export * from './usable';
+export * from './gold';

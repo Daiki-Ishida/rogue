@@ -1,25 +1,36 @@
-import { ItemStatus, ItemSymbol } from '.';
-import { game } from '../..';
-import { GridUtil } from '../../util';
+import { Board } from 'game/board';
 import { Actor, Player } from '../actor';
-import { Board } from '../board';
-import { Equipment } from './equipment/iEquipment';
-import { Item } from './iItem';
-import { Usable, UsableBase } from './usable';
+import { ItemStatus } from './status';
+import { ItemSymbol } from './symbol';
+import { Equipment } from './equipment';
+import { Gold } from './gold';
+import { Usable } from './usable';
+import { GridUtil } from 'game/util';
 
-export abstract class ItemBase implements Item {
+export interface IItem {
+  x: number;
+  y: number;
+  symbol: ItemSymbol;
+  status: ItemStatus;
+  identify(): void;
+  throw: (thrower: Player, board: Board) => void;
+  onHit(user: Player, target: Actor, board: Board): void;
+  onUnhit: (board: Board) => void;
+  isUsable(): this is Usable;
+  isEquipment(): this is Equipment;
+  spawn(): void;
+}
+
+export abstract class Item implements IItem {
   constructor(
     public x: number,
     public y: number,
-    public symbol: ItemSymbol,
-    public status: ItemStatus
+    readonly symbol: ItemSymbol,
+    readonly status: ItemStatus
   ) {}
 
   abstract identify(): void;
   abstract onHit(user: Player, target: Actor, board: Board): void;
-  isEquipment(): this is Equipment {
-    return false;
-  }
 
   throw(thrower: Player, board: Board): void {
     this.x = thrower.x;
@@ -56,10 +67,6 @@ export abstract class ItemBase implements Item {
     return;
   }
 
-  isUsable(): this is Usable {
-    return this instanceof UsableBase;
-  }
-
   spawn(): void {
     const board = game.board;
     const { x, y } = board.getRandomEmpty();
@@ -71,5 +78,17 @@ export abstract class ItemBase implements Item {
     this.y = y;
     this.symbol.x = x;
     this.symbol.y = y;
+  }
+
+  isUsable(): this is Usable {
+    return false;
+  }
+
+  isEquipment(): this is Equipment {
+    return false;
+  }
+
+  isGold(): this is Gold {
+    return false;
   }
 }

@@ -1,14 +1,7 @@
 import p5, { Image } from 'p5';
-import { Camera } from '../../drawer';
+import { Camera } from 'game/view';
 
-export interface ItemSymbol {
-  x: number;
-  y: number;
-  img: Image;
-  draw(p: p5, camera: Camera): void;
-}
-
-export abstract class ItemSymbolBase implements ItemSymbol {
+export class ItemSymbol {
   constructor(
     readonly img: Image,
     public x: number = 0,
