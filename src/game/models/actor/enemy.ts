@@ -1,3 +1,4 @@
+import { game } from 'game';
 import { enemyDataStore } from 'game/store';
 import { Actor } from './actor';
 import { EnemyStatus } from './status';
@@ -10,7 +11,7 @@ export interface IEnemy {
   strategy: Strategy;
   hasTarget: boolean;
   isInSightOfPlayer(): boolean;
-  isAttackable(): boolean;
+  isAttackable(actor: Actor): boolean;
   act(): void;
   specialArts(): void;
   turnLeft(): void;
@@ -51,13 +52,13 @@ export abstract class Enemy extends Actor implements IEnemy {
 
   isInSightOfPlayer(): boolean {
     const v = this.visibility;
-    const p = player;
+    const p = game.player;
 
     return p.x >= v.x && p.x < v.x + v.w && p.y >= v.y && p.y < v.y + v.h;
   }
 
-  isAttackable(): boolean {
-    return this.next.x === player.x && this.next.y === player.y;
+  isAttackable(actor: Actor): boolean {
+    return this.next.x === actor.x && this.next.y === actor.y;
   }
 
   // 左を向く

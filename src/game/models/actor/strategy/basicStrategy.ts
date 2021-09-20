@@ -1,8 +1,9 @@
+import { game } from 'game';
 import { AttackCommand, Command, MoveCommand } from 'game/command';
-import { GridUtil } from 'game/util';
-import { DirectionKey } from '../direction';
-import { Enemy } from '../enemy';
 import { Strategy } from './strategy';
+import { Enemy } from '../enemy';
+import { DirectionKey } from '../direction';
+import { GridUtil } from 'game/util';
 
 /**
  * 敵の基本の行動アルゴリズム
@@ -12,7 +13,7 @@ class BasicStrategy implements Strategy {
   target(enemy: Enemy): { x: number | undefined; y: number | undefined } {
     // プレイヤーが視野に入れば、プレイヤーを目指す。
     if (enemy.isInSightOfPlayer()) {
-      return { x: player.x, y: player.y };
+      return { x: game.player.x, y: game.player.y };
     }
 
     if (enemy.hasTarget) {
@@ -36,7 +37,7 @@ class BasicStrategy implements Strategy {
   command(enemy: Enemy): Command {
     this.adjustDirection(enemy);
 
-    return enemy.isAttackable()
+    return enemy.isAttackable(game.player)
       ? new AttackCommand(enemy)
       : new MoveCommand(enemy);
   }
@@ -96,16 +97,17 @@ class BasicStrategy implements Strategy {
    * 現在の進路を極力維持しつつ、進める方向を探す
    */
   private straightForward(enemy: Enemy): void {
+    const board = game.board;
     // 真っ直ぐ進めればそのまま進む
-    if (enemy.canMove()) return;
+    if (enemy.canMove(board)) return;
 
     // 左にいければ左に進む
     enemy.turnLeft();
-    if (enemy.canMove()) return;
+    if (enemy.canMove(board)) return;
 
     // 右にいければ右に進む
     enemy.turnAround();
-    if (enemy.canMove()) return;
+    if (enemy.canMove(board)) return;
 
     // 直進・左右が無理なら引き返す
     enemy.turnRight();
@@ -115,6 +117,8 @@ class BasicStrategy implements Strategy {
    * ターゲットに向かって最短で接近する方向を探す
    */
   private turnToTarget(enemy: Enemy): void {
+    const player = game.player;
+    const board = game.board;
     // ターゲットに近づくように移動
     const x = enemy.x;
     const y = enemy.y;
@@ -135,7 +139,7 @@ class BasicStrategy implements Strategy {
     const vertical = (): DirectionKey => (y > ty ? 'UP' : 'DOWN');
 
     enemy.turnTo(dx > dy ? horizontal() : vertical());
-    if (enemy.canMove() || enemy.isAttackable()) {
+    if (enemy.canMove(board) || enemy.isAttackable(player)) {
       return;
     }
 

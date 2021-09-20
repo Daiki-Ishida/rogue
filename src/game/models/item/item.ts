@@ -12,13 +12,14 @@ export interface IItem {
   y: number;
   symbol: ItemSymbol;
   status: ItemStatus;
+  spawn(board: Board): void;
   identify(): void;
   throw: (thrower: Player, board: Board) => void;
   onHit(user: Player, target: Actor, board: Board): void;
   onUnhit: (board: Board) => void;
   isUsable(): this is Usable;
   isEquipment(): this is Equipment;
-  spawn(): void;
+  isGold(): this is Gold;
 }
 
 export abstract class Item implements IItem {
@@ -67,8 +68,7 @@ export abstract class Item implements IItem {
     return;
   }
 
-  spawn(): void {
-    const board = game.board;
+  spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
   }
