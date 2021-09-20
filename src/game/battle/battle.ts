@@ -1,5 +1,5 @@
-import { RandomUtil } from '../../util';
-import { Actor, Player } from '../actor';
+import { Actor } from 'game/models/actor';
+import { RandomUtil } from 'game/util';
 
 export class Battle {
   constructor(readonly attacker: Actor, readonly defender: Actor) {}
@@ -37,7 +37,7 @@ export class Battle {
     if (!this.defender.isDead) return;
 
     // 経験値獲得
-    if (this.attacker instanceof Player) {
+    if (this.attacker.isPlayer()) {
       const exp = this.defender.status.exp;
       this.attacker.gainExp(exp);
 
@@ -49,7 +49,7 @@ export class Battle {
 
   private messageOnHit(dmg: number): string {
     let message: string;
-    if (this.attacker instanceof Player) {
+    if (this.attacker.isPlayer()) {
       message = `${this.defender.status.name}に${dmg}ダメージを与えた`;
     } else {
       message = `${this.attacker.status.name}から${dmg}ダメージを受けた`;
@@ -63,7 +63,7 @@ export class Battle {
 
   private messageOnDefeated(): string {
     let message: string;
-    if (this.attacker instanceof Player) {
+    if (this.attacker.isPlayer()) {
       message = `${this.defender.status.name}をやっつけた！`;
     } else {
       message = `${this.attacker.status.name}に倒された・・・`;
