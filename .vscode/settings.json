@@ -1,0 +1,35 @@
+{
+  // エクスプローラの表示除外設定
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.DS_Store": true
+  },
+  // 検索除外設定
+  "search.exclude": {
+    "**/node_modules": true,
+    "package-lock.json": true,
+    "yarn.lock": true
+  },
+  // 最終行に空行追加
+  "files.insertFinalNewline": true,
+  // インデントのカラー表示
+  "editor.highlightActiveIndentGuide": true,
+  // 制御文字を表示
+  "editor.renderControlCharacters": true,
+  // エディタレイアウトの保持
+  "workbench.editor.closeEmptyGroups": true,
+  // ファイル表示時にタブを上書き表示しないようにする
+  "workbench.editor.enablePreview": false,
+  // パンくずを表示
+  "breadcrumbs.enabled": true,
+  // 書式設定無しでテキストをコピー
+  "editor.copyWithSyntaxHighlighting": false,
+  // formatter
+  "editor.formatOnSave": true, // ファイル保存時の自動フォーマット有効
+  "editor.formatOnPaste": true, // ペーストした文字の自動フォーマット有効
+  "editor.formatOnType": true, // 文字入力行の自動フォーマット有効
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターをPrettierに指定
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true // ファイル保存時に ESLint でフォーマット
+  }
+}
