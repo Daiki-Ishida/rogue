@@ -1,13 +1,13 @@
-import { intervalPhase, Phase, PhaseBase } from '.';
-import { Board } from '../../board';
-import { Commands } from '../../command';
+import { Game } from 'game/game';
+import { IntervalPhase } from '.';
+import { Phase, PhaseBase } from './phase';
 
 export class EnemysMovePhase extends PhaseBase {
   get nextPhase(): Phase {
-    return intervalPhase;
+    return new IntervalPhase();
   }
 
-  proc(commands: Commands, board: Board): void {
+  proc(game: Game): void {
     this.completed = true;
   }
 }

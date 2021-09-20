@@ -1,10 +1,9 @@
-import { Board } from '../../board';
-import { Commands } from '../../command';
+import { Game } from 'game/game';
 
 export interface Phase {
   readonly completed: boolean;
   readonly nextPhase: Phase;
-  proc: (commands: Commands, board: Board) => void;
+  proc: (game: Game) => void;
 }
 
 export abstract class PhaseBase {

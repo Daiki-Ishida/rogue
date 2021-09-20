@@ -1,5 +1,5 @@
-import { Phase, PhaseBase } from '.';
-import { Commands } from '../../command';
+import { Game } from 'game/game';
+import { Phase, PhaseBase } from './phase';
 import { PlayerActionPhase } from './playerActionPhase';
 
 export class StandByPhase extends PhaseBase {
@@ -7,8 +7,8 @@ export class StandByPhase extends PhaseBase {
     return new PlayerActionPhase();
   }
 
-  proc(commands: Commands): void {
-    if (commands.isEmpty) return;
+  proc(game: Game): void {
+    if (game.commands.isEmpty) return;
 
     this.completed = true;
   }

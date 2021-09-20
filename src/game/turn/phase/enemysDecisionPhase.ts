@@ -1,14 +1,14 @@
-import { EnemysMovePhase, Phase, PhaseBase } from '.';
-import { Board } from '../../board';
-import { Commands } from '../../command';
+import { Game } from 'game/game';
+import { EnemysMovePhase } from './enemysMovePhase';
+import { Phase, PhaseBase } from './phase';
 
 export class EnemysDecesionPhase extends PhaseBase {
   get nextPhase(): Phase {
     return new EnemysMovePhase();
   }
 
-  proc(commands: Commands, board: Board): void {
-    for (const actor of board.actors) {
+  proc(game: Game): void {
+    for (const actor of game.board.actors) {
       if (actor.isEnemy()) {
         actor.act();
       }

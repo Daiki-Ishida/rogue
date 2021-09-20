@@ -1,16 +1,15 @@
-import { EnemysActionPhase, Phase, PhaseBase } from '.';
-import { player } from '../../..';
-import { Board } from '../../board';
-import { Commands } from '../../command';
+import { Game } from 'game/game';
+import { EnemysActionPhase } from './enemysActionPhase';
+import { Phase, PhaseBase } from './phase';
 
-class IntervalPhase extends PhaseBase {
+export class IntervalPhase extends PhaseBase {
   get nextPhase(): Phase {
     return new EnemysActionPhase();
   }
 
-  proc(commands: Commands, board: Board): void {
+  proc(game: Game): void {
     // 毎ターン１回復（調整するかも）
-    player.heal(1);
+    game.player.heal(1);
 
     // 状態異常自然治癒チェック
     // player.conditions.conditions.forEach((cond) => cond.count++);
@@ -27,9 +26,9 @@ class IntervalPhase extends PhaseBase {
     //   player.addHunger(value);
     // }
 
-    board.actors.forEach((a) => {
-      a.updateVisibility();
-    });
+    // game.board.actors.forEach((a) => {
+    //   a.updateVisibility();
+    // });
     // board.visit(
     //   player.visibility.x,
     //   player.visibility.y,
@@ -71,5 +70,3 @@ class IntervalPhase extends PhaseBase {
     this.completed = true;
   }
 }
-
-export const intervalPhase = new IntervalPhase();

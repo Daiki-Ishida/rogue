@@ -1,6 +1,5 @@
-import { InitPhase, Phase } from '.';
-import { Commands } from '../command';
-import { Board } from '../board';
+import { Game } from 'game/game';
+import { InitPhase, Phase } from './phase';
 
 export class Turn {
   phase: Phase;
@@ -20,8 +19,9 @@ export class Turn {
     this.phase = this.phase.nextPhase;
   }
 
-  proc(commands: Commands, board: Board): void {
-    this.phase.proc(commands, board);
+  proc(game: Game): void {
+    this.phase.proc(game);
+
     if (this.phase.completed) {
       this.goNextPhase();
     }
