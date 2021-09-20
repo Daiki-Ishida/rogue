@@ -1,7 +1,7 @@
 import p5 from 'p5';
-import { Window } from '.';
-import { Item } from '../game/item/iItem';
-import { Inventory } from '../game/inventory';
+import { Inventory } from 'game/inventory';
+import { Item } from 'game/models/item';
+import { Window } from './window';
 
 const X = 820;
 const Y = 100;

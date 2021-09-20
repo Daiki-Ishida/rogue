@@ -1,6 +1,7 @@
-import { Option, SelectionWindowBase } from '.';
-import { Game } from '../game';
-import { Item } from '../game/item/iItem';
+import { Game } from 'game/game';
+import { Item } from 'game/models/item';
+import { SelectionWindowBase } from './selectionWindow';
+import { Option } from './option';
 
 export class ItemSelectionWindow extends SelectionWindowBase {
   constructor(x: number, options: Option[]) {

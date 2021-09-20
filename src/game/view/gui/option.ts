@@ -1,16 +1,13 @@
-import { player } from '..';
-import { Game } from '../game';
-import { EquipCommand, ThrowCommand, UseCommand } from '../game/command';
-import { Usable } from '../game/item';
-import { Equipment } from '../game/item/equipment/iEquipment';
-import { Item } from '../game/item/iItem';
+import { Game } from 'game/game';
+import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
+import { Equipment, Item, Usable } from 'game/models/item';
 
 export class Option {
   constructor(readonly value: TOption, readonly onSelection: () => void) {}
 
   static ofUse(item: Usable, game: Game): Option {
     const onSelected = () => {
-      const command = new UseCommand(player, item);
+      const command = new UseCommand(game.player, item);
       game.commands.push(command);
     };
     return new Option('USE', onSelected);
@@ -18,7 +15,7 @@ export class Option {
 
   static ofEquip(item: Equipment, game: Game): Option {
     const onSelected = () => {
-      const command = new EquipCommand(player, item);
+      const command = new EquipCommand(game.player, item);
       game.commands.push(command);
     };
 
@@ -28,7 +25,7 @@ export class Option {
 
   static ofThrow(item: Item, game: Game): Option {
     const onSelected = () => {
-      const command = new ThrowCommand(player, item);
+      const command = new ThrowCommand(game.player, item);
       game.commands.push(command);
     };
     return new Option('THROW', onSelected);

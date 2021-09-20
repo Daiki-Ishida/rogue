@@ -1,6 +1,6 @@
 import p5 from 'p5';
-import { Option } from '.';
 import { Window } from './window';
+import { Option } from './option';
 
 export interface SelectionWindow extends Window {
   readonly options: Option[];

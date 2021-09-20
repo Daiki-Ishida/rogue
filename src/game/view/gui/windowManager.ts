@@ -1,5 +1,6 @@
-import { InventoryWindow, SelectionWindow } from '.';
-import { Game } from '../game';
+import { Game } from 'game/game';
+import { InventoryWindow } from './inventoryWindow';
+import { SelectionWindow } from './selectionWindow';
 
 export class WindowManager {
   constructor(
@@ -10,6 +11,7 @@ export class WindowManager {
   ) {}
 
   static init(game: Game): WindowManager {
-    return new WindowManager(InventoryWindow.init(game.inventory));
+    const inventoryWindow = InventoryWindow.init(game.inventory);
+    return new WindowManager(inventoryWindow);
   }
 }

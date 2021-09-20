@@ -1,14 +1,14 @@
 import p5 from 'p5';
-import { Game } from '../game/game';
 import { Camera } from './camera';
-import { overlay, player, windowManager } from '..';
-import { messageManager } from '../message';
-import { Board, Tile } from '../game/board';
-import { ActorSymbol, Player } from '../game/actor';
-import { TrapSymbol } from '../game/trap';
-import { ItemSymbol } from '../game/item';
-import { GridUtil } from '../util';
-import { animationManager } from '.';
+import { overlay } from 'game';
+import { Game } from 'game/game';
+import { Board } from 'game/board';
+import { Player } from 'game/models/actor';
+import { TrapSymbol } from 'game/models/trap';
+import { ItemSymbol } from 'game/models/item/symbol';
+import { ActorSymbol } from 'game/models/actor/symbol';
+import { Tile } from 'game/board/layer';
+import { GridUtil } from 'game/util';
 
 const ZOOM = 20;
 
@@ -21,16 +21,16 @@ export class Drawer {
   }
 
   draw(game: Game, p: p5): void {
-    this.camera.track(player);
+    this.camera.track(game.player);
 
     // ダンジョンマップ描画
     this.drawBoard(game.board, p);
 
     // シンボル描画
-    this.drawSymbols(game.board, p);
+    this.drawSymbols(game.player, game.board, p);
 
     // 視野範囲描画
-    this.drawVisibility(p);
+    this.drawVisibility(game.player, p);
 
     // ミニマップ描画
     this.drawMiniMap(game.board, p);
@@ -39,7 +39,7 @@ export class Drawer {
     this.drawAnimations(p);
 
     // インジケーター描画
-    this.drawIndicators(game.board, player, p);
+    this.drawIndicators(game.board, game.player, p);
 
     // インベントリ描画
     this.drawInventory(p);
@@ -52,7 +52,7 @@ export class Drawer {
     board.draw(p, this.camera);
   }
 
-  private drawSymbols(board: Board, p: p5): void {
+  private drawSymbols(player: Player, board: Board, p: p5): void {
     // プレイヤー視野内のシンボル
     const { traps, items, actors } =
       player.visibility.listSymbolsInRange(board);
@@ -80,7 +80,7 @@ export class Drawer {
     }
   }
 
-  private drawVisibility(p: p5): void {
+  private drawVisibility(player: Player, p: p5): void {
     p.push();
     p.noFill();
     p.noStroke();

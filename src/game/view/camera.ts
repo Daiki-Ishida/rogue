@@ -1,4 +1,4 @@
-import { Actor } from '../game/actor';
+import { Actor } from 'game/models/actor';
 
 export class Camera {
   constructor(public x: number, public y: number, readonly zoom: number) {}

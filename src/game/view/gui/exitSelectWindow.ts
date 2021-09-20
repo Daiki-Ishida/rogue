@@ -1,5 +1,6 @@
-import { Option, SelectionWindowBase } from '.';
-import { Game } from '../game';
+import { Game } from 'game/game';
+import { SelectionWindowBase } from './selectionWindow';
+import { Option } from './option';
 
 export class ExitSelectionWindow extends SelectionWindowBase {
   constructor(options: Option[]) {
