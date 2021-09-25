@@ -1,5 +1,5 @@
+import { Actor } from 'game/models/actor';
 import { Command } from '.';
-import { Actor } from '../actor';
 
 export class AttackCommand implements Command {
   constructor(readonly actor: Actor, public done: boolean = false) {}

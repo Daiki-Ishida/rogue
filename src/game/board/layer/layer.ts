@@ -1,6 +1,6 @@
-import { GridUtil } from '../../util';
+import { GridUtil } from 'game/util';
 
-export const enum Tile {
+export enum Tile {
   VISITED,
   UNVISITED,
   BLOCK,
