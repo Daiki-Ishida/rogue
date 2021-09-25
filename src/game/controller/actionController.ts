@@ -2,13 +2,15 @@ import { KeyConfig } from 'config';
 import { windowManager } from 'game';
 import { AttackCommand, MoveCommand } from 'game/command';
 import { Game } from 'game/game';
+import { StandByPhase } from 'game/turn';
 import { Controller, ControllerState, inventoryController } from '.';
 
 class ActionController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {
-    // if (!(game.turn.phase instanceof StandByPhase)) {
-    //   return;
-    // }
+    if (!(game.turn.phase instanceof StandByPhase)) {
+      return;
+    }
+
     const player = game.player;
 
     switch (input) {

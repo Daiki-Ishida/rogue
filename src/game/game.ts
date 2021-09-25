@@ -19,6 +19,12 @@ export class Game {
     const commands = Commands.init();
     const turn = Turn.init();
     const inventory = Inventory.init();
+
+    // debug
+    player.spawn(board);
+    player.visibility.setFullRange();
+    board.actors.push(player);
+
     return new Game(player, board, commands, turn, inventory);
   }
 

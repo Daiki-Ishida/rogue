@@ -20,8 +20,6 @@ export const rogue = (p: p5): void => {
   p.preload = () => {
     // todo
     asset = Asset.preload(p);
-    imageStore = ImageStore.init(asset);
-
     overlay = p.createGraphics(1280, 720);
   };
 
@@ -30,6 +28,7 @@ export const rogue = (p: p5): void => {
     p.createCanvas(1280, 720);
     p.textFont(asset.font);
 
+    imageStore = ImageStore.init(asset);
     game = Game.init();
     drawer = Drawer.init();
     controller = Controller.init();
@@ -47,6 +46,13 @@ export const rogue = (p: p5): void => {
   };
 
   p.draw = () => {
+    p.imageMode('center');
+
+    if (moveKeyIsDown(game, p)) {
+      controller.proc(p.key, game);
+    }
+
+    game.proc();
     drawer.draw(game, p);
   };
 };

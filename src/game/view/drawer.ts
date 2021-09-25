@@ -10,7 +10,7 @@ import { ActorSymbol } from 'game/models/actor/symbol';
 import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
 
-const ZOOM = 20;
+const ZOOM = 60;
 
 export class Drawer {
   constructor(readonly camera: Camera) {}
@@ -45,7 +45,7 @@ export class Drawer {
     this.drawInventory(p);
 
     // メッセージウィンドウ描画
-    this.drawMessageWindow(p);
+    // this.drawMessageWindow(p);
   }
 
   private drawBoard(board: Board, p: p5): void {
