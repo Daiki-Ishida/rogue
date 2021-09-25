@@ -10,7 +10,7 @@ import { ActorSymbol } from 'game/models/actor/symbol';
 import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
 
-const ZOOM = 60;
+const ZOOM = 30;
 
 export class Drawer {
   constructor(readonly camera: Camera) {}

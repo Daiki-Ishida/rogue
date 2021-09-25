@@ -2,7 +2,11 @@ import { Board } from 'game/board';
 import { GridUtil, RandomUtil } from 'game/util';
 import { Actor, Condition } from '../actor';
 
-const TrapEffects = () => {
+interface ITrapEffects {
+  [key: string]: (actor: Actor, board: Board) => void;
+}
+
+const TrapEffects = (): ITrapEffects => {
   const landmine = (actor: Actor, board: Board): void => {
     const grids = GridUtil.aroundGrids(actor.x, actor.y);
     for (const grid of grids) {
@@ -68,16 +72,16 @@ const TrapEffects = () => {
   };
 
   return {
-    landmine,
-    rockSlide,
-    poison,
-    sleep,
-    spin,
-    hunger,
-    strip,
-    warp,
-    multiplication,
-    summon,
+    LANDMINE: landmine,
+    ROCK_SLIDE: rockSlide,
+    POISON: poison,
+    SLEEP: sleep,
+    SPIN: spin,
+    HUNGER: hunger,
+    STRIP: strip,
+    WARP: warp,
+    MULTIPLICATION: multiplication,
+    SUMMON: summon,
   };
 };
 

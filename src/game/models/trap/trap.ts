@@ -1,22 +1,40 @@
 import { Board } from 'game/board';
-import { Image } from 'p5';
-import { TrapStatus, TrapSymbol } from '.';
 import { Actor } from '../actor';
+import { trapEffects } from './trapEffects';
+import { TrapStatus } from './trapStatus';
+import { TrapSymbol } from './trapSymbol';
 
 export class Trap {
   private constructor(
-    readonly x: number,
-    readonly y: number,
+    public x: number,
+    public y: number,
     readonly symbol: TrapSymbol,
     readonly status: TrapStatus,
     readonly effect: (actor: Actor, board: Board) => void
   ) {}
 
-  static generate(img: Image, effect: (actor: Actor) => void): Trap {
-    const symbol = TrapSymbol.init(img);
+  static generate(id: string, board: Board): Trap {
+    const symbol = TrapSymbol.init(id);
     const status = TrapStatus.init();
+    const effect = trapEffects[id];
 
-    return new Trap(0, 0, symbol, status, effect);
+    if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
+
+    const trap = new Trap(0, 0, symbol, status, effect);
+    trap.spawn(board);
+    return trap;
+  }
+
+  setAt(x: number, y: number): void {
+    this.x = x;
+    this.y = y;
+    this.symbol.x = x;
+    this.symbol.y = y;
+  }
+
+  spawn(board: Board): void {
+    const { x, y } = board.getRandomEmpty();
+    this.setAt(x, y);
   }
 
   disclose(): void {

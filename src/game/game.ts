@@ -2,7 +2,7 @@ import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
-import { ItemGenerator } from './models/generator';
+import { ItemGenerator, TrapGenerator } from './models/generator';
 import { Turn } from './turn';
 
 export class Game {
@@ -30,6 +30,13 @@ export class Game {
     console.log(items);
     for (const item of items) {
       board.items.push(item);
+    }
+
+    const traps = TrapGenerator.generate(board);
+    console.log(traps);
+    for (const trap of traps) {
+      trap.disclose();
+      board.traps.push(trap);
     }
 
     return new Game(player, board, commands, turn, inventory);
