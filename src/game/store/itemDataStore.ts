@@ -1,9 +1,9 @@
-import ITEM_DISTRIBUTION from '../assets/data/distribution/item_distribution.json';
-import HERB_DISTRIBUTION from '../assets/data/distribution/herb_distribution.json';
-import FOOD_DISTRIBUTION from '../assets/data/distribution/food_distribution.json';
-import STAFF_DISTRIBUTION from '../assets/data/distribution/staff_distribution.json';
-import SCROLL_DISTRIBUTION from '../assets/data/distribution/scroll_distribution.json';
-import BRACELET_DISTRIBUTION from '../assets/data/distribution/bracelet_distribution.json';
+import ITEM_DISTRIBUTION from 'asset/data/distribution/item_distribution.json';
+import HERB_DISTRIBUTION from 'asset/data/distribution/herb_distribution.json';
+import FOOD_DISTRIBUTION from 'asset/data/distribution/food_distribution.json';
+import STAFF_DISTRIBUTION from 'asset/data/distribution/staff_distribution.json';
+import SCROLL_DISTRIBUTION from 'asset/data/distribution/scroll_distribution.json';
+import BRACELET_DISTRIBUTION from 'asset/data/distribution/bracelet_distribution.json';
 import { RandomUtil } from '../util';
 
 interface ItemDistribution {

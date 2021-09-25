@@ -88,7 +88,7 @@ export class InventoryWindow implements Window {
       p.push();
       item.status.identified ? p.fill('yellow') : p.fill('white');
       p.text(
-        `${item.status.displayName()}`,
+        `${item.status.displayName}`,
         this.x + 110,
         this.y + (i + 1) * LINE_HEIGHT
       );

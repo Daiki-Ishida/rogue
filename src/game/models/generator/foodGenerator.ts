@@ -1,28 +1,28 @@
-import { BigBread, Bread, Food, GiantBread, RottenBread } from '../game/item';
-import { itemDataStore } from '../store/itemDataStore';
+import { itemDataStore } from 'game/store/itemDataStore';
 
 export class FoodGenerator {
-  static generate(): Food {
+  static generate(): void {
     const foodName = itemDataStore.getFoodNameRandomly();
-    let food: Food;
-    switch (foodName) {
-      case 'Bread':
-        food = Bread.generate();
-        break;
-      case 'BigBread':
-        food = BigBread.generate();
-        break;
-      case 'RottenBread':
-        food = RottenBread.generate();
-        break;
-      case 'GiantBread':
-        food = GiantBread.generate();
-        break;
-      default:
-        throw new Error(`Invalid Id: ${foodName}`);
-        break;
-    }
+    console.log(foodName);
+    // let food: Food;
+    // switch (foodName) {
+    //   case 'Bread':
+    //     food = Bread.generate();
+    //     break;
+    //   case 'BigBread':
+    //     food = BigBread.generate();
+    //     break;
+    //   case 'RottenBread':
+    //     food = RottenBread.generate();
+    //     break;
+    //   case 'GiantBread':
+    //     food = GiantBread.generate();
+    //     break;
+    //   default:
+    //     throw new Error(`Invalid Id: ${foodName}`);
+    //     break;
+    // }
 
-    return food;
+    // return food;
   }
 }

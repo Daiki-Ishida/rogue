@@ -1,8 +1,5 @@
-import {
-  animationManager,
-  AttackAnimation,
-  WalkAnimation,
-} from 'game/animation';
+import { animationManager } from 'game';
+import { AttackAnimation, WalkAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { Exit } from 'game/dungeon/exit';

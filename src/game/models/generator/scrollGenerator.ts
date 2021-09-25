@@ -1,5 +1,3 @@
-import { itemDataStore } from '../store/itemDataStore';
-
 export class ScrollGenerator {
   static generate(): void {
     return;

@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Camera } from './camera';
-import { overlay } from 'game';
+import { animationManager, overlay, windowManager } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
 import { Player } from 'game/models/actor';
@@ -161,15 +161,15 @@ export class Drawer {
 
   // todo: refactor
   private drawMessageWindow(p: p5): void {
-    if (messageManager.timer > 180) {
-      messageManager.close();
-    }
+    // if (messageManager.timer > 180) {
+    //   messageManager.close();
+    // }
 
-    if (!messageManager.display) {
-      return;
-    }
+    // if (!messageManager.display) {
+    //   return;
+    // }
 
-    messageManager.timer++;
+    // messageManager.timer++;
 
     p.push();
     p.rectMode('corner');
@@ -188,9 +188,9 @@ export class Drawer {
     p.fill('white');
     p.textSize(25);
 
-    messageManager.messages.forEach((message, idx) => {
-      p.text(message, x + 50, y + 40 + l * idx);
-    });
+    // messageManager.messages.forEach((message, idx) => {
+    //   p.text(message, x + 50, y + 40 + l * idx);
+    // });
 
     p.pop();
   }
