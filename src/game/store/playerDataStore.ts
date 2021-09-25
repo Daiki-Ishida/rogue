@@ -1,4 +1,4 @@
-import EXP_TABLE from '../assets/data/exp_table.json';
+import EXP_TABLE from 'asset/data/exp_table.json';
 
 interface ExpTable {
   level: number;

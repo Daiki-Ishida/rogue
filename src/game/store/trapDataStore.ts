@@ -1,5 +1,5 @@
-import TRAP_DISTRIBUTION from '../assets/data/distribution/trap_distribution.json';
-import { RandomUtil } from '../util';
+import TRAP_DISTRIBUTION from 'asset/data/distribution/trap_distribution.json';
+import { RandomUtil } from 'game/util';
 
 interface TrapDistribution {
   name: string;

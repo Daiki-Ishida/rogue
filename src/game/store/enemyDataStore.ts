@@ -1,6 +1,6 @@
-import ENEMY_STATUS from '../assets/data/enemy_status.json';
-import ENEMY_DISTRIBUTIONS from '../assets/data/distribution/enemy_distribution.json';
-import { RandomUtil } from '../util';
+import ENEMY_STATUS from 'asset/data/enemy_status.json';
+import ENEMY_DISTRIBUTIONS from 'asset/data/distribution/enemy_distribution.json';
+import { RandomUtil } from 'game/util';
 
 interface EnemyStatus {
   id: string;

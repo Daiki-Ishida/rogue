@@ -1,5 +1,5 @@
+import { Asset } from 'asset/asset';
 import { Image } from 'p5';
-import { Asset } from '../assets';
 
 interface ActorImages {
   readonly player: Image[];
@@ -94,17 +94,17 @@ export class ImageStore implements IImageStore {
   ) {}
 
   static init(asset: Asset): ImageStore {
-    const actors = this.initActors(asset);
-    const items = this.initItems(asset);
+    const actors = this.parseActors(asset);
+    const items = this.parseItems(asset);
     const traps = this.initTraps(asset);
-    const map = this.initMap(asset);
-    const conditions = this.initConditions(asset);
-    const effects = this.initEffects(asset);
+    const map = this.parseMaps(asset);
+    const conditions = this.parseConditions(asset);
+    const effects = this.parseEffects(asset);
 
     return new ImageStore(actors, items, traps, map, conditions, effects);
   }
 
-  static initActors(asset: Asset): ActorImages {
+  static parseActors(asset: Asset): ActorImages {
     const imgs = asset.imageFiles;
     const player = parseImage(imgs.player, 3, 5, 64, 64);
     const dragon = parseImage(imgs.dragon01, 3, 4, 80, 64);
@@ -141,7 +141,7 @@ export class ImageStore implements IImageStore {
     };
   }
 
-  static initItems(asset: Asset): ItemImages {
+  static parseItems(asset: Asset): ItemImages {
     const imgs = asset.imageFiles;
     const iconSize = 24;
     const icon01 = parseImage(imgs.icons01, 12, 8, iconSize, iconSize);
@@ -180,7 +180,7 @@ export class ImageStore implements IImageStore {
     };
   }
 
-  static initMap(asset: Asset): MapImages {
+  static parseMaps(asset: Asset): MapImages {
     const imgs = asset.imageFiles;
 
     const dungeonSize = 16;
@@ -206,7 +206,7 @@ export class ImageStore implements IImageStore {
     };
   }
 
-  static initConditions(asset: Asset): ConditionImages {
+  static parseConditions(asset: Asset): ConditionImages {
     const imgs = asset.imageFiles;
     const iconSize = 24;
     const icon = parseImage(imgs.icons03, 12, 6, iconSize, iconSize);
@@ -222,7 +222,7 @@ export class ImageStore implements IImageStore {
     };
   }
 
-  static initEffects(asset: Asset): EffectImages {
+  static parseEffects(asset: Asset): EffectImages {
     const imgs = asset.imageFiles;
     const spelling = parseImage(imgs.spelling, 1, 7, 320, 120);
     const magicBall = parseImage(imgs.magicBall, 12, 1, 240, 240);
