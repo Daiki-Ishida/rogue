@@ -1,6 +1,6 @@
+import { Player } from 'game/models/actor';
+import { Equipment } from 'game/models/item';
 import { Command } from '.';
-import { Player } from '../actor';
-import { Equipment } from '../item/equipment/iEquipment';
 
 export class EquipCommand implements Command {
   constructor(

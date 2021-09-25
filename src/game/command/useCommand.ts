@@ -1,7 +1,7 @@
+import { Board } from 'game/board';
+import { Player } from 'game/models/actor';
+import { Usable } from 'game/models/item';
 import { Command } from '.';
-import { Player } from '../actor';
-import { Board } from '../board';
-import { Usable } from '../item';
 
 export class UseCommand implements Command {
   constructor(

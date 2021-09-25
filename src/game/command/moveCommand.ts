@@ -1,11 +1,12 @@
 import { Command } from '.';
-import { Actor } from '../actor';
+import { Actor } from 'game/models/actor';
+import { Board } from 'game/board';
 
 export class MoveCommand implements Command {
   constructor(readonly actor: Actor, public done: boolean = false) {}
 
-  exec(): void {
-    this.actor.move();
+  exec(board: Board): void {
+    this.actor.move(board);
     this.done = true;
   }
 }

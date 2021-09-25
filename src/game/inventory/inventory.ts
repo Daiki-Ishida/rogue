@@ -1,5 +1,4 @@
-import p5 from 'p5';
-import { Item } from '../item/iItem';
+import { Item } from 'game/models/item';
 
 export class Inventory {
   constructor(

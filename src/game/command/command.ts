@@ -1,5 +1,5 @@
-import { Actor } from '../actor';
-import { Board } from '../board';
+import { Board } from 'game/board';
+import { Actor } from 'game/models/actor';
 
 export interface Command {
   actor: Actor;

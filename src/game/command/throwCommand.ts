@@ -1,7 +1,7 @@
+import { Board } from 'game/board';
+import { Player } from 'game/models/actor';
+import { Item } from 'game/models/item';
 import { Command } from '.';
-import { Player } from '../actor';
-import { Board } from '../board';
-import { Item } from '../item/iItem';
 
 export class ThrowCommand implements Command {
   constructor(
