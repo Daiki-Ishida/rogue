@@ -2,7 +2,7 @@ import p5 from 'p5';
 import { Camera } from '../view';
 import { Animation } from './animation';
 
-class AnimationManager {
+export class AnimationManager {
   private constructor(public animations: Animation[]) {
     this.animations = animations;
   }
@@ -36,5 +36,3 @@ class AnimationManager {
     }
   }
 }
-
-export const animationManager = AnimationManager.init();
