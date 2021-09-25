@@ -19,7 +19,7 @@ export class Staff extends Usable {
   }
 
   static generate(id: string, board: Board): Staff {
-    const symbol = new ItemSymbol(imageStore.items.herb);
+    const symbol = new ItemSymbol(imageStore.items.staff);
     const status = StaffStatus.init();
     const effect = staffEffects[id];
 

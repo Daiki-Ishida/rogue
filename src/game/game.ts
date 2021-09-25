@@ -3,7 +3,6 @@ import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
 import { ItemGenerator } from './models/generator';
-import { Food, Herb } from './models/item';
 import { Turn } from './turn';
 
 export class Game {
@@ -29,6 +28,9 @@ export class Game {
 
     const items = ItemGenerator.generate(board);
     console.log(items);
+    for (const item of items) {
+      board.items.push(item);
+    }
 
     return new Game(player, board, commands, turn, inventory);
   }

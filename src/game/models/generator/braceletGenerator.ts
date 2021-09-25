@@ -1,52 +1,10 @@
+import { Board } from 'game/board';
 import { itemDataStore } from 'game/store/itemDataStore';
+import { Bracelet } from '../item';
 
 export class BraceletGenerator {
-  static generate(): void {
-    const name = itemDataStore.getBraceletNameRandomly();
-    console.log(name);
-    // let bracelet: Bracelet;
-    // switch (name) {
-    //   case 'AntiConfusionBracelet':
-    //     bracelet = AntiConfusionBracelet.generate();
-    //     break;
-    //   case 'AntiPoisonBracelet':
-    //     bracelet = AntiPoisonBracelet.generate();
-    //     break;
-    //   case 'BraceletOfItemDetector':
-    //     bracelet = BraceletOfItemDetector.generate();
-    //     break;
-    //   case 'BraceletOfTrapMaster':
-    //     bracelet = BraceletOfTrapMaster.generate();
-    //     break;
-    //   case 'FortuneBracelet':
-    //     bracelet = FortuneBracelet.generate();
-    //     break;
-    //   case 'HealBracelet':
-    //     bracelet = HealBracelet.generate();
-    //     break;
-    //   case 'MonsterSummonerBracelet':
-    //     bracelet = MonsterSummonerBracelet.generate();
-    //     break;
-    //   case 'ProtectionBracelet':
-    //     bracelet = ProtectionBracelet.generate();
-    //     break;
-    //   case 'ScoutBracelet':
-    //     bracelet = ScoutBracelet.generate();
-    //     break;
-    //   case 'StrengthBracelet':
-    //     bracelet = StrengthBracelet.generate();
-    //     break;
-    //   case 'TrapBracelet':
-    //     bracelet = TrapBracelet.generate();
-    //     break;
-    //   case 'WarpBracelet':
-    //     bracelet = WarpBracelet.generate();
-    //     break;
-    //   default:
-    //     throw new Error(`Bracelet named ${name} is not found.`);
-    //     break;
-    // }
-
-    // return bracelet;
+  static generate(board: Board): Bracelet {
+    const id = itemDataStore.getBraceletNameRandomly();
+    return Bracelet.generate(id, board);
   }
 }

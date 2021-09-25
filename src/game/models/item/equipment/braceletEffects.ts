@@ -1,7 +1,11 @@
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/models/actor';
 
-const BraceletEffects = () => {
+interface IBraceletEffects {
+  [key: string]: (player: Player, board: Board) => void;
+}
+
+const BraceletEffects = (): IBraceletEffects => {
   const antiConfusion = (player: Player): void => {
     const condition = Condition.ofAntiConfusion(1);
     player.conditions.push(condition);
@@ -54,17 +58,27 @@ const BraceletEffects = () => {
     player.setAt(x, y);
   };
 
+  const trap = (player: Player, board: Board): void => {
+    console.log('TODO');
+  };
+
+  const monsterSummoner = (player: Player, board: Board): void => {
+    console.log('TODO');
+  };
+
   return {
-    antiConfusion,
-    antiPoison,
-    protection,
-    strengthen,
-    scout,
-    autoIdentify,
-    trapMaster,
-    fortune,
-    heal,
-    warp,
+    ANTI_CONFUSION_BRACELET: antiConfusion,
+    ANTI_POISON_BRACELET: antiPoison,
+    PROTECTION_BRACELET: protection,
+    STRENGTH_BRACELET: strengthen,
+    SCOUT_BRACELET: scout,
+    BRACELET_OF_ITEM_DETECTOR: autoIdentify,
+    BRACELET_OF_TRAP_MASTER: trapMaster,
+    FORTUNE_BRACELET: fortune,
+    HEAL_BRACELET: heal,
+    WARP_BRACELET: warp,
+    TRAP_BRACELET: trap,
+    MONSTER_SUMMONER_BRACELET: monsterSummoner,
   };
 };
 

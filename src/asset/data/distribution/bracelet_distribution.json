@@ -1,50 +1,50 @@
 [
   {
-    "name": "AntiConfusionBracelet",
+    "name": "ANTI_CONFUSION_BRACELET",
     "ratio": 22
   },
   {
-    "name": "AntiPoisonBracelet",
+    "name": "ANTI_POISON_BRACELET",
     "ratio": 22
   },
   {
-    "name": "BraceletOfItemDetector",
+    "name": "BRACELET_OF_ITEM_DETECTOR",
     "ratio": 22
   },
   {
-    "name": "BraceletOfTrapMaster",
+    "name": "BRACELET_OF_TRAP_MASTER",
     "ratio": 22
   },
   {
-    "name": "FortuneBracelet",
+    "name": "FORTUNE_BRACELET",
     "ratio": 21
   },
   {
-    "name": "HealBracelet",
+    "name": "HEAL_BRACELET",
     "ratio": 21
   },
   {
-    "name": "MonsterSummonerBracelet",
+    "name": "MONSTER_SUMMONER_BRACELET",
     "ratio": 21
   },
   {
-    "name": "ProtectionBracelet",
+    "name": "PROTECTION_BRACELET",
     "ratio": 21
   },
   {
-    "name": "ScoutBracelet",
+    "name": "SCOUT_BRACELET",
     "ratio": 21
   },
   {
-    "name": "StrengthBracelet",
+    "name": "STRENGTH_BRACELET",
     "ratio": 21
   },
   {
-    "name": "TrapBracelet",
+    "name": "TRAP_BRACELET",
     "ratio": 21
   },
   {
-    "name": "WarpBracelet",
+    "name": "WARP_BRACELET",
     "ratio": 21
   }
 ]
