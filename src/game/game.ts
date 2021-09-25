@@ -2,7 +2,8 @@ import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
-import { Food } from './models/item';
+import { ItemGenerator } from './models/generator';
+import { Food, Herb } from './models/item';
 import { Turn } from './turn';
 
 export class Game {
@@ -26,9 +27,8 @@ export class Game {
     player.visibility.setFullRange();
     board.actors.push(player);
 
-    const food = Food.generate('BREAD', board);
-    food.setAt(player.x + 1, player.y);
-    board.items.push(food);
+    const items = ItemGenerator.generate(board);
+    console.log(items);
 
     return new Game(player, board, commands, turn, inventory);
   }

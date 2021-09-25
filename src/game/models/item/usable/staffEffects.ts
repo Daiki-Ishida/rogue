@@ -2,7 +2,11 @@ import { Board } from 'game/board';
 import { Actor, Condition, Player } from 'game/models/actor';
 import { GridUtil, RandomUtil } from 'game/util';
 
-const StaffEffects = () => {
+interface IStaffEffects {
+  [key: string]: (user: Player, target: Actor, board: Board) => void;
+}
+
+const StaffEffects = (): IStaffEffects => {
   const fortune = (user: Player, target: Actor): void => {
     target.levelUp();
   };
@@ -66,14 +70,14 @@ const StaffEffects = () => {
   };
 
   return {
-    ordinary,
-    lightning,
-    postpone,
-    mage,
-    paralysis,
-    sealing,
-    fortune,
-    unfortune,
+    ORDINARY_STAFF: ordinary,
+    LIGHTNING_STAFF: lightning,
+    POSTPONE_STAFF: postpone,
+    MAGE_STAFF: mage,
+    PARALYSIS_STAFF: paralysis,
+    SEALING_STAFF: sealing,
+    FORTUNE_STAFF: fortune,
+    UNFORTUNE_STAFF: unfortune,
   };
 };
 

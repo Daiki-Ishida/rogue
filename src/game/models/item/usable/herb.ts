@@ -1,12 +1,13 @@
+import { imageStore } from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { HerbStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { HerbEffect } from './herbEffects';
+import { HerbEffect, herbEffects } from './herbEffects';
 import { Usable } from './usable';
 
 export class Herb extends Usable {
-  constructor(
+  private constructor(
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
@@ -14,6 +15,18 @@ export class Herb extends Usable {
     readonly effect: HerbEffect
   ) {
     super(x, y, symbol, status);
+  }
+
+  static generate(id: string, board: Board): Herb {
+    const symbol = new ItemSymbol(imageStore.items.herb);
+    const status = HerbStatus.init();
+    const effect = herbEffects[id];
+
+    if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
+
+    const herb = new Herb(0, 0, symbol, status, effect);
+    herb.spawn(board);
+    return herb;
   }
 
   identify(): void {

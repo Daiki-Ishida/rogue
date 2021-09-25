@@ -8,7 +8,7 @@ import { foodEffects } from './foodEffects';
 import { Usable } from './usable';
 
 export class Food extends Usable {
-  constructor(
+  private constructor(
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
@@ -23,8 +23,9 @@ export class Food extends Usable {
     const status = FoodStatus.init(id);
     const effect = foodEffects[id];
 
-    const food = new Food(0, 0, symbol, status, effect);
+    if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
+    const food = new Food(0, 0, symbol, status, effect);
     food.spawn(board);
     return food;
   }

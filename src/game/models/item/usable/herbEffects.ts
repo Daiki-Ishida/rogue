@@ -7,7 +7,11 @@ export interface HerbEffect {
   onUse: (user: Player, board: Board) => void;
 }
 
-const HerbEffects = () => {
+interface IHerbEffects {
+  [key: string]: HerbEffect;
+}
+
+const HerbEffects = (): IHerbEffects => {
   const baseOnHit = (user: Player, target: Actor) => {
     const dmg = RandomUtil.getRandomIntInclusive(1, 2);
     target.damage(dmg);
@@ -169,20 +173,20 @@ const HerbEffects = () => {
   };
 
   return {
-    greenHerb,
-    superHerb,
-    lifeHerb,
-    dragonHerb,
-    weed,
-    fortuneSeed,
-    unfortuneSeed,
-    poisonHerb,
-    confusionHerb,
-    sleepyHerb,
-    antidoteHerb,
-    sightHerb,
-    stomachExpander,
-    stomachShrinker,
+    GREEN_HERB: greenHerb,
+    SUPER_HERB: superHerb,
+    LIFE_HERB: lifeHerb,
+    DRAGON_HERB: dragonHerb,
+    WEED: weed,
+    FORTUNE_SEED: fortuneSeed,
+    UNFORTUNE_SEED: unfortuneSeed,
+    POISON_HERB: poisonHerb,
+    CONFUSION_HERB: confusionHerb,
+    SLEEPY_HERB: sleepyHerb,
+    ANTIDOTE_HERB: antidoteHerb,
+    SIGHT_HERB: sightHerb,
+    STOMACH_EXPANDER: stomachExpander,
+    STOMACH_SHRINKER: stomachShrinker,
   };
 };
 

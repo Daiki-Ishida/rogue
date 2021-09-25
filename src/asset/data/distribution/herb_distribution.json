@@ -1,58 +1,58 @@
 [
   {
-    "name": "GreenHerb",
+    "name": "GREEN_HERB",
     "ratio": 45
   },
   {
-    "name": "SuperHerb",
+    "name": "SUPER_HERB",
     "ratio": 38
   },
   {
-    "name": "PoisonHerb",
+    "name": "POISON_HERB",
     "ratio": 13
   },
   {
-    "name": "ConfusionHerb",
+    "name": "CONFUSION_HERB",
     "ratio": 13
   },
   {
-    "name": "SleepyHerb",
+    "name": "SLEEPY_HERB",
     "ratio": 13
   },
   {
-    "name": "FortuneSeed",
+    "name": "FORTUNE_SEED",
     "ratio": 9
   },
   {
-    "name": "UnfortuneSeed",
+    "name": "UNFORTUNE_SEED",
     "ratio": 9
   },
   {
-    "name": "StomachExpander",
+    "name": "STOMACH_EXPANDER",
     "ratio": 15
   },
   {
-    "name": "StomachShrinker",
+    "name": "STOMACH_SHRINKER",
     "ratio": 15
   },
   {
-    "name": "LifeHerb",
+    "name": "LIFE_HERB",
     "ratio": 18
   },
   {
-    "name": "SightHerb",
+    "name": "SIGHT_HERB",
     "ratio": 22
   },
   {
-    "name": "AntidoteHerb",
+    "name": "ANTIDOTE_HERB",
     "ratio": 9
   },
   {
-    "name": "DragonHerb",
+    "name": "DRAGON_HERB",
     "ratio": 24
   },
   {
-    "name": "Weed",
+    "name": "WEED",
     "ratio": 13
   }
 ]

@@ -1,12 +1,14 @@
+import { imageStore } from 'game';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/models/actor';
 import { GridUtil } from 'game/util';
 import { StaffStatus } from '../status';
 import { ItemSymbol } from '../symbol';
+import { staffEffects } from './staffEffects';
 import { Usable } from './usable';
 
-export class StaffBase extends Usable {
-  constructor(
+export class Staff extends Usable {
+  private constructor(
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
@@ -14,6 +16,18 @@ export class StaffBase extends Usable {
     readonly effect: (user: Player, target: Actor, board: Board) => void
   ) {
     super(x, y, symbol, status);
+  }
+
+  static generate(id: string, board: Board): Staff {
+    const symbol = new ItemSymbol(imageStore.items.herb);
+    const status = StaffStatus.init();
+    const effect = staffEffects[id];
+
+    if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
+
+    const staff = new Staff(0, 0, symbol, status, effect);
+    staff.spawn(board);
+    return staff;
   }
 
   identify(): void {

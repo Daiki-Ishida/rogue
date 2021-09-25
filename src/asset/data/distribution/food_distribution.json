@@ -1,18 +1,18 @@
 [
   {
-    "name": "Bread",
+    "name": "BREAD",
     "ratio": 102
   },
   {
-    "name": "BigBread",
+    "name": "BIG_BREAD",
     "ratio": 31
   },
   {
-    "name": "RottenBread",
+    "name": "ROTTEN_BREAD",
     "ratio": 103
   },
   {
-    "name": "GiantBread",
+    "name": "GIANT_BREAD",
     "ratio": 20
   }
 ]

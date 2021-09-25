@@ -1,46 +1,46 @@
 [
   {
-    "name": "KnockbackStaff",
+    "name": "KNOCKBACK_STAFF",
     "ratio": 51
   },
   {
-    "name": "FortuneStaff",
+    "name": "FORTUNE_STAFF",
     "ratio": 26
   },
   {
-    "name": "UnfortuneStaff",
+    "name": "UNFORTUNE_STAFF",
     "ratio": 26
   },
   {
-    "name": "PinningStaff",
+    "name": "PINNING_STAFF",
     "ratio": 26
   },
   {
-    "name": "OrdinaryStaff",
+    "name": "ORDINARY_STAFF",
     "ratio": 26
   },
   {
-    "name": "LightningStaff",
+    "name": "LIGHTNING_STAFF",
     "ratio": 25
   },
   {
-    "name": "SwapStaff",
+    "name": "SWAP_STAFF",
     "ratio": 52
   },
   {
-    "name": "MageStaff",
+    "name": "MAGE_STAFF",
     "ratio": 25
   },
   {
-    "name": "ParalysisStaff",
+    "name": "PARALYSIS_STAFF",
     "ratio": 26
   },
   {
-    "name": "PostponeStaff",
+    "name": "POSTPONE_STAFF",
     "ratio": 25
   },
   {
-    "name": "SealingStaff",
+    "name": "SEALING_STAFF",
     "ratio": 26
   }
 ]
