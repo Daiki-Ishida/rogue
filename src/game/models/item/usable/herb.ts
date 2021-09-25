@@ -5,7 +5,7 @@ import { ItemSymbol } from '../symbol';
 import { HerbEffect } from './herbEffects';
 import { Usable } from './usable';
 
-export abstract class Herb extends Usable {
+export class Herb extends Usable {
   constructor(
     public x: number,
     public y: number,
@@ -14,6 +14,10 @@ export abstract class Herb extends Usable {
     readonly effect: HerbEffect
   ) {
     super(x, y, symbol, status);
+  }
+
+  identify(): void {
+    this.status.identified = true;
   }
 
   use(user: Player, board: Board): void {

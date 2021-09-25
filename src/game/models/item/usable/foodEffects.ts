@@ -1,6 +1,10 @@
 import { Condition, Player } from 'game/models/actor';
 
-const FoodEffects = () => {
+interface FoodEffectProps {
+  [key: string]: (user: Player) => void;
+}
+
+const FoodEffects = (): FoodEffectProps => {
   const bread = (user: Player): void => {
     user.status.maxFullness += 1;
   };
@@ -19,10 +23,10 @@ const FoodEffects = () => {
   };
 
   return {
-    bread,
-    bigBread,
-    giantBread,
-    rottenBread,
+    BREAD: bread,
+    BIG_BREAD: bigBread,
+    GIANT_BREAD: giantBread,
+    ROTTEN_BREAD: rottenBread,
   };
 };
 
