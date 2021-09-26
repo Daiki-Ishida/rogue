@@ -17,7 +17,16 @@ export class StaffStatus implements UsableStatus {
 
   get displayName(): string {
     const status = itemDataStore.getStaffStatus(this.id);
-    return status.identified ? status.name : status.fakeName;
+
+    if (!status.identified) {
+      return status.fakeName;
+    }
+
+    if (!this.identified) {
+      return status.name;
+    }
+
+    return `${status.name} [${this.durability}]`;
   }
 
   identify(): void {
