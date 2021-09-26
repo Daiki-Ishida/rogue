@@ -30,10 +30,6 @@ export class Food extends Usable {
     return food;
   }
 
-  identify(): void {
-    this.status.identified = true;
-  }
-
   use(user: Player, board: Board): void {
     this.identify();
     user.removeHunger(this.status.value);

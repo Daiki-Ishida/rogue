@@ -29,10 +29,6 @@ export class Herb extends Usable {
     return herb;
   }
 
-  identify(): void {
-    this.status.identified = true;
-  }
-
   use(user: Player, board: Board): void {
     this.identify();
     user.removeHunger(5);

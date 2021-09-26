@@ -30,10 +30,6 @@ export class Scroll extends Usable {
     return scroll;
   }
 
-  identify(): void {
-    this.status.identified = true;
-  }
-
   use(user: Player, board: Board): void {
     this.identify();
     this.effect(user, board);

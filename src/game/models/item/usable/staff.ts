@@ -30,10 +30,6 @@ export class Staff extends Usable {
     return staff;
   }
 
-  identify(): void {
-    this.status.identified = true;
-  }
-
   use(user: Player, board: Board): void {
     this.status.durability--;
 
