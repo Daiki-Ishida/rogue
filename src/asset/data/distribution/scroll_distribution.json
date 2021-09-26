@@ -1,62 +1,62 @@
 [
   {
-    "name": "IdentifyScroll",
+    "name": "IDENTIFY_SCROLL",
     "ratio": 72
   },
   {
-    "name": "NavigationScroll",
+    "name": "NAVIGATION_SCROLL",
     "ratio": 30
   },
   {
-    "name": "LostScroll",
+    "name": "LOST_SCROLL",
     "ratio": 11
   },
   {
-    "name": "BlastwaveScroll",
+    "name": "BLASTWAVE_SCROLL",
     "ratio": 30
   },
   {
-    "name": "FixerScroll",
+    "name": "FIXER_SCROLL",
     "ratio": 21
   },
   {
-    "name": "SlumberScroll",
+    "name": "SLUMBER_SCROLL",
     "ratio": 20
   },
   {
-    "name": "FateScroll",
+    "name": "FATE_SCROLL",
     "ratio": 21
   },
   {
-    "name": "EarthScroll",
+    "name": "EARTH_SCROLL",
     "ratio": 10
   },
   {
-    "name": "ConfusionScroll",
+    "name": "CONFUSION_SCROLL",
     "ratio": 21
   },
   {
-    "name": "SealingScroll",
+    "name": "SEALING_SCROLL",
     "ratio": 20
   },
   {
-    "name": "TrapScroll",
+    "name": "TRAP_SCROLL",
     "ratio": 20
   },
   {
-    "name": "ExplosionScroll",
+    "name": "EXPLOSION_SCROLL",
     "ratio": 20
   },
   {
-    "name": "ExorcismScroll",
+    "name": "EXORCISM_SCROLL",
     "ratio": 20
   },
   {
-    "name": "PotGodScroll",
+    "name": "POT_GOD_SCROLL",
     "ratio": 20
   },
   {
-    "name": "ExtractionScroll",
+    "name": "EXTRACTION_SCROLL",
     "ratio": 20
   }
 ]

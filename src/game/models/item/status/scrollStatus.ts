@@ -13,12 +13,12 @@ export class ScrollStatus implements UsableStatus {
   }
 
   get displayName(): string {
-    const status = itemDataStore.getStaffStatus(this.id);
+    const status = itemDataStore.getScrollStatus(this.id);
     return status.identified ? status.name : status.fakeName;
   }
 
   identify(): void {
-    const status = itemDataStore.getStaffStatus(this.id);
+    const status = itemDataStore.getScrollStatus(this.id);
     status.identified = true;
     this.identified = true;
   }

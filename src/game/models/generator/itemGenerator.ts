@@ -1,17 +1,16 @@
-import { Board } from 'game/board';
-import { RandomUtil } from 'game/util';
 import { Item } from '../item';
+import { Board } from 'game/board';
 import { BraceletGenerator } from './braceletGenerator';
 import { FoodGenerator } from './foodGenerator';
 import { HerbGenerator } from './herbGenerator';
 import { StaffGenerator } from './staffGenerator';
+import { itemDataStore } from 'game/store/itemDataStore';
+import { ScrollGenerator } from './scrollGenerator';
 
 export class ItemGenerator {
-  static generate(board: Board): Item[] {
+  static generate(n: number, board: Board): Item[] {
     const items: Item[] = [];
-    const count = RandomUtil.getRandomIntInclusive(7, 12);
-
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < n; i++) {
       const item = this.getItemRandomly(board);
       items.push(item);
     }
@@ -20,14 +19,29 @@ export class ItemGenerator {
   }
 
   private static getItemRandomly(board: Board): Item {
-    // todo
-    const foods = FoodGenerator.generate(board);
-    const herbs = HerbGenerator.generate(board);
-    // const staffs = StaffGenerator.generate(board);
-    const bracelets = BraceletGenerator.generate(board);
-    // const scrolls = ScrollGenerator.generate();
-    // return foods;
-    return bracelets;
-    return herbs;
+    const category = itemDataStore.getItemCategoryRandomly();
+    let item: Item;
+    switch (category) {
+      case 'FOOD':
+        item = FoodGenerator.generate(board);
+        break;
+      case 'HERB':
+        item = HerbGenerator.generate(board);
+        break;
+      case 'STAFF':
+        item = StaffGenerator.generate(board);
+        break;
+      case 'SCROLL':
+        item = ScrollGenerator.generate(board);
+        break;
+      case 'BRACELET':
+        item = BraceletGenerator.generate(board);
+        break;
+      default:
+        item = FoodGenerator.generate(board);
+      // throw new Error(`Invalid Category: ${category}`);
+    }
+
+    return item;
   }
 }

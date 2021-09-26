@@ -53,6 +53,10 @@ class ItemDataStore {
     );
   }
 
+  getItemCategoryRandomly(): string {
+    return this.selectRandomlyFrom(this.itemDistribution);
+  }
+
   getHerbNameRandomly(): string {
     return this.selectRandomlyFrom(this.herbDistribution);
   }

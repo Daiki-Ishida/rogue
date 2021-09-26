@@ -4,6 +4,7 @@ import { Inventory } from './inventory';
 import { Player } from './models/actor';
 import { ItemGenerator, TrapGenerator } from './models/generator';
 import { Turn } from './turn';
+import { RandomUtil } from './util';
 
 export class Game {
   constructor(
@@ -26,13 +27,15 @@ export class Game {
     player.visibility.setFullRange();
     board.actors.push(player);
 
-    const items = ItemGenerator.generate(board);
+    const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
+    const items = ItemGenerator.generate(itemCount, board);
     console.log(items);
     for (const item of items) {
       board.items.push(item);
     }
 
-    const traps = TrapGenerator.generate(7, board);
+    const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
+    const traps = TrapGenerator.generate(trapCount, board);
     console.log(traps);
     for (const trap of traps) {
       trap.disclose();
