@@ -18,6 +18,7 @@ interface ItemStatusList {
   FOOD: ItemStatus[];
   HERB: ItemStatus[];
   STAFF: ItemStatus[];
+  SCROLL: ItemStatus[];
 }
 
 interface ItemStatus {
@@ -102,6 +103,13 @@ class ItemDataStore {
     return status;
   }
 
+  getScrollStatus(id: string): ItemStatus {
+    const status = this.itemStatus.SCROLL.find((scroll) => scroll.id === id);
+
+    if (status === undefined) throw new Error(`Invalid Id: ${id}`);
+    return status;
+  }
+
   private selectRandomlyFrom(dist: ItemDistribution[]): string {
     const r = RandomUtil.getRandomIntInclusive(0, 255);
 
@@ -128,12 +136,14 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   const foods = data.FOOD;
   const herbs = data.HERB;
   const staffs = data.STAFF;
+  const scrolls = data.SCROLL;
 
   const fakeNames = FAKE_NAMES;
   const braceletFakeNames = shuffle(fakeNames.BRACELET);
   const foodFakeNames = shuffle(fakeNames.FOOD);
   const herbFakeNames = shuffle(fakeNames.HERB);
   const staffFakeNames = shuffle(fakeNames.STAFF);
+  const scorllFakeNames = shuffle(fakeNames.SCROLL);
 
   for (let i = 0; i < bracelets.length - 1; i++) {
     bracelets[i].fakeName = braceletFakeNames[i];
@@ -146,6 +156,9 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   }
   for (let i = 0; i < staffs.length - 1; i++) {
     staffs[i].fakeName = staffFakeNames[i];
+  }
+  for (let i = 0; i < scrolls.length - 1; i++) {
+    scrolls[i].fakeName = scorllFakeNames[i];
   }
 
   return data;

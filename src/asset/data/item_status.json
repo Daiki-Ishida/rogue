@@ -252,5 +252,85 @@
       "name": "封印の杖",
       "fakeName": ""
     }
+  ],
+  "SCROLL": [
+    {
+      "id": "BLASTWAVE_SCROLL",
+      "identified": false,
+      "name": "真空切りの巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "CONFUSION_SCROLL",
+      "identified": false,
+      "name": "混乱の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "SEALING_SCROLL",
+      "identified": false,
+      "name": "封印の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "SLUMBER_SCROLL",
+      "identified": false,
+      "name": "爆睡の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "NAVIGATION_SCROLL",
+      "identified": false,
+      "name": "あかりの巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "LOST_SCROLL",
+      "identified": false,
+      "name": "迷子の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "TRAP_SCROLL",
+      "identified": false,
+      "name": "ワナの巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "FIXER_SCROLL",
+      "identified": false,
+      "name": "困った時の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "FATE_SCROLL",
+      "identified": false,
+      "name": "天の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "EARTH_SCROLL",
+      "identified": false,
+      "name": "地の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "EXORCISM_SCROLL",
+      "identified": false,
+      "name": "お祓いの巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "EXPLOSION_SCROLL",
+      "identified": false,
+      "name": "自爆の巻物",
+      "fakeName": ""
+    },
+    {
+      "id": "IDENTIFY_SCROLL",
+      "identified": false,
+      "name": "識別の巻物",
+      "fakeName": ""
+    }
   ]
 }
