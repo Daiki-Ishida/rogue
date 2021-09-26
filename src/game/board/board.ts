@@ -10,20 +10,23 @@ import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
 import { BaseLayer, DungeonLayer, Layer, Tile } from './layer';
 
-export interface Board {
-  readonly w: number;
-  readonly h: number;
-  readonly dungeon: Dungeon;
-  readonly actors: Actor[];
-  readonly items: Item[];
-  readonly traps: Trap[];
-  readonly baseLayer: Layer;
-  readonly dungeonLayer: Layer;
+export interface IBoard {
+  w: number;
+  h: number;
+  dungeon: Dungeon;
+  actors: Actor[];
+  items: Item[];
+  traps: Trap[];
+  baseLayer: Layer;
+  dungeonLayer: Layer;
   findTrap(x: number, y: number): Trap | undefined;
   findItem(x: number, y: number): Item | undefined;
   findActor(x: number, y: number): Actor | undefined;
   findRoom(x: number, y: number): Room | undefined;
   findExit(x: number, y: number): Exit | undefined;
+  clearActor(actor: Actor): void;
+  clearItem(item: Item): void;
+  clearTrap(trap: Trap): void;
   isBlock(x: number, y: number): boolean;
   isRoom(x: number, y: number): boolean;
   isCorridor(x: number, y: number): boolean;
@@ -32,14 +35,14 @@ export interface Board {
   draw(p: p5, camera: Camera): void;
 }
 
-export class Board implements Board {
+export class Board implements IBoard {
   constructor(
     readonly w: number,
     readonly h: number,
     readonly dungeon: Dungeon,
-    readonly actors: Actor[],
-    readonly items: Item[],
-    readonly traps: Trap[],
+    public actors: Actor[],
+    public items: Item[],
+    public traps: Trap[],
     readonly baseLayer: Layer,
     readonly dungeonLayer: Layer
   ) {}
@@ -86,6 +89,18 @@ export class Board implements Board {
   findExit(x: number, y: number): Exit | undefined {
     const exit = this.getExit();
     return exit.x === x && exit.y === y ? this.dungeon.exit : undefined;
+  }
+
+  clearActor(actor: Actor): void {
+    this.actors = this.actors.filter((a) => a !== actor);
+  }
+
+  clearItem(item: Item): void {
+    this.items = this.items.filter((i) => i !== item);
+  }
+
+  clearTrap(trap: Trap): void {
+    this.traps = this.traps.filter((t) => t !== trap);
   }
 
   private isEmpty(x: number, y: number): boolean {

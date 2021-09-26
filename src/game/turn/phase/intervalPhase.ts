@@ -8,6 +8,9 @@ export class IntervalPhase extends PhaseBase {
   }
 
   proc(game: Game): void {
+    const player = game.player;
+    const board = game.board;
+
     // 毎ターン１回復（調整するかも）
     game.player.heal(1);
 
@@ -36,19 +39,14 @@ export class IntervalPhase extends PhaseBase {
     //   player.visibility.h
     // );
 
-    // const trap = board.findTrap(player.x, player.y);
-    // if (trap) {
-    //   trap.exec(player, game);
-    // }
+    const trap = board.findTrap(player.x, player.y);
+    trap?.effect(player, board);
 
-    // const item = board.findItem(player.x, player.y);
-    // if (item) {
-    //   new SoundEffect(game.asset.soundFiles.pickUp).play();
-    //   board.clearItem(item);
-    //   game.items.delete(item);
-    //   game.inventory.add(item);
-    //   game.messages.push(`${item.displayName()}を拾った`);
-    // }
+    const item = board.findItem(player.x, player.y);
+    if (item) {
+      game.inventory.add(item);
+      board.clearItem(item);
+    }
 
     // game.enemys.enemys.forEach((enemy) => enemy.setVisibility(board));
 
