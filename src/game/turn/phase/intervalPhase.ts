@@ -39,14 +39,16 @@ export class IntervalPhase extends PhaseBase {
     //   player.visibility.h
     // );
 
+    const room = board.findRoom(player.x, player.y);
+    if (room) {
+      player.visibility.setRoomRange(room);
+    }
+
     const trap = board.findTrap(player.x, player.y);
-    trap?.effect(player, board);
+    trap?.activate(board);
 
     const item = board.findItem(player.x, player.y);
-    if (item) {
-      game.inventory.add(item);
-      board.clearItem(item);
-    }
+    item?.pickup(game);
 
     // game.enemys.enemys.forEach((enemy) => enemy.setVisibility(board));
 

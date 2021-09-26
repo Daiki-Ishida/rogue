@@ -52,5 +52,7 @@ export class Trap {
     if (actor === undefined) return;
 
     this.effect(actor, board);
+
+    board.clearTrap(this);
   }
 }

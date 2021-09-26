@@ -6,6 +6,7 @@ import { Equipment } from './equipment';
 import { Gold } from './gold';
 import { Usable } from './usable';
 import { GridUtil } from 'game/util';
+import { Game } from 'game/game';
 
 export interface IItem {
   x: number;
@@ -65,6 +66,7 @@ export abstract class Item implements IItem {
   }
 
   onUnhit(board: Board): void {
+    console.log('todo');
     return;
   }
 
@@ -78,6 +80,11 @@ export abstract class Item implements IItem {
     this.y = y;
     this.symbol.x = x;
     this.symbol.y = y;
+  }
+
+  pickup(game: Game): void {
+    game.inventory.add(this);
+    game.board.clearItem(this);
   }
 
   isUsable(): this is Usable {
