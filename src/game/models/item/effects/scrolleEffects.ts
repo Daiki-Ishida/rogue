@@ -65,16 +65,18 @@ const ScrollEffects = (): IStaffEffects => {
     console.log('このフロアの罠が増えてしまったようだ・・・');
   };
 
-  const earth = (user: Player): void => {
-    console.log('todo');
+  const fate = (user: Player): void => {
+    user.status.sward?.levelUp();
   };
 
-  const fate = (user: Player): void => {
-    console.log('todo');
+  const earth = (user: Player): void => {
+    user.status.shield?.levelUp();
   };
 
   const exorcism = (user: Player): void => {
-    console.log('todo');
+    user.status.sward?.uncurse();
+    user.status.shield?.uncurse();
+    user.status.bracelet?.uncurse();
   };
 
   const fixer = (user: Player, board: Board): void => {

@@ -19,6 +19,14 @@ export class Shield extends Equipment {
     return this.status.def + this.status.level;
   }
 
+  levelUp(): void {
+    this.status.level++;
+  }
+
+  levelDown(): void {
+    this.status.level--;
+  }
+
   unify(shield: Shield): void {
     // 識別
     this.identify();
