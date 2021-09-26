@@ -32,7 +32,7 @@ export class Game {
       board.items.push(item);
     }
 
-    const traps = TrapGenerator.generate(board);
+    const traps = TrapGenerator.generate(7, board);
     console.log(traps);
     for (const trap of traps) {
       trap.disclose();
