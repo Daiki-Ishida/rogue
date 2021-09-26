@@ -4,7 +4,7 @@ import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
 import { ScrollStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { scrollEffects } from './scrolleEffects';
+import { scrollEffects } from '../effects';
 import { Usable } from './usable';
 
 export class Scroll extends Usable {

@@ -3,7 +3,7 @@ import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { HerbStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { HerbEffect, herbEffects } from './herbEffects';
+import { HerbEffect, herbEffects } from '../effects';
 import { Usable } from './usable';
 
 export class Herb extends Usable {

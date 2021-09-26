@@ -4,7 +4,7 @@ import { Player, Actor } from 'game/models/actor';
 import { GridUtil } from 'game/util';
 import { StaffStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { staffEffects } from './staffEffects';
+import { staffEffects } from '../effects';
 import { Usable } from './usable';
 
 export class Staff extends Usable {

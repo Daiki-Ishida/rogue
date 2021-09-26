@@ -4,7 +4,7 @@ import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
 import { FoodStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { foodEffects } from './foodEffects';
+import { foodEffects } from '../effects';
 import { Usable } from './usable';
 
 export class Food extends Usable {
