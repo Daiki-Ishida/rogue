@@ -2,6 +2,7 @@ import { EquipmentStatus } from '.';
 
 export class ShieldStatus implements EquipmentStatus {
   private constructor(
+    readonly id: string,
     readonly def: number,
     public level: number,
     public identified: boolean,
@@ -10,10 +11,16 @@ export class ShieldStatus implements EquipmentStatus {
   ) {}
 
   get displayName(): string {
-    throw new Error('Method not implemented.');
+    return '';
+    // return IDENTIFIED ? this.name : TEMP_NAME;
   }
 
-  static debug(): ShieldStatus {
-    return new ShieldStatus(1, 1, false, false, false);
+  static debug(id: string): ShieldStatus {
+    return new ShieldStatus(id, 1, 1, false, false, false);
+  }
+
+  identify(): void {
+    // IDENTIFIED = true;
+    this.identified = true;
   }
 }

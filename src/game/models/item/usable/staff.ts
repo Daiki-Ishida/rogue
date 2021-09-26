@@ -20,7 +20,7 @@ export class Staff extends Usable {
 
   static generate(id: string, board: Board): Staff {
     const symbol = new ItemSymbol(imageStore.items.staff);
-    const status = StaffStatus.init();
+    const status = StaffStatus.init(id);
     const effect = staffEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);

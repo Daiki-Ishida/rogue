@@ -29,9 +29,6 @@ export class IntervalPhase extends PhaseBase {
     //   player.addHunger(value);
     // }
 
-    // game.board.actors.forEach((a) => {
-    //   a.updateVisibility();
-    // });
     // board.visit(
     //   player.visibility.x,
     //   player.visibility.y,

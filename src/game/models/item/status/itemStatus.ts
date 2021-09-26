@@ -1,6 +1,8 @@
 export interface ItemStatus {
-  identified: boolean;
+  id: string;
   displayName: string;
+  identified: boolean;
+  identify(): void;
 }
 
 export interface EquipmentStatus extends ItemStatus {

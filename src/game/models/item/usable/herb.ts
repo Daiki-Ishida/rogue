@@ -19,7 +19,7 @@ export class Herb extends Usable {
 
   static generate(id: string, board: Board): Herb {
     const symbol = new ItemSymbol(imageStore.items.herb);
-    const status = HerbStatus.init();
+    const status = HerbStatus.init(id);
     const effect = herbEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);

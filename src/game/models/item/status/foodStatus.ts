@@ -1,10 +1,12 @@
+import { itemDataStore } from 'game/store/itemDataStore';
 import { UsableStatus } from './itemStatus';
 
 export class FoodStatus implements UsableStatus {
   private constructor(
+    readonly id: string,
     public used: boolean,
     public identified: boolean,
-    public value: number
+    readonly value: number
   ) {}
 
   static init(id: string): FoodStatus {
@@ -26,10 +28,17 @@ export class FoodStatus implements UsableStatus {
         throw new Error(`Invalid Id: ${id}`);
     }
 
-    return new FoodStatus(false, true, value); // fixme
+    return new FoodStatus(id, false, true, value);
   }
 
   get displayName(): string {
-    return 'todo';
+    const status = itemDataStore.getFoodStatus(this.id);
+    return status.identified ? status.name : status.fakeName;
+  }
+
+  identify(): void {
+    const status = itemDataStore.getFoodStatus(this.id);
+    status.identified = true;
+    this.identified = true;
   }
 }

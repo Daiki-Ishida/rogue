@@ -1,0 +1,256 @@
+{
+  "BRACELET": [
+    {
+      "id": "ANTI_CONFUSION_BRACELET",
+      "identified": false,
+      "name": "混乱除けの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "ANTI_POISON_BRACELET",
+      "identified": false,
+      "name": "毒消しの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "BRACELET_OF_ITEM_DETECTOR",
+      "identified": false,
+      "name": "鑑定士の腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "BRACELET_OF_TRAP_MASTER",
+      "identified": false,
+      "name": "罠士の腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "FORTUNE_BRACELET",
+      "identified": false,
+      "name": "幸せの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "HEAL_BRACELET",
+      "identified": false,
+      "name": "回復の腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "MONSTER_SUMMONER_BRACELET",
+      "identified": false,
+      "name": "魔物呼びの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "PROTECTION_BRACELET",
+      "identified": false,
+      "name": "まもりの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "SCOUT_BRACELET",
+      "identified": false,
+      "name": "透視の腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "STRENGTH_BRACELET",
+      "identified": false,
+      "name": "ちからの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "TRAP_BRACELET",
+      "identified": false,
+      "name": "ワナの腕輪",
+      "fakeName": ""
+    },
+    {
+      "id": "WARP_BRACELET",
+      "identified": false,
+      "name": "高跳びの腕輪",
+      "fakeName": ""
+    }
+  ],
+  "FOOD": [
+    {
+      "id": "BREAD",
+      "identified": true,
+      "name": "パン",
+      "fakeName": ""
+    },
+    {
+      "id": "BIG_BREAD",
+      "identified": true,
+      "name": "大きなパン",
+      "fakeName": ""
+    },
+    {
+      "id": "ROTTEN_BREAD",
+      "identified": true,
+      "name": "巨大なパン",
+      "fakeName": ""
+    },
+    {
+      "id": "GIANT_BREAD",
+      "identified": true,
+      "name": "腐ったパン",
+      "fakeName": ""
+    }
+  ],
+  "HERB": [
+    {
+      "id": "GREEN_HERB",
+      "identified": true,
+      "name": "薬草",
+      "fakeName": ""
+    },
+    {
+      "id": "SUPER_HERB",
+      "identified": true,
+      "name": "上薬草",
+      "fakeName": ""
+    },
+    {
+      "id": "POISON_HERB",
+      "identified": true,
+      "name": "毒草",
+      "fakeName": ""
+    },
+    {
+      "id": "CONFUSION_HERB",
+      "identified": true,
+      "name": "混乱草",
+      "fakeName": ""
+    },
+    {
+      "id": "SLEEPY_HERB",
+      "identified": true,
+      "name": "眠り草",
+      "fakeName": ""
+    },
+    {
+      "id": "FORTUNE_SEED",
+      "identified": true,
+      "name": "幸せの種",
+      "fakeName": ""
+    },
+    {
+      "id": "UNFORTUNE_SEED",
+      "identified": true,
+      "name": "不幸の種",
+      "fakeName": ""
+    },
+    {
+      "id": "STOMACH_EXPANDER",
+      "identified": true,
+      "name": "胃拡張の種",
+      "fakeName": ""
+    },
+    {
+      "id": "STOMACH_SHRINKER",
+      "identified": true,
+      "name": "胃縮小の種",
+      "fakeName": ""
+    },
+    {
+      "id": "LIFE_HERB",
+      "identified": true,
+      "name": "命の草",
+      "fakeName": ""
+    },
+    {
+      "id": "SIGHT_HERB",
+      "identified": true,
+      "name": "あかり草",
+      "fakeName": ""
+    },
+    {
+      "id": "ANTIDOTE_HERB",
+      "identified": true,
+      "name": "毒消し草",
+      "fakeName": ""
+    },
+    {
+      "id": "DRAGON_HERB",
+      "identified": true,
+      "name": "ドラゴン草",
+      "fakeName": ""
+    },
+    {
+      "id": "WEED",
+      "identified": true,
+      "name": "雑草",
+      "fakeName": ""
+    }
+  ],
+  "STAFF": [
+    {
+      "id": "KNOCKBACK_STAFF",
+      "identified": false,
+      "name": "吹き飛ばしの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "FORTUNE_STAFF",
+      "identified": false,
+      "name": "幸せの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "UNFORTUNE_STAFF",
+      "identified": false,
+      "name": "不幸の杖",
+      "fakeName": ""
+    },
+    {
+      "id": "PINNING_STAFF",
+      "identified": false,
+      "name": "飛びつきの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "ORDINARY_STAFF",
+      "identified": false,
+      "name": "ただの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "LIGHTNING_STAFF",
+      "identified": false,
+      "name": "雷光の杖",
+      "fakeName": ""
+    },
+    {
+      "id": "SWAP_STAFF",
+      "identified": false,
+      "name": "場所替えの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "MAGE_STAFF",
+      "identified": false,
+      "name": "魔導士の杖",
+      "fakeName": ""
+    },
+    {
+      "id": "PARALYSIS_STAFF",
+      "identified": false,
+      "name": "かなしばりの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "POSTPONE_STAFF",
+      "identified": false,
+      "name": "一時しのぎの杖",
+      "fakeName": ""
+    },
+    {
+      "id": "SEALING_STAFF",
+      "identified": false,
+      "name": "封印の杖",
+      "fakeName": ""
+    }
+  ]
+}

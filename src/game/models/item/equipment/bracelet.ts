@@ -20,7 +20,7 @@ export class Bracelet extends Equipment {
 
   static generate(id: string, board: Board): Bracelet {
     const symbol = new ItemSymbol(imageStore.items.bracelet);
-    const status = BraceletStatus.init();
+    const status = BraceletStatus.init(id);
     const effect = braceletEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
