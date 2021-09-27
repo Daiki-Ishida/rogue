@@ -1,0 +1,68 @@
+[
+  {
+    "id": "PICKAXE",
+    "name": "ピッケル",
+    "atk": 1,
+    "ratio": 18
+  },
+  {
+    "id": "CLUB",
+    "name": "こんぼう",
+    "atk": 2,
+    "ratio": 48
+  },
+  {
+    "id": "ASSASSINS_DAGGER",
+    "name": "アサシンダガー",
+    "atk": 4,
+    "ratio": 36
+  },
+  {
+    "id": "IRON_SWORD",
+    "name": "鋼の剣",
+    "atk": 7,
+    "ratio": 36
+  },
+  {
+    "id": "RAPIER",
+    "name": "レイピア",
+    "atk": 9,
+    "ratio": 32
+  },
+  {
+    "id": "TRIDENT",
+    "name": "トライデント",
+    "atk": 12,
+    "ratio": 24
+  },
+  {
+    "id": "GREAT_AXE",
+    "name": "グレートアックス",
+    "atk": 18,
+    "ratio": 18
+  },
+  {
+    "id": "DRAGON_KILLER",
+    "name": "ドラゴンキラー",
+    "atk": 18,
+    "ratio": 16
+  },
+  {
+    "id": "MIRACLE_SWORD",
+    "name": "奇跡の剣",
+    "atk": 16,
+    "ratio": 16
+  },
+  {
+    "id": "THUNDER_SWORD",
+    "name": "稲妻の剣",
+    "atk": 27,
+    "ratio": 9
+  },
+  {
+    "id": "HYPERNOVA_SWORD",
+    "name": "銀河の剣",
+    "atk": 42,
+    "ratio": 3
+  }
+]

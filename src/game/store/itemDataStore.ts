@@ -1,15 +1,12 @@
 import ITEM_DISTRIBUTION from 'asset/data/distribution/item_distribution.json';
-import HERB_DISTRIBUTION from 'asset/data/distribution/herb_distribution.json';
-import FOOD_DISTRIBUTION from 'asset/data/distribution/food_distribution.json';
-import STAFF_DISTRIBUTION from 'asset/data/distribution/staff_distribution.json';
-import SCROLL_DISTRIBUTION from 'asset/data/distribution/scroll_distribution.json';
-import BRACELET_DISTRIBUTION from 'asset/data/distribution/bracelet_distribution.json';
 import ITEM_STATUS from 'asset/data/item_status.json';
+import SWORD_STATUS from 'asset/data/sword_status.json';
+import SHIELD_STATUS from 'asset/data/shield_status.json';
 import FAKE_NAMES from 'asset/data/fake_names.json';
 import { RandomUtil } from '../util';
 
 interface ItemDistribution {
-  name: string;
+  id: string;
   ratio: number;
 }
 
@@ -26,17 +23,29 @@ interface ItemStatus {
   identified: boolean;
   name: string;
   fakeName: string;
+  ratio: number;
+}
+
+interface SwordStatus {
+  id: string;
+  name: string;
+  atk: number;
+  ratio: number;
+}
+
+interface ShieldStatus {
+  id: string;
+  name: string;
+  def: number;
+  ratio: number;
 }
 
 class ItemDataStore {
   constructor(
     readonly itemDistribution: ItemDistribution[],
-    readonly herbDistribution: ItemDistribution[],
-    readonly foodDistribution: ItemDistribution[],
-    readonly staffDistribution: ItemDistribution[],
-    readonly scrollDistribution: ItemDistribution[],
-    readonly braceletDistribution: ItemDistribution[],
-    readonly itemStatus: ItemStatusList
+    readonly itemStatus: ItemStatusList,
+    readonly swordStatus: SwordStatus[],
+    readonly shieldStatus: ShieldStatus[]
   ) {}
 
   static init(): ItemDataStore {
@@ -44,12 +53,9 @@ class ItemDataStore {
 
     return new ItemDataStore(
       ITEM_DISTRIBUTION,
-      HERB_DISTRIBUTION,
-      FOOD_DISTRIBUTION,
-      STAFF_DISTRIBUTION,
-      SCROLL_DISTRIBUTION,
-      BRACELET_DISTRIBUTION,
-      itemStatus
+      itemStatus,
+      SWORD_STATUS,
+      SHIELD_STATUS
     );
   }
 
@@ -57,24 +63,32 @@ class ItemDataStore {
     return this.selectRandomlyFrom(this.itemDistribution);
   }
 
-  getHerbNameRandomly(): string {
-    return this.selectRandomlyFrom(this.herbDistribution);
+  getHerbIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.HERB);
   }
 
-  getFoodNameRandomly(): string {
-    return this.selectRandomlyFrom(this.foodDistribution);
+  getFoodIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.FOOD);
   }
 
-  getStaffNameRandomly(): string {
-    return this.selectRandomlyFrom(this.staffDistribution);
+  getStaffIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.STAFF);
   }
 
-  getScrollNameRandomly(): string {
-    return this.selectRandomlyFrom(this.scrollDistribution);
+  getScrollIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.SCROLL);
   }
 
-  getBraceletNameRandomly(): string {
-    return this.selectRandomlyFrom(this.braceletDistribution);
+  getBraceletIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.BRACELET);
+  }
+
+  getSwordIdRandomly(): string {
+    return this.selectRandomlyFrom(this.swordStatus);
+  }
+
+  getShieldIdRandomly(): string {
+    return this.selectRandomlyFrom(this.shieldStatus);
   }
 
   getBraceletStatus(id: string): ItemStatus {
@@ -114,24 +128,36 @@ class ItemDataStore {
     return status;
   }
 
+  getSwordStatus(id: string): SwordStatus {
+    const status = this.swordStatus.find((sword) => sword.id === id);
+    if (status === undefined) throw new Error(`Invalid Id: ${id}`);
+    return status;
+  }
+
+  getShieldStatus(id: string): ShieldStatus {
+    const status = this.shieldStatus.find((shield) => shield.id === id);
+    if (status === undefined) throw new Error(`Invalid Id: ${id}`);
+    return status;
+  }
+
   private selectRandomlyFrom(dist: ItemDistribution[]): string {
     const r = RandomUtil.getRandomIntInclusive(0, 255);
 
     let c = 0;
-    let name;
+    let id;
     for (const d of dist) {
       c += d.ratio;
       if (c > r) {
-        name = d.name;
+        id = d.id;
         break;
       }
     }
 
-    if (name === undefined) {
+    if (id === undefined) {
       throw new Error('Item Not Found.');
     }
 
-    return name;
+    return id;
   }
 }
 

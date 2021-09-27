@@ -1,8 +1,10 @@
+import { itemDataStore } from 'game/store/itemDataStore';
 import { EquipmentStatus } from '.';
 
 export class ShieldStatus implements EquipmentStatus {
   private constructor(
     readonly id: string,
+    private name: string,
     readonly def: number,
     public level: number,
     public identified: boolean,
@@ -10,13 +12,21 @@ export class ShieldStatus implements EquipmentStatus {
     public cursed: boolean
   ) {}
 
-  get displayName(): string {
-    return '';
-    // return IDENTIFIED ? this.name : TEMP_NAME;
+  static init(id: string): ShieldStatus {
+    const status = itemDataStore.getShieldStatus(id);
+    return new ShieldStatus(
+      status.id,
+      status.name,
+      status.def,
+      1,
+      false,
+      false,
+      false
+    );
   }
 
-  static debug(id: string): ShieldStatus {
-    return new ShieldStatus(id, 1, 1, false, false, false);
+  get displayName(): string {
+    return this.identified ? `${this.name} +${this.level}` : this.name;
   }
 
   identify(): void {

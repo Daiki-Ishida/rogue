@@ -4,7 +4,7 @@ import { Bracelet } from '../item';
 
 export class BraceletGenerator {
   static generate(board: Board): Bracelet {
-    const id = itemDataStore.getBraceletNameRandomly();
+    const id = itemDataStore.getBraceletIdRandomly();
     return Bracelet.generate(id, board);
   }
 }

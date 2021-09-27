@@ -1,3 +1,4 @@
+import { imageStore } from 'game';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/models/actor';
 import { ShieldStatus } from '../status';
@@ -5,7 +6,7 @@ import { ItemSymbol } from '../symbol';
 import { Equipment } from './equipment';
 
 export class Shield extends Equipment {
-  constructor(
+  private constructor(
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
@@ -13,6 +14,15 @@ export class Shield extends Equipment {
     public effects: string[]
   ) {
     super(x, y, symbol, status);
+  }
+
+  static generate(id: string, board: Board): Shield {
+    const symbol = new ItemSymbol(imageStore.items.shield);
+    const status = ShieldStatus.init(id);
+
+    const sword = new Shield(0, 0, symbol, status, []);
+    sword.spawn(board);
+    return sword;
   }
 
   get def(): number {

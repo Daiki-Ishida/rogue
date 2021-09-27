@@ -54,7 +54,7 @@ export class Player extends Actor {
   }
 
   equip(equipment: Equipment): void {
-    if (equipment.isSward()) {
+    if (equipment.isSword()) {
       const unequiped = this.status.sward?.unequip();
       if (unequiped === false) return;
 
@@ -75,7 +75,7 @@ export class Player extends Actor {
     const unequiped = equipment.unequip();
     if (unequiped === false) return;
 
-    if (equipment.isSward()) {
+    if (equipment.isSword()) {
       this.status.sward = undefined;
     }
 

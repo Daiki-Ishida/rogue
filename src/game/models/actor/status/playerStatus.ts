@@ -1,4 +1,4 @@
-import { Bracelet, Shield, Sward } from 'game/models/item';
+import { Bracelet, Shield, Sword } from 'game/models/item';
 import { ActorStatus } from '.';
 
 export class PlayerStatus extends ActorStatus {
@@ -12,7 +12,7 @@ export class PlayerStatus extends ActorStatus {
     public exp: number = 0,
     public dmg: number = 0,
     public hunger: number = 0,
-    public sward?: Sward,
+    public sward?: Sword,
     public shield?: Shield,
     public bracelet?: Bracelet
   ) {

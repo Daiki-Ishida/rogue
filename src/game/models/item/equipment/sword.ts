@@ -1,19 +1,28 @@
 import { Equipment } from './equipment';
-import { SwardStatus } from '../status';
+import { SwordStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/models/actor';
-import { Usable } from '../usable';
+import { imageStore } from 'game';
 
-export class Sward extends Equipment {
-  constructor(
+export class Sword extends Equipment {
+  private constructor(
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
-    readonly status: SwardStatus,
+    readonly status: SwordStatus,
     public effects: string[]
   ) {
     super(x, y, symbol, status);
+  }
+
+  static generate(id: string, board: Board): Sword {
+    const symbol = new ItemSymbol(imageStore.items.sward);
+    const status = SwordStatus.init(id);
+
+    const sword = new Sword(0, 0, symbol, status, []);
+    sword.spawn(board);
+    return sword;
   }
 
   get atk(): number {
@@ -28,7 +37,7 @@ export class Sward extends Equipment {
     this.status.level--;
   }
 
-  unify(sward: Sward): void {
+  unify(sward: Sword): void {
     // 識別
     this.identify();
 
@@ -43,7 +52,7 @@ export class Sward extends Equipment {
     throw new Error('Method not implemented.');
   }
 
-  isSward(): this is Sward {
+  isSword(): this is Sword {
     return true;
   }
 }

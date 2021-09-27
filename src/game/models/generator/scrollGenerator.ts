@@ -4,7 +4,7 @@ import { Scroll } from '../item';
 
 export class ScrollGenerator {
   static generate(board: Board): Scroll {
-    const id = itemDataStore.getScrollNameRandomly();
+    const id = itemDataStore.getScrollIdRandomly();
     return Scroll.generate(id, board);
   }
 }

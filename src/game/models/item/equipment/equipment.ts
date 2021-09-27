@@ -1,4 +1,4 @@
-import { Bracelet, Shield, Sward } from '.';
+import { Bracelet, Shield, Sword } from '.';
 import { Item } from '../item';
 import { EquipmentStatus } from '../status';
 import { ItemSymbol } from '../symbol';
@@ -48,7 +48,7 @@ export abstract class Equipment extends Item {
     return true;
   }
 
-  isSward(): this is Sward {
+  isSword(): this is Sword {
     return false;
   }
 

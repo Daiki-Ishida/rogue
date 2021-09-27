@@ -1,4 +1,4 @@
 export * from './equipment';
 export * from './bracelet';
 export * from './shield';
-export * from './sward';
+export * from './sword';

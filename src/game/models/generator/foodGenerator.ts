@@ -4,7 +4,7 @@ import { Food } from '../item';
 
 export class FoodGenerator {
   static generate(board: Board): Food {
-    const id = itemDataStore.getFoodNameRandomly();
+    const id = itemDataStore.getFoodIdRandomly();
     return Food.generate(id, board);
   }
 }

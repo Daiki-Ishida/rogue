@@ -1,38 +1,38 @@
 [
   {
-    "name": "SWARD",
+    "id": "SWARD",
     "ratio": 24
   },
   {
-    "name": "ARROW",
+    "id": "ARROW",
     "ratio": 12
   },
   {
-    "name": "SHEILD",
+    "id": "SHEILD",
     "ratio": 25
   },
   {
-    "name": "FOOD",
+    "id": "FOOD",
     "ratio": 13
   },
   {
-    "name": "BRACELET",
+    "id": "BRACELET",
     "ratio": 8
   },
   {
-    "name": "SCROLL",
+    "id": "SCROLL",
     "ratio": 63
   },
   {
-    "name": "STAFF",
+    "id": "STAFF",
     "ratio": 20
   },
   {
-    "name": "HERB",
+    "id": "HERB",
     "ratio": 68
   },
   {
-    "name": "POT",
+    "id": "POT",
     "ratio": 23
   }
 ]

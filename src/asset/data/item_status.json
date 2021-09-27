@@ -4,73 +4,85 @@
       "id": "ANTI_CONFUSION_BRACELET",
       "identified": false,
       "name": "混乱除けの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 22
     },
     {
       "id": "ANTI_POISON_BRACELET",
       "identified": false,
       "name": "毒消しの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 22
     },
     {
       "id": "BRACELET_OF_ITEM_DETECTOR",
       "identified": false,
       "name": "鑑定士の腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 22
     },
     {
       "id": "BRACELET_OF_TRAP_MASTER",
       "identified": false,
       "name": "罠士の腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 22
     },
     {
       "id": "FORTUNE_BRACELET",
       "identified": false,
       "name": "幸せの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "HEAL_BRACELET",
       "identified": false,
       "name": "回復の腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "MONSTER_SUMMONER_BRACELET",
       "identified": false,
       "name": "魔物呼びの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "PROTECTION_BRACELET",
       "identified": false,
       "name": "まもりの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "SCOUT_BRACELET",
       "identified": false,
       "name": "透視の腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "STRENGTH_BRACELET",
       "identified": false,
       "name": "ちからの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "TRAP_BRACELET",
       "identified": false,
       "name": "ワナの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "WARP_BRACELET",
       "identified": false,
       "name": "高跳びの腕輪",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     }
   ],
   "FOOD": [
@@ -78,25 +90,29 @@
       "id": "BREAD",
       "identified": true,
       "name": "パン",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 102
     },
     {
       "id": "BIG_BREAD",
       "identified": true,
       "name": "大きなパン",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 31
     },
     {
       "id": "ROTTEN_BREAD",
       "identified": true,
       "name": "巨大なパン",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 103
     },
     {
       "id": "GIANT_BREAD",
       "identified": true,
       "name": "腐ったパン",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     }
   ],
   "HERB": [
@@ -104,85 +120,99 @@
       "id": "GREEN_HERB",
       "identified": true,
       "name": "薬草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 45
     },
     {
       "id": "SUPER_HERB",
       "identified": true,
       "name": "上薬草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 38
     },
     {
       "id": "POISON_HERB",
       "identified": true,
       "name": "毒草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 13
     },
     {
       "id": "CONFUSION_HERB",
       "identified": true,
       "name": "混乱草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 13
     },
     {
       "id": "SLEEPY_HERB",
       "identified": true,
       "name": "眠り草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 13
     },
     {
       "id": "FORTUNE_SEED",
       "identified": true,
       "name": "幸せの種",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 9
     },
     {
       "id": "UNFORTUNE_SEED",
       "identified": true,
       "name": "不幸の種",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 9
     },
     {
       "id": "STOMACH_EXPANDER",
       "identified": true,
       "name": "胃拡張の種",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 15
     },
     {
       "id": "STOMACH_SHRINKER",
       "identified": true,
       "name": "胃縮小の種",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 15
     },
     {
       "id": "LIFE_HERB",
       "identified": true,
       "name": "命の草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 18
     },
     {
       "id": "SIGHT_HERB",
       "identified": true,
       "name": "あかり草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 22
     },
     {
       "id": "ANTIDOTE_HERB",
       "identified": true,
       "name": "毒消し草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 9
     },
     {
       "id": "DRAGON_HERB",
       "identified": true,
       "name": "ドラゴン草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 24
     },
     {
       "id": "WEED",
       "identified": true,
       "name": "雑草",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 13
     }
   ],
   "STAFF": [
@@ -190,67 +220,78 @@
       "id": "KNOCKBACK_STAFF",
       "identified": false,
       "name": "吹き飛ばしの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 51
     },
     {
       "id": "FORTUNE_STAFF",
       "identified": false,
       "name": "幸せの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     },
     {
       "id": "UNFORTUNE_STAFF",
       "identified": false,
       "name": "不幸の杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     },
     {
       "id": "PINNING_STAFF",
       "identified": false,
       "name": "飛びつきの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     },
     {
       "id": "ORDINARY_STAFF",
       "identified": false,
       "name": "ただの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     },
     {
       "id": "LIGHTNING_STAFF",
       "identified": false,
       "name": "雷光の杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 25
     },
     {
       "id": "SWAP_STAFF",
       "identified": false,
       "name": "場所替えの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 52
     },
     {
       "id": "MAGE_STAFF",
       "identified": false,
       "name": "魔導士の杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 25
     },
     {
       "id": "PARALYSIS_STAFF",
       "identified": false,
       "name": "かなしばりの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     },
     {
       "id": "POSTPONE_STAFF",
       "identified": false,
       "name": "一時しのぎの杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 25
     },
     {
       "id": "SEALING_STAFF",
       "identified": false,
       "name": "封印の杖",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 26
     }
   ],
   "SCROLL": [
@@ -258,79 +299,92 @@
       "id": "BLASTWAVE_SCROLL",
       "identified": false,
       "name": "真空切りの巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 30
     },
     {
       "id": "CONFUSION_SCROLL",
       "identified": false,
       "name": "混乱の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "SEALING_SCROLL",
       "identified": false,
       "name": "封印の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     },
     {
       "id": "SLUMBER_SCROLL",
       "identified": false,
       "name": "爆睡の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     },
     {
       "id": "NAVIGATION_SCROLL",
       "identified": false,
       "name": "あかりの巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 30
     },
     {
       "id": "LOST_SCROLL",
       "identified": false,
       "name": "迷子の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "TRAP_SCROLL",
       "identified": false,
       "name": "ワナの巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     },
     {
       "id": "FIXER_SCROLL",
       "identified": false,
       "name": "困った時の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 21
     },
     {
       "id": "FATE_SCROLL",
       "identified": false,
       "name": "天の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 31
     },
     {
       "id": "EARTH_SCROLL",
       "identified": false,
       "name": "地の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 30
     },
     {
       "id": "EXORCISM_SCROLL",
       "identified": false,
       "name": "お祓いの巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     },
     {
       "id": "EXPLOSION_SCROLL",
       "identified": false,
       "name": "自爆の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 20
     },
     {
       "id": "IDENTIFY_SCROLL",
       "identified": false,
       "name": "識別の巻物",
-      "fakeName": ""
+      "fakeName": "",
+      "ratio": 72
     }
   ]
 }
