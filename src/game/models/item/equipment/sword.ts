@@ -17,7 +17,7 @@ export class Sword extends Equipment {
   }
 
   static generate(id: string, board: Board): Sword {
-    const symbol = new ItemSymbol(imageStore.items.sward);
+    const symbol = new ItemSymbol(imageStore.items.sward[id]);
     const status = SwordStatus.init(id);
 
     const sword = new Sword(0, 0, symbol, status, []);

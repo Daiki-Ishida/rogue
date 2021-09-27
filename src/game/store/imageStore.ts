@@ -20,8 +20,8 @@ interface ActorImages {
 }
 
 interface ItemImages {
-  readonly sward: Image;
-  readonly shield: Image;
+  readonly sward: EquipmentImages;
+  readonly shield: EquipmentImages;
   readonly bracelet: Image;
   readonly gold: Image;
   readonly staff: Image;
@@ -29,6 +29,10 @@ interface ItemImages {
   readonly bread: Image;
   readonly herb: Image;
   readonly pot: Image;
+}
+
+interface EquipmentImages {
+  readonly [key: string]: Image;
 }
 
 interface TrapImages {
@@ -147,9 +151,33 @@ export class ImageStore implements IImageStore {
     const icon01 = parseImage(imgs.icons01, 12, 8, iconSize, iconSize);
     const icon02 = parseImage(imgs.icons02, 12, 8, iconSize, iconSize);
     const icon03 = parseImage(imgs.icons03, 12, 6, iconSize, iconSize);
+
+    const swordImgs = {
+      PICKAXE: icon01[81],
+      CLUB: icon02[13],
+      ASSASSINS_DAGGER: icon03[49],
+      IRON_SWORD: icon02[1],
+      RAPIER: icon02[2],
+      TRIDENT: icon02[4],
+      GREAT_AXE: icon02[5],
+      DRAGON_KILLER: icon02[9],
+      MIRACLE_SWORD: icon03[52],
+      THUNDER_SWORD: icon03[53],
+      HYPERNOVA_SWORD: icon03[48],
+    };
+
+    const shieldImgs = {
+      WOODEN_SHIELD: icon01[92],
+      IRON_SHIELD: icon02[48],
+      KINGHT_SHIELD: icon03[57],
+      HEAVY_SHIELD: icon03[58],
+      SILVER_SHIELD: icon02[49],
+      PHANTASM_SHIELD: icon03[59],
+    };
+
     return {
-      sward: icon02[25],
-      shield: icon02[48],
+      sward: swordImgs,
+      shield: shieldImgs,
       bracelet: icon02[53],
       gold: icon03[1],
       staff: icon02[19],
