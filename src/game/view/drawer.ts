@@ -44,6 +44,8 @@ export class Drawer {
     // インベントリ描画
     this.drawInventory(p);
 
+    this.drawWindow(p);
+
     // メッセージウィンドウ描画
     // this.drawMessageWindow(p);
   }
@@ -159,41 +161,45 @@ export class Drawer {
     windowManager.inventoryWindow.draw(p);
   }
 
-  // todo: refactor
-  private drawMessageWindow(p: p5): void {
-    // if (messageManager.timer > 180) {
-    //   messageManager.close();
-    // }
-
-    // if (!messageManager.display) {
-    //   return;
-    // }
-
-    // messageManager.timer++;
-
-    p.push();
-    p.rectMode('corner');
-
-    const x = 100;
-    const y = 520;
-    const w = 700;
-    const h = 150;
-    const l = 40;
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(x, y, w, h, 10);
-
-    p.fill('white');
-    p.textSize(25);
-
-    // messageManager.messages.forEach((message, idx) => {
-    //   p.text(message, x + 50, y + 40 + l * idx);
-    // });
-
-    p.pop();
+  private drawWindow(p: p5): void {
+    windowManager.selectWindow?.draw(p);
   }
+
+  // todo: refactor
+  // private drawMessageWindow(p: p5): void {
+  //   // if (messageManager.timer > 180) {
+  //   //   messageManager.close();
+  //   // }
+
+  //   // if (!messageManager.display) {
+  //   //   return;
+  //   // }
+
+  //   // messageManager.timer++;
+
+  //   p.push();
+  //   p.rectMode('corner');
+
+  //   const x = 100;
+  //   const y = 520;
+  //   const w = 700;
+  //   const h = 150;
+  //   const l = 40;
+
+  //   p.fill('rgba(61,61,61,0.7)');
+  //   p.stroke('grey');
+  //   p.strokeWeight(2);
+  //   p.rect(x, y, w, h, 10);
+
+  //   p.fill('white');
+  //   p.textSize(25);
+
+  //   // messageManager.messages.forEach((message, idx) => {
+  //   //   p.text(message, x + 50, y + 40 + l * idx);
+  //   // });
+
+  //   p.pop();
+  // }
 
   private drawMiniMap(board: Board, p: p5): void {
     p.push();

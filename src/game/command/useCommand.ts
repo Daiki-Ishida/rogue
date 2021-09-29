@@ -12,5 +12,6 @@ export class UseCommand implements Command {
 
   exec(board: Board): void {
     this.actor.use(this.item, board);
+    this.done = true;
   }
 }

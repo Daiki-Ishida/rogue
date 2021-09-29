@@ -80,7 +80,7 @@ export abstract class SelectionWindowBase implements SelectionWindow {
         this.drawMarker(idx, p);
       }
 
-      p.text(`${op}`, this.x + 50, this.y + idx * 40);
+      p.text(`${op.value}`, this.x + 50, this.y + idx * 40);
     });
 
     p.pop();
