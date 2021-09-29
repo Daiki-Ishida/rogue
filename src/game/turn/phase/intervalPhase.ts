@@ -37,9 +37,9 @@ export class IntervalPhase extends PhaseBase {
     // );
 
     const room = board.findRoom(player.x, player.y);
-    if (room) {
-      player.visibility.setRoomRange(room);
-    }
+    room
+      ? player.visibility.setRoomRange(room)
+      : player.visibility.setActorRange(player);
 
     const trap = board.findTrap(player.x, player.y);
     trap?.activate(board);
