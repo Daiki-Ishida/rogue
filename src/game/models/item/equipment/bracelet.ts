@@ -5,7 +5,7 @@ import { RandomUtil } from 'game/util';
 import { Equipment } from '.';
 import { BraceletStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { braceletEffects } from './braceletEffects';
+import { braceletEffects } from '../effects';
 
 export class Bracelet extends Equipment {
   private constructor(

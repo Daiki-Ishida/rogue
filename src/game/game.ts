@@ -25,22 +25,12 @@ export class Game {
     // debug
     player.spawn(board);
     player.visibility.setFullRange();
-    board.actors.push(player);
 
     const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
-    const items = ItemGenerator.generate(itemCount, board);
-    console.log(items);
-    for (const item of items) {
-      board.items.push(item);
-    }
+    ItemGenerator.generate(itemCount, board);
 
     const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
-    const traps = TrapGenerator.generate(trapCount, board);
-    console.log(traps);
-    for (const trap of traps) {
-      trap.disclose();
-      board.traps.push(trap);
-    }
+    TrapGenerator.generate(trapCount, board);
 
     return new Game(player, board, commands, turn, inventory);
   }

@@ -35,6 +35,8 @@ export class Trap {
   spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
+    this.disclose(); // debug
+    board.traps.push(this);
   }
 
   disclose(): void {

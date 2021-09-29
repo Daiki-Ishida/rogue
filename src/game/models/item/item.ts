@@ -73,6 +73,7 @@ export abstract class Item implements IItem {
   spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
+    board.items.push(this);
   }
 
   setAt(x: number, y: number): void {

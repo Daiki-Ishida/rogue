@@ -73,6 +73,7 @@ export abstract class Actor implements IActor {
   spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
+    board.actors.push(this);
   }
 
   damage(value: number): void {
