@@ -78,10 +78,7 @@ export class Board implements IBoard {
   findRoom(x: number, y: number): Room | undefined {
     return this.dungeon.rooms.find((room) => {
       return (
-        room.x <= x &&
-        room.x + room.w >= x &&
-        room.y <= y &&
-        room.y + room.h >= y
+        room.x <= x && room.x + room.w > x && room.y <= y && room.y + room.h > y
       );
     });
   }
