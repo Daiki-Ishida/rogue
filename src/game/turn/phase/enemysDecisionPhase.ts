@@ -9,9 +9,7 @@ export class EnemysDecesionPhase extends PhaseBase {
 
   proc(game: Game): void {
     for (const actor of game.board.actors) {
-      if (actor.isEnemy()) {
-        actor.act();
-      }
+      if (actor.isEnemy()) actor.act();
     }
 
     this.completed = true;

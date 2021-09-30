@@ -1,6 +1,8 @@
 import { game } from 'game';
+import { Board } from 'game/board';
 import { enemyDataStore } from 'game/store';
 import { Actor } from './actor';
+import { SpecialArt, specialArts } from './specialArt';
 import { EnemyStatus } from './status';
 import { basicStrategy, Strategy } from './strategy';
 import { EnemySymbol } from './symbol';
@@ -10,31 +12,41 @@ export interface IEnemy {
   targetY?: number;
   strategy: Strategy;
   hasTarget: boolean;
+  specialArt: SpecialArt;
   isInSightOfPlayer(): boolean;
   isAttackable(actor: Actor): boolean;
   act(): void;
-  specialArts(): void;
   turnLeft(): void;
   turnRight(): void;
   turnAround(): void;
 }
 
-export abstract class Enemy extends Actor implements IEnemy {
-  constructor(
+export class Enemy extends Actor implements IEnemy {
+  private constructor(
     public symbol: EnemySymbol,
     public status: EnemyStatus,
-    public strategy: Strategy = basicStrategy,
+    readonly specialArt: SpecialArt,
+    public strategy: Strategy,
     public targetX?: number,
     public targetY?: number
   ) {
     super(symbol, status);
   }
 
+  static generate(id: string, board: Board): Enemy {
+    const symbol = EnemySymbol.init(id);
+    const status = EnemyStatus.init(id);
+    const arts = specialArts[id];
+
+    const enemy = new Enemy(symbol, status, arts, basicStrategy, 0, 0);
+
+    enemy.spawn(board);
+    return enemy;
+  }
+
   get hasTarget(): boolean {
     return this.targetX !== undefined && this.targetY !== undefined;
   }
-
-  abstract specialArts(): void;
 
   act(): void {
     if (this.x === this.targetX && this.y === this.targetY) {
@@ -141,5 +153,9 @@ export abstract class Enemy extends Actor implements IEnemy {
 
     this.status = status;
     this.symbol = symbol;
+  }
+
+  isEnemy(): this is Enemy {
+    return true;
   }
 }

@@ -8,6 +8,7 @@ export class EnemysMovePhase extends PhaseBase {
   }
 
   proc(game: Game): void {
+    game.commands.exec(game.board);
     this.completed = true;
   }
 }

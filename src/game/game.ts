@@ -2,6 +2,7 @@ import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
+import { Enemy } from './models/actor/enemy';
 import { ItemGenerator, TrapGenerator } from './models/generator';
 import { Turn } from './turn';
 import { RandomUtil } from './util';
@@ -25,6 +26,9 @@ export class Game {
     // debug
     player.spawn(board);
     player.visibility.setFullRange();
+
+    const enemy = Enemy.generate('DRAGON_01', board);
+    enemy.setAt(player.x + 1, player.y);
 
     const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
     ItemGenerator.generate(itemCount, board);
