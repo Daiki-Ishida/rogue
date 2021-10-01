@@ -19,6 +19,7 @@ export interface IBoard {
   traps: Trap[];
   baseLayer: Layer;
   dungeonLayer: Layer;
+  next(): void;
   findTrap(x: number, y: number): Trap | undefined;
   findItem(x: number, y: number): Item | undefined;
   findActor(x: number, y: number): Actor | undefined;
@@ -43,8 +44,8 @@ export class Board implements IBoard {
     public actors: Actor[],
     public items: Item[],
     public traps: Trap[],
-    readonly baseLayer: Layer,
-    readonly dungeonLayer: Layer
+    readonly baseLayer: BaseLayer,
+    readonly dungeonLayer: DungeonLayer
   ) {}
 
   static init(w: number, h: number): Board {
@@ -61,6 +62,18 @@ export class Board implements IBoard {
       BaseLayer.init(w, h),
       dungeonLayer
     );
+  }
+
+  next(): void {
+    this.baseLayer.reset();
+    this.dungeonLayer.reset();
+
+    this.dungeon.next();
+    this.dungeonLayer.apply(this.dungeon);
+
+    this.actors = [];
+    this.items = [];
+    this.traps = [];
   }
 
   findTrap(x: number, y: number): Trap | undefined {

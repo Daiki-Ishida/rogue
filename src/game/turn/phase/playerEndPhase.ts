@@ -1,4 +1,7 @@
+import { controller, windowManager } from 'game';
+import { selectWindowController } from 'game/controller';
 import { Game } from 'game/game';
+import { ExitSelectionWindow } from 'game/view/gui';
 import { EnemyActionPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 
@@ -8,6 +11,8 @@ export class PlayerEndPhase extends PhaseBase {
   }
 
   proc(game: Game): void {
+    if (windowManager.selectWindow) return;
+
     const player = game.player;
     const board = game.board;
 
@@ -51,14 +56,16 @@ export class PlayerEndPhase extends PhaseBase {
       alert('game over...');
     }
 
-    // 階段の到着
-    if (board.isExit(player.x, player.y)) {
-      console.log('reach exit');
-    }
     // 死んだ敵は除外
     board.actors = board.actors.filter((actor) => !actor.isDead);
 
-    // if (game.selectWindow) return;
+    // 階段の到着
+    if (board.isExit(player.x, player.y)) {
+      const window = ExitSelectionWindow.init(game);
+      windowManager.selectWindow = window;
+      controller.changeState(selectWindowController);
+    }
+
     this.completed = true;
   }
 }

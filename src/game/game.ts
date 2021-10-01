@@ -2,7 +2,6 @@ import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
-import { Enemy } from './models/actor/enemy';
 import {
   EnemyGenerator,
   ItemGenerator,
@@ -27,22 +26,31 @@ export class Game {
     const turn = Turn.init();
     const inventory = Inventory.init();
 
-    // debug
-    player.spawn(board);
+    const game = new Game(player, board, commands, turn, inventory);
+    game.generateModels();
+    return game;
+  }
+
+  proc(): void {
+    this.turn.proc(this);
+  }
+
+  next(): void {
+    this.board.next();
+    this.generateModels();
+  }
+
+  private generateModels(): void {
+    const board = this.board;
+    this.player.spawn(board);
 
     const enemyCount = RandomUtil.getRandomIntInclusive(7, 12);
-    EnemyGenerator.generate(enemyCount, 1, board);
+    EnemyGenerator.generate(enemyCount, board.dungeon.level, board);
 
     const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
     ItemGenerator.generate(itemCount, board);
 
     const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
     TrapGenerator.generate(trapCount, board);
-
-    return new Game(player, board, commands, turn, inventory);
-  }
-
-  proc(): void {
-    this.turn.proc(this);
   }
 }

@@ -18,6 +18,7 @@ export interface Layer {
   tiles: Tile[];
   tileAt: (x: number, y: number) => Tile;
   putAt: (tile: Tile, x: number, y: number) => boolean;
+  reset: () => void;
 }
 
 export abstract class LayerBase implements Layer {
@@ -35,4 +36,6 @@ export abstract class LayerBase implements Layer {
     this.tiles[idx] = tile;
     return true;
   }
+
+  abstract reset(): void;
 }

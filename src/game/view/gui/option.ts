@@ -33,8 +33,7 @@ export class Option {
 
   static ofExit(game: Game): Option {
     const onSelected = () => {
-      // TODO: 次のフロアへ
-      return;
+      game.next();
     };
     return new Option('すすむ', onSelected);
   }

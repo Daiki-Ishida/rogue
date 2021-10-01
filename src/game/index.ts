@@ -8,7 +8,7 @@ import { WindowManager } from './view/gui';
 import { AnimationManager } from './animation';
 
 let asset: Asset;
-let controller: Controller;
+export let controller: Controller;
 export let overlay: Graphics;
 export let game: Game;
 export let drawer: Drawer;

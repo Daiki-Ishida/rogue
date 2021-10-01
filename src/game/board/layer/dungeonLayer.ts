@@ -7,6 +7,10 @@ export class DungeonLayer extends LayerBase {
     return new DungeonLayer(w, h, base);
   }
 
+  reset(): void {
+    this.tiles = Array(this.w * this.h).fill(Tile.BLOCK);
+  }
+
   apply(dungeon: Dungeon): void {
     dungeon.rooms.forEach((room) => {
       for (let y = room.y; y < room.y + room.h; y++) {
