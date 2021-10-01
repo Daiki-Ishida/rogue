@@ -1,6 +1,7 @@
 import { Board } from 'game/board';
 import { GridUtil, RandomUtil } from 'game/util';
 import { Actor, Condition } from '../actor';
+import { EnemyGenerator, TrapGenerator } from '../generator';
 
 interface ITrapEffects {
   [key: string]: (actor: Actor, board: Board) => void;
@@ -18,15 +19,12 @@ const TrapEffects = (): ITrapEffects => {
     console.log(`${dmg}ダメージを受けた！`);
   };
 
-  const multiplication = (): void => {
+  const multiplication = (actor: Actor, board: Board): void => {
     const MIN = 15;
     const MAX = 20;
 
     const additions = RandomUtil.getRandomIntInclusive(MIN, MAX);
-    // for (let i = 0; i < additions; i++) {
-    //   const trap = TrapGenerator.generate();
-    //   board.traps.push(trap);
-    // }
+    TrapGenerator.generate(additions, board);
   };
 
   const poison = (actor: Actor): void => {
@@ -64,11 +62,31 @@ const TrapEffects = (): ITrapEffects => {
   };
 
   const strip = (actor: Actor): void => {
-    return; // todo
+    if (actor.isPlayer()) {
+      actor.unequipAll();
+    }
   };
 
-  const summon = (actor: Actor): void => {
-    return; // todo
+  const summon = (actor: Actor, board: Board): void => {
+    const grids = GridUtil.aroundGrids(actor.x, actor.y);
+    const emptyGrids: boolean[] = [];
+    for (const grid of grids) {
+      const exist = board.findActor(grid[0], grid[1]);
+      const block = board.isBlock(grid[0], grid[1]);
+      const isEmpty = !(exist || block);
+      emptyGrids.push(isEmpty);
+    }
+
+    const count = emptyGrids.filter((g) => g === true).length;
+    const enemys = EnemyGenerator.generate(count, 1, board);
+    let c = 0;
+    for (let i = 0; i < emptyGrids.length - 1; i++) {
+      if (emptyGrids[i]) {
+        const xy = grids[i];
+        enemys[c].setAt(xy[0], xy[1]);
+        c++;
+      }
+    }
   };
 
   return {
