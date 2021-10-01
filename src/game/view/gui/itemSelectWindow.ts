@@ -25,7 +25,7 @@ export class ItemSelectionWindow extends SelectionWindowBase {
     options.push(Option.ofThrow(item, game));
 
     options.push(
-      new Option('CANCEL', () => {
+      new Option('もどる', () => {
         return;
       })
     );
@@ -33,17 +33,4 @@ export class ItemSelectionWindow extends SelectionWindowBase {
     const x = 650;
     return new ItemSelectionWindow(x, options);
   }
-
-  // static ofPotContets(item: Item): ItemSelectionWindow {
-  //   const options: Option[] = [];
-
-  //   if (item.isUsable()) {
-  //     options.push(Option.ofUse(item, game));
-  //   }
-  //   options.push('REMOVE');
-  //   options.push('CANCEL');
-
-  //   const x = 820;
-  //   return new ItemSelectionWindow(x, options);
-  // }
 }

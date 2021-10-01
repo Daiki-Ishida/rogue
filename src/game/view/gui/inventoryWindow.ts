@@ -63,6 +63,8 @@ export class InventoryWindow implements Window {
 
   private drawItems(p: p5): void {
     p.push();
+    p.textSize(24);
+    p.fill('white');
 
     for (let i = 0; i < this.inventory.items.length; i++) {
       const item = this.inventory.items[i];
@@ -78,10 +80,10 @@ export class InventoryWindow implements Window {
       // アイコン
       p.image(
         item.symbol.img,
-        this.x + 60,
-        this.y + 10 + i * LINE_HEIGHT,
-        LINE_HEIGHT - 5,
-        LINE_HEIGHT - 5
+        this.x + 80,
+        this.y + 30 + i * LINE_HEIGHT,
+        LINE_HEIGHT - 10,
+        LINE_HEIGHT - 10
       );
 
       // 名前

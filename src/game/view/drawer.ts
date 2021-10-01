@@ -219,14 +219,14 @@ export class Drawer {
 
       const actor = board.findActor(x, y);
       // playerマス
-      if (actor?.isPlayer) {
-        p.fill('#BF0000');
+      if (actor?.isPlayer()) {
+        p.fill('#EADD36');
         p.rect(s + x * n, s + y * n, n, n);
         continue;
       }
       // enemyマス
-      if (actor?.isEnemy) {
-        p.fill('#EADD36');
+      if (actor?.isEnemy()) {
+        p.fill('#BF0000');
         p.rect(s + x * n, s + y * n, n, n);
         continue;
       }

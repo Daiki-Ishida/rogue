@@ -72,7 +72,7 @@ export abstract class SelectionWindowBase implements SelectionWindow {
 
     p.fill('white');
     p.noStroke();
-    p.textSize(25);
+    p.textSize(24);
 
     this.options.forEach((op, idx) => {
       // 選択マーカー描画
@@ -80,7 +80,7 @@ export abstract class SelectionWindowBase implements SelectionWindow {
         this.drawMarker(idx, p);
       }
 
-      p.text(`${op.value}`, this.x + 50, this.y + idx * 40);
+      p.text(`${op.value}`, this.x + 50, this.y + 40 + idx * 40);
     });
 
     p.pop();

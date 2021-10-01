@@ -3,14 +3,14 @@ import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
 import { Equipment, Item, Usable } from 'game/models/item';
 
 export class Option {
-  constructor(readonly value: TOption, readonly onSelection: () => void) {}
+  constructor(readonly value: OptionValue, readonly onSelection: () => void) {}
 
   static ofUse(item: Usable, game: Game): Option {
     const onSelected = () => {
       const command = new UseCommand(game.player, item);
       game.commands.push(command);
     };
-    return new Option('USE', onSelected);
+    return new Option('使う', onSelected);
   }
 
   static ofEquip(item: Equipment, game: Game): Option {
@@ -19,7 +19,7 @@ export class Option {
       game.commands.push(command);
     };
 
-    const label = item.status.equiped ? 'UNEQUIP' : 'EQUIP';
+    const label = item.status.equiped ? '外す' : '装備する';
     return new Option(label, onSelected);
   }
 
@@ -28,7 +28,7 @@ export class Option {
       const command = new ThrowCommand(game.player, item);
       game.commands.push(command);
     };
-    return new Option('THROW', onSelected);
+    return new Option('投げる', onSelected);
   }
 
   static ofExit(game: Game): Option {
@@ -36,7 +36,7 @@ export class Option {
       // TODO: 次のフロアへ
       return;
     };
-    return new Option('PROCEED', onSelected);
+    return new Option('すすむ', onSelected);
   }
 
   static ofCancel(): Option {
@@ -44,17 +44,17 @@ export class Option {
       // 何もしない
       return;
     };
-    return new Option('CANCEL', onSelected);
+    return new Option('もどる', onSelected);
   }
 }
 
-type TOption =
-  | 'PROCEED'
-  | 'CANCEL'
-  | 'USE'
-  | 'THROW'
-  | 'EQUIP'
-  | 'UNEQUIP'
+type OptionValue =
+  | 'すすむ'
+  | 'もどる'
+  | '使う'
+  | '投げる'
+  | '装備する'
+  | '外す'
   | 'INSERT'
   | 'REMOVE'
   | 'LOOK_INTO';

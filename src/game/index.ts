@@ -27,6 +27,7 @@ export const rogue = (p: p5): void => {
     p.frameRate(30);
     p.createCanvas(1280, 720);
     p.textFont(asset.font);
+    p.imageMode('center');
 
     imageStore = ImageStore.init(asset);
     game = Game.init();
@@ -46,8 +47,6 @@ export const rogue = (p: p5): void => {
   };
 
   p.draw = () => {
-    p.imageMode('center');
-
     if (moveKeyIsDown(game, p)) {
       controller.proc(p.key, game);
     }
