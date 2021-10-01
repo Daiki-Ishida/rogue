@@ -14,8 +14,7 @@ export abstract class Equipment extends Item {
   }
 
   identify(): void {
-    // todo
-    return;
+    this.status.identify();
   }
 
   equip(): void {

@@ -50,6 +50,10 @@ export class Staff extends Usable {
     if (target) {
       this.effect(user, target, board);
     }
+
+    if (this.status.durability < 0) {
+      this.status.used = true;
+    }
   }
 
   onHit(user: Player, target: Actor, board: Board): void {
