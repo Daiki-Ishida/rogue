@@ -18,7 +18,6 @@ export let animationManager: AnimationManager;
 
 export const rogue = (p: p5): void => {
   p.preload = () => {
-    // todo
     asset = Asset.preload(p);
     overlay = p.createGraphics(1280, 720);
   };

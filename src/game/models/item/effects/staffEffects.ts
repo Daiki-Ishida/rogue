@@ -58,11 +58,11 @@ const StaffEffects = (): IStaffEffects => {
 
   const postpone = (user: Player, target: Actor, board: Board): void => {
     const exit = board.getExit();
-    const xy = warpTo(exit.x, exit.y, board);
+    let xy = warpTo(exit.x, exit.y, board);
 
     if (xy === null) {
-      alert('todo');
-      return;
+      // 空いてなければどこかに適当に飛ばす
+      xy = board.getRandomEmpty();
     }
 
     target.setAt(xy.x, xy.y);
@@ -119,6 +119,9 @@ const StaffEffects = (): IStaffEffects => {
     UNFORTUNE_STAFF: unfortune,
     KNOCKBACK_STAFF: knockback,
     SWAP_STAFF: swap,
+    PINNING_STAFF: () => {
+      return;
+    },
   };
 };
 

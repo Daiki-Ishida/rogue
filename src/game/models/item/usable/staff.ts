@@ -32,6 +32,15 @@ export class Staff extends Usable {
 
   use(user: Player, board: Board): void {
     this.status.durability--;
+    if (this.status.durability < 0) {
+      this.status.used = true;
+    }
+
+    // Pinning Staffだけは特別扱い
+    if (this.status.id === 'PINNING_STAFF') {
+      this.pinning(user, board);
+      return;
+    }
 
     const grids = GridUtil.rayToGrids(user.x, user.y, user.next.x, user.next.y);
     let current: { x: number; y: number } = { x: user.x, y: user.y };
@@ -50,10 +59,23 @@ export class Staff extends Usable {
     if (target) {
       this.effect(user, target, board);
     }
+  }
 
-    if (this.status.durability < 0) {
-      this.status.used = true;
+  private pinning(user: Player, board: Board): void {
+    const grids = GridUtil.rayToGrids(user.x, user.y, user.next.x, user.next.y);
+    let current: { x: number; y: number } = { x: user.x, y: user.y };
+    let target: Actor | undefined = undefined;
+    for (const grid of grids) {
+      current = { x: grid[0], y: grid[1] };
+      target = board.findActor(current.x, current.y);
+      const blocked = board.isBlock(current.x, current.y);
+
+      if (target || blocked) break;
     }
+
+    const x = current.x - user.next.x;
+    const y = current.y - user.next.y;
+    user.setAt(x, y);
   }
 
   onHit(user: Player, target: Actor, board: Board): void {

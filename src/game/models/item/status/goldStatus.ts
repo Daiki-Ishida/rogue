@@ -9,7 +9,7 @@ export class GoldStatus implements ItemStatus {
   ) {}
 
   static generate(): GoldStatus {
-    const amount = RandomUtil.getRandomIntInclusive(1, 10); // todo
+    const amount = RandomUtil.getRandomIntInclusive(10, 2000);
     return new GoldStatus('GOLD', true, amount);
   }
 

@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Actor, Condition, Player } from 'game/models/actor';
+import { Condition, Player } from 'game/models/actor';
 import { TrapGenerator } from 'game/models/generator';
 import { GridUtil, RandomUtil } from 'game/util';
 
@@ -93,11 +93,11 @@ const ScrollEffects = (): IStaffEffects => {
   };
 
   const navigation = (user: Player, board: Board): void => {
-    console.log('todo');
+    board.visit(0, 0, board.w, board.h);
   };
 
   const lost = (user: Player, board: Board): void => {
-    console.log('todo');
+    board.baseLayer.reset();
   };
 
   const explosion = (user: Player, board: Board): void => {
