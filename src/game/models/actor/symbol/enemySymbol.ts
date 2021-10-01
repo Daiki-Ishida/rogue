@@ -21,6 +21,122 @@ export class EnemySymbol extends ActorSymbol {
         img = imageStore.actors.dragon;
         attackImg = imageStore.effects.fang;
         break;
+      case 'INSECTOR_01':
+        img = imageStore.actors.insector;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'INSECTOR_02':
+        img = imageStore.actors.insector;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'INSECTOR_03':
+        img = imageStore.actors.insector;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'WEREWOLF_01':
+        img = imageStore.actors.werewolf;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'WEREWOLF_02':
+        img = imageStore.actors.werewolf;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'WEREWOLF_03':
+        img = imageStore.actors.werewolf;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GOLEM_01':
+        img = imageStore.actors.golem;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GOLEM_02':
+        img = imageStore.actors.golem;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GOLEM_03':
+        img = imageStore.actors.golem;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'TATSUNOKO_01':
+        img = imageStore.actors.tatsunoko;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'TATSUNOKO_02':
+        img = imageStore.actors.tatsunoko;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'TATSUNOKO_03':
+        img = imageStore.actors.tatsunoko;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GRIFFIN_01':
+        img = imageStore.actors.griffin;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GRIFFIN_02':
+        img = imageStore.actors.griffin;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GRIFFIN_03':
+        img = imageStore.actors.griffin;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'PIG_MAID_01':
+        img = imageStore.actors.pigMaid;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'PIG_MAID_02':
+        img = imageStore.actors.pigMaid;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'PIG_MAID_03':
+        img = imageStore.actors.pigMaid;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GOBLIN_01':
+        img = imageStore.actors.goblin;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'GOBLIN_02':
+        img = imageStore.actors.goblin;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'MOFUMOFU_01':
+        img = imageStore.actors.mofumofu;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'MOFUMOFU_02':
+        img = imageStore.actors.mofumofu;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'SOLDIER_01':
+        img = imageStore.actors.maskedSoldier;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'SOLDIER_02':
+        img = imageStore.actors.maskedSoldier;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'PEGASUS_01':
+        img = imageStore.actors.pegasus;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'PEGASUS_02':
+        img = imageStore.actors.pegasus;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'SHADOW':
+        img = imageStore.actors.shadow;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'MANTICORE':
+        img = imageStore.actors.manticore;
+        attackImg = imageStore.effects.fang;
+        break;
+      case 'DARK_KNIGHT':
+        img = imageStore.actors.darkKnight;
+        attackImg = imageStore.effects.fang;
+        break;
       default:
         throw new Error(`Invalid ID: ${id}`);
     }

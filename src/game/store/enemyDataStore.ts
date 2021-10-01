@@ -24,7 +24,7 @@ interface EnemyDistributionsByLevel {
 }
 
 class EnemyDataStore {
-  constructor(
+  private constructor(
     readonly status: EnemyStatus[],
     readonly distribution: EnemyDistributionsByLevel[]
   ) {}
