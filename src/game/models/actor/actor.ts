@@ -73,6 +73,10 @@ export abstract class Actor implements IActor {
   spawn(board: Board): void {
     const { x, y } = board.getRandomEmpty();
     this.setAt(x, y);
+    const room = board.findRoom(x, y);
+    if (room) {
+      this.visibility.setRoomRange(room);
+    }
     board.actors.push(this);
   }
 

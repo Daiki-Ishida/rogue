@@ -29,7 +29,6 @@ export class Game {
 
     // debug
     player.spawn(board);
-    player.visibility.setFullRange();
 
     const enemyCount = RandomUtil.getRandomIntInclusive(7, 12);
     EnemyGenerator.generate(enemyCount, 1, board);

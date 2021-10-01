@@ -87,6 +87,21 @@ export class Player extends Actor {
     }
   }
 
+  unequipAll(): void {
+    const sword = this.status.sward?.unequip();
+    if (sword) {
+      this.status.sward = undefined;
+    }
+    const shield = this.status.shield?.unequip();
+    if (shield) {
+      this.status.shield = undefined;
+    }
+    const bracelet = this.status.bracelet?.unequip();
+    if (bracelet) {
+      this.status.bracelet = undefined;
+    }
+  }
+
   isPlayer(): this is Player {
     return true;
   }
