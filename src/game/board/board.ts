@@ -169,7 +169,9 @@ export class Board implements IBoard {
   visit(x: number, y: number, w: number, h: number): void {
     for (let i = x; i < x + w; i++) {
       for (let j = y; j < y + h; j++) {
-        this.baseLayer.putAt(Tile.VISITED, i, j);
+        if (this.isRoom(i, j) || this.isCorridor(i, j)) {
+          this.baseLayer.putAt(Tile.VISITED, i, j);
+        }
       }
     }
   }
