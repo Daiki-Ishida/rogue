@@ -4,9 +4,12 @@ import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { Exit } from 'game/dungeon/exit';
 import { Room } from 'game/dungeon/room';
+import { RandomUtil } from 'game/util';
+import { Camera } from 'game/view';
+import p5 from 'p5';
 import { Item } from '../item';
 import { Trap } from '../trap';
-import { Conditions } from './condition';
+import { Conditions, ConditionType } from './condition';
 import { Direction, DirectionKey } from './direction';
 import { Enemy } from './enemy';
 import { Player } from './player';
@@ -38,6 +41,7 @@ interface IActor {
   isPlayer(): this is Player;
   isEnemy(): this is Enemy;
   spawn(board: Board): void;
+  draw(p: p5, camera: Camera): void;
 }
 
 export abstract class Actor implements IActor {
@@ -155,11 +159,44 @@ export abstract class Actor implements IActor {
     return undefined;
   }
 
+  turnRandmoly(): void {
+    const random = RandomUtil.getRandomIntInclusive(0, 3);
+    let d: DirectionKey = 'DOWN';
+    switch (random) {
+      case 0:
+        d = 'DOWN';
+        break;
+      case 1:
+        d = 'LEFT';
+        break;
+      case 2:
+        d = 'RIGHT';
+        break;
+      case 3:
+        d = 'UP';
+        break;
+    }
+    this.turnTo(d);
+  }
+
+  isCondition(condition: ConditionType): boolean {
+    return this.conditions.isInclude(condition);
+  }
+
   isPlayer(): this is Player {
     return false;
   }
 
   isEnemy(): this is Enemy {
     return false;
+  }
+
+  draw(p: p5, camera: Camera): void {
+    if (this.isCondition('ASLEEP') || this.isCondition('PARALYZED')) {
+      this.symbol.pause();
+    }
+
+    this.symbol.draw(p, camera);
+    this.conditions.draw(this.x, this.y, p, camera);
   }
 }

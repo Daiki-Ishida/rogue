@@ -1,9 +1,9 @@
 import { Board } from 'game/board';
 import { Room } from 'game/dungeon/room';
-import { ItemSymbol } from 'game/models/item/symbol';
-import { TrapSymbol } from 'game/models/trap';
+import { Game } from 'game/game';
+import { Item } from 'game/models/item';
+import { Trap } from 'game/models/trap';
 import { Actor } from '../actor';
-import { ActorSymbol } from '../symbol';
 import {
   ActorRangeVisibility,
   FullRangeVisibility,
@@ -13,9 +13,9 @@ import {
 } from './range';
 
 interface Symbols {
-  traps: TrapSymbol[];
-  items: ItemSymbol[];
-  actors: ActorSymbol[];
+  traps: Trap[];
+  items: Item[];
+  actors: Actor[];
 }
 
 export class Visibility {
@@ -55,35 +55,47 @@ export class Visibility {
   }
 
   listSymbolsInRange(board: Board): Symbols {
-    const traps: TrapSymbol[] = [];
-    const items: ItemSymbol[] = [];
-    const actors: ActorSymbol[] = [];
+    const traps: Trap[] = [];
+    const items: Item[] = [];
+    const actors: Actor[] = [];
 
-    const inRange = (x: number, y: number) => {
-      return (
-        x >= this.x && x < this.x + this.w && y >= this.y && y < this.y + this.h
-      );
-    };
+    for (let i = this.x; i < this.x + this.w; i++) {
+      for (let j = this.y; j < this.y + this.h; j++) {
+        const actor = board.findActor(i, j);
+        const item = board.findItem(i, j);
+        const trap = board.findTrap(i, j);
 
-    for (const trap of board.traps) {
-      const symbol = trap.symbol;
-      if (!inRange(symbol.x, symbol.y)) continue;
-
-      traps.push(symbol);
+        if (actor) actors.push(actor);
+        if (item) items.push(item);
+        if (trap) traps.push(trap);
+      }
     }
 
-    for (const item of board.items) {
-      const symbol = item.symbol;
-      if (!inRange(symbol.x, symbol.y)) continue;
+    // const inRange = (x: number, y: number) => {
+    //   return (
+    //     x >= this.x && x < this.x + this.w && y >= this.y && y < this.y + this.h
+    //   );
+    // };
 
-      items.push(symbol);
-    }
-    for (const actor of board.actors) {
-      const symbol = actor.symbol;
-      if (!inRange(symbol.x, symbol.y)) continue;
+    // for (const trap of board.traps) {
+    //   const symbol = trap.symbol;
+    //   if (!inRange(symbol.x, symbol.y)) continue;
 
-      actors.push(symbol);
-    }
+    //   traps.push(trap);
+    // }
+
+    // for (const item of board.items) {
+    //   const symbol = item.symbol;
+    //   if (!inRange(symbol.x, symbol.y)) continue;
+
+    //   items.push(item);
+    // }
+    // for (const actor of board.actors) {
+    //   const symbol = actor.symbol;
+    //   if (!inRange(symbol.x, symbol.y)) continue;
+
+    //   actors.push(actor);
+    // }
 
     return {
       traps: traps,

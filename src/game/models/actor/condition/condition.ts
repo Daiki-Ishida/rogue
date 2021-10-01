@@ -1,5 +1,6 @@
 import { imageStore } from 'game';
-import { Image } from 'p5';
+import { Camera } from 'game/view';
+import p5, { Image } from 'p5';
 
 export class Condition {
   value: ConditionType;
@@ -74,11 +75,11 @@ export class Condition {
     this.count = this.duration;
   }
 
-  // draw(x: number, y: number, p: p5, camera: Camera): void {
-  //   if (this.icon === undefined) return;
+  draw(x: number, y: number, p: p5, camera: Camera): void {
+    if (this.icon === undefined) return;
 
-  //   p.image(this.icon, x, y, camera.zoom * 0.5, camera.zoom * 0.5);
-  // }
+    p.image(this.icon, x, y, camera.zoom * 0.5, camera.zoom * 0.5);
+  }
 }
 
 export type ConditionType =

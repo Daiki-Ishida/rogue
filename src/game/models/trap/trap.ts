@@ -1,4 +1,6 @@
 import { Board } from 'game/board';
+import { Camera } from 'game/view';
+import p5 from 'p5';
 import { Actor } from '../actor';
 import { trapEffects } from './trapEffects';
 import { TrapStatus } from './trapStatus';
@@ -54,7 +56,9 @@ export class Trap {
     if (actor === undefined) return;
 
     this.effect(actor, board);
+  }
 
-    board.clearTrap(this);
+  draw(p: p5, camera: Camera): void {
+    this.symbol.draw(p, camera);
   }
 }

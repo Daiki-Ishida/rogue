@@ -3,12 +3,11 @@ import { Camera } from './camera';
 import { animationManager, overlay, windowManager } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
-import { Player } from 'game/models/actor';
-import { TrapSymbol } from 'game/models/trap';
-import { ItemSymbol } from 'game/models/item/symbol';
-import { ActorSymbol } from 'game/models/actor/symbol';
+import { Actor, Player } from 'game/models/actor';
+import { Trap } from 'game/models/trap';
 import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
+import { Item } from 'game/models/item';
 
 const ZOOM = 30;
 
@@ -64,19 +63,19 @@ export class Drawer {
     this.drawActors(actors, p);
   }
 
-  private drawTraps(traps: TrapSymbol[], p: p5): void {
+  private drawTraps(traps: Trap[], p: p5): void {
     for (const trap of traps) {
       trap.draw(p, this.camera);
     }
   }
 
-  private drawItems(items: ItemSymbol[], p: p5): void {
+  private drawItems(items: Item[], p: p5): void {
     for (const item of items) {
       item.draw(p, this.camera);
     }
   }
 
-  private drawActors(actors: ActorSymbol[], p: p5): void {
+  private drawActors(actors: Actor[], p: p5): void {
     for (const actor of actors) {
       actor.draw(p, this.camera);
     }

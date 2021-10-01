@@ -17,7 +17,19 @@ export class Commands {
   }
 
   exec(board: Board): void {
-    this.commands.forEach((c) => c.exec(board));
+    this.commands.forEach((command) => {
+      const actor = command.actor;
+      if (actor.isCondition('ASLEEP') || actor.isCondition('PARALYZED')) {
+        command.done = true;
+        return;
+      }
+
+      if (actor.isCondition('CONFUSED')) {
+        actor.turnRandmoly();
+      }
+
+      command.exec(board);
+    });
     this.refresh();
   }
 

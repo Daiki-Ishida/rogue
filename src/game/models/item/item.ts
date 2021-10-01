@@ -9,6 +9,8 @@ import { GridUtil } from 'game/util';
 import { Game } from 'game/game';
 import { ThrownItemAnimation } from 'game/animation';
 import { animationManager, game } from 'game';
+import p5 from 'p5';
+import { Camera } from 'game/view';
 
 export interface IItem {
   x: number;
@@ -23,6 +25,7 @@ export interface IItem {
   isUsable(): this is Usable;
   isEquipment(): this is Equipment;
   isGold(): this is Gold;
+  draw(p: p5, camera: Camera): void;
 }
 
 export abstract class Item implements IItem {
@@ -176,5 +179,9 @@ export abstract class Item implements IItem {
 
   isGold(): this is Gold {
     return false;
+  }
+
+  draw(p: p5, camera: Camera): void {
+    this.symbol.draw(p, camera);
   }
 }

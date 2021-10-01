@@ -1,4 +1,8 @@
+import { Camera } from 'game/view';
+import p5 from 'p5';
 import { Condition, ConditionType } from './condition';
+
+let IDX = 0;
 
 export class Conditions {
   conditions: Condition[];
@@ -12,7 +16,11 @@ export class Conditions {
   }
 
   push(condition: Condition): void {
-    // todo 重複判定等
+    // 重複しない
+    if (this.isInclude(condition.value)) {
+      return;
+    }
+
     this.conditions.push(condition);
   }
 
@@ -34,19 +42,21 @@ export class Conditions {
     );
   }
 
-  // draw(x: number, y: number, p: p5, camera: Camera): void {
-  //   if (this.conditions.length === 0) return;
+  draw(_x: number, _y: number, p: p5, camera: Camera): void {
+    if (this.conditions.length === 0) return;
 
-  //   if (p.frameCount % 60 === 0) {
-  //     idx++;
-  //   }
+    if (p.frameCount % 60 === 0) {
+      IDX++;
+    }
 
-  //   if (idx >= this.conditions.length) {
-  //     idx = 0;
-  //   }
+    if (IDX >= this.conditions.length) {
+      IDX = 0;
+    }
 
-  //   const cond = this.conditions[idx];
-  //   const dy = p.sin(p.frameCount / 10) * 5;
-  //   cond.draw(x, y + dy, p, camera);
-  // }
+    const { x, y } = camera.adjust(_x, _y - 1);
+
+    const cond = this.conditions[IDX];
+    const dy = p.sin(p.frameCount / 10) * 5;
+    cond.draw(x, y + dy, p, camera);
+  }
 }

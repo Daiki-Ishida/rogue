@@ -29,7 +29,7 @@ export class PlayerEndPhase extends PhaseBase {
     player.conditions.refresh();
 
     // 毒ダメージ
-    if (player.conditions.isInclude('POISONED')) {
+    if (player.isCondition('POISONED')) {
       player.damage(2);
     }
 
