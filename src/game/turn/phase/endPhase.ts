@@ -8,9 +8,9 @@ export class EndPhase extends PhaseBase {
   }
 
   proc(game: Game): void {
-    // game.turn.count++;
     // todo
-    // ゲームクリア、プレイヤーの死亡とかのチェック
+    // ゲームクリア、ゲームオーバーとかのチェック
+    game.turn.count++;
     this.completed = true;
   }
 }

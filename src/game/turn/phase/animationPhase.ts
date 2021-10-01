@@ -1,15 +1,18 @@
 import { animationManager } from 'game';
-import { Game } from 'game/game';
-import { EndPhase } from './endPhase';
+import { CleanUpPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 
-export class EnemysActionPhase extends PhaseBase {
+export class AnimationPhase extends PhaseBase {
   get nextPhase(): Phase {
-    return new EndPhase();
+    return new CleanUpPhase();
   }
 
-  proc(game: Game): void {
-    game.commands.exec(game.board);
+  proc(): void {
+    animationManager.execWalk();
+    if (!animationManager.isWalkDone) {
+      return;
+    }
+
     animationManager.exec();
     if (animationManager.isAllDone) {
       this.completed = true;

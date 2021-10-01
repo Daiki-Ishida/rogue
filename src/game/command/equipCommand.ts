@@ -13,5 +13,6 @@ export class EquipCommand implements Command {
     this.item.status.equiped
       ? this.actor.unequip(this.item)
       : this.actor.equip(this.item);
+    this.done = true;
   }
 }

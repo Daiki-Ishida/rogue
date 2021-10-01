@@ -1,10 +1,11 @@
+import { animationManager } from 'game';
 import { Game } from 'game/game';
-import { EnemysMovePhase } from './enemysMovePhase';
+import { AnimationPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 
-export class EnemysDecesionPhase extends PhaseBase {
+export class EnemyActionPhase extends PhaseBase {
   get nextPhase(): Phase {
-    return new EnemysMovePhase();
+    return new AnimationPhase();
   }
 
   proc(game: Game): void {
@@ -12,6 +13,7 @@ export class EnemysDecesionPhase extends PhaseBase {
       if (actor.isEnemy()) actor.act();
     }
 
+    game.commands.exec(game.board);
     this.completed = true;
   }
 }

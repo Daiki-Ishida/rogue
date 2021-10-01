@@ -161,6 +161,19 @@ export class Board implements IBoard {
     return tile === Tile.CORRIDOR;
   }
 
+  isExit(x: number, y: number): boolean {
+    const exit = this.getExit();
+    return x === exit.x && y === exit.y;
+  }
+
+  visit(x: number, y: number, w: number, h: number): void {
+    for (let i = x; i < x + w; i++) {
+      for (let j = y; j < y + h; j++) {
+        this.baseLayer.putAt(Tile.VISITED, i, j);
+      }
+    }
+  }
+
   draw(p: p5, camera: Camera): void {
     this.drawBoardBase(p, camera);
     this.drawDungeon(p, camera);

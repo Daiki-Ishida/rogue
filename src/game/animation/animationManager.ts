@@ -1,4 +1,5 @@
 import p5 from 'p5';
+import { WalkAnimation } from '.';
 import { Camera } from '../view';
 import { Animation } from './animation';
 
@@ -15,8 +16,43 @@ export class AnimationManager {
     return this.animations.length === 0;
   }
 
+  get isWalkDone(): boolean {
+    return (
+      this.animations.filter((animation) => animation instanceof WalkAnimation)
+        .length === 0
+    );
+  }
+
+  get isActionDone(): boolean {
+    return (
+      this.animations.filter(
+        (animation) => !(animation instanceof WalkAnimation)
+      ).length === 0
+    );
+  }
+
   exec(): void {
     this.animations.forEach((a) => a.exec());
+    this.refresh();
+  }
+
+  /**
+   * 移動コマンドだけ処理
+   */
+  execWalk(): void {
+    this.animations
+      .filter((animation) => animation instanceof WalkAnimation)
+      .forEach((walk) => walk.exec());
+    this.refresh();
+  }
+
+  /**
+   * 移動以外のアクションだけ処理
+   */
+  execAction(): void {
+    this.animations
+      .filter((animation) => !(animation instanceof WalkAnimation))
+      .forEach((action) => action.exec());
     this.refresh();
   }
 
