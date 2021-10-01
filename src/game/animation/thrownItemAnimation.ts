@@ -1,18 +1,44 @@
-import { Item } from 'game/models/item';
+import p5 from 'p5';
 import { Animation } from '.';
-import { Camera } from '../view';
+import { Item } from 'game/models/item';
+import { Player } from 'game/models/actor';
+import { Camera } from 'game/view';
 
 export class ThrownItemAnimation implements Animation {
-  constructor(
+  private constructor(
+    readonly thrower: Player,
     readonly item: Item,
+    readonly to: { x: number; y: number },
     public frame: number,
-    readonly done: boolean
+    public done: boolean
   ) {}
-  draw(p: import('p5'), camera: Camera): void {
-    throw new Error('Method not implemented.');
+
+  static generate(
+    thrower: Player,
+    item: Item,
+    to: { x: number; y: number }
+  ): ThrownItemAnimation {
+    return new ThrownItemAnimation(thrower, item, to, 0, false);
+  }
+
+  draw(p: p5, camera: Camera): void {
+    this.item.symbol.draw(p, camera);
   }
 
   exec(): void {
-    return;
+    const next = this.thrower.d.next;
+    const from = { x: this.thrower.x, y: this.thrower.y };
+
+    const x = Math.floor((from.x + next.x * this.frame) * 100) / 100;
+    const y = Math.floor((from.y + next.y * this.frame) * 100) / 100;
+    this.item.symbol.x = x;
+    this.item.symbol.y = y;
+    this.frame++;
+
+    if (x === this.to.x && y === this.to.y) {
+      this.done = true;
+      this.item.symbol.x = this.item.x;
+      this.item.symbol.y = this.item.y;
+    }
   }
 }

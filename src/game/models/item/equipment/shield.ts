@@ -48,8 +48,10 @@ export class Shield extends Equipment {
     this.effects = this.effects.concat(shield.effects);
   }
 
-  onHit(user: Player, target: Actor, board: Board): void {
-    throw new Error('Method not implemented.');
+  onHit(user: Player, target: Actor): void {
+    const dmg = Math.floor(this.def / 2);
+    target.damage(dmg);
+    console.log(`${target.status.name}に${dmg}ダメージを与えた。`);
   }
 
   isShield(): this is Shield {

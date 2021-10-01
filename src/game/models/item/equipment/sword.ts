@@ -48,8 +48,10 @@ export class Sword extends Equipment {
     this.effects = this.effects.concat(sward.effects);
   }
 
-  onHit(user: Player, target: Actor, board: Board): void {
-    throw new Error('Method not implemented.');
+  onHit(user: Player, target: Actor): void {
+    const dmg = this.atk;
+    target.damage(dmg);
+    console.log(`${target.status.name}に${dmg}ダメージを与えた。`);
   }
 
   isSword(): this is Sword {

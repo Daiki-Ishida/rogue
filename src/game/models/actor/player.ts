@@ -46,6 +46,9 @@ export class Player extends Actor {
   }
 
   throw(item: Item, board: Board): void {
+    if (item.isEquipment()) {
+      this.unequip(item);
+    }
     item.throw(this, board);
   }
 

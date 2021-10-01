@@ -11,7 +11,7 @@ export class ThrowCommand implements Command {
   ) {}
 
   exec(board: Board): void {
-    this.item.throw(this.actor, board);
+    this.actor.throw(this.item, board);
     this.done = true;
   }
 }
