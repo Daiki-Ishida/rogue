@@ -14,7 +14,7 @@ export class Dungeon {
     private area: Area,
     public rooms: Room[],
     readonly exit: Exit,
-    readonly corridors: Corridor[],
+    public corridors: Corridor[],
     public level: number
   ) {}
 
@@ -35,6 +35,7 @@ export class Dungeon {
   private reset(): void {
     this.area = Area.init(this.w, this.h);
     this.rooms = [];
+    this.corridors = [];
   }
 
   next(): void {
