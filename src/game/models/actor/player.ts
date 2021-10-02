@@ -53,7 +53,6 @@ export class Player extends Actor {
 
   private isLevelUp(): boolean {
     const level = playerDataStore.findLevelByExp(this.status.exp);
-    console.log(this.status.exp);
     return this.status.level < level;
   }
 

@@ -35,6 +35,15 @@ export class BounceIndicator {
     return new BounceIndicator(value, x, y, y, color, 0, false);
   }
 
+  static ofMissHit(target: Actor): BounceIndicator {
+    const value = `MISS`;
+    const x = target.symbol.x;
+    const y = target.symbol.y - 0.5;
+    const color = '#F22C5A';
+
+    return new BounceIndicator(value, x - 0.5, y, y, color, 0, false);
+  }
+
   proc(): void {
     const progress = this.frame / F;
     const easing =

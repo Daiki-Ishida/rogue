@@ -36,19 +36,10 @@ export class MagicBulletAnimation implements Animation {
       dy: next.y * SPEED,
     };
 
-    // this.current.x = Math.floor((this.current.x + factor.dx) * 100) / 100;
-    // this.current.y = Math.floor((this.current.y + factor.dy) * 100) / 100;
     this.current.x += factor.dx;
     this.current.y += factor.dy;
 
     this.frame++;
-
-    console.log('user');
-    console.log(this.actor.x, this.actor.y);
-    console.log('hit at');
-    console.log(this.to.x, this.to.y);
-    console.log('current');
-    console.log(this.current.x, this.current.y);
 
     if (this.current.x === this.to.x && this.current.y === this.to.y) {
       this.done = true;

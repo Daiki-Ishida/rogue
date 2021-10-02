@@ -1,6 +1,7 @@
-import { playlogManager } from 'game';
+import { indicatorManager, playlogManager } from 'game';
 import { Actor } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
+import { BounceIndicator } from 'game/view/indicator';
 
 export class Battle {
   constructor(readonly attacker: Actor, readonly defender: Actor) {}
@@ -28,7 +29,9 @@ export class Battle {
   exec(): void {
     // 攻撃失敗
     if (!this.isHit) {
-      console.log(this.messageOnMissed());
+      const missed = BounceIndicator.ofMissHit(this.defender);
+      indicatorManager.bounceIndicators.push(missed);
+      return;
     }
 
     // ダメージ処理
@@ -43,10 +46,6 @@ export class Battle {
 
       playlogManager.add(this.messageOnDefeated());
     }
-  }
-
-  private messageOnMissed(): string {
-    return `${this.attacker.status.name}の攻撃は外れた！`;
   }
 
   private messageOnDefeated(): string {
