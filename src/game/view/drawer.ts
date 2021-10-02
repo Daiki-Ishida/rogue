@@ -58,6 +58,8 @@ export class Drawer {
     const { traps, items, actors } =
       player.visibility.listSymbolsInRange(board);
 
+    actors.sort((a, b) => a.y - b.y);
+
     this.drawTraps(traps, p);
     this.drawItems(items, p);
     this.drawActors(actors, p);

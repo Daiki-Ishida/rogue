@@ -197,6 +197,6 @@ export abstract class Actor implements IActor {
     }
 
     this.symbol.draw(p, camera);
-    this.conditions.draw(this.x, this.y, p, camera);
+    this.conditions.draw(this.symbol.x, this.symbol.y, p, camera);
   }
 }
