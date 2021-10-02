@@ -1,6 +1,12 @@
 import p5 from 'p5';
 import { Camera } from './camera';
-import { animationManager, overlay, playlogManager, windowManager } from 'game';
+import {
+  animationManager,
+  indicatorManager,
+  overlay,
+  playlogManager,
+  windowManager,
+} from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
@@ -9,7 +15,7 @@ import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
 import { Item } from 'game/models/item';
 
-const ZOOM = 30;
+const ZOOM = 60;
 
 export class Drawer {
   constructor(readonly camera: Camera) {}
@@ -154,6 +160,8 @@ export class Drawer {
     p.rect(rx + 450, ry, fullness, h);
 
     p.pop();
+
+    indicatorManager.draw(p, this.camera);
   }
 
   private drawWindow(p: p5): void {

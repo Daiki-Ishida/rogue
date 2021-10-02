@@ -1,4 +1,4 @@
-import { animationManager, imageStore } from 'game';
+import { animationManager, imageStore, playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/models/actor';
 import { GridUtil } from 'game/util';
@@ -61,6 +61,8 @@ export class Staff extends Usable {
     if (target) {
       this.effect(user, target, board);
     }
+
+    playlogManager.add(`${this.status.displayName}を使った`);
   }
 
   private pinning(user: Player, board: Board): void {
@@ -82,6 +84,8 @@ export class Staff extends Usable {
     const x = current.x - d.x;
     const y = current.y - d.y;
     user.setAt(x, y);
+
+    playlogManager.add(`${this.status.displayName}を使った`);
   }
 
   onHit(user: Player, target: Actor, board: Board): void {

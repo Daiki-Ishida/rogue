@@ -1,4 +1,4 @@
-import { imageStore } from 'game';
+import { imageStore, playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { HerbStatus } from '../status';
@@ -34,6 +34,8 @@ export class Herb extends Usable {
     user.removeHunger(5);
     this.effect.onUse(user, board);
     this.status.used = true;
+
+    playlogManager.add(`${this.status.displayName}を使った`);
   }
 
   onHit(user: Player, target: Actor, board: Board): void {

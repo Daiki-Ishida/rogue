@@ -1,4 +1,4 @@
-import { imageStore } from 'game';
+import { imageStore, playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
@@ -35,6 +35,8 @@ export class Food extends Usable {
     user.removeHunger(this.status.value);
     this.effect(user, board);
     this.status.used = true;
+
+    playlogManager.add(`${this.status.displayName}を食べた`);
   }
 
   onHit(user: Player, target: Actor): void {

@@ -1,3 +1,4 @@
+import { playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/models/actor';
 import { TrapGenerator } from 'game/models/generator';
@@ -62,7 +63,7 @@ const ScrollEffects = (): IStaffEffects => {
     for (const trap of traps) {
       board.traps.push(trap);
     }
-    console.log('このフロアの罠が増えてしまったようだ・・・');
+    playlogManager.add('このフロアの罠が増えてしまったようだ・・・');
   };
 
   const fate = (user: Player): void => {

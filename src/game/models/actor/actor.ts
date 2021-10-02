@@ -1,4 +1,4 @@
-import { animationManager } from 'game';
+import { animationManager, indicatorManager } from 'game';
 import { AttackAnimation, WalkAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
@@ -6,6 +6,7 @@ import { Exit } from 'game/dungeon/exit';
 import { Room } from 'game/dungeon/room';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
+import { BounceIndicator } from 'game/view/indicator';
 import p5 from 'p5';
 import { Item } from '../item';
 import { Trap } from '../trap';
@@ -87,12 +88,23 @@ export abstract class Actor implements IActor {
   damage(value: number): void {
     if (value < 0) return;
     this.status.dmg += value;
+
+    const indicator = BounceIndicator.ofDamage(value, this);
+    indicatorManager.bounceIndicators.push(indicator);
   }
 
   heal(value: number): void {
+    if (this.status.dmg === 0) return;
+
+    let healValue;
+
     this.status.dmg < value
-      ? (this.status.dmg = 0)
-      : (this.status.dmg -= value);
+      ? (healValue = this.status.dmg)
+      : (healValue = value);
+
+    this.status.dmg -= healValue;
+    const indicator = BounceIndicator.ofHealing(healValue, this);
+    indicatorManager.bounceIndicators.push(indicator);
   }
 
   move(board: Board): void {

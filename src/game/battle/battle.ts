@@ -33,7 +33,6 @@ export class Battle {
     // ダメージ処理
     const dmg = this.damage;
     this.defender.damage(dmg);
-    console.log(this.messageOnHit(dmg));
     if (!this.defender.isDead) return;
 
     // 経験値獲得
