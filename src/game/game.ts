@@ -45,7 +45,7 @@ export class Game {
     this.player.spawn(board);
 
     const enemyCount = RandomUtil.getRandomIntInclusive(7, 12);
-    EnemyGenerator.generate(enemyCount, board.dungeon.level, board);
+    EnemyGenerator.generate(enemyCount, board);
 
     const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
     ItemGenerator.generate(itemCount, board);

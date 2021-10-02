@@ -28,15 +28,22 @@ export class PlayerEndPhase extends PhaseBase {
     player.conditions.conditions.forEach((cond) => cond.count++);
     player.conditions.refresh();
 
+    // 腕輪効果発動
+    player.status.bracelet?.effect(player, board);
+
     // 毒ダメージ
     if (player.isCondition('POISONED')) {
       player.damage(2);
     }
 
-    const room = board.findRoom(player.x, player.y);
-    room
-      ? player.visibility.setRoomRange(room)
-      : player.visibility.setActorRange(player);
+    if (player.isCondition('CLEAR_SIGHTED')) {
+      player.visibility.setFullRange();
+    } else {
+      const room = board.findRoom(player.x, player.y);
+      room
+        ? player.visibility.setRoomRange(room)
+        : player.visibility.setActorRange(player);
+    }
 
     board.visit(
       player.visibility.x,
@@ -46,9 +53,16 @@ export class PlayerEndPhase extends PhaseBase {
     );
 
     const trap = board.findTrap(player.x, player.y);
-    trap?.activate(board);
+    if (trap) {
+      player.isCondition('TRAP_MASTER')
+        ? trap.disclose()
+        : trap.activate(board);
+    }
 
     const item = board.findItem(player.x, player.y);
+    if (player.isCondition('AUTO_IDENTIFY')) {
+      item?.identify();
+    }
     item?.pickup(game);
 
     // 死んだらゲームオーバー(現時点では判定だけ)

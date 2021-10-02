@@ -1,5 +1,7 @@
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/models/actor';
+import { EnemyGenerator, TrapGenerator } from 'game/models/generator';
+import { RandomUtil } from 'game/util';
 
 interface IBraceletEffects {
   [key: string]: (player: Player, board: Board) => void;
@@ -59,11 +61,17 @@ const BraceletEffects = (): IBraceletEffects => {
   };
 
   const trap = (player: Player, board: Board): void => {
-    console.log('TODO');
+    const random = RandomUtil.getRandomIntInclusive(0, 2);
+    if (random === 0) {
+      TrapGenerator.generate(1, board);
+    }
   };
 
   const monsterSummoner = (player: Player, board: Board): void => {
-    console.log('TODO');
+    const random = RandomUtil.getRandomIntInclusive(0, 2);
+    if (random === 0) {
+      EnemyGenerator.generate(1, board);
+    }
   };
 
   return {

@@ -1,3 +1,4 @@
+import { playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Actor, Condition, Player } from 'game/models/actor';
 import { GridUtil, RandomUtil } from 'game/util';
@@ -115,20 +116,25 @@ const HerbEffects = (): IHerbEffects => {
     onHit: baseOnHit,
     onUse: (user: Player, board: Board) => {
       board.traps.forEach((trap) => trap.disclose());
+      playlogManager.add('このフロアのワナがみえるようになった！');
     },
   };
 
   const stomachExpander = {
     onHit: baseOnHit,
     onUse: (user: Player) => {
-      user.status.maxFullness += 10;
+      const VALUE = 10;
+      user.status.maxFullness += VALUE;
+      playlogManager.add(`最大満腹度が${VALUE}増えた`);
     },
   };
 
   const stomachShrinker = {
     onHit: baseOnHit,
     onUse: (user: Player) => {
-      user.status.maxFullness -= 10;
+      const VALUE = 10;
+      user.status.maxFullness -= VALUE;
+      playlogManager.add(`最大満腹度が${VALUE}減少した`);
     },
   };
 

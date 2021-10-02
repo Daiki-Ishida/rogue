@@ -30,6 +30,7 @@ export class PlayerStatus extends ActorStatus {
       str: 5,
       vit: 1,
     };
+
     return new PlayerStatus(
       name,
       initialStatus.hp,

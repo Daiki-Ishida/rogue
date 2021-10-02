@@ -78,7 +78,7 @@ const TrapEffects = (): ITrapEffects => {
     }
 
     const count = emptyGrids.filter((g) => g === true).length;
-    const enemys = EnemyGenerator.generate(count, 1, board);
+    const enemys = EnemyGenerator.generate(count, board);
     let c = 0;
     for (let i = 0; i < emptyGrids.length - 1; i++) {
       if (emptyGrids[i]) {

@@ -10,8 +10,16 @@ export class Battle {
    * ダメージ計算
    */
   get damage(): number {
-    const atkValue = this.attacker.status.atk;
-    const defValue = this.defender.status.def;
+    let atkValue = this.attacker.status.atk;
+    let defValue = this.defender.status.def;
+
+    if (this.attacker.isCondition('STRENGTHEN')) {
+      atkValue *= 1.5;
+    }
+    if (this.defender.isCondition('PROTECTION')) {
+      defValue *= 1.5;
+    }
+
     return Math.floor(atkValue * (15 / 16) ** defValue);
   }
 
