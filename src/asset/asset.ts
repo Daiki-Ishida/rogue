@@ -43,6 +43,9 @@ import ICONS_2 from 'asset/image/icons/icon02.png';
 import ICONS_3 from 'asset/image/icons/icon03.png';
 import SLASH from 'asset/image/effects/slash.png';
 import FANG from 'asset/image/effects/fang.png';
+import BITE from 'asset/image/effects/bite.png';
+import STAMP from 'asset/image/effects/stamp.png';
+import PANCH from 'asset/image/effects/panch.png';
 import PIERCE from 'asset/image/effects/pierce.png';
 import SPELL from 'asset/image/effects/magic_circle.png';
 import FIRE from 'asset/image/effects/fire.png';
@@ -99,9 +102,12 @@ interface ImageFiles {
   icons01: Image;
   icons02: Image;
   icons03: Image;
-  attack01: Image;
-  attack02: Image;
-  attack03: Image;
+  slash: Image;
+  fang: Image;
+  bite: Image;
+  stamp: Image;
+  panch: Image;
+  pierce: Image;
   spelling: Image;
   fire: Image;
   magicBall: Image;
@@ -191,6 +197,9 @@ export class Asset {
 
     const slash = p.loadImage(SLASH);
     const fang = p.loadImage(FANG);
+    const bite = p.loadImage(BITE);
+    const stamp = p.loadImage(STAMP);
+    const panch = p.loadImage(PANCH);
     const pierce = p.loadImage(PIERCE);
     const spell = p.loadImage(SPELL);
     const fire = p.loadImage(FIRE);
@@ -238,9 +247,12 @@ export class Asset {
       icons01: icons1,
       icons02: icons2,
       icons03: icons3,
-      attack01: slash,
-      attack02: fang,
-      attack03: pierce,
+      slash: slash,
+      fang: fang,
+      bite: bite,
+      stamp: stamp,
+      panch: panch,
+      pierce: pierce,
       spelling: spell,
       fire: fire,
       magicBall: magicBall,
