@@ -16,7 +16,6 @@ const ScrollEffects = (): IStaffEffects => {
       if (target) {
         const dmg = RandomUtil.getRandomIntInclusive(25, 50);
         target.damage(dmg);
-        console.log(`${target.status.name}に${dmg}ダメージを与えた！`);
       }
     }
   };
@@ -151,5 +150,5 @@ const effectRange = (
       range.push({ x: grid[0], y: grid[1] });
     }
   }
-  return range.filter((r) => r.x === user.x && r.y === user.y);
+  return range.filter((r) => !(r.x === user.x && r.y === user.y));
 };

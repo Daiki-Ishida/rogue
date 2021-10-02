@@ -38,8 +38,7 @@ export class Enemy extends Actor implements IEnemy {
     const status = EnemyStatus.init(id);
     const arts = specialArts[id];
 
-    const enemy = new Enemy(symbol, status, arts, basicStrategy, 0, 0);
-
+    const enemy = new Enemy(symbol, status, arts, basicStrategy);
     enemy.spawn(board);
     return enemy;
   }
