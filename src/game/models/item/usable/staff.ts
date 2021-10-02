@@ -1,4 +1,4 @@
-import { imageStore } from 'game';
+import { animationManager, imageStore } from 'game';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/models/actor';
 import { GridUtil } from 'game/util';
@@ -6,6 +6,7 @@ import { StaffStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { staffEffects } from '../effects';
 import { Usable } from './usable';
+import { MagicBulletAnimation } from 'game/animation';
 
 export class Staff extends Usable {
   private constructor(
@@ -42,8 +43,10 @@ export class Staff extends Usable {
       return;
     }
 
-    const grids = GridUtil.rayToGrids(user.x, user.y, user.next.x, user.next.y);
+    const d = user.d.next;
+    const grids = GridUtil.rayToGrids(user.x, user.y, d.x, d.y);
     let current: { x: number; y: number } = { x: user.x, y: user.y };
+
     let target: Actor | undefined = undefined;
     for (const grid of grids) {
       current = { x: grid[0], y: grid[1] };
@@ -52,9 +55,8 @@ export class Staff extends Usable {
 
       if (target || blocked) break;
     }
-
-    // TODO: animation
-    // const animation = ...
+    const animation = MagicBulletAnimation.generate(user, current);
+    animationManager.push(animation);
 
     if (target) {
       this.effect(user, target, board);
@@ -62,7 +64,8 @@ export class Staff extends Usable {
   }
 
   private pinning(user: Player, board: Board): void {
-    const grids = GridUtil.rayToGrids(user.x, user.y, user.next.x, user.next.y);
+    const d = user.d.next;
+    const grids = GridUtil.rayToGrids(user.x, user.y, d.x, d.y);
     let current: { x: number; y: number } = { x: user.x, y: user.y };
     let target: Actor | undefined = undefined;
     for (const grid of grids) {
@@ -73,8 +76,11 @@ export class Staff extends Usable {
       if (target || blocked) break;
     }
 
-    const x = current.x - user.next.x;
-    const y = current.y - user.next.y;
+    const animation = MagicBulletAnimation.generate(user, current);
+    animationManager.push(animation);
+
+    const x = current.x - d.x;
+    const y = current.y - d.y;
     user.setAt(x, y);
   }
 

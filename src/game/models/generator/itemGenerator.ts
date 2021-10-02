@@ -39,7 +39,7 @@ export class ItemGenerator {
         item = BraceletGenerator.generate(board);
         break;
       default:
-        item = SwordGenerator.generate(board);
+        item = StaffGenerator.generate(board);
       // throw new Error(`Invalid Category: ${category}`);
     }
 
