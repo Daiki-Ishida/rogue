@@ -1,4 +1,4 @@
-import { imageStore } from 'game';
+import { animationManager, imageStore } from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
@@ -6,6 +6,7 @@ import { ScrollStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { scrollEffects } from '../effects';
 import { Usable } from './usable';
+import { SpellAnimation } from 'game/animation';
 
 export class Scroll extends Usable {
   private constructor(
@@ -32,6 +33,10 @@ export class Scroll extends Usable {
 
   use(user: Player, board: Board): void {
     this.identify();
+
+    const animation = SpellAnimation.generate(user);
+    animationManager.push(animation);
+
     this.effect(user, board);
     this.status.used = true;
   }

@@ -1,18 +1,52 @@
-import { Player } from 'game/models/actor';
+import p5, { Image } from 'p5';
 import { Animation } from '.';
 import { Camera } from '../view';
+import { Player } from 'game/models/actor';
+import { imageStore } from 'game';
 
 export class SpellAnimation implements Animation {
-  constructor(
+  private constructor(
+    readonly img: Image[],
     readonly actor: Player,
+    readonly grid: { x: number; y: number },
     public frame: number,
-    readonly done: boolean
+    public done: boolean
   ) {}
-  draw(p: import('p5'), camera: Camera): void {
-    throw new Error('Method not implemented.');
+
+  static generate(player: Player): SpellAnimation {
+    const img = imageStore.effects.spelling;
+    const at = { x: player.x, y: player.y };
+    return new SpellAnimation(img, player, at, 0, false);
   }
 
   exec(): void {
-    return;
+    if (this.frame === 0) {
+      this.actor.symbol.pause();
+    }
+
+    this.actor.symbol.idx = Math.floor(this.frame / 11);
+
+    this.frame++;
+
+    if (this.frame > 30) {
+      this.actor.symbol.resume();
+      this.done = true;
+    }
+  }
+
+  draw(p: p5, camera: Camera): void {
+    const { x, y } = camera.adjust(this.grid.x, this.grid.y);
+    p.image(
+      this.currentImg(),
+      x,
+      y,
+      camera.zoom * 3.2, // 表示サイズ調整
+      camera.zoom * 1.2 // 表示サイズ調整
+    );
+  }
+
+  private currentImg(): Image {
+    const i = Math.floor(this.frame / 6) > 5 ? 5 : Math.floor(this.frame / 6);
+    return this.img[i];
   }
 }
