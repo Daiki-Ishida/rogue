@@ -1,4 +1,10 @@
-import { animationManager, imageStore, playlogManager } from 'game';
+import {
+  animationManager,
+  imageStore,
+  playlogManager,
+  soundManager,
+  soundStore,
+} from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
@@ -41,6 +47,8 @@ export class Scroll extends Usable {
     this.status.used = true;
 
     playlogManager.add(`${this.status.displayName}を読んだ`);
+
+    soundManager.register(soundStore.magic);
   }
 
   onHit(user: Player, target: Actor): void {

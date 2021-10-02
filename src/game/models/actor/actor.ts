@@ -1,4 +1,9 @@
-import { animationManager, indicatorManager } from 'game';
+import {
+  animationManager,
+  indicatorManager,
+  soundManager,
+  soundStore,
+} from 'game';
 import { AttackAnimation, WalkAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
@@ -140,6 +145,9 @@ export abstract class Actor implements IActor {
     const target = board.findActor(this.next.x, this.next.y);
     const animation = AttackAnimation.generate(this);
     animationManager.push(animation);
+
+    const sound = soundStore.attack;
+    soundManager.register(sound);
 
     if (target) {
       const battle = new Battle(this, target);

@@ -1,18 +1,22 @@
 import { Sound } from '.';
 
-class SoundManager {
-  constructor(
+export class SoundManager {
+  private constructor(
     public sounds: Sound[],
-    public muted: boolean = false,
-    public volume: number = 100
+    public muted: boolean,
+    public volume: number
   ) {}
+
+  static init(): SoundManager {
+    return new SoundManager([], false, 1);
+  }
 
   play(): void {
     this.sounds.forEach((sound) => sound.play());
     this.sounds = this.sounds.filter((sound) => !sound.done);
   }
 
-  push(sound: Sound): void {
+  register(sound: Sound): void {
     if (this.muted) {
       sound.mute();
     }
@@ -35,5 +39,3 @@ class SoundManager {
     this.sounds.forEach((sound) => sound.setVolume(volume));
   }
 }
-
-export const sounds = new SoundManager([]);

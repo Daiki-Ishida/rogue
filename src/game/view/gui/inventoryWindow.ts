@@ -2,6 +2,7 @@ import p5 from 'p5';
 import { Inventory } from 'game/inventory';
 import { Item } from 'game/models/item';
 import { Window } from './window';
+import { soundManager, soundStore } from 'game';
 
 const X = 820;
 const Y = 100;
@@ -29,18 +30,27 @@ export class InventoryWindow implements Window {
 
   open(): void {
     this.display = true;
+    this.setSound();
   }
 
   close(): void {
     this.display = false;
+    this.setSound();
   }
 
   next(): void {
     this.inventory.next();
+    this.setSound();
   }
 
   prev(): void {
     this.inventory.prev();
+    this.setSound();
+  }
+
+  private setSound(): void {
+    const sound = soundStore.select;
+    soundManager.register(sound);
   }
 
   draw(p: p5): void {

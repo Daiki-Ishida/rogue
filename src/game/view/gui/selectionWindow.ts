@@ -1,6 +1,7 @@
 import p5 from 'p5';
 import { Window } from './window';
 import { Option } from './option';
+import { soundManager, soundStore } from 'game';
 
 export interface SelectionWindow extends Window {
   readonly options: Option[];
@@ -38,17 +39,28 @@ export abstract class SelectionWindowBase implements SelectionWindow {
     if (this.options.length === 0) return;
 
     this.idx >= this.options.length - 1 ? (this.idx = 0) : this.idx++;
+
+    this.setSound();
   }
 
   prev(): void {
     if (this.options.length === 0) return;
 
     this.idx <= 0 ? (this.idx = this.options.length - 1) : this.idx--;
+
+    this.setSound();
   }
 
   select(): void {
     this.selected.onSelection();
     this.display = false;
+
+    this.setSound();
+  }
+
+  private setSound(): void {
+    const sound = soundStore.select;
+    soundManager.register(sound);
   }
 
   draw(p: p5): void {

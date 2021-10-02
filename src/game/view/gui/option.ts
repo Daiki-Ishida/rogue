@@ -1,6 +1,7 @@
 import { Game } from 'game/game';
 import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
 import { Equipment, Item, Usable } from 'game/models/item';
+import { soundManager, soundStore } from 'game';
 
 export class Option {
   constructor(readonly value: OptionValue, readonly onSelection: () => void) {}
@@ -34,6 +35,7 @@ export class Option {
   static ofExit(game: Game): Option {
     const onSelected = () => {
       game.next();
+      soundManager.register(soundStore.exit);
     };
     return new Option('すすむ', onSelected);
   }

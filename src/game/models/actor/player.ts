@@ -1,4 +1,4 @@
-import { playlogManager } from 'game';
+import { playlogManager, soundManager, soundStore } from 'game';
 import { Board } from 'game/board';
 import { playerDataStore } from 'game/store';
 import { Equipment, Item, Usable } from '../item';
@@ -44,6 +44,8 @@ export class Player extends Actor {
   }
 
   levelUp(): void {
+    const sound = soundStore.levelUp;
+    soundManager.register(sound);
     this.status.levelUp();
   }
 

@@ -1,3 +1,4 @@
+import { soundManager, soundStore } from 'game';
 import { Bracelet, Shield, Sword } from '.';
 import { Item } from '../item';
 import { EquipmentStatus } from '../status';
@@ -23,6 +24,8 @@ export abstract class Equipment extends Item {
       console.log('なんと呪われていた！');
     }
     this.status.equiped = true;
+
+    soundManager.register(soundStore.equip);
   }
 
   unequip(): boolean {
