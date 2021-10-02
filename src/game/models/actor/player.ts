@@ -1,3 +1,4 @@
+import { playlogManager } from 'game';
 import { Board } from 'game/board';
 import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
@@ -72,6 +73,16 @@ export class Player extends Actor {
       equipment.equip();
       this.status.shield = equipment;
     }
+
+    if (equipment.isBracelet()) {
+      const unequiped = this.status.bracelet?.unequip();
+      if (unequiped === false) return;
+
+      equipment.equip();
+      this.status.bracelet = equipment;
+    }
+
+    playlogManager.add(`${equipment.status.displayName}を装備した。`);
   }
 
   unequip(equipment: Equipment): void {
@@ -85,6 +96,12 @@ export class Player extends Actor {
     if (equipment.isShield()) {
       this.status.shield = undefined;
     }
+
+    if (equipment.isBracelet()) {
+      this.status.bracelet = undefined;
+    }
+
+    playlogManager.add(`${equipment.status.displayName}をはずした。`);
   }
 
   unequipAll(): void {

@@ -7,6 +7,7 @@ import { StaffGenerator } from './staffGenerator';
 import { itemDataStore } from 'game/store/itemDataStore';
 import { ScrollGenerator } from './scrollGenerator';
 import { SwordGenerator } from './swordGenerator';
+import { SwordStatus } from '../item/status';
 
 export class ItemGenerator {
   static generate(n: number, board: Board): Item[] {
@@ -39,7 +40,7 @@ export class ItemGenerator {
         item = BraceletGenerator.generate(board);
         break;
       default:
-        item = StaffGenerator.generate(board);
+        item = SwordGenerator.generate(board);
       // throw new Error(`Invalid Category: ${category}`);
     }
 

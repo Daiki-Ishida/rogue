@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Camera } from './camera';
-import { animationManager, overlay, windowManager } from 'game';
+import { animationManager, overlay, playlogManager, windowManager } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
@@ -40,13 +40,11 @@ export class Drawer {
     // インジケーター描画
     this.drawIndicators(game.board, game.player, p);
 
-    // インベントリ描画
-    this.drawInventory(p);
+    // ログ描画
+    this.drawLogs(p);
 
+    // ウィンドウ描画
     this.drawWindow(p);
-
-    // メッセージウィンドウ描画
-    // this.drawMessageWindow(p);
   }
 
   private drawBoard(board: Board, p: p5): void {
@@ -158,49 +156,14 @@ export class Drawer {
     p.pop();
   }
 
-  private drawInventory(p: p5): void {
-    windowManager.inventoryWindow.draw(p);
-  }
-
   private drawWindow(p: p5): void {
+    windowManager.inventoryWindow.draw(p);
     windowManager.selectWindow?.draw(p);
   }
 
-  // todo: refactor
-  // private drawMessageWindow(p: p5): void {
-  //   // if (messageManager.timer > 180) {
-  //   //   messageManager.close();
-  //   // }
-
-  //   // if (!messageManager.display) {
-  //   //   return;
-  //   // }
-
-  //   // messageManager.timer++;
-
-  //   p.push();
-  //   p.rectMode('corner');
-
-  //   const x = 100;
-  //   const y = 520;
-  //   const w = 700;
-  //   const h = 150;
-  //   const l = 40;
-
-  //   p.fill('rgba(61,61,61,0.7)');
-  //   p.stroke('grey');
-  //   p.strokeWeight(2);
-  //   p.rect(x, y, w, h, 10);
-
-  //   p.fill('white');
-  //   p.textSize(25);
-
-  //   // messageManager.messages.forEach((message, idx) => {
-  //   //   p.text(message, x + 50, y + 40 + l * idx);
-  //   // });
-
-  //   p.pop();
-  // }
+  private drawLogs(p: p5): void {
+    playlogManager.draw(p);
+  }
 
   private drawMiniMap(board: Board, p: p5): void {
     p.push();

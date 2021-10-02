@@ -6,6 +6,7 @@ import { Drawer } from './view';
 import { Controller } from './controller';
 import { WindowManager } from './view/gui';
 import { AnimationManager } from './animation';
+import { Playlog, PlaylogManager } from './log';
 
 let asset: Asset;
 export let controller: Controller;
@@ -15,6 +16,7 @@ export let drawer: Drawer;
 export let imageStore: ImageStore;
 export let windowManager: WindowManager;
 export let animationManager: AnimationManager;
+export let playlogManager: PlaylogManager;
 
 export const rogue = (p: p5): void => {
   p.preload = () => {
@@ -35,6 +37,7 @@ export const rogue = (p: p5): void => {
 
     animationManager = AnimationManager.init();
     windowManager = WindowManager.init(game);
+    playlogManager = PlaylogManager.init();
   };
 
   p.keyPressed = () => {
@@ -49,8 +52,8 @@ export const rogue = (p: p5): void => {
     if (moveKeyIsDown(game, p)) {
       controller.proc(p.key, game);
     }
-
     game.proc();
+    playlogManager.proc();
     drawer.draw(game, p);
   };
 };

@@ -1,1 +1,2 @@
-export * from './playLogs';
+export * from './playlog';
+export * from './playlogManager';
