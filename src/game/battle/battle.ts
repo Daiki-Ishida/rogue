@@ -1,3 +1,4 @@
+import { playlogManager } from 'game';
 import { Actor } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
 
@@ -40,20 +41,8 @@ export class Battle {
       const exp = this.defender.status.exp;
       this.attacker.gainExp(exp);
 
-      console.log(this.messageOnDefeated());
-      const message = `${exp}の経験値を獲得した`;
-      console.log(message);
+      playlogManager.add(this.messageOnDefeated());
     }
-  }
-
-  private messageOnHit(dmg: number): string {
-    let message: string;
-    if (this.attacker.isPlayer()) {
-      message = `${this.defender.status.name}に${dmg}ダメージを与えた`;
-    } else {
-      message = `${this.attacker.status.name}から${dmg}ダメージを受けた`;
-    }
-    return message;
   }
 
   private messageOnMissed(): string {

@@ -1,5 +1,6 @@
 import { playlogManager } from 'game';
 import { Board } from 'game/board';
+import { playerDataStore } from 'game/store';
 import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
 import { PlayerStatus } from './status';
@@ -27,23 +28,38 @@ export class Player extends Actor {
   }
 
   gainExp(value: number): void {
-    // todo
     this.status.exp += value;
+    playlogManager.add(`${value}の経験値を獲得した`);
+
+    if (this.isLevelUp()) {
+      this.levelUp();
+    }
   }
 
   loseExp(value: number): void {
-    // todo
     this.status.exp -= value;
+    if (this.isLevelDown()) {
+      this.levelDown();
+    }
   }
 
   levelUp(): void {
-    // todo
-    this.status.level++;
+    this.status.levelUp();
   }
 
   levelDown(): void {
-    // todo
-    this.status.level--;
+    this.status.levelDown();
+  }
+
+  private isLevelUp(): boolean {
+    const level = playerDataStore.findLevelByExp(this.status.exp);
+    console.log(this.status.exp);
+    return this.status.level < level;
+  }
+
+  private isLevelDown(): boolean {
+    const level = playerDataStore.findLevelByExp(this.status.exp);
+    return this.status.level > level;
   }
 
   throw(item: Item, board: Board): void {
