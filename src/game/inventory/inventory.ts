@@ -53,4 +53,39 @@ export class Inventory {
 
     this.idx <= 0 ? (this.idx = this.items.length - 1) : this.idx--;
   }
+
+  sort(): void {
+    this.items.sort((a, b) => {
+      const equipped = (item: Item): boolean => {
+        return item.isEquipment() && item.status.equiped;
+      };
+
+      const priority = (item: Item): number => {
+        if (item.isEquipment()) {
+          if (item.isSword()) return 1;
+          if (item.isShield()) return 2;
+          if (item.isBracelet()) return 3;
+        }
+
+        if (item.isUsable()) {
+          if (item.isFood()) return 4;
+          if (item.isHerb()) return 5;
+          if (item.isStaff()) return 6;
+          if (item.isScroll()) return 7;
+        }
+
+        if (item.isGold()) {
+          return item.status.amount + 10;
+        }
+
+        return 999999;
+      };
+
+      if (equipped(a) !== equipped(b)) {
+        return equipped(a) ? -1 : 1;
+      }
+
+      return priority(a) - priority(b);
+    });
+  }
 }

@@ -20,7 +20,9 @@ export class CleanUpPhase extends PhaseBase {
     }
 
     // 死んだ敵は除外
-    board.actors = board.actors.filter((actor) => !actor.isDead);
+    board.actors.forEach((actor) => {
+      board.clearActor(actor);
+    });
     this.completed = true;
   }
 }

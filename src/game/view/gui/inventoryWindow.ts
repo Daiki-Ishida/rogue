@@ -48,6 +48,11 @@ export class InventoryWindow implements Window {
     this.setSound();
   }
 
+  sort(): void {
+    this.inventory.sort();
+    this.setSound();
+  }
+
   private setSound(): void {
     const sound = soundStore.select;
     soundManager.register(sound);
