@@ -57,16 +57,26 @@ export class PlayerEndPhase extends PhaseBase {
       player.isCondition('TRAP_MASTER')
         ? trap.disclose()
         : trap.activate(board);
+
+      game.resume();
     }
 
     const item = board.findItem(player.x, player.y);
-    if (player.isCondition('AUTO_IDENTIFY')) {
-      item?.identify();
+    if (item) {
+      if (player.isCondition('AUTO_IDENTIFY')) {
+        item.identify();
+      }
+      item.pickup(game);
+      game.resume();
     }
-    item?.pickup(game);
+
+    if (!player.canMove(board)) {
+      game.resume();
+    }
 
     // 死んだらゲームオーバー(現時点では判定だけ)
     if (player.isDead) {
+      game.resume();
       alert('game over...');
     }
 
@@ -79,6 +89,7 @@ export class PlayerEndPhase extends PhaseBase {
 
     // 階段の到着
     if (board.isExit(player.x, player.y)) {
+      game.resume();
       const window = ExitSelectionWindow.init(game);
       windowManager.selectWindow = window;
       controller.changeState(selectWindowController);

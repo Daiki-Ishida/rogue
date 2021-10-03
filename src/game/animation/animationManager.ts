@@ -1,3 +1,5 @@
+import { Game } from 'game/game';
+import { Actor } from 'game/models/actor';
 import p5 from 'p5';
 import { WalkAnimation } from '.';
 import { Camera } from '../view';
@@ -54,6 +56,19 @@ export class AnimationManager {
       .filter((animation) => !(animation instanceof WalkAnimation))
       .forEach((action) => action.exec());
     this.refresh();
+  }
+
+  /**
+   * 移動アニメーションをカット
+   */
+  skipWalk(game: Game): void {
+    this.animations
+      .filter((animation) => animation instanceof WalkAnimation)
+      .forEach((walk) => (walk.done = true));
+
+    for (const actor of game.board.actors) {
+      actor.symbol.setAt(actor.x, actor.y);
+    }
   }
 
   push(a: Animation): void {

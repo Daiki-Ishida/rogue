@@ -1,6 +1,7 @@
 import { Game } from 'game/game';
 import { EnemyGenerator } from 'game/models/generator';
 import { Phase, PhaseBase, StandByPhase } from '.';
+import { MoveCommand } from 'game/command';
 
 export class InitPhase extends PhaseBase {
   get nextPhase(): Phase {
@@ -11,6 +12,12 @@ export class InitPhase extends PhaseBase {
     // 10ターンに一度敵が沸く
     if (game.turn.count % 10 === 0) {
       EnemyGenerator.generate(1, game.board);
+    }
+
+    // ダッシュ
+    if (game.mode === 'SKIP') {
+      const command = new MoveCommand(game.player);
+      game.commands.push(command);
     }
     this.completed = true;
   }

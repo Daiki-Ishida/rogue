@@ -12,18 +12,14 @@ class SelectWindowController implements ControllerState {
       return;
     }
 
-    // const se = new SoundEffect(game.asset.soundFiles.select);
     switch (input) {
       case 'w':
-        // se.play();
         window.prev();
         break;
       case 's':
-        // se.play();
         window.next();
         break;
       case 'u': {
-        // se.play();
         window.select();
         windowManager.inventoryWindow.close();
         windowManager.selectWindow = undefined;

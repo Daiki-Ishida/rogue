@@ -11,12 +11,13 @@ import { Turn } from './turn';
 import { RandomUtil } from './util';
 
 export class Game {
-  constructor(
+  private constructor(
     readonly player: Player,
     readonly board: Board,
     readonly commands: Commands,
     readonly turn: Turn,
-    readonly inventory: Inventory
+    readonly inventory: Inventory,
+    public mode: 'NORMAL' | 'SKIP' = 'NORMAL'
   ) {}
 
   static init(): Game {
@@ -38,6 +39,14 @@ export class Game {
   next(): void {
     this.board.next();
     this.generateModels();
+  }
+
+  skip(): void {
+    this.mode = 'SKIP';
+  }
+
+  resume(): void {
+    this.mode = 'NORMAL';
   }
 
   private generateModels(): void {

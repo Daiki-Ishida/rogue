@@ -1,4 +1,5 @@
 import { animationManager } from 'game';
+import { Game } from 'game/game';
 import { CleanUpPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 
@@ -7,7 +8,17 @@ export class AnimationPhase extends PhaseBase {
     return new CleanUpPhase();
   }
 
-  proc(): void {
+  proc(game: Game): void {
+    if (!animationManager.isActionDone) {
+      game.resume();
+    }
+
+    if (game.mode === 'SKIP') {
+      animationManager.skipWalk(game);
+      this.completed = true;
+      return;
+    }
+
     animationManager.execWalk();
     if (!animationManager.isWalkDone) {
       return;

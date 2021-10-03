@@ -2,17 +2,11 @@ import { Game } from 'game/game';
 import { InitPhase, Phase } from './phase';
 
 export class Turn {
-  phase: Phase;
-  count: number;
-
-  private constructor(state: Phase) {
-    this.phase = state;
-    this.count = 1;
-  }
+  private constructor(public phase: Phase, public count: number) {}
 
   static init(): Turn {
     const initPhase = new InitPhase();
-    return new Turn(initPhase);
+    return new Turn(initPhase, 1);
   }
 
   goNextPhase(): void {

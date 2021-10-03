@@ -61,6 +61,8 @@ export const rogue = (p: p5): void => {
       controller.proc(p.key, game);
     }
 
+    game.mode === 'SKIP' ? p.frameRate(120) : p.frameRate(30);
+
     game.proc();
     soundManager.play();
     playlogManager.proc();

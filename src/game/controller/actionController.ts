@@ -20,7 +20,6 @@ class ActionController implements ControllerState {
         break;
       }
       case 'i':
-        // new SoundEffect(game.asset.soundFiles.select).play();
         windowManager.inventoryWindow.open();
         context.changeState(inventoryController);
         break;
@@ -40,6 +39,12 @@ class ActionController implements ControllerState {
       case 'S': {
         const direction = KeyConfig.directionMapping[input];
         player.turnTo(direction);
+        break;
+      }
+      case 'j': {
+        game.skip();
+        const command = new MoveCommand(player);
+        game.commands.push(command);
         break;
       }
     }
