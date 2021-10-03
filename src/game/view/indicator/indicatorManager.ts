@@ -1,12 +1,18 @@
 import p5 from 'p5';
+import { Game } from 'game/game';
 import { BounceIndicator } from '.';
 import { Camera } from '..';
+import { StatusIndicator } from './statusIndicator';
 
 export class IndicatorManager {
-  private constructor(public bounceIndicators: BounceIndicator[]) {}
+  private constructor(
+    readonly statusIndicators: StatusIndicator,
+    public bounceIndicators: BounceIndicator[]
+  ) {}
 
   static init(): IndicatorManager {
-    return new IndicatorManager([]);
+    const statusIndicator = new StatusIndicator();
+    return new IndicatorManager(statusIndicator, []);
   }
 
   proc(): void {
@@ -16,7 +22,8 @@ export class IndicatorManager {
     this.bounceIndicators = this.bounceIndicators.filter((i) => !i.done);
   }
 
-  draw(p: p5, camera: Camera): void {
+  draw(game: Game, p: p5, camera: Camera): void {
+    this.statusIndicators.draw(p, game);
     for (const indicator of this.bounceIndicators) {
       indicator.draw(p, camera);
     }

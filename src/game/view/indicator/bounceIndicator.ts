@@ -7,7 +7,7 @@ const F = 30;
 const HEIGHT = 0.5;
 
 export class BounceIndicator {
-  constructor(
+  private constructor(
     readonly value: string,
     private x: number,
     private y: number,
