@@ -1,5 +1,5 @@
 import { game } from 'game';
-import { AttackCommand, Command, MoveCommand } from 'game/command';
+import { ArtCommand, AttackCommand, Command, MoveCommand } from 'game/command';
 import { Strategy } from './strategy';
 import { Enemy } from '../enemy';
 import { DirectionKey } from '../direction';
@@ -35,9 +35,13 @@ class BasicStrategy implements Strategy {
   }
 
   command(enemy: Enemy): Command {
+    const player = game.player;
+    const board = game.board;
     this.adjustDirection(enemy);
 
-    return enemy.isAttackable(game.player)
+    return enemy.specialArt.inRange(player.x, player.y, enemy, board)
+      ? new ArtCommand(enemy)
+      : enemy.isAttackable(player)
       ? new AttackCommand(enemy)
       : new MoveCommand(enemy);
   }

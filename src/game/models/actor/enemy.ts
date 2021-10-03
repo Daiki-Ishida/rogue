@@ -16,6 +16,7 @@ export interface IEnemy {
   isInSightOfPlayer(): boolean;
   isAttackable(actor: Actor): boolean;
   act(): void;
+  unleashArt(board: Board): void;
   turnLeft(): void;
   turnRight(): void;
   turnAround(): void;
@@ -66,6 +67,10 @@ export class Enemy extends Actor implements IEnemy {
     const p = game.player;
 
     return p.x >= v.x && p.x < v.x + v.w && p.y >= v.y && p.y < v.y + v.h;
+  }
+
+  unleashArt(board: Board): void {
+    this.specialArt.effect(this, board);
   }
 
   isAttackable(actor: Actor): boolean {

@@ -49,6 +49,8 @@ import PANCH from 'asset/image/effects/panch.png';
 import PIERCE from 'asset/image/effects/pierce.png';
 import SPELL from 'asset/image/effects/magic_circle.png';
 import FIRE from 'asset/image/effects/fire.png';
+import ICE from 'asset/image/effects/ice.png';
+import THUNDER from 'asset/image/effects/thunder.png';
 import MAGIC_BALL from 'asset/image/effects/magic_ball.png';
 import ATTACK_SOUND from 'asset/sound/attack.mp3';
 import CRITICAL_HIT_SOUND from 'asset/sound/critical_hit.mp3';
@@ -110,6 +112,8 @@ interface ImageFiles {
   pierce: Image;
   spelling: Image;
   fire: Image;
+  ice: Image;
+  thunder: Image;
   magicBall: Image;
 }
 
@@ -203,6 +207,8 @@ export class Asset {
     const pierce = p.loadImage(PIERCE);
     const spell = p.loadImage(SPELL);
     const fire = p.loadImage(FIRE);
+    const ice = p.loadImage(ICE);
+    const thunder = p.loadImage(THUNDER);
     const magicBall = p.loadImage(MAGIC_BALL);
 
     const imageFiles = {
@@ -255,6 +261,8 @@ export class Asset {
       pierce: pierce,
       spelling: spell,
       fire: fire,
+      ice: ice,
+      thunder: thunder,
       magicBall: magicBall,
     };
 

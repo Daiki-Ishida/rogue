@@ -136,6 +136,15 @@ export class Player extends Actor {
     }
   }
 
+  forceUnequipShield(): boolean {
+    if (this.status.shield) {
+      this.status.shield.forceUnequip();
+      this.status.shield = undefined;
+      return true;
+    }
+    return false;
+  }
+
   isPlayer(): this is Player {
     return true;
   }

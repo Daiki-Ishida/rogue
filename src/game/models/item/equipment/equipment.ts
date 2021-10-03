@@ -38,6 +38,11 @@ export abstract class Equipment extends Item {
     return true;
   }
 
+  // 呪われてても強制解除
+  forceUnequip(): void {
+    this.status.equiped = false;
+  }
+
   curse(): void {
     this.status.cursed = true;
   }

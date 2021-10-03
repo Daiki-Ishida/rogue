@@ -97,6 +97,8 @@ interface EffectImages {
   readonly panch: Image[];
   readonly pierce: Image[];
   readonly fire: Image[];
+  readonly ice: Image[];
+  readonly thunder: Image[];
 }
 
 interface IImageStore {
@@ -318,6 +320,8 @@ export class ImageStore implements IImageStore {
     const panch = parseImage(imgs.panch, 9, 1, 120, 120);
     const pierce = parseImage(imgs.pierce, 7, 1, 120, 120);
     const fire = parseImage(imgs.fire, 8, 1, 120, 120);
+    const ice = parseImage(imgs.ice, 8, 1, 120, 120);
+    const thunder = parseImage(imgs.thunder, 8, 1, 120, 120);
 
     return {
       spelling: spelling,
@@ -329,6 +333,8 @@ export class ImageStore implements IImageStore {
       panch: panch,
       pierce: pierce,
       fire: fire,
+      ice: ice,
+      thunder: thunder,
     };
   }
 }
