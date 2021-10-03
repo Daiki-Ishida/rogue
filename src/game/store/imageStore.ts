@@ -38,7 +38,7 @@ interface ActorImages {
 }
 
 interface ItemImages {
-  readonly sward: EquipmentImages;
+  readonly sword: EquipmentImages;
   readonly shield: EquipmentImages;
   readonly bracelet: Image;
   readonly gold: Image;
@@ -235,7 +235,7 @@ export class ImageStore implements IImageStore {
     };
 
     return {
-      sward: swordImgs,
+      sword: swordImgs,
       shield: shieldImgs,
       bracelet: icon02[53],
       gold: icon03[1],

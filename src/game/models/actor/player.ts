@@ -76,11 +76,11 @@ export class Player extends Actor {
 
   equip(equipment: Equipment): void {
     if (equipment.isSword()) {
-      const unequiped = this.status.sward?.unequip();
+      const unequiped = this.status.sword?.unequip();
       if (unequiped === false) return;
 
       equipment.equip();
-      this.status.sward = equipment;
+      this.status.sword = equipment;
     }
 
     if (equipment.isShield()) {
@@ -107,7 +107,7 @@ export class Player extends Actor {
     if (unequiped === false) return;
 
     if (equipment.isSword()) {
-      this.status.sward = undefined;
+      this.status.sword = undefined;
     }
 
     if (equipment.isShield()) {
@@ -122,9 +122,9 @@ export class Player extends Actor {
   }
 
   unequipAll(): void {
-    const sword = this.status.sward?.unequip();
+    const sword = this.status.sword?.unequip();
     if (sword) {
-      this.status.sward = undefined;
+      this.status.sword = undefined;
     }
     const shield = this.status.shield?.unequip();
     if (shield) {
@@ -134,15 +134,6 @@ export class Player extends Actor {
     if (bracelet) {
       this.status.bracelet = undefined;
     }
-  }
-
-  forceUnequipShield(): boolean {
-    if (this.status.shield) {
-      this.status.shield.forceUnequip();
-      this.status.shield = undefined;
-      return true;
-    }
-    return false;
   }
 
   isPlayer(): this is Player {

@@ -7,7 +7,7 @@ import { StaffGenerator } from './staffGenerator';
 import { itemDataStore } from 'game/store/itemDataStore';
 import { ScrollGenerator } from './scrollGenerator';
 import { SwordGenerator } from './swordGenerator';
-import { SwordStatus } from '../item/status';
+import { ShieldGenerator } from './shieldGenerator';
 
 export class ItemGenerator {
   static generate(n: number, board: Board): Item[] {
@@ -38,6 +38,12 @@ export class ItemGenerator {
         break;
       case 'BRACELET':
         item = BraceletGenerator.generate(board);
+        break;
+      case 'SWORD':
+        item = SwordGenerator.generate(board);
+        break;
+      case 'SHIELD':
+        item = ShieldGenerator.generate(board);
         break;
       default:
         item = SwordGenerator.generate(board);

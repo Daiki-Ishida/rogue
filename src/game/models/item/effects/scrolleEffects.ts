@@ -66,7 +66,7 @@ const ScrollEffects = (): IStaffEffects => {
   };
 
   const fate = (user: Player): void => {
-    user.status.sward?.levelUp();
+    user.status.sword?.levelUp();
   };
 
   const earth = (user: Player): void => {
@@ -74,7 +74,7 @@ const ScrollEffects = (): IStaffEffects => {
   };
 
   const exorcism = (user: Player): void => {
-    user.status.sward?.uncurse();
+    user.status.sword?.uncurse();
     user.status.shield?.uncurse();
     user.status.bracelet?.uncurse();
   };

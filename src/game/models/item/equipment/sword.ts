@@ -17,7 +17,7 @@ export class Sword extends Equipment {
   }
 
   static generate(id: string, board: Board): Sword {
-    const symbol = new ItemSymbol(imageStore.items.sward[id]);
+    const symbol = new ItemSymbol(imageStore.items.sword[id]);
     const status = SwordStatus.init(id);
 
     const sword = new Sword(0, 0, symbol, status, []);
@@ -37,15 +37,15 @@ export class Sword extends Equipment {
     this.status.level--;
   }
 
-  unify(sward: Sword): void {
+  unify(sword: Sword): void {
     // 識別
     this.identify();
 
     // レベル合成
-    this.status.level += sward.status.level;
+    this.status.level += sword.status.level;
 
     // 特殊能力合成
-    this.effects = this.effects.concat(sward.effects);
+    this.effects = this.effects.concat(sword.effects);
   }
 
   onHit(user: Player, target: Actor): void {

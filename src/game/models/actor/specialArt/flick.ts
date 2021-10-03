@@ -23,12 +23,12 @@ export const flickEffect = (level: number): SpecialArt => {
       // todo refactor
       const random = RandomUtil.getRandomIntInclusive(0, 1);
       if (random === 0) {
-        const equipment = taregt.status.sward;
+        const equipment = taregt.status.sword;
         if (equipment === undefined) return;
 
         playlogManager.add(`${equipment.status.displayName}が弾き飛ばされた！`);
         equipment.forceUnequip();
-        taregt.status.sward = undefined;
+        taregt.status.sword = undefined;
       } else {
         const equipment = taregt.status.shield;
         if (equipment === undefined) return;

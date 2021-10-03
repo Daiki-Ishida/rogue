@@ -15,7 +15,7 @@ export class PlayerStatus extends ActorStatus {
     public exp: number = 0,
     public dmg: number = 0,
     public hunger: number = 0,
-    public sward?: Sword,
+    public sword?: Sword,
     public shield?: Shield,
     public bracelet?: Bracelet
   ) {
@@ -42,8 +42,8 @@ export class PlayerStatus extends ActorStatus {
   }
 
   get atk(): number {
-    const sward = this.sward === undefined ? 0 : this.sward.atk;
-    return this.str + sward;
+    const sword = this.sword === undefined ? 0 : this.sword.atk;
+    return this.str + sword;
   }
 
   get def(): number {

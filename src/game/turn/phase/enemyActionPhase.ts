@@ -1,4 +1,3 @@
-import { animationManager } from 'game';
 import { Game } from 'game/game';
 import { AnimationPhase } from '.';
 import { Phase, PhaseBase } from './phase';
