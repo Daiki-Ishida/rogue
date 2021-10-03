@@ -74,6 +74,13 @@ export class PlayerEndPhase extends PhaseBase {
       game.resume();
     }
 
+    if (
+      board.isCorridor(player.x, player.y) &&
+      board.isRoom(player.next.x, player.next.y)
+    ) {
+      game.resume();
+    }
+
     // 死んだらゲームオーバー(現時点では判定だけ)
     if (player.isDead) {
       game.resume();

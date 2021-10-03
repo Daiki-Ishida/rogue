@@ -10,7 +10,7 @@ export class InitPhase extends PhaseBase {
 
   proc(game: Game): void {
     // 10ターンに一度敵が沸く
-    if (game.turn.count % 10 === 0) {
+    if (game.turn.count % 20 === 0) {
       EnemyGenerator.generate(1, game.board);
     }
 

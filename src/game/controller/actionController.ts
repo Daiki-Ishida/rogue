@@ -41,7 +41,7 @@ class ActionController implements ControllerState {
         player.turnTo(direction);
         break;
       }
-      case 'j': {
+      case 'U': {
         game.skip();
         const command = new MoveCommand(player);
         game.commands.push(command);
