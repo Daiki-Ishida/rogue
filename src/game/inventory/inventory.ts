@@ -91,7 +91,16 @@ export class Inventory {
 
         return 999999;
       };
-      return priority(a) - priority(b);
+
+      if (priority(a) !== priority(b)) {
+        return priority(a) - priority(b);
+      }
+
+      if (a.status.id !== b.status.id) {
+        return a.status.id > b.status.id ? 1 : -1;
+      }
+
+      return 0;
     });
   }
 }
