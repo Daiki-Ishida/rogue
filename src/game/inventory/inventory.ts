@@ -56,22 +56,24 @@ export class Inventory {
 
   sort(): void {
     this.items.sort((a, b) => {
-      const equipped = (item: Item): boolean => {
-        return item.isEquipment() && item.status.equiped;
-      };
-
       const priority = (item: Item): number => {
         if (item.isEquipment()) {
-          if (item.isSword()) return 1;
-          if (item.isShield()) return 2;
-          if (item.isBracelet()) return 3;
+          if (item.status.equiped) {
+            if (item.isSword()) return 1;
+            if (item.isShield()) return 2;
+            if (item.isBracelet()) return 3;
+          } else {
+            if (item.isSword()) return 4;
+            if (item.isShield()) return 5;
+            if (item.isBracelet()) return 6;
+          }
         }
 
         if (item.isUsable()) {
-          if (item.isFood()) return 4;
-          if (item.isHerb()) return 5;
-          if (item.isStaff()) return 6;
-          if (item.isScroll()) return 7;
+          if (item.isFood()) return 7;
+          if (item.isHerb()) return 8;
+          if (item.isStaff()) return 9;
+          if (item.isScroll()) return 10;
         }
 
         if (item.isGold()) {
@@ -80,11 +82,6 @@ export class Inventory {
 
         return 999999;
       };
-
-      if (equipped(a) !== equipped(b)) {
-        return equipped(a) ? -1 : 1;
-      }
-
       return priority(a) - priority(b);
     });
   }

@@ -72,7 +72,9 @@ export class PlayerEndPhase extends PhaseBase {
 
     // 死んだ敵は除外
     board.actors.forEach((actor) => {
-      board.clearActor(actor);
+      if (actor.isDead) {
+        board.clearActor(actor);
+      }
     });
 
     // 階段の到着
