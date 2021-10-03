@@ -17,11 +17,12 @@ export class InventoryWindow implements Window {
     readonly w: number,
     readonly h: number,
     public display: boolean,
+    private page: 1 | 2,
     readonly inventory: Inventory
   ) {}
 
   static init(inventory: Inventory): InventoryWindow {
-    return new InventoryWindow(X, Y, W, H, false, inventory);
+    return new InventoryWindow(X, Y, W, H, false, 1, inventory);
   }
 
   get selected(): Item {
@@ -48,6 +49,18 @@ export class InventoryWindow implements Window {
     this.setSound();
   }
 
+  nextPage(): void {
+    this.page = 2;
+    this.inventory.idx = 14;
+    this.setSound();
+  }
+
+  prevPage(): void {
+    this.page = 1;
+    this.inventory.idx = 0;
+    this.setSound();
+  }
+
   sort(): void {
     this.inventory.sort();
     this.setSound();
@@ -61,8 +74,14 @@ export class InventoryWindow implements Window {
   draw(p: p5): void {
     if (!this.display) return;
 
+    const list =
+      this.page === 1
+        ? this.inventory.items.slice(0, 13)
+        : this.inventory.items.slice(14, 28);
+
     this.drawFrame(p);
-    this.drawItems(p);
+    this.drawItems(p, list);
+    this.drawPager(p);
   }
 
   private drawFrame(p: p5): void {
@@ -76,15 +95,16 @@ export class InventoryWindow implements Window {
     p.pop();
   }
 
-  private drawItems(p: p5): void {
+  private drawItems(p: p5, items: Item[]): void {
     p.push();
     p.textSize(24);
     p.fill('white');
 
-    for (let i = 0; i < this.inventory.items.length; i++) {
-      const item = this.inventory.items[i];
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const idx = this.page === 1 ? i : i + 14;
 
-      if (this.inventory.idx === i) {
+      if (this.inventory.idx === idx) {
         this.drawSelectMarker(i, p);
       }
 
@@ -128,5 +148,13 @@ export class InventoryWindow implements Window {
 
   private drawEquipMarker(idx: number, p: p5): void {
     p.text(`E`, this.x + 40, this.y + 40 + idx * 40);
+  }
+
+  private drawPager(p: p5): void {
+    p.push();
+    p.textSize(18);
+    p.fill('white');
+    p.text(`${this.page} / 2`, 1180, 90);
+    p.pop();
   }
 }

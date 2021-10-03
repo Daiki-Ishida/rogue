@@ -56,4 +56,8 @@ export class Scroll extends Usable {
     const dmg = RandomUtil.getRandomIntInclusive(1, 2);
     target.damage(dmg);
   }
+
+  isScroll(): this is Scroll {
+    return true;
+  }
 }

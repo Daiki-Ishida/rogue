@@ -41,4 +41,8 @@ export class Herb extends Usable {
   onHit(user: Player, target: Actor, board: Board): void {
     return this.effect.onHit(user, target, board);
   }
+
+  isHerb(): this is Herb {
+    return true;
+  }
 }

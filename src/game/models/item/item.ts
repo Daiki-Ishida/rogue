@@ -171,11 +171,13 @@ export abstract class Item implements IItem {
   }
 
   pickup(game: Game): void {
+    const result = game.inventory.add(this);
+    if (!result) return;
+
+    game.board.clearItem(this);
+
     const sound = soundStore.pickUp;
     soundManager.register(sound);
-
-    game.inventory.add(this);
-    game.board.clearItem(this);
   }
 
   isUsable(): this is Usable {

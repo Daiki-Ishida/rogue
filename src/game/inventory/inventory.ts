@@ -1,4 +1,7 @@
+import { playlogManager } from 'game';
 import { Item } from 'game/models/item';
+
+const CAPACITY = 28;
 
 export class Inventory {
   constructor(
@@ -14,7 +17,7 @@ export class Inventory {
   get selected(): Item {
     const item = this.items[this.idx];
     if (item === undefined) {
-      throw new Error('Item Not Found.');
+      console.log('Item Not Found.');
     }
 
     return item;
@@ -24,8 +27,14 @@ export class Inventory {
     return this.items.length === 0;
   }
 
-  add(item: Item): void {
+  add(item: Item): boolean {
+    if (this.items.length >= CAPACITY) {
+      playlogManager.add('持ち物がいっぱいだ！');
+      return false;
+    }
+
     this.items.push(item);
+    return true;
   }
 
   delete(): void {

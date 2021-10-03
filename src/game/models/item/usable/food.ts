@@ -43,4 +43,8 @@ export class Food extends Usable {
     const dmg = RandomUtil.getRandomIntInclusive(1, 2);
     target.damage(dmg);
   }
+
+  isFood(): this is Food {
+    return true;
+  }
 }

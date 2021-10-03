@@ -94,4 +94,8 @@ export class Staff extends Usable {
   onHit(user: Player, target: Actor, board: Board): void {
     this.effect(user, target, board);
   }
+
+  isStaff(): this is Staff {
+    return true;
+  }
 }
