@@ -61,6 +61,9 @@ import PICK_UP_SOUND from 'asset/sound/pick_up.mp3';
 import EXIT_SOUND from 'asset/sound/exit.mp3';
 import SELECT_SOUND from 'asset/sound/select.mp3';
 import LEVEL_UP_SOUND from 'asset/sound/level_up.mp3';
+import FIRE_SOUND from 'asset/sound/fire.mp3';
+import ICE_SOUND from 'asset/sound/ice.mp3';
+import THUNDER_SOUND from 'asset/sound/thunder.mp3';
 
 interface ImageFiles {
   mapBase: Image;
@@ -127,6 +130,9 @@ interface SoundFiles {
   exit: HTMLAudioElement;
   select: HTMLAudioElement;
   levelUp: HTMLAudioElement;
+  fire: HTMLAudioElement;
+  ice: HTMLAudioElement;
+  thunder: HTMLAudioElement;
 }
 
 export class Asset {
@@ -276,6 +282,9 @@ export class Asset {
       exit: new Audio(EXIT_SOUND),
       select: new Audio(SELECT_SOUND),
       levelUp: new Audio(LEVEL_UP_SOUND),
+      fire: new Audio(FIRE_SOUND),
+      ice: new Audio(ICE_SOUND),
+      thunder: new Audio(THUNDER_SOUND),
     };
 
     return new Asset(font, imageFiles, soundFiles);

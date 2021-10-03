@@ -11,6 +11,9 @@ interface IImageStore {
   readonly exit: Sound;
   readonly select: Sound;
   readonly levelUp: Sound;
+  readonly fire: Sound;
+  readonly ice: Sound;
+  readonly thunder: Sound;
 }
 
 export class SoundStore implements IImageStore {
@@ -23,7 +26,10 @@ export class SoundStore implements IImageStore {
     readonly pickUp: Sound,
     readonly exit: Sound,
     readonly select: Sound,
-    readonly levelUp: Sound
+    readonly levelUp: Sound,
+    readonly fire: Sound,
+    readonly ice: Sound,
+    readonly thunder: Sound
   ) {}
 
   static init(asset: Asset): SoundStore {
@@ -36,6 +42,9 @@ export class SoundStore implements IImageStore {
     const exit = new SoundEffect(asset.soundFiles.exit);
     const select = new SoundEffect(asset.soundFiles.select);
     const levelUp = new SoundEffect(asset.soundFiles.levelUp);
+    const fire = new SoundEffect(asset.soundFiles.fire);
+    const ice = new SoundEffect(asset.soundFiles.ice);
+    const thunder = new SoundEffect(asset.soundFiles.thunder);
 
     return new SoundStore(
       attack,
@@ -46,7 +55,10 @@ export class SoundStore implements IImageStore {
       pickUp,
       exit,
       select,
-      levelUp
+      levelUp,
+      fire,
+      ice,
+      thunder
     );
   }
 }

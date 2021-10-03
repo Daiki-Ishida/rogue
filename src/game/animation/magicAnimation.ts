@@ -11,28 +11,30 @@ export class MagicAnimation implements Animation {
     private x: number,
     private y: number,
     public frame: number,
+    readonly callback: () => void,
     public done: boolean
   ) {}
 
-  static ofFire(x: number, y: number): MagicAnimation {
+  static ofFire(x: number, y: number, callback: () => void): MagicAnimation {
     const fire = imageStore.effects.fire;
-    return new MagicAnimation(fire, x, y, 0, false);
+    return new MagicAnimation(fire, x, y, 0, callback, false);
   }
 
-  static ofIce(x: number, y: number): MagicAnimation {
+  static ofIce(x: number, y: number, callback: () => void): MagicAnimation {
     const ice = imageStore.effects.ice;
-    return new MagicAnimation(ice, x, y, 0, false);
+    return new MagicAnimation(ice, x, y, 0, callback, false);
   }
 
-  static ofThunder(x: number, y: number): MagicAnimation {
+  static ofThunder(x: number, y: number, callback: () => void): MagicAnimation {
     const thunder = imageStore.effects.thunder;
-    return new MagicAnimation(thunder, x, y, 0, false);
+    return new MagicAnimation(thunder, x, y, 0, callback, false);
   }
 
   exec(): void {
     this.frame++;
 
     if (this.frame > F) {
+      this.callback();
       this.done = true;
     }
   }

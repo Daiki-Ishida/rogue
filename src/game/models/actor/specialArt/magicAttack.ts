@@ -1,4 +1,4 @@
-import { animationManager } from 'game';
+import { animationManager, soundManager, soundStore } from 'game';
 import { MagicAnimation } from 'game/animation';
 import { Actor } from '../actor';
 import { Board } from 'game/board';
@@ -20,10 +20,14 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       const target = board.findActor(actor.next.x, actor.next.y);
       if (target === undefined) return;
 
-      const dmg = 20;
-      target.damage(dmg);
+      // sound
+      soundManager.register(soundStore.fire);
 
-      const animation = MagicAnimation.ofFire(target.x, target.y);
+      // animation
+      const animation = MagicAnimation.ofFire(target.x, target.y, () => {
+        const dmg = 20;
+        target.damage(dmg);
+      });
       animationManager.push(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
@@ -39,14 +43,18 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       const target = board.findActor(actor.next.x, actor.next.y);
       if (target === undefined) return;
 
-      const dmg = 30;
-      target.damage(dmg);
-      // 空腹効果付与
-      if (target.isPlayer()) {
-        target.addHunger(5);
-      }
+      // sound
+      soundManager.register(soundStore.ice);
 
-      const animation = MagicAnimation.ofIce(target.x, target.y);
+      // animation
+      const animation = MagicAnimation.ofIce(target.x, target.y, () => {
+        const dmg = 30;
+        target.damage(dmg);
+        // 空腹効果付与
+        if (target.isPlayer()) {
+          target.addHunger(5);
+        }
+      });
       animationManager.push(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
@@ -62,17 +70,21 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       const target = board.findActor(actor.next.x, actor.next.y);
       if (target === undefined) return;
 
-      const dmg = 40;
-      target.damage(dmg);
+      // sound
+      soundManager.register(soundStore.thunder);
 
-      // 30%で麻痺
-      const random = RandomUtil.getRandomIntInclusive(0, 9);
-      if (random < 3) {
-        const paralysis = Condition.ofParalyzed(3);
-        target.conditions.push(paralysis);
-      }
+      // animation
+      const animation = MagicAnimation.ofThunder(target.x, target.y, () => {
+        const dmg = 40;
+        target.damage(dmg);
 
-      const animation = MagicAnimation.ofThunder(target.x, target.y);
+        // 30%で麻痺
+        const random = RandomUtil.getRandomIntInclusive(0, 9);
+        if (random < 3) {
+          const paralysis = Condition.ofParalyzed(3);
+          target.conditions.push(paralysis);
+        }
+      });
       animationManager.push(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
