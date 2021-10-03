@@ -18,11 +18,14 @@ export const blessEffect = (level: number): SpecialArt => {
     effect: (actor: Actor, board: Board) => {
       const target = getActorOnRayInRoom(actor, board);
       if (target === undefined) return;
-      target.damage(40);
 
-      const animation = MagicBlessAnimation.ofFlame(actor, {
+      const hitAt = {
         x: target.x,
         y: target.y,
+      };
+
+      const animation = MagicBlessAnimation.ofFlame(actor, hitAt, () => {
+        target.damage(40);
       });
       animationManager.push(animation);
     },
@@ -38,11 +41,13 @@ export const blessEffect = (level: number): SpecialArt => {
     effect: (actor: Actor, board: Board) => {
       const target = getActorOnRayInRoom(actor, board);
       if (target === undefined) return;
-      target.damage(40);
 
-      const animation = MagicBlessAnimation.ofBlizzard(actor, {
+      const hitAt = {
         x: target.x,
         y: target.y,
+      };
+      const animation = MagicBlessAnimation.ofBlizzard(actor, hitAt, () => {
+        target.damage(40);
       });
       animationManager.push(animation);
     },

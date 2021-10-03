@@ -9,14 +9,15 @@ export class SpellAnimation implements Animation {
     readonly img: Image[],
     readonly actor: Player,
     readonly grid: { x: number; y: number },
+    readonly callback: () => void,
     public frame: number,
     public done: boolean
   ) {}
 
-  static generate(player: Player): SpellAnimation {
+  static generate(player: Player, callback: () => void): SpellAnimation {
     const img = imageStore.effects.spelling;
     const at = { x: player.x, y: player.y };
-    return new SpellAnimation(img, player, at, 0, false);
+    return new SpellAnimation(img, player, at, callback, 0, false);
   }
 
   exec(): void {
@@ -30,6 +31,7 @@ export class SpellAnimation implements Animation {
 
     if (this.frame > 30) {
       this.actor.symbol.resume();
+      this.callback();
       this.done = true;
     }
   }

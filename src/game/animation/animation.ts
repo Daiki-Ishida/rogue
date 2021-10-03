@@ -6,4 +6,5 @@ export interface Animation {
   done: boolean;
   exec(): void;
   draw(p: p5, camera: Camera): void;
+  callback?: () => void;
 }

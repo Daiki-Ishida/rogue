@@ -55,12 +55,15 @@ export class Staff extends Usable {
 
       if (target || blocked) break;
     }
-    const animation = MagicBulletAnimation.generate(user, current);
-    animationManager.push(animation);
 
-    if (target) {
-      this.effect(user, target, board);
-    }
+    const callback = () => {
+      if (target) {
+        this.effect(user, target, board);
+      }
+    };
+
+    const animation = MagicBulletAnimation.generate(user, current, callback);
+    animationManager.push(animation);
 
     playlogManager.add(`${this.status.displayName}を使った`);
   }
@@ -78,12 +81,12 @@ export class Staff extends Usable {
       if (target || blocked) break;
     }
 
-    const animation = MagicBulletAnimation.generate(user, current);
+    const animation = MagicBulletAnimation.generate(user, current, () => {
+      const x = current.x - d.x;
+      const y = current.y - d.y;
+      user.setAt(x, y);
+    });
     animationManager.push(animation);
-
-    const x = current.x - d.x;
-    const y = current.y - d.y;
-    user.setAt(x, y);
 
     playlogManager.add(`${this.status.displayName}を使った`);
   }

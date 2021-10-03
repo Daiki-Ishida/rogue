@@ -66,12 +66,18 @@ export abstract class Item implements IItem {
     this.x = current.x;
     this.y = current.y;
 
-    const animation = ThrownItemAnimation.generate(thrower, this, current);
+    const callback = () => {
+      target !== undefined
+        ? this.onHit(thrower, target, board)
+        : this.onUnhit(thrower, board);
+    };
+    const animation = ThrownItemAnimation.generate(
+      thrower,
+      this,
+      current,
+      callback
+    );
     animationManager.push(animation);
-
-    target !== undefined
-      ? this.onHit(thrower, target, board)
-      : this.onUnhit(thrower, board);
   }
 
   onUnhit(thrower: Player, board: Board): void {

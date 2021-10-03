@@ -9,6 +9,7 @@ export class ThrownItemAnimation implements Animation {
     readonly thrower: Player,
     readonly item: Item,
     readonly to: { x: number; y: number },
+    readonly callback: () => void,
     public frame: number,
     public done: boolean
   ) {}
@@ -16,9 +17,10 @@ export class ThrownItemAnimation implements Animation {
   static generate(
     thrower: Player,
     item: Item,
-    to: { x: number; y: number }
+    to: { x: number; y: number },
+    callback: () => void
   ): ThrownItemAnimation {
-    return new ThrownItemAnimation(thrower, item, to, 0, false);
+    return new ThrownItemAnimation(thrower, item, to, callback, 0, false);
   }
 
   draw(p: p5, camera: Camera): void {
@@ -36,9 +38,10 @@ export class ThrownItemAnimation implements Animation {
     this.frame++;
 
     if (x === this.to.x && y === this.to.y) {
-      this.done = true;
       this.item.symbol.x = this.item.x;
       this.item.symbol.y = this.item.y;
+      this.callback();
+      this.done = true;
     }
   }
 }

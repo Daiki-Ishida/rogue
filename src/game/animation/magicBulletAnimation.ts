@@ -12,17 +12,27 @@ export class MagicBulletAnimation implements Animation {
     readonly actor: Actor,
     private current: { x: number; y: number },
     readonly to: { x: number; y: number },
+    readonly callback: () => void,
     public frame: number,
     public done: boolean
   ) {}
 
   static generate(
     actor: Actor,
-    to: { x: number; y: number }
+    to: { x: number; y: number },
+    callback: () => void
   ): MagicBulletAnimation {
     const img = imageStore.effects.magicBall;
     const current = { x: actor.x, y: actor.y };
-    return new MagicBulletAnimation(img, actor, current, to, 0, false);
+    return new MagicBulletAnimation(
+      img,
+      actor,
+      current,
+      to,
+      callback,
+      0,
+      false
+    );
   }
 
   private get currentImg(): Image {
@@ -42,6 +52,7 @@ export class MagicBulletAnimation implements Animation {
     this.frame++;
 
     if (this.current.x === this.to.x && this.current.y === this.to.y) {
+      this.callback();
       this.done = true;
     }
   }

@@ -42,6 +42,7 @@ export abstract class ActorSymbol implements IActorSymbol {
 
   resume(): void {
     this.active = true;
+    this.turnTo('DOWN');
   }
 
   proc(p: p5): void {
@@ -53,33 +54,7 @@ export abstract class ActorSymbol implements IActorSymbol {
   }
 
   initIdx(): void {
-    switch (this.idx) {
-      case 0:
-      case 1:
-      case 2:
-        this.idx = 0;
-        break;
-      case 3:
-      case 4:
-      case 5:
-        this.idx = 3;
-        break;
-      case 6:
-      case 7:
-      case 8:
-        this.idx = 6;
-        break;
-      case 9:
-      case 10:
-      case 11:
-        this.idx = 9;
-        break;
-      case 12:
-      case 13:
-      case 14:
-        this.idx = 12;
-        break;
-    }
+    this.idx = Math.floor(this.idx / 3) * 3;
   }
 
   abstract turnTo(direction: DirectionKey): void;

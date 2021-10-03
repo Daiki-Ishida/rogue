@@ -12,26 +12,29 @@ export class MagicBlessAnimation implements Animation {
     readonly actor: Actor,
     private current: { x: number; y: number },
     readonly to: { x: number; y: number },
+    readonly callback: () => void,
     public frame: number,
     public done: boolean
   ) {}
 
   static ofFlame(
     actor: Actor,
-    to: { x: number; y: number }
+    to: { x: number; y: number },
+    callback: () => void
   ): MagicBlessAnimation {
     const img = imageStore.effects.fire;
     const current = { x: actor.next.x, y: actor.next.y };
-    return new MagicBlessAnimation(img, actor, current, to, 0, false);
+    return new MagicBlessAnimation(img, actor, current, to, callback, 0, false);
   }
 
   static ofBlizzard(
     actor: Actor,
-    to: { x: number; y: number }
+    to: { x: number; y: number },
+    callback: () => void
   ): MagicBlessAnimation {
     const img = imageStore.effects.ice;
     const current = { x: actor.next.x, y: actor.next.y };
-    return new MagicBlessAnimation(img, actor, current, to, 0, false);
+    return new MagicBlessAnimation(img, actor, current, to, callback, 0, false);
   }
 
   private get currentImg(): Image {
@@ -51,6 +54,7 @@ export class MagicBlessAnimation implements Animation {
     this.frame++;
 
     if (this.current.x === this.to.x && this.current.y === this.to.y) {
+      this.callback();
       this.done = true;
     }
   }

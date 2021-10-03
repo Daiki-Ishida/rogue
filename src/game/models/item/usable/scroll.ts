@@ -40,10 +40,11 @@ export class Scroll extends Usable {
   use(user: Player, board: Board): void {
     this.identify();
 
-    const animation = SpellAnimation.generate(user);
+    const animation = SpellAnimation.generate(user, () => {
+      this.effect(user, board);
+    });
     animationManager.push(animation);
 
-    this.effect(user, board);
     this.status.used = true;
 
     playlogManager.add(`${this.status.displayName}を読んだ`);
