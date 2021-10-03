@@ -1,8 +1,4 @@
-import { animationManager } from 'game';
-import { MagicAnimation } from 'game/animation';
 import { Board } from 'game/board';
-import { GridUtil, RandomUtil } from 'game/util';
-import { Condition, Player } from '..';
 import { Actor } from '../actor';
 import { blessEffect } from './bless';
 import { conditionAttackEffect } from './conditionAttack';

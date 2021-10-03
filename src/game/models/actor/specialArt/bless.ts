@@ -1,6 +1,8 @@
 import { Actor } from '../actor';
 import { Board } from 'game/board';
 import { GridUtil } from 'game/util';
+import { MagicBlessAnimation } from 'game/animation';
+import { animationManager } from 'game';
 
 export interface SpecialArt {
   effect: (actor: Actor, board: Board) => void;
@@ -17,6 +19,12 @@ export const blessEffect = (level: number): SpecialArt => {
       const target = getActorOnRayInRoom(actor, board);
       if (target === undefined) return;
       target.damage(40);
+
+      const animation = MagicBlessAnimation.ofFlame(actor, {
+        x: target.x,
+        y: target.y,
+      });
+      animationManager.push(animation);
     },
     inRange: (x: number, y: number, actor: Actor, board: Board): boolean => {
       const target = getActorOnRayInRoom(actor, board);
@@ -31,6 +39,12 @@ export const blessEffect = (level: number): SpecialArt => {
       const target = getActorOnRayInRoom(actor, board);
       if (target === undefined) return;
       target.damage(40);
+
+      const animation = MagicBlessAnimation.ofBlizzard(actor, {
+        x: target.x,
+        y: target.y,
+      });
+      animationManager.push(animation);
     },
     inRange: (x: number, y: number, actor: Actor, board: Board): boolean => {
       const target = getActorOnRayInRoom(actor, board);
