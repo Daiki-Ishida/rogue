@@ -1,6 +1,5 @@
-import { Game } from 'game/game';
-import { Actor } from 'game/models/actor';
 import p5 from 'p5';
+import { Game } from 'game/game';
 import { WalkAnimation } from '.';
 import { Camera } from '../view';
 import { Animation } from './animation';

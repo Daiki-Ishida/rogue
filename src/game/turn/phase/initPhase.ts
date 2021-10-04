@@ -1,7 +1,7 @@
 import { Game } from 'game/game';
 import { EnemyGenerator } from 'game/models/generator';
 import { Phase, PhaseBase, StandByPhase } from '.';
-import { MoveCommand } from 'game/command';
+import { MoveCommand, StepCommand } from 'game/command';
 
 export class InitPhase extends PhaseBase {
   get nextPhase(): Phase {
@@ -15,10 +15,17 @@ export class InitPhase extends PhaseBase {
     }
 
     // ダッシュ
-    if (game.mode === 'SKIP') {
+    if (game.mode === 'DASH') {
       const command = new MoveCommand(game.player);
       game.commands.push(command);
     }
+
+    // 足踏み
+    if (game.mode === 'STEP') {
+      const command = new StepCommand(game.player);
+      game.commands.push(command);
+    }
+
     this.completed = true;
   }
 }

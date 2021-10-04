@@ -1,6 +1,7 @@
 export * from './command';
 export * from './commands';
 export * from './moveCommand';
+export * from './stepCommand';
 export * from './attackCommand';
 export * from './artCommand';
 export * from './useCommand';

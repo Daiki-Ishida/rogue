@@ -17,7 +17,7 @@ export class Game {
     readonly commands: Commands,
     readonly turn: Turn,
     readonly inventory: Inventory,
-    public mode: 'NORMAL' | 'SKIP' = 'NORMAL'
+    public mode: 'NORMAL' | 'DASH' | 'STEP' = 'NORMAL'
   ) {}
 
   static init(): Game {
@@ -32,6 +32,10 @@ export class Game {
     return game;
   }
 
+  get skip(): boolean {
+    return this.mode === 'DASH' || this.mode === 'STEP';
+  }
+
   proc(): void {
     this.turn.proc(this);
   }
@@ -41,8 +45,12 @@ export class Game {
     this.generateModels();
   }
 
-  skip(): void {
-    this.mode = 'SKIP';
+  dash(): void {
+    this.mode = 'DASH';
+  }
+
+  step(): void {
+    this.mode = 'STEP';
   }
 
   resume(): void {

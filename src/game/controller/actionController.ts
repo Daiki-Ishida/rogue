@@ -1,6 +1,6 @@
 import { KeyConfig } from 'config';
 import { windowManager } from 'game';
-import { AttackCommand, MoveCommand } from 'game/command';
+import { AttackCommand, MoveCommand, StepCommand } from 'game/command';
 import { Game } from 'game/game';
 import { StandByPhase } from 'game/turn';
 import { Controller, ControllerState, inventoryController } from '.';
@@ -42,8 +42,14 @@ class ActionController implements ControllerState {
         break;
       }
       case 'U': {
-        game.skip();
+        game.dash();
         const command = new MoveCommand(player);
+        game.commands.push(command);
+        break;
+      }
+      case 'Q': {
+        game.step();
+        const command = new StepCommand(player);
         game.commands.push(command);
         break;
       }
