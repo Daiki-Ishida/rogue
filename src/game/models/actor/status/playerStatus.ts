@@ -26,7 +26,7 @@ export class PlayerStatus extends ActorStatus {
     const initialStatus = {
       level: 1,
       fullness: 100,
-      hp: 999,
+      hp: 10,
       str: 5,
       vit: 1,
     };

@@ -85,7 +85,6 @@ export const rogue = (p: p5): void => {
 const moveKeyIsDown = (game: Game, p: p5) => {
   if (windowManager.inventoryWindow.display) return false;
   if (windowManager.selectWindow) return false;
-  // if (game.potContentsWindow) return false;
 
   return (
     p.key !== 'A' &&

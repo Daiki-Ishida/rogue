@@ -20,8 +20,9 @@ export class Game {
     readonly commands: Commands,
     readonly turn: Turn,
     readonly inventory: Inventory,
+    public gold: number = 0,
     public mode: PlayMode = 'NORMAL',
-    public state: GameState = 'BRIDGE'
+    public state: GameState = 'START'
   ) {}
 
   static init(): Game {

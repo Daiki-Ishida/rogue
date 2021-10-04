@@ -1,6 +1,6 @@
 import { Game } from 'game/game';
-import { actionController } from './actionController';
 import { ControllerState } from './controllerState';
+import { startScreenController } from './startScreenCotroller';
 
 export class Controller {
   constructor(private state: ControllerState) {
@@ -8,7 +8,7 @@ export class Controller {
   }
 
   static init(): Controller {
-    return new Controller(actionController);
+    return new Controller(startScreenController);
   }
 
   changeState(state: ControllerState): void {

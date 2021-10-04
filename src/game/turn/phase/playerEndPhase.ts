@@ -63,11 +63,16 @@ export class PlayerEndPhase extends PhaseBase {
 
     const item = board.findItem(player.x, player.y);
     if (item) {
-      if (player.isCondition('AUTO_IDENTIFY')) {
-        item.identify();
+      if (item.isGold()) {
+        game.gold += item.status.amount;
+        board.clearItem(item);
+      } else {
+        if (player.isCondition('AUTO_IDENTIFY')) {
+          item.identify();
+        }
+        item.pickup(game);
+        game.resume();
       }
-      item.pickup(game);
-      game.resume();
     }
 
     if (!player.canMove(board)) {
@@ -81,10 +86,10 @@ export class PlayerEndPhase extends PhaseBase {
       game.resume();
     }
 
-    // 死んだらゲームオーバー(現時点では判定だけ)
+    // 死んだらゲームオーバー
     if (player.isDead) {
       game.resume();
-      alert('game over...');
+      game.state = 'GAME_OVER';
     }
 
     // 死んだ敵は除外

@@ -29,12 +29,18 @@ export class Drawer {
 
   draw(game: Game, p: p5): void {
     switch (game.state) {
+      case 'START':
+        this.drawStartScreen(p);
+        break;
       case 'PLAY':
         this.drawGamePlay(game, p);
         break;
       case 'BRIDGE':
         this.drawGamePlay(game, p);
         this.drawBridgeEffect(game, p);
+        break;
+      case 'GAME_OVER':
+        this.drawGameOver(game, p);
         break;
       default:
         throw new Error('something went wrong...');
@@ -201,6 +207,29 @@ export class Drawer {
     p.pop();
   }
 
+  private drawStartScreen(p: p5): void {
+    const title = 'GAME START';
+    const play = 'Press Enter To Play';
+
+    p.push();
+    p.background('#082032');
+
+    p.textSize(144);
+    p.fill('#FEF1E6');
+    p.text(title, 280, 380);
+
+    const r = p.frameCount % 45;
+    const on = r > 20 ? true : false;
+
+    if (on) {
+      p.textSize(48);
+      p.fill('#FEF1E6');
+      p.text(play, 400, 540);
+    }
+
+    p.pop();
+  }
+
   private drawBridgeEffect(game: Game, p: p5): void {
     p.push();
 
@@ -227,6 +256,25 @@ export class Drawer {
       BRIDGE_EFFECT_FRAME = 0;
       game.state = 'PLAY';
     }
+
+    p.pop();
+  }
+
+  private drawGameOver(game: Game, p: p5): void {
+    const title = 'GAME OVER';
+
+    p.push();
+    p.background('#082032');
+
+    p.textSize(144);
+    p.fill('#FEF1E6');
+    p.text(title, 120, 240);
+
+    p.textSize(56);
+    p.fill('#FEF1E6');
+    p.text(`GOLD  :  ${game.gold}`, 280, 420);
+    p.text(`EXP   :  ${game.player.status.exp}`, 280, 520);
+    p.text(`FLOOR :  ${game.board.dungeon.level}`, 280, 620);
 
     p.pop();
   }

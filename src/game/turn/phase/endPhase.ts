@@ -8,8 +8,12 @@ export class EndPhase extends PhaseBase {
   }
 
   proc(game: Game): void {
-    // todo
-    // ゲームクリア、ゲームオーバーとかのチェック
+    // 死んだらゲームオーバー
+    if (game.player.isDead) {
+      game.resume();
+      game.state = 'GAME_OVER';
+    }
+
     game.turn.count++;
     this.completed = true;
   }

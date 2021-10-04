@@ -21,7 +21,7 @@ export class CleanUpPhase extends PhaseBase {
 
     // 死んだ敵は除外
     board.actors.forEach((actor) => {
-      if (actor.isDead) {
+      if (actor.isEnemy() && actor.isDead) {
         board.clearActor(actor);
       }
     });
