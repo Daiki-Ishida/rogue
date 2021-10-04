@@ -24,6 +24,8 @@ export let soundManager: SoundManager;
 export let playlogManager: PlaylogManager;
 export let indicatorManager: IndicatorManager;
 
+const GAME_SPEED = 40;
+
 export const rogue = (p: p5): void => {
   p.preload = () => {
     asset = Asset.preload(p);
@@ -31,7 +33,7 @@ export const rogue = (p: p5): void => {
   };
 
   p.setup = () => {
-    p.frameRate(30);
+    p.frameRate(GAME_SPEED);
     p.createCanvas(1280, 720);
     p.textFont(asset.font);
     p.imageMode('center');
@@ -70,7 +72,7 @@ export const rogue = (p: p5): void => {
       controller.proc(p.key, game);
     }
 
-    game.skip ? p.frameRate(120) : p.frameRate(30);
+    game.skip ? p.frameRate(120) : p.frameRate(GAME_SPEED);
 
     game.proc();
 

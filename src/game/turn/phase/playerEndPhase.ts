@@ -63,16 +63,11 @@ export class PlayerEndPhase extends PhaseBase {
 
     const item = board.findItem(player.x, player.y);
     if (item) {
-      if (item.isGold()) {
-        game.gold += item.status.amount;
-        board.clearItem(item);
-      } else {
-        if (player.isCondition('AUTO_IDENTIFY')) {
-          item.identify();
-        }
-        item.pickup(game);
-        game.resume();
+      if (player.isCondition('AUTO_IDENTIFY')) {
+        item.identify();
       }
+      item.pickup(game);
+      game.resume();
     }
 
     if (!player.canMove(board)) {

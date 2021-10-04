@@ -1,4 +1,4 @@
-import { Item } from '../item';
+import { Gold, Item } from '../item';
 import { Board } from 'game/board';
 import { BraceletGenerator } from './braceletGenerator';
 import { FoodGenerator } from './foodGenerator';
@@ -46,8 +46,7 @@ export class ItemGenerator {
         item = ShieldGenerator.generate(board);
         break;
       default:
-        item = SwordGenerator.generate(board);
-      // throw new Error(`Invalid Category: ${category}`);
+        item = Gold.generate(board);
     }
 
     return item;

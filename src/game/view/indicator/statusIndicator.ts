@@ -10,21 +10,22 @@ export class StatusIndicator {
     p.rectMode('corner');
 
     p.fill('white');
-    p.textSize(20);
-    p.textStyle('bold');
 
     const y = 40;
     const x = 50;
     const status = player.status;
 
+    p.textSize(24);
     p.text(`${board.dungeon.level} F`, x, y);
     p.text(`Lv ${status.level}`, x + 100, y);
+
+    p.textSize(20);
     p.text(`HP ${status.hp} / ${status.maxHp}`, x + 200, y);
     p.text(`満腹度 ${status.fullness} / ${status.maxFullness}`, x + 600, y);
 
     const w = 200;
     const h = 25;
-    const rx = 400;
+    const rx = 380;
     const ry = 20;
     const hp = w * (status.hp / status.maxHp);
     const fullness = w * (status.fullness / status.maxFullness);
@@ -37,6 +38,9 @@ export class StatusIndicator {
     p.rect(rx, ry, hp, h);
     p.fill('#00D8FF');
     p.rect(rx + 450, ry, fullness, h);
+
+    p.fill('white');
+    p.text(`${game.gold} G`, 1150, y);
 
     p.pop();
   }
