@@ -17,6 +17,11 @@ export class Player extends Actor {
     return new Player(symbol, status);
   }
 
+  autoHeal(): void {
+    if (this.status.dmg === 0) return;
+    this.status.dmg--;
+  }
+
   addHunger(value: number): void {
     this.status.hunger += value;
   }

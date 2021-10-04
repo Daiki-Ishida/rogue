@@ -19,17 +19,17 @@ export class BounceIndicator {
 
   static ofDamage(_value: number, target: Actor): BounceIndicator {
     const value = `${_value}`;
-    const x = target.symbol.x;
-    const y = target.symbol.y - 0.5;
-    const color = '#F22C5A';
+    const x = target.x - 0.2;
+    const y = target.y - 0.5;
+    const color = '#FE8F8F';
 
     return new BounceIndicator(value, x, y, y, color, 0, false);
   }
 
   static ofHealing(_value: number, target: Actor): BounceIndicator {
     const value = `${_value}`;
-    const x = target.symbol.x;
-    const y = target.symbol.y - 0.5;
+    const x = target.x - 0.2;
+    const y = target.y - 0.5;
     const color = '#08ffc8';
 
     return new BounceIndicator(value, x, y, y, color, 0, false);
@@ -37,11 +37,11 @@ export class BounceIndicator {
 
   static ofMissHit(target: Actor): BounceIndicator {
     const value = `MISS`;
-    const x = target.symbol.x;
-    const y = target.symbol.y - 0.5;
-    const color = '#F22C5A';
+    const x = target.x - 0.5;
+    const y = target.y - 0.5;
+    const color = '#F0A500';
 
-    return new BounceIndicator(value, x - 0.5, y, y, color, 0, false);
+    return new BounceIndicator(value, x, y, y, color, 0, false);
   }
 
   proc(): void {
@@ -64,7 +64,9 @@ export class BounceIndicator {
     p.push();
     const { x, y } = camera.adjust(this.x, this.y);
 
-    p.textSize(25);
+    p.textSize(28);
+    p.stroke('#334756');
+    p.strokeWeight(3);
     p.fill(this.color);
     p.text(this.value, x, y);
     p.pop();

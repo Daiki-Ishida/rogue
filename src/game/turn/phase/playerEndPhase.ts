@@ -22,7 +22,7 @@ export class PlayerEndPhase extends PhaseBase {
     }
 
     // 毎ターン１回復（調整するかも）
-    player.heal(1);
+    player.autoHeal();
 
     // 状態異常自然治癒チェック
     player.conditions.conditions.forEach((cond) => cond.count++);
