@@ -10,9 +10,10 @@ import { PlaylogManager } from './log';
 import { IndicatorManager } from './view/indicator';
 import { SoundManager } from './sounds';
 
+export let overlay: Graphics;
+
 let asset: Asset;
 export let controller: Controller;
-export let overlay: Graphics;
 export let game: Game;
 export let drawer: Drawer;
 export let imageStore: ImageStore;
@@ -49,6 +50,10 @@ export const rogue = (p: p5): void => {
   };
 
   p.keyPressed = () => {
+    if (game.state === 'BRIDGE') {
+      return;
+    }
+
     if (moveKeyIsDown(game, p)) {
       return;
     }
@@ -58,15 +63,21 @@ export const rogue = (p: p5): void => {
 
   p.draw = () => {
     if (moveKeyIsDown(game, p)) {
+      if (game.state === 'BRIDGE') {
+        return;
+      }
+
       controller.proc(p.key, game);
     }
 
     game.skip ? p.frameRate(120) : p.frameRate(30);
 
     game.proc();
-    soundManager.play();
+
     playlogManager.proc();
     indicatorManager.proc();
+
+    soundManager.play();
     drawer.draw(game, p);
   };
 };

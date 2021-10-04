@@ -17,6 +17,8 @@ import { Item } from 'game/models/item';
 
 const ZOOM = 60;
 
+let BRIDGE_EFFECT_FRAME = 0;
+
 export class Drawer {
   constructor(readonly camera: Camera) {}
 
@@ -26,6 +28,20 @@ export class Drawer {
   }
 
   draw(game: Game, p: p5): void {
+    switch (game.state) {
+      case 'PLAY':
+        this.drawGamePlay(game, p);
+        break;
+      case 'BRIDGE':
+        this.drawGamePlay(game, p);
+        this.drawBridgeEffect(game, p);
+        break;
+      default:
+        throw new Error('something went wrong...');
+    }
+  }
+
+  private drawGamePlay(game: Game, p: p5): void {
     this.camera.track(game.player);
 
     // ダンジョンマップ描画
@@ -180,6 +196,35 @@ export class Drawer {
       // 空白マス
       p.fill('rgba(6,29,143,0.8)');
       p.rect(s + x * n, s + y * n, n, n);
+    }
+
+    p.pop();
+  }
+
+  private drawBridgeEffect(game: Game, p: p5): void {
+    p.push();
+
+    if (BRIDGE_EFFECT_FRAME < 50) {
+      p.background(0, 0, 0);
+
+      p.textSize(144);
+      p.strokeWeight(12);
+
+      const fade = BRIDGE_EFFECT_FRAME * 15;
+      p.fill(243, 240, 215, fade);
+      p.stroke(49, 107, 131, fade);
+
+      p.text(`Floor ${game.board.dungeon.level}`, 360, 400);
+    }
+
+    if (BRIDGE_EFFECT_FRAME >= 50) {
+      const fade = 255 - (BRIDGE_EFFECT_FRAME - 50) * 25.5;
+      p.background(0, 0, 0, fade);
+    }
+
+    BRIDGE_EFFECT_FRAME++;
+    if (BRIDGE_EFFECT_FRAME > 60) {
+      game.state = 'PLAY';
     }
 
     p.pop();

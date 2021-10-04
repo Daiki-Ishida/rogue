@@ -10,6 +10,9 @@ import {
 import { Turn } from './turn';
 import { RandomUtil } from './util';
 
+type PlayMode = 'NORMAL' | 'DASH' | 'STEP';
+type GameState = 'START' | 'PLAY' | 'BRIDGE' | 'GAME_OVER' | 'GAME_CLEAR';
+
 export class Game {
   private constructor(
     readonly player: Player,
@@ -17,7 +20,8 @@ export class Game {
     readonly commands: Commands,
     readonly turn: Turn,
     readonly inventory: Inventory,
-    public mode: 'NORMAL' | 'DASH' | 'STEP' = 'NORMAL'
+    public mode: PlayMode = 'NORMAL',
+    public state: GameState = 'BRIDGE'
   ) {}
 
   static init(): Game {
@@ -36,15 +40,6 @@ export class Game {
     return this.mode === 'DASH' || this.mode === 'STEP';
   }
 
-  proc(): void {
-    this.turn.proc(this);
-  }
-
-  next(): void {
-    this.board.next();
-    this.generateModels();
-  }
-
   dash(): void {
     this.mode = 'DASH';
   }
@@ -55,6 +50,15 @@ export class Game {
 
   resume(): void {
     this.mode = 'NORMAL';
+  }
+
+  proc(): void {
+    this.turn.proc(this);
+  }
+
+  next(): void {
+    this.board.next();
+    this.generateModels();
   }
 
   private generateModels(): void {
