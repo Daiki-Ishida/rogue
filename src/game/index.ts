@@ -63,6 +63,14 @@ export const rogue = (p: p5): void => {
     controller.proc(p.key, game);
   };
 
+  p.keyReleased = () => {
+    if (!game.skip) return;
+
+    if (p.key === 'u' || p.key === 'o') {
+      game.resume();
+    }
+  };
+
   p.draw = () => {
     if (moveKeyIsDown(game, p)) {
       if (game.state === 'BRIDGE') {

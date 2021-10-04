@@ -41,13 +41,13 @@ class ActionController implements ControllerState {
         player.turnTo(direction);
         break;
       }
-      case 'U': {
+      case 'u': {
         game.dash();
         const command = new MoveCommand(player);
         game.commands.push(command);
         break;
       }
-      case 'Q': {
+      case 'o': {
         game.step();
         const command = new StepCommand(player);
         game.commands.push(command);
