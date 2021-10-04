@@ -57,6 +57,8 @@ export class Game {
   }
 
   next(): void {
+    this.state = 'BRIDGE';
+
     this.board.next();
     this.generateModels();
   }
