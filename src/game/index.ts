@@ -11,7 +11,10 @@ import { IndicatorManager } from './view/indicator';
 import { SoundManager } from './sounds';
 
 export let overlay: Graphics;
-export let input: Element;
+
+export let textBox: Element;
+export let volumeSlider: Element;
+export let volumeIcon: Element;
 
 let asset: Asset;
 export let imageStore: ImageStore;
@@ -41,8 +44,10 @@ export const rogue = (p: p5): void => {
     p.textFont(asset.font);
     p.imageMode('center');
 
-    input = p.createInput();
-    input.hide();
+    textBox = p.createInput();
+    textBox.hide();
+    volumeSlider = p.createSlider(0, 100, 50, 5);
+    volumeIcon = p.createSpan('🔊');
 
     imageStore = ImageStore.init(asset);
     soundStore = SoundStore.init(asset);
@@ -74,6 +79,9 @@ export const rogue = (p: p5): void => {
 
     playlogManager.proc();
     indicatorManager.proc();
+
+    const vol = (volumeSlider.value() as number) / 100;
+    soundManager.setVolume(vol);
 
     soundManager.play();
     drawer.draw(game, p);

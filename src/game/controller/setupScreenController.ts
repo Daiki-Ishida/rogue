@@ -1,14 +1,24 @@
-import { input } from 'game';
+import { textBox } from 'game';
 import { Game } from '../game';
 import { Controller, actionController } from '.';
 import { ControllerState } from './controllerState';
 
 class SetupScreenController implements ControllerState {
-  proc(_input: string, game: Game, context: Controller): void {
-    if (_input !== 'Enter') return;
+  proc(input: string, game: Game, context: Controller): void {
+    if (input !== 'Enter') return;
 
-    input.remove();
-    game.player.changeName(input.value().toString());
+    const name = textBox.value().toString();
+    if (name.length === 0) {
+      alert('名前を入力してください！');
+      return;
+    }
+    if (name.length > 8) {
+      alert('８文字以内で入力してください！');
+      return;
+    }
+
+    game.player.changeName(name);
+    textBox.remove();
 
     game.state = 'PLAY';
     context.changeState(actionController);

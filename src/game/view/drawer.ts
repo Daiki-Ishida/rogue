@@ -3,7 +3,7 @@ import { Camera } from './camera';
 import {
   animationManager,
   indicatorManager,
-  input,
+  textBox,
   overlay,
   playlogManager,
   windowManager,
@@ -278,9 +278,9 @@ export class Drawer {
     p.textSize(48);
     p.text(note, 560, 240);
 
-    input.position(200, 320);
-    input.size(820);
-    input.style('height: 86px; font-size:72px;');
+    textBox.position(200, 320);
+    textBox.size(820);
+    textBox.style('height: 86px; font-size:72px;');
 
     p.pop();
   }

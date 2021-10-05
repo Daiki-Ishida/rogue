@@ -21,15 +21,6 @@ export class Player extends Actor {
   }
 
   changeName(name: string): void {
-    if (name.length === 0) {
-      alert('名前を入力してください！');
-      return;
-    }
-
-    if (name.length > 8) {
-      alert('８文字以内で入力してください！');
-      return;
-    }
     this.status.name = name;
   }
 
