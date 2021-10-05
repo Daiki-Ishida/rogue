@@ -7,6 +7,7 @@ import {
   overlay,
   playlogManager,
   windowManager,
+  controller,
 } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
@@ -158,6 +159,7 @@ export class Drawer {
 
   private drawWindow(p: p5): void {
     windowManager.inventoryWindow.draw(p);
+    windowManager.helpWindow.draw(controller, p);
     windowManager.selectWindow?.draw(p);
   }
 

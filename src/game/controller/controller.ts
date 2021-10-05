@@ -5,7 +5,7 @@ import { startScreenController } from './startScreenCotroller';
 import { actionController } from './actionController';
 
 export class Controller {
-  private constructor(private state: ControllerState) {
+  private constructor(public state: ControllerState) {
     this.state = state;
   }
 

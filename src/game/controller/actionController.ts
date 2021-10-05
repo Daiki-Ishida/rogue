@@ -5,7 +5,7 @@ import { Game } from 'game/game';
 import { StandByPhase } from 'game/turn';
 import { Controller, ControllerState, inventoryController } from '.';
 
-class ActionController implements ControllerState {
+export class ActionController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {
     if (!(game.turn.phase instanceof StandByPhase)) {
       return;

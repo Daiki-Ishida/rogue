@@ -6,7 +6,7 @@ import { ControllerState } from './controllerState';
 import { actionController } from './actionController';
 import { selectWindowController } from './selectWindowController';
 
-class InventoryController implements ControllerState {
+export class InventoryController implements ControllerState {
   proc(input: string, game: Game, context: Controller): void {
     const window = windowManager.inventoryWindow;
 

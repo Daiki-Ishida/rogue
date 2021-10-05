@@ -1,17 +1,18 @@
 import { Game } from 'game/game';
+import { HelpWindow } from './helpWindow';
 import { InventoryWindow } from './inventoryWindow';
 import { SelectionWindow } from './selectionWindow';
 
 export class WindowManager {
   constructor(
-    // readonly indicatorWindow: string,
-    // readonly messageWindow: string,
     readonly inventoryWindow: InventoryWindow,
+    readonly helpWindow: HelpWindow,
     public selectWindow?: SelectionWindow
   ) {}
 
   static init(game: Game): WindowManager {
     const inventoryWindow = InventoryWindow.init(game.inventory);
-    return new WindowManager(inventoryWindow);
+    const helpWindow = new HelpWindow();
+    return new WindowManager(inventoryWindow, helpWindow);
   }
 }
