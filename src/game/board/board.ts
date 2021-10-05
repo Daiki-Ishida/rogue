@@ -9,6 +9,11 @@ import { Trap } from 'game/models/trap';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
 import { BaseLayer, DungeonLayer, Layer, Tile } from './layer';
+import {
+  EnemyGenerator,
+  ItemGenerator,
+  TrapGenerator,
+} from 'game/models/generator';
 
 export interface IBoard {
   w: number;
@@ -37,7 +42,7 @@ export interface IBoard {
 }
 
 export class Board implements IBoard {
-  constructor(
+  private constructor(
     readonly w: number,
     readonly h: number,
     readonly dungeon: Dungeon,
@@ -50,9 +55,11 @@ export class Board implements IBoard {
 
   static init(w: number, h: number): Board {
     const dungeon = Dungeon.init(w, h);
+
     const dungeonLayer = DungeonLayer.init(w, h);
     dungeonLayer.apply(dungeon);
-    return new Board(
+
+    const board = new Board(
       w,
       h,
       dungeon,
@@ -62,6 +69,12 @@ export class Board implements IBoard {
       BaseLayer.init(w, h),
       dungeonLayer
     );
+
+    board.generateTraps();
+    board.generateItems();
+    board.generateEnemys();
+
+    return board;
   }
 
   next(): void {
@@ -74,6 +87,25 @@ export class Board implements IBoard {
     this.actors = [];
     this.items = [];
     this.traps = [];
+
+    this.generateTraps();
+    this.generateItems();
+    this.generateEnemys();
+  }
+
+  generateEnemys(): void {
+    const enemyCount = RandomUtil.getRandomIntInclusive(4, 6);
+    EnemyGenerator.generate(enemyCount, this);
+  }
+
+  generateItems(): void {
+    const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
+    ItemGenerator.generate(itemCount, this);
+  }
+
+  generateTraps(): void {
+    const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
+    TrapGenerator.generate(trapCount, this);
   }
 
   findTrap(x: number, y: number): Trap | undefined {

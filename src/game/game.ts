@@ -26,14 +26,15 @@ export class Game {
   ) {}
 
   static init(): Game {
-    const player = Player.init('Player');
     const board = Board.init(60, 30);
+    const player = Player.init('Player');
+    player.spawn(board);
+
     const commands = Commands.init();
     const turn = Turn.init();
     const inventory = Inventory.init();
 
     const game = new Game(player, board, commands, turn, inventory);
-    game.generateModels();
     return game;
   }
 
@@ -61,20 +62,6 @@ export class Game {
     this.state = 'BRIDGE';
 
     this.board.next();
-    this.generateModels();
-  }
-
-  private generateModels(): void {
-    const board = this.board;
-    this.player.spawn(board);
-
-    const enemyCount = RandomUtil.getRandomIntInclusive(7, 12);
-    EnemyGenerator.generate(enemyCount, board);
-
-    const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
-    ItemGenerator.generate(itemCount, board);
-
-    const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
-    TrapGenerator.generate(trapCount, board);
+    this.player.spawn(this.board);
   }
 }

@@ -66,7 +66,6 @@ export const rogue = (p: p5): void => {
     controller.hold(game, p);
 
     game.isSkipMode ? p.frameRate(SKIP_SPEED) : p.frameRate(PLAY_SPEED);
-
     game.proc();
 
     playlogManager.proc();
