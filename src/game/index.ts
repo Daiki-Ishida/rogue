@@ -1,4 +1,4 @@
-import p5, { Graphics } from 'p5';
+import p5, { Element, Graphics } from 'p5';
 import { Asset } from 'asset';
 import { Game } from './game';
 import { ImageStore, SoundStore } from './store';
@@ -11,6 +11,7 @@ import { IndicatorManager } from './view/indicator';
 import { SoundManager } from './sounds';
 
 export let overlay: Graphics;
+export let input: Element;
 
 let asset: Asset;
 export let imageStore: ImageStore;
@@ -39,6 +40,9 @@ export const rogue = (p: p5): void => {
     p.createCanvas(1280, 720);
     p.textFont(asset.font);
     p.imageMode('center');
+
+    input = p.createInput();
+    input.hide();
 
     imageStore = ImageStore.init(asset);
     soundStore = SoundStore.init(asset);

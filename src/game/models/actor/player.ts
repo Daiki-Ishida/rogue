@@ -7,7 +7,10 @@ import { PlayerStatus } from './status';
 import { PlayerSymbol } from './symbol';
 
 export class Player extends Actor {
-  constructor(readonly symbol: PlayerSymbol, readonly status: PlayerStatus) {
+  private constructor(
+    readonly symbol: PlayerSymbol,
+    readonly status: PlayerStatus
+  ) {
     super(symbol, status);
   }
 
@@ -15,6 +18,19 @@ export class Player extends Actor {
     const symbol = PlayerSymbol.init();
     const status = PlayerStatus.init(name);
     return new Player(symbol, status);
+  }
+
+  changeName(name: string): void {
+    if (name.length === 0) {
+      alert('名前を入力してください！');
+      return;
+    }
+
+    if (name.length > 8) {
+      alert('８文字以内で入力してください！');
+      return;
+    }
+    this.status.name = name;
   }
 
   autoHeal(): void {

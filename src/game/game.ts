@@ -2,16 +2,16 @@ import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './models/actor';
-import {
-  EnemyGenerator,
-  ItemGenerator,
-  TrapGenerator,
-} from './models/generator';
 import { Turn } from './turn';
-import { RandomUtil } from './util';
 
 type PlayMode = 'NORMAL' | 'DASH' | 'STEP';
-type GameState = 'START' | 'PLAY' | 'BRIDGE' | 'GAME_OVER' | 'GAME_CLEAR';
+type GameState =
+  | 'START'
+  | 'SET_UP'
+  | 'PLAY'
+  | 'BRIDGE'
+  | 'GAME_OVER'
+  | 'GAME_CLEAR';
 
 export class Game {
   private constructor(

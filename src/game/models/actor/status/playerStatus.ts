@@ -5,8 +5,8 @@ import { RandomUtil } from 'game/util';
 import { ActorStatus } from '.';
 
 export class PlayerStatus extends ActorStatus {
-  constructor(
-    readonly name: string,
+  private constructor(
+    public name: string,
     public maxHp: number,
     public str: number,
     public vit: number,
@@ -26,9 +26,9 @@ export class PlayerStatus extends ActorStatus {
     const initialStatus = {
       level: 1,
       fullness: 100,
-      hp: 10,
+      hp: 15,
       str: 5,
-      vit: 1,
+      vit: 0,
     };
 
     return new PlayerStatus(

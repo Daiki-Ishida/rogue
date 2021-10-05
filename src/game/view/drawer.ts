@@ -3,6 +3,7 @@ import { Camera } from './camera';
 import {
   animationManager,
   indicatorManager,
+  input,
   overlay,
   playlogManager,
   windowManager,
@@ -31,6 +32,9 @@ export class Drawer {
     switch (game.state) {
       case 'START':
         this.drawStartScreen(p);
+        break;
+      case 'SET_UP':
+        this.drawSetupScreen(p);
         break;
       case 'PLAY':
         this.drawGamePlay(game, p);
@@ -256,6 +260,27 @@ export class Drawer {
       BRIDGE_EFFECT_FRAME = 0;
       game.state = 'PLAY';
     }
+
+    p.pop();
+  }
+
+  private drawSetupScreen(p: p5): void {
+    const title = 'YOUR NAME';
+    const note = 'MAX 8 Letters';
+
+    p.push();
+    p.background('#082032');
+
+    p.textSize(72);
+    p.fill('#FEF1E6');
+    p.text(title, 200, 240);
+
+    p.textSize(48);
+    p.text(note, 560, 240);
+
+    input.position(200, 320);
+    input.size(820);
+    input.style('height: 86px; font-size:72px;');
 
     p.pop();
   }
