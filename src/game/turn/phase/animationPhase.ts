@@ -13,7 +13,7 @@ export class AnimationPhase extends PhaseBase {
       game.resume();
     }
 
-    if (game.skip) {
+    if (game.isSkipMode) {
       animationManager.skipWalk(game);
       this.completed = true;
       return;

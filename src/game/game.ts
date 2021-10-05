@@ -37,7 +37,7 @@ export class Game {
     return game;
   }
 
-  get skip(): boolean {
+  get isSkipMode(): boolean {
     return this.mode === 'DASH' || this.mode === 'STEP';
   }
 

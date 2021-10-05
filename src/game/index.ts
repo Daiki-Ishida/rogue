@@ -13,18 +13,21 @@ import { SoundManager } from './sounds';
 export let overlay: Graphics;
 
 let asset: Asset;
-export let controller: Controller;
-export let game: Game;
-export let drawer: Drawer;
 export let imageStore: ImageStore;
 export let soundStore: SoundStore;
+
+export let game: Game;
+export let controller: Controller;
+export let drawer: Drawer;
+
 export let windowManager: WindowManager;
 export let animationManager: AnimationManager;
 export let soundManager: SoundManager;
 export let playlogManager: PlaylogManager;
 export let indicatorManager: IndicatorManager;
 
-const GAME_SPEED = 40;
+const PLAY_SPEED = 40;
+const SKIP_SPEED = 120;
 
 export const rogue = (p: p5): void => {
   p.preload = () => {
@@ -33,7 +36,6 @@ export const rogue = (p: p5): void => {
   };
 
   p.setup = () => {
-    p.frameRate(GAME_SPEED);
     p.createCanvas(1280, 720);
     p.textFont(asset.font);
     p.imageMode('center');
@@ -44,6 +46,7 @@ export const rogue = (p: p5): void => {
     game = Game.init();
     drawer = Drawer.init();
     controller = Controller.init();
+
     animationManager = AnimationManager.init();
     soundManager = SoundManager.init();
     windowManager = WindowManager.init(game);
@@ -52,35 +55,17 @@ export const rogue = (p: p5): void => {
   };
 
   p.keyPressed = () => {
-    if (game.state === 'BRIDGE') {
-      return;
-    }
-
-    if (moveKeyIsDown(game, p)) {
-      return;
-    }
-
-    controller.proc(p.key, game);
+    controller.press(game, p);
   };
 
   p.keyReleased = () => {
-    if (!game.skip) return;
-
-    if (p.key === 'u' || p.key === 'o') {
-      game.resume();
-    }
+    controller.release(game, p);
   };
 
   p.draw = () => {
-    if (moveKeyIsDown(game, p)) {
-      if (game.state === 'BRIDGE') {
-        return;
-      }
+    controller.hold(game, p);
 
-      controller.proc(p.key, game);
-    }
-
-    game.skip ? p.frameRate(120) : p.frameRate(GAME_SPEED);
+    game.isSkipMode ? p.frameRate(SKIP_SPEED) : p.frameRate(PLAY_SPEED);
 
     game.proc();
 
@@ -90,17 +75,4 @@ export const rogue = (p: p5): void => {
     soundManager.play();
     drawer.draw(game, p);
   };
-};
-
-const moveKeyIsDown = (game: Game, p: p5) => {
-  if (windowManager.inventoryWindow.display) return false;
-  if (windowManager.selectWindow) return false;
-
-  return (
-    p.key !== 'A' &&
-    p.key !== 'W' &&
-    p.key !== 'S' &&
-    p.key !== 'D' &&
-    (p.keyIsDown(65) || p.keyIsDown(87) || p.keyIsDown(83) || p.keyIsDown(68))
-  );
 };
