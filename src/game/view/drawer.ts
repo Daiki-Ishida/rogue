@@ -280,7 +280,7 @@ export class Drawer {
     p.textSize(48);
     p.text(note, 560, 240);
 
-    textBox.position(200, 320);
+    textBox.center();
     textBox.size(820);
     textBox.style('height: 86px; font-size:72px;');
 
