@@ -1,7 +1,7 @@
 import { game } from 'game';
 import { Board } from 'game/board';
-import { Player } from 'game/models/actor';
-import { Usable } from 'game/models/item';
+import { Player } from 'game/unit/actor';
+import { Usable } from 'game/unit/item';
 import { Command } from '.';
 
 export class UseCommand implements Command {

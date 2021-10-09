@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 
 export interface Command {
   actor: Actor;

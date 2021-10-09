@@ -1,7 +1,7 @@
 import { controller, windowManager } from 'game';
 import { selectWindowController } from 'game/controller';
 import { Game } from 'game/game';
-import { ExitSelectionWindow } from 'game/view/gui';
+import { ExitSelectionWindow } from 'game/view/window';
 import { EnemyActionPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 

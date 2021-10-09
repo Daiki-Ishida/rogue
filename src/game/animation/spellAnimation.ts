@@ -1,7 +1,7 @@
 import p5, { Image } from 'p5';
 import { Animation } from '.';
 import { Camera } from '../view';
-import { Player } from 'game/models/actor';
+import { Player } from 'game/unit/actor';
 import { imageStore } from 'game';
 
 export class SpellAnimation implements Animation {

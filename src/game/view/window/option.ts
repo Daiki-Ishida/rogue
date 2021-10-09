@@ -1,6 +1,6 @@
 import { Game } from 'game/game';
 import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
-import { Equipment, Item, Usable } from 'game/models/item';
+import { Equipment, Item, Usable } from 'game/unit/item';
 import { soundManager, soundStore } from 'game';
 
 export class Option {

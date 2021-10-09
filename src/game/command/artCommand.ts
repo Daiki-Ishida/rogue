@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Enemy } from 'game/models/actor/enemy';
+import { Enemy } from 'game/unit/actor/enemy';
 import { Command } from '.';
 
 export class ArtCommand implements Command {

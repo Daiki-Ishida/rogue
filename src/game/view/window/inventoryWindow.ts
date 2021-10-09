@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Inventory } from 'game/inventory';
-import { Item } from 'game/models/item';
+import { Item } from 'game/unit/item';
 import { Window } from './window';
 import { soundManager, soundStore } from 'game';
 

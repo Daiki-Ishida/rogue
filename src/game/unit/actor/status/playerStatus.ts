@@ -1,5 +1,5 @@
 import { playlogManager } from 'game';
-import { Bracelet, Shield, Sword } from 'game/models/item';
+import { Bracelet, Shield, Sword } from 'game/unit/item';
 import { playerDataStore } from 'game/store';
 import { RandomUtil } from 'game/util';
 import { ActorStatus } from '.';

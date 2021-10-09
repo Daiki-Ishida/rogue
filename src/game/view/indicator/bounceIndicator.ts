@@ -1,7 +1,7 @@
 import Eases from 'eases';
 import p5 from 'p5';
 import { Camera } from 'game/view';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 
 const F = 30;
 const HEIGHT = 0.5;

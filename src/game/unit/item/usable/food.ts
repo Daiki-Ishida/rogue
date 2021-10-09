@@ -1,6 +1,6 @@
 import { imageStore, playlogManager, soundManager, soundStore } from 'game';
 import { Board } from 'game/board';
-import { Actor, Player } from 'game/models/actor';
+import { Actor, Player } from 'game/unit/actor';
 import { RandomUtil } from 'game/util';
 import { FoodStatus } from '../status';
 import { ItemSymbol } from '../symbol';

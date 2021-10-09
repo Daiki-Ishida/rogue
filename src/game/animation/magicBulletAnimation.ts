@@ -1,7 +1,7 @@
 import p5, { Image } from 'p5';
 import { Animation } from '.';
 import { Camera } from '../view';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import { imageStore } from 'game';
 
 const SPEED = 1;

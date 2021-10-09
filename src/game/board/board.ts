@@ -3,9 +3,9 @@ import { imageStore } from 'game';
 import { Dungeon } from 'game/dungeon';
 import { Exit } from 'game/dungeon/exit';
 import { Room } from 'game/dungeon/room';
-import { Actor } from 'game/models/actor';
-import { Item } from 'game/models/item';
-import { Trap } from 'game/models/trap';
+import { Actor } from 'game/unit/actor';
+import { Item } from 'game/unit/item';
+import { Trap } from 'game/unit/trap';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
 import { BaseLayer, DungeonLayer, Layer, Tile } from './layer';
@@ -13,7 +13,7 @@ import {
   EnemyGenerator,
   ItemGenerator,
   TrapGenerator,
-} from 'game/models/generator';
+} from 'game/unit/generator';
 
 export interface IBoard {
   w: number;

@@ -2,7 +2,7 @@ import { soundManager, soundStore } from 'game';
 import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
-import { Player } from './models/actor';
+import { Player } from './unit/actor';
 import { Turn } from './turn';
 
 type PlayMode = 'NORMAL' | 'DASH' | 'STEP';

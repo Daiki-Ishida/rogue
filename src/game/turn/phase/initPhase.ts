@@ -1,5 +1,5 @@
 import { Game } from 'game/game';
-import { EnemyGenerator } from 'game/models/generator';
+import { EnemyGenerator } from 'game/unit/generator';
 import { Phase, PhaseBase, StandByPhase } from '.';
 import { MoveCommand, StepCommand } from 'game/command';
 

@@ -1,5 +1,5 @@
 import { indicatorManager, playlogManager } from 'game';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import { RandomUtil } from 'game/util';
 import { BounceIndicator } from 'game/view/indicator';
 

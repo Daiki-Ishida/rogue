@@ -1,4 +1,4 @@
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import p5 from 'p5';
 import { Animation } from '.';
 import { Camera } from '../view';

@@ -1,7 +1,7 @@
 import { Board } from 'game/board';
 import { Room } from 'game/dungeon/room';
-import { Item } from 'game/models/item';
-import { Trap } from 'game/models/trap';
+import { Item } from 'game/unit/item';
+import { Trap } from 'game/unit/trap';
 import { Actor } from '../actor';
 import {
   ActorRangeVisibility,

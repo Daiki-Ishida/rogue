@@ -1,7 +1,7 @@
 import { playlogManager } from 'game';
 import { Board } from 'game/board';
-import { Condition, Player } from 'game/models/actor';
-import { TrapGenerator } from 'game/models/generator';
+import { Condition, Player } from 'game/unit/actor';
+import { TrapGenerator } from 'game/unit/generator';
 import { GridUtil, RandomUtil } from 'game/util';
 
 interface IStaffEffects {

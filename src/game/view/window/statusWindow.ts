@@ -5,7 +5,7 @@ import { Window } from './window';
 const X = 100;
 const Y = 550;
 const W = 700;
-const H = 130;
+const H = 120;
 
 export class StatusWindow implements Window {
   private constructor(

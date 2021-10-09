@@ -1,5 +1,5 @@
-import { Player } from 'game/models/actor';
-import { Equipment } from 'game/models/item';
+import { Player } from 'game/unit/actor';
+import { Equipment } from 'game/unit/item';
 import { Command } from '.';
 
 export class EquipCommand implements Command {

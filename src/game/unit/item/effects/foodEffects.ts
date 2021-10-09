@@ -1,4 +1,4 @@
-import { Condition, Player } from 'game/models/actor';
+import { Condition, Player } from 'game/unit/actor';
 
 interface FoodEffectProps {
   [key: string]: (user: Player) => void;

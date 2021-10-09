@@ -1,6 +1,6 @@
 import { playlogManager } from 'game';
 import { Board } from 'game/board';
-import { Actor, Condition, Player } from 'game/models/actor';
+import { Actor, Condition, Player } from 'game/unit/actor';
 import { GridUtil, RandomUtil } from 'game/util';
 
 export interface HerbEffect {

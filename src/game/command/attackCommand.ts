@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import { Command } from '.';
 
 export class AttackCommand implements Command {

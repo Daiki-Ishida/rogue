@@ -11,11 +11,11 @@ import {
 } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
-import { Actor, Player } from 'game/models/actor';
-import { Trap } from 'game/models/trap';
+import { Actor, Player } from 'game/unit/actor';
+import { Trap } from 'game/unit/trap';
 import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
-import { Item } from 'game/models/item';
+import { Item } from 'game/unit/item';
 
 const ZOOM = 60;
 

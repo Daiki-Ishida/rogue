@@ -1,6 +1,6 @@
 import { windowManager } from 'game';
 import { Game } from 'game/game';
-import { ItemSelectionWindow } from 'game/view/gui';
+import { ItemSelectionWindow } from 'game/view/window';
 import { Controller } from './controller';
 import { ControllerState } from './controllerState';
 import { actionController } from './actionController';

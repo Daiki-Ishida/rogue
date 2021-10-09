@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Player } from 'game/models/actor';
+import { Player } from 'game/unit/actor';
 import { Herb, Scroll, Food, Staff } from '.';
 import { Item } from '..';
 import { UsableStatus } from '../status';

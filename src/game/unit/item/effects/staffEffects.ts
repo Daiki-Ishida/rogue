@@ -1,6 +1,6 @@
 import { Board } from 'game/board';
-import { Actor, Condition, Player } from 'game/models/actor';
-import { Direction } from 'game/models/actor/direction';
+import { Actor, Condition, Player } from 'game/unit/actor';
+import { Direction } from 'game/unit/actor/direction';
 import { GridUtil, RandomUtil } from 'game/util';
 
 interface IStaffEffects {

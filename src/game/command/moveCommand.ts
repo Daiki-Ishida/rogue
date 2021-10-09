@@ -1,5 +1,5 @@
 import { Command } from '.';
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import { Board } from 'game/board';
 
 export class MoveCommand implements Command {

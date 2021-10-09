@@ -1,4 +1,4 @@
-import { Actor } from 'game/models/actor';
+import { Actor } from 'game/unit/actor';
 import { Animation } from '.';
 
 const F = 5;

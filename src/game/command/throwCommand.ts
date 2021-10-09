@@ -1,6 +1,6 @@
 import { Board } from 'game/board';
-import { Player } from 'game/models/actor';
-import { Item } from 'game/models/item';
+import { Player } from 'game/unit/actor';
+import { Item } from 'game/unit/item';
 import { Command } from '.';
 
 export class ThrowCommand implements Command {

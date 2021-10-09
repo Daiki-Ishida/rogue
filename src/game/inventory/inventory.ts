@@ -1,5 +1,5 @@
 import { playlogManager } from 'game';
-import { Item } from 'game/models/item';
+import { Item } from 'game/unit/item';
 
 const CAPACITY = 28;
 

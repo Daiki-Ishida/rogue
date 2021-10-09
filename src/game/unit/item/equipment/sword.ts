@@ -2,7 +2,7 @@ import { Equipment } from './equipment';
 import { SwordStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { Board } from 'game/board';
-import { Player, Actor } from 'game/models/actor';
+import { Player, Actor } from 'game/unit/actor';
 import { imageStore } from 'game';
 
 export class Sword extends Equipment {

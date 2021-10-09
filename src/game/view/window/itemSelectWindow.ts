@@ -1,5 +1,5 @@
 import { Game } from 'game/game';
-import { Item } from 'game/models/item';
+import { Item } from 'game/unit/item';
 import { SelectionWindowBase } from './selectionWindow';
 import { Option } from './option';
 

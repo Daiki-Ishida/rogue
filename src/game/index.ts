@@ -4,7 +4,7 @@ import { Game } from './game';
 import { ImageStore, SoundStore } from './store';
 import { Drawer } from './view';
 import { Controller } from './controller';
-import { WindowManager } from './view/gui';
+import { WindowManager } from './view/window';
 import { AnimationManager } from './animation';
 import { PlaylogManager } from './log';
 import { IndicatorManager } from './view/indicator';

@@ -1,6 +1,6 @@
 import { animationManager, imageStore, playlogManager } from 'game';
 import { Board } from 'game/board';
-import { Player, Actor } from 'game/models/actor';
+import { Player, Actor } from 'game/unit/actor';
 import { GridUtil } from 'game/util';
 import { StaffStatus } from '../status';
 import { ItemSymbol } from '../symbol';

@@ -1,6 +1,6 @@
 import { imageStore, playlogManager } from 'game';
 import { Board } from 'game/board';
-import { Actor, Player } from 'game/models/actor';
+import { Actor, Player } from 'game/unit/actor';
 import { HerbStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { HerbEffect, herbEffects } from '../effects';

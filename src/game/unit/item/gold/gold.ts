@@ -1,6 +1,6 @@
 import { imageStore } from 'game';
 import { Board } from 'game/board';
-import { Actor, Player } from 'game/models/actor';
+import { Actor, Player } from 'game/unit/actor';
 import { Item } from '../item';
 import { GoldStatus } from '../status';
 import { ItemSymbol } from '../symbol';

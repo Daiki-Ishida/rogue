@@ -1,4 +1,4 @@
-import { DirectionKey } from 'game/models/actor/direction';
+import { DirectionKey } from 'game/unit/actor/direction';
 
 interface DirectionMapping {
   a: DirectionKey;
