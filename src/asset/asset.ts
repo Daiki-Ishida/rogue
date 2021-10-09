@@ -51,7 +51,7 @@ import SPELL from 'asset/image/effects/magic_circle.png';
 import FIRE from 'asset/image/effects/fire.png';
 import ICE from 'asset/image/effects/ice.png';
 import THUNDER from 'asset/image/effects/thunder.png';
-import MAGIC_BALL from 'asset/image/effects/magic_ball.png';
+import MAGIC_BULLET from 'asset/image/effects/magic_bullet.png';
 import HEALING from 'asset/image/effects/healing.png';
 import BLASTWAVE from 'asset/image/effects/blastwave.png';
 
@@ -126,7 +126,7 @@ interface ImageFiles {
   fire: Image;
   ice: Image;
   thunder: Image;
-  magicBall: Image;
+  magicBullet: Image;
   healing: Image;
   blastwave: Image;
 }
@@ -232,7 +232,7 @@ export class Asset {
     const fire = p.loadImage(FIRE);
     const ice = p.loadImage(ICE);
     const thunder = p.loadImage(THUNDER);
-    const magicBall = p.loadImage(MAGIC_BALL);
+    const magicBullet = p.loadImage(MAGIC_BULLET);
     const healing = p.loadImage(HEALING);
     const blastwave = p.loadImage(BLASTWAVE);
 
@@ -288,7 +288,7 @@ export class Asset {
       fire: fire,
       ice: ice,
       thunder: thunder,
-      magicBall: magicBall,
+      magicBullet: magicBullet,
       healing: healing,
       blastwave: blastwave,
     };

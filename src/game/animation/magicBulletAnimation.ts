@@ -22,7 +22,7 @@ export class MagicBulletAnimation implements Animation {
     to: { x: number; y: number },
     callback: () => void
   ): MagicBulletAnimation {
-    const img = imageStore.effects.magicBall;
+    const img = imageStore.effects.magicBullet;
     const current = { x: actor.x, y: actor.y };
     return new MagicBulletAnimation(
       img,
@@ -63,8 +63,8 @@ export class MagicBulletAnimation implements Animation {
       this.currentImg,
       x,
       y,
-      camera.zoom * 4, // 表示サイズ調整
-      camera.zoom * 4 // 表示サイズ調整
+      camera.zoom * 2, // 表示サイズ調整
+      camera.zoom * 2 // 表示サイズ調整
     );
   }
 }

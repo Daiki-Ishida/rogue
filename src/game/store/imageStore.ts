@@ -89,7 +89,7 @@ interface ConditionImages {
 
 interface EffectImages {
   readonly spelling: Image[];
-  readonly magicBall: Image[];
+  readonly magicBullet: Image[];
   readonly slash: Image[];
   readonly fang: Image[];
   readonly bite: Image[];
@@ -314,7 +314,7 @@ export class ImageStore implements IImageStore {
   static parseEffects(asset: Asset): EffectImages {
     const imgs = asset.imageFiles;
     const spelling = parseImage(imgs.spelling, 1, 7, 320, 120);
-    const magicBall = parseImage(imgs.magicBall, 12, 1, 240, 240);
+    const magicBullet = parseImage(imgs.magicBullet, 12, 1, 210, 210);
     const slash = parseImage(imgs.slash, 5, 1, 240, 240);
     const fang = parseImage(imgs.fang, 5, 1, 192, 192);
     const bite = parseImage(imgs.bite, 5, 1, 120, 240);
@@ -329,7 +329,7 @@ export class ImageStore implements IImageStore {
 
     return {
       spelling: spelling,
-      magicBall: magicBall,
+      magicBullet: magicBullet,
       slash: slash,
       fang: fang,
       bite: bite,
