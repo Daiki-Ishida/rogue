@@ -20,7 +20,7 @@ export class ActionController implements ControllerState {
         break;
       }
       case 'i':
-        windowManager.inventoryWindow.open();
+        windowManager.open();
         context.changeState(inventoryController);
         break;
       case 'a':

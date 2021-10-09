@@ -158,9 +158,7 @@ export class Drawer {
   }
 
   private drawWindow(p: p5): void {
-    windowManager.inventoryWindow.draw(p);
-    windowManager.helpWindow.draw(controller, p);
-    windowManager.selectWindow?.draw(p);
+    windowManager.draw(p, controller);
   }
 
   private drawLogs(p: p5): void {

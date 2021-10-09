@@ -12,7 +12,7 @@ export class InventoryController implements ControllerState {
 
     switch (input) {
       case 'i':
-        window.close();
+        windowManager.close();
         context.changeState(actionController);
         break;
       case 'w':

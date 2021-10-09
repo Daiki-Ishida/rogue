@@ -21,8 +21,7 @@ export class SelectWindowController implements ControllerState {
         break;
       case 'u': {
         window.select();
-        windowManager.inventoryWindow.close();
-        windowManager.selectWindow = undefined;
+        windowManager.close();
         context.changeState(actionController);
         break;
       }

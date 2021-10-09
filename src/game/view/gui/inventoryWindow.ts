@@ -31,12 +31,10 @@ export class InventoryWindow implements Window {
 
   open(): void {
     this.display = true;
-    this.setSound();
   }
 
   close(): void {
     this.display = false;
-    this.setSound();
   }
 
   next(): void {
