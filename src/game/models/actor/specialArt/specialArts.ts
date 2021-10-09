@@ -7,6 +7,7 @@ import { healEffect } from './heal';
 import { knockbackEffect } from './knockback';
 import { magickAttackEffect } from './magicAttack';
 import { speedMoves } from './speedMove';
+import { RandomUtil } from 'game/util';
 
 export interface SpecialArt {
   effect: (actor: Actor, board: Board) => void;
@@ -28,6 +29,32 @@ const specialArtsGen = (): ISpecialArts => {
     inRange: (): boolean => {
       return false;
     },
+  };
+
+  const ramdomArts = (): SpecialArt => {
+    const random = RandomUtil.getRandomIntInclusive(0, 4);
+
+    let arts: SpecialArt;
+    switch (random) {
+      case 0:
+        arts = magicBlessEffect(2);
+        break;
+      case 1:
+        arts = conditionAttackEffect(2);
+        break;
+      case 2:
+        arts = knockbackEffect(2);
+        break;
+      case 3:
+        arts = magickAttackEffect(2);
+        break;
+      case 4:
+        arts = healEffect(2);
+        break;
+      default:
+        throw new Error('something went wrong...');
+    }
+    return arts;
   };
 
   return {
@@ -60,7 +87,7 @@ const specialArtsGen = (): ISpecialArts => {
     SOLDIER_02: flickEffect(2),
     PEGASUS_01: noEffect,
     PEGASUS_02: noEffect,
-    SHADOW: noEffect,
+    SHADOW: ramdomArts(),
     MANTICORE: noEffect,
     DARK_KNIGHT: noEffect,
   };

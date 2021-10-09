@@ -20,7 +20,7 @@ export class Dungeon {
 
   static init(w: number, h: number): Dungeon {
     const area = Area.init(w, h);
-    const dungeon = new Dungeon(w, h, area, [], new Exit(0, 0), [], 29);
+    const dungeon = new Dungeon(w, h, area, [], new Exit(0, 0), [], 1);
     dungeon.generate();
     return dungeon;
   }
