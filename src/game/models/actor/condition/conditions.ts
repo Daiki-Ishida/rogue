@@ -36,6 +36,10 @@ export class Conditions {
     this.conditions = this.conditions.filter((c) => !c.isRecovered);
   }
 
+  cureAll(): void {
+    this.conditions = [];
+  }
+
   isInclude(condition: ConditionType): boolean {
     return (
       this.conditions.find((cond) => cond.value === condition) !== undefined

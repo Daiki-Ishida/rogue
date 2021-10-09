@@ -3,6 +3,7 @@ import { Actor } from '../actor';
 import { blessEffect } from './bless';
 import { conditionAttackEffect } from './conditionAttack';
 import { flickEffect } from './flick';
+import { healEffect } from './heal';
 import { knockbackEffect } from './knockback';
 import { magickAttackEffect } from './magicAttack';
 import { speedMoves } from './speedMove';
@@ -48,9 +49,9 @@ const specialArtsGen = (): ISpecialArts => {
     GRIFFIN_01: noEffect,
     GRIFFIN_02: noEffect,
     GRIFFIN_03: noEffect,
-    PIG_MAID_01: noEffect,
-    PIG_MAID_02: noEffect,
-    PIG_MAID_03: noEffect,
+    PIG_MAID_01: healEffect(1),
+    PIG_MAID_02: healEffect(2),
+    PIG_MAID_03: healEffect(3),
     GOBLIN_01: noEffect,
     GOBLIN_02: noEffect,
     MOFUMOFU_01: noEffect,
