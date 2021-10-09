@@ -23,6 +23,7 @@ interface ItemStatus {
   identified: boolean;
   name: string;
   fakeName: string;
+  description: string;
   ratio: number;
 }
 

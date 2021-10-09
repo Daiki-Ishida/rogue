@@ -22,6 +22,11 @@ export class BraceletStatus implements EquipmentStatus {
     return status.identified ? status.name : status.fakeName;
   }
 
+  get description(): string {
+    const status = itemDataStore.getBraceletStatus(this.id);
+    return status.identified ? status.description : '未識別のアイテム。';
+  }
+
   identify(): void {
     const status = itemDataStore.getBraceletStatus(this.id);
     status.identified = true;

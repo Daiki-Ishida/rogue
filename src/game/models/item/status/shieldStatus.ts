@@ -29,6 +29,10 @@ export class ShieldStatus implements EquipmentStatus {
     return this.identified ? `${this.name} +${this.level}` : this.name;
   }
 
+  get description(): string {
+    return `防御力: ${this.def}`;
+  }
+
   identify(): void {
     // IDENTIFIED = true;
     this.identified = true;

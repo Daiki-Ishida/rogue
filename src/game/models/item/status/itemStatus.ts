@@ -2,6 +2,7 @@ export interface ItemStatus {
   id: string;
   displayName: string;
   identified: boolean;
+  description: string;
   identify(): void;
 }
 

@@ -2,10 +2,10 @@ import p5 from 'p5';
 import { game } from 'game';
 import { Window } from './window';
 
-const X = 80;
+const X = 100;
 const Y = 550;
-const W = 640;
-const H = 120;
+const W = 700;
+const H = 130;
 
 export class StatusWindow implements Window {
   private constructor(

@@ -32,6 +32,11 @@ export class StaffStatus implements UsableStatus {
     return `${status.name} [${this.durability}]`;
   }
 
+  get description(): string {
+    const status = itemDataStore.getStaffStatus(this.id);
+    return status.identified ? status.description : '未識別のアイテム。';
+  }
+
   identify(): void {
     const status = itemDataStore.getStaffStatus(this.id);
     status.identified = true;

@@ -36,6 +36,11 @@ export class FoodStatus implements UsableStatus {
     return status.identified ? status.name : status.fakeName;
   }
 
+  get description(): string {
+    const status = itemDataStore.getFoodStatus(this.id);
+    return status.identified ? status.description : '未識別のアイテム。';
+  }
+
   identify(): void {
     const status = itemDataStore.getFoodStatus(this.id);
     status.identified = true;

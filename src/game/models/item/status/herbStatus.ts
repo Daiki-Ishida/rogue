@@ -17,6 +17,11 @@ export class HerbStatus implements UsableStatus {
     return status.identified ? status.name : status.fakeName;
   }
 
+  get description(): string {
+    const status = itemDataStore.getHerbStatus(this.id);
+    return status.identified ? status.description : '未識別のアイテム。';
+  }
+
   identify(): void {
     const status = itemDataStore.getHerbStatus(this.id);
     status.identified = true;

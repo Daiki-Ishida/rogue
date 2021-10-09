@@ -5,6 +5,7 @@
       "identified": false,
       "name": "混乱除けの腕輪",
       "fakeName": "",
+      "description": "装備すると混乱しなくなるぞ。",
       "ratio": 22
     },
     {
@@ -12,6 +13,7 @@
       "identified": false,
       "name": "毒消しの腕輪",
       "fakeName": "",
+      "description": "装備すると毒にならなくなるぞ。",
       "ratio": 22
     },
     {
@@ -19,13 +21,15 @@
       "identified": false,
       "name": "鑑定士の腕輪",
       "fakeName": "",
+      "description": "装備すると拾ったアイテムが識別されるぞ。",
       "ratio": 22
     },
     {
       "id": "BRACELET_OF_TRAP_MASTER",
       "identified": false,
-      "name": "罠士の腕輪",
+      "name": "罠師の腕輪",
       "fakeName": "",
+      "description": "装備するとワナにかからなくなるぞ。",
       "ratio": 22
     },
     {
@@ -33,6 +37,7 @@
       "identified": false,
       "name": "幸せの腕輪",
       "fakeName": "",
+      "description": "装備すると時間とともに経験値が上がっていくぞ。",
       "ratio": 21
     },
     {
@@ -40,6 +45,7 @@
       "identified": false,
       "name": "回復の腕輪",
       "fakeName": "",
+      "description": "装備するとHPの回復がはやくなるぞ。しかしその間、はらへりもはやいぞ。",
       "ratio": 21
     },
     {
@@ -47,6 +53,7 @@
       "identified": false,
       "name": "魔物呼びの腕輪",
       "fakeName": "",
+      "description": "装備するとモンスターが集まってくるぞ。",
       "ratio": 21
     },
     {
@@ -54,6 +61,7 @@
       "identified": false,
       "name": "まもりの腕輪",
       "fakeName": "",
+      "description": "装備すると防御力があがるぞ。",
       "ratio": 21
     },
     {
@@ -61,6 +69,7 @@
       "identified": false,
       "name": "透視の腕輪",
       "fakeName": "",
+      "description": "装備するとモンスターとアイテムの位置がわかるぞ。",
       "ratio": 21
     },
     {
@@ -68,6 +77,7 @@
       "identified": false,
       "name": "ちからの腕輪",
       "fakeName": "",
+      "description": "装備すると攻撃力があがるぞ。",
       "ratio": 21
     },
     {
@@ -75,6 +85,7 @@
       "identified": false,
       "name": "ワナの腕輪",
       "fakeName": "",
+      "description": "装備すると時間とともにワナが増えてしまうぞ。",
       "ratio": 21
     },
     {
@@ -82,6 +93,7 @@
       "identified": false,
       "name": "高跳びの腕輪",
       "fakeName": "",
+      "description": "装備するとときどきワープするぞ。",
       "ratio": 21
     }
   ],
@@ -91,6 +103,7 @@
       "identified": true,
       "name": "パン",
       "fakeName": "",
+      "description": "すこしおなかがふくれるぞ。",
       "ratio": 102
     },
     {
@@ -98,6 +111,7 @@
       "identified": true,
       "name": "大きなパン",
       "fakeName": "",
+      "description": "おなかがふくれるぞ。",
       "ratio": 31
     },
     {
@@ -105,6 +119,7 @@
       "identified": true,
       "name": "巨大なパン",
       "fakeName": "",
+      "description": "おなかがいっぱいになるぞ。",
       "ratio": 103
     },
     {
@@ -112,6 +127,7 @@
       "identified": true,
       "name": "腐ったパン",
       "fakeName": "",
+      "description": "おなかがすこしふくれるが、毒でからだをこわしてしまうぞ。",
       "ratio": 20
     }
   ],
@@ -121,6 +137,7 @@
       "identified": true,
       "name": "薬草",
       "fakeName": "",
+      "description": "HPが少し回復するぞ。",
       "ratio": 45
     },
     {
@@ -128,6 +145,7 @@
       "identified": true,
       "name": "上薬草",
       "fakeName": "",
+      "description": "HPがたくさん回復するぞ。",
       "ratio": 38
     },
     {
@@ -135,6 +153,7 @@
       "identified": true,
       "name": "毒草",
       "fakeName": "",
+      "description": "毒になってしまうぞ。",
       "ratio": 13
     },
     {
@@ -142,6 +161,7 @@
       "identified": true,
       "name": "混乱草",
       "fakeName": "",
+      "description": "混乱してしまうぞ。",
       "ratio": 13
     },
     {
@@ -149,13 +169,15 @@
       "identified": true,
       "name": "眠り草",
       "fakeName": "",
+      "description": "しばらく眠ってしまうぞ。",
       "ratio": 13
     },
     {
       "id": "FORTUNE_SEED",
       "identified": true,
       "name": "幸せの種",
-      "fakeName": "",
+      "fakeName": "レベルが上がるぞ。",
+      "description": "",
       "ratio": 9
     },
     {
@@ -163,6 +185,7 @@
       "identified": true,
       "name": "不幸の種",
       "fakeName": "",
+      "description": "レベルが下がってしまうぞ。",
       "ratio": 9
     },
     {
@@ -170,6 +193,7 @@
       "identified": true,
       "name": "胃拡張の種",
       "fakeName": "",
+      "description": "最大満腹度が上がるぞ。",
       "ratio": 15
     },
     {
@@ -177,6 +201,7 @@
       "identified": true,
       "name": "胃縮小の種",
       "fakeName": "",
+      "description": "最大満腹度が下がるぞ。",
       "ratio": 15
     },
     {
@@ -184,13 +209,15 @@
       "identified": true,
       "name": "命の草",
       "fakeName": "",
+      "description": "最大HPが上がるぞ。",
       "ratio": 18
     },
     {
       "id": "SIGHT_HERB",
       "identified": true,
-      "name": "あかり草",
+      "name": "めぐすり草",
       "fakeName": "",
+      "description": "ワナが見えるようになるぞ。",
       "ratio": 22
     },
     {
@@ -198,6 +225,7 @@
       "identified": true,
       "name": "毒消し草",
       "fakeName": "",
+      "description": "毒が回復するぞ。",
       "ratio": 9
     },
     {
@@ -205,6 +233,7 @@
       "identified": true,
       "name": "ドラゴン草",
       "fakeName": "",
+      "description": "口から火をふくぞ。遠くまで届くぞ。",
       "ratio": 24
     },
     {
@@ -212,6 +241,7 @@
       "identified": true,
       "name": "雑草",
       "fakeName": "",
+      "description": "ただの雑草だぞ。",
       "ratio": 13
     }
   ],
@@ -221,6 +251,7 @@
       "identified": false,
       "name": "吹き飛ばしの杖",
       "fakeName": "",
+      "description": "モンスターを遠くにふっとばせるぞ。",
       "ratio": 51
     },
     {
@@ -228,6 +259,7 @@
       "identified": false,
       "name": "幸せの杖",
       "fakeName": "",
+      "description": "モンスターのレベルを上げられるぞ。",
       "ratio": 26
     },
     {
@@ -235,6 +267,7 @@
       "identified": false,
       "name": "不幸の杖",
       "fakeName": "",
+      "description": "モンスターのレベルを下げられるぞ。",
       "ratio": 26
     },
     {
@@ -242,6 +275,7 @@
       "identified": false,
       "name": "飛びつきの杖",
       "fakeName": "",
+      "description": "当たった場所まで飛びつくことができるぞ。",
       "ratio": 26
     },
     {
@@ -249,6 +283,7 @@
       "identified": false,
       "name": "ただの杖",
       "fakeName": "",
+      "description": "ただの杖だぞ。",
       "ratio": 26
     },
     {
@@ -256,6 +291,7 @@
       "identified": false,
       "name": "雷光の杖",
       "fakeName": "",
+      "description": "電撃の球で攻撃できるぞ。",
       "ratio": 25
     },
     {
@@ -263,6 +299,7 @@
       "identified": false,
       "name": "場所替えの杖",
       "fakeName": "",
+      "description": "モンスターと自分の位置が入れ替わるぞ。",
       "ratio": 52
     },
     {
@@ -270,6 +307,7 @@
       "identified": false,
       "name": "魔導士の杖",
       "fakeName": "",
+      "description": "いろいろなことが起きるぞ。",
       "ratio": 25
     },
     {
@@ -277,6 +315,7 @@
       "identified": false,
       "name": "かなしばりの杖",
       "fakeName": "",
+      "description": "モンスターを金縛りにするぞ。",
       "ratio": 26
     },
     {
@@ -284,6 +323,7 @@
       "identified": false,
       "name": "一時しのぎの杖",
       "fakeName": "",
+      "description": "モンスターを出口の所へワープさせて金縛りにするぞ。",
       "ratio": 25
     },
     {
@@ -291,6 +331,7 @@
       "identified": false,
       "name": "封印の杖",
       "fakeName": "",
+      "description": "モンスターの特技をふうじるぞ。",
       "ratio": 26
     }
   ],
@@ -298,8 +339,9 @@
     {
       "id": "BLASTWAVE_SCROLL",
       "identified": false,
-      "name": "真空切りの巻物",
+      "name": "真空斬りの巻物",
       "fakeName": "",
+      "description": "つむじ風を呼び、真空波をつくりだし、部屋にいるすべてのモンスターにダメージを与えるぞ。",
       "ratio": 30
     },
     {
@@ -307,6 +349,7 @@
       "identified": false,
       "name": "混乱の巻物",
       "fakeName": "",
+      "description": "部屋にいるすべてのモンスターがしばらく混乱するぞ。",
       "ratio": 21
     },
     {
@@ -314,6 +357,7 @@
       "identified": false,
       "name": "封印の巻物",
       "fakeName": "",
+      "description": "自分の能力が封印されてしまうぞ。",
       "ratio": 20
     },
     {
@@ -321,6 +365,7 @@
       "identified": false,
       "name": "爆睡の巻物",
       "fakeName": "",
+      "description": "部屋にいるすべてのモンスターがしばらく眠ってしまうぞ。",
       "ratio": 20
     },
     {
@@ -328,6 +373,7 @@
       "identified": false,
       "name": "あかりの巻物",
       "fakeName": "",
+      "description": "今いる場所の地形がわかるぞ。",
       "ratio": 30
     },
     {
@@ -335,6 +381,7 @@
       "identified": false,
       "name": "迷子の巻物",
       "fakeName": "",
+      "description": "マップを忘れてしまうぞ。",
       "ratio": 21
     },
     {
@@ -342,6 +389,7 @@
       "identified": false,
       "name": "ワナの巻物",
       "fakeName": "",
+      "description": "今いる地形の地面にワナがふえるぞ。",
       "ratio": 20
     },
     {
@@ -349,6 +397,7 @@
       "identified": false,
       "name": "困った時の巻物",
       "fakeName": "",
+      "description": "困った時に読むといいことがあるぞ",
       "ratio": 21
     },
     {
@@ -356,6 +405,7 @@
       "identified": false,
       "name": "天の巻物",
       "fakeName": "",
+      "description": "装備している剣が強くなるぞ。",
       "ratio": 31
     },
     {
@@ -363,6 +413,7 @@
       "identified": false,
       "name": "地の巻物",
       "fakeName": "",
+      "description": "装備している盾が強くなるぞ。",
       "ratio": 30
     },
     {
@@ -370,6 +421,7 @@
       "identified": false,
       "name": "お祓いの巻物",
       "fakeName": "",
+      "description": "装備しているものの呪いがとけるぞ。",
       "ratio": 20
     },
     {
@@ -377,6 +429,7 @@
       "identified": false,
       "name": "自爆の巻物",
       "fakeName": "",
+      "description": "自分をも巻き込むすさまじい衝撃波で、近くにいるすべてのモンスターをこなごなに分解するぞ。",
       "ratio": 20
     },
     {
@@ -384,6 +437,7 @@
       "identified": false,
       "name": "識別の巻物",
       "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
       "ratio": 72
     }
   ]

@@ -29,8 +29,11 @@ export class SwordStatus implements EquipmentStatus {
     return this.identified ? `${this.name} +${this.level}` : this.name;
   }
 
+  get description(): string {
+    return `攻撃力: ${this.baseAtk}`;
+  }
+
   identify(): void {
-    // IDENTIFIED = true;
     this.identified = true;
   }
 }

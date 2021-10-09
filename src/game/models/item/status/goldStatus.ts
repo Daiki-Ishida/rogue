@@ -17,6 +17,10 @@ export class GoldStatus implements ItemStatus {
     return `${this.amount} G`;
   }
 
+  get description(): string {
+    return 'お店で使えるぞ。';
+  }
+
   identify(): void {
     return;
   }
