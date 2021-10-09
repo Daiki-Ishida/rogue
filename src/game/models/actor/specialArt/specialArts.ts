@@ -1,6 +1,6 @@
 import { Board } from 'game/board';
 import { Actor } from '../actor';
-import { blessEffect } from './bless';
+import { magicBlessEffect } from './magicBless';
 import { conditionAttackEffect } from './conditionAttack';
 import { flickEffect } from './flick';
 import { healEffect } from './heal';
@@ -31,9 +31,9 @@ const specialArtsGen = (): ISpecialArts => {
   };
 
   return {
-    DRAGON_01: blessEffect(1),
-    DRAGON_02: blessEffect(2),
-    DRAGON_03: blessEffect(3),
+    DRAGON_01: magicBlessEffect(1),
+    DRAGON_02: magicBlessEffect(2),
+    DRAGON_03: magicBlessEffect(3),
     INSECTOR_01: conditionAttackEffect(1),
     INSECTOR_02: conditionAttackEffect(2),
     INSECTOR_03: conditionAttackEffect(3),

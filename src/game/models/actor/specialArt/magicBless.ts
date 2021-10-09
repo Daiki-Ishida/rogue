@@ -10,7 +10,7 @@ export interface SpecialArt {
 }
 
 // todo animation
-export const blessEffect = (level: number): SpecialArt => {
+export const magicBlessEffect = (level: number): SpecialArt => {
   /**
    * 火炎による遠距離攻撃
    */
@@ -87,8 +87,8 @@ export const blessEffect = (level: number): SpecialArt => {
 
 const getActorOnRayInRoom = (actor: Actor, board: Board): Actor | undefined => {
   const rayGrids = GridUtil.rayToGrids(
-    actor.x,
-    actor.y,
+    actor.next.x,
+    actor.next.y,
     actor.d.next.x,
     actor.d.next.y
   );
