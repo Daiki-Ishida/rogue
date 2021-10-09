@@ -14,6 +14,8 @@ interface IImageStore {
   readonly fire: Sound;
   readonly ice: Sound;
   readonly thunder: Sound;
+  readonly healing: Sound;
+  readonly eating: Sound;
 }
 
 export class SoundStore implements IImageStore {
@@ -30,7 +32,8 @@ export class SoundStore implements IImageStore {
     readonly fire: Sound,
     readonly ice: Sound,
     readonly thunder: Sound,
-    readonly healing: Sound
+    readonly healing: Sound,
+    readonly eating: Sound
   ) {}
 
   static init(asset: Asset): SoundStore {
@@ -47,6 +50,7 @@ export class SoundStore implements IImageStore {
     const ice = new SoundEffect(asset.soundFiles.ice);
     const thunder = new SoundEffect(asset.soundFiles.thunder);
     const healing = new SoundEffect(asset.soundFiles.healing);
+    const eating = new SoundEffect(asset.soundFiles.eating);
 
     return new SoundStore(
       attack,
@@ -61,7 +65,8 @@ export class SoundStore implements IImageStore {
       fire,
       ice,
       thunder,
-      healing
+      healing,
+      eating
     );
   }
 }

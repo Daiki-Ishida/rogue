@@ -66,6 +66,7 @@ import FIRE_SOUND from 'asset/sound/fire.mp3';
 import ICE_SOUND from 'asset/sound/ice.mp3';
 import THUNDER_SOUND from 'asset/sound/thunder.mp3';
 import HEALING_SOUND from 'asset/sound/heal.mp3';
+import EATING_SOUND from 'asset/sound/eating.mp3';
 
 interface ImageFiles {
   mapBase: Image;
@@ -137,6 +138,7 @@ interface SoundFiles {
   ice: HTMLAudioElement;
   thunder: HTMLAudioElement;
   healing: HTMLAudioElement;
+  eating: HTMLAudioElement;
 }
 
 export class Asset {
@@ -292,6 +294,7 @@ export class Asset {
       ice: new Audio(ICE_SOUND),
       thunder: new Audio(THUNDER_SOUND),
       healing: new Audio(HEALING_SOUND),
+      eating: new Audio(EATING_SOUND),
     };
 
     return new Asset(font, imageFiles, soundFiles);

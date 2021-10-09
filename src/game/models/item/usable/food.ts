@@ -1,4 +1,4 @@
-import { imageStore, playlogManager } from 'game';
+import { imageStore, playlogManager, soundManager, soundStore } from 'game';
 import { Board } from 'game/board';
 import { Actor, Player } from 'game/models/actor';
 import { RandomUtil } from 'game/util';
@@ -31,6 +31,9 @@ export class Food extends Usable {
   }
 
   use(user: Player, board: Board): void {
+    const sound = soundStore.eating;
+    soundManager.register(sound);
+
     this.identify();
     user.removeHunger(this.status.value);
     this.effect(user, board);
