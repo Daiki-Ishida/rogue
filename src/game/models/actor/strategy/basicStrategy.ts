@@ -3,7 +3,7 @@ import { ArtCommand, AttackCommand, Command, MoveCommand } from 'game/command';
 import { Strategy } from './strategy';
 import { Enemy } from '../enemy';
 import { DirectionKey } from '../direction';
-import { GridUtil } from 'game/util';
+import { GridUtil, RandomUtil } from 'game/util';
 
 /**
  * 敵の基本の行動アルゴリズム
@@ -39,7 +39,13 @@ class BasicStrategy implements Strategy {
     const board = game.board;
     this.adjustDirection(enemy);
 
-    return enemy.specialArt.inRange(player.x, player.y, enemy, board)
+    // 1/2で必殺技を使う
+    const random = RandomUtil.getRandomIntInclusive(0, 1);
+    const artsAvailable =
+      random === 0 &&
+      enemy.specialArt.inRange(player.x, player.y, enemy, board);
+
+    return artsAvailable
       ? new ArtCommand(enemy)
       : enemy.isAttackable(player)
       ? new AttackCommand(enemy)
