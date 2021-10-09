@@ -33,7 +33,6 @@ export const speedMoves = (level: number): SpecialArt => {
         success = getPlayerAround(actor, board);
         if (!success) return;
         actor.attack(board);
-        console.log('second attack');
       };
 
       actor.attack(board, secondAttack);

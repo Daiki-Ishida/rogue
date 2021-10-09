@@ -29,7 +29,8 @@ export class SoundStore implements IImageStore {
     readonly levelUp: Sound,
     readonly fire: Sound,
     readonly ice: Sound,
-    readonly thunder: Sound
+    readonly thunder: Sound,
+    readonly healing: Sound
   ) {}
 
   static init(asset: Asset): SoundStore {
@@ -45,6 +46,7 @@ export class SoundStore implements IImageStore {
     const fire = new SoundEffect(asset.soundFiles.fire);
     const ice = new SoundEffect(asset.soundFiles.ice);
     const thunder = new SoundEffect(asset.soundFiles.thunder);
+    const healing = new SoundEffect(asset.soundFiles.healing);
 
     return new SoundStore(
       attack,
@@ -58,7 +60,8 @@ export class SoundStore implements IImageStore {
       levelUp,
       fire,
       ice,
-      thunder
+      thunder,
+      healing
     );
   }
 }

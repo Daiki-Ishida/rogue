@@ -52,6 +52,7 @@ import FIRE from 'asset/image/effects/fire.png';
 import ICE from 'asset/image/effects/ice.png';
 import THUNDER from 'asset/image/effects/thunder.png';
 import MAGIC_BALL from 'asset/image/effects/magic_ball.png';
+import HEALING from 'asset/image/effects/healing.png';
 import ATTACK_SOUND from 'asset/sound/attack.mp3';
 import CRITICAL_HIT_SOUND from 'asset/sound/critical_hit.mp3';
 import MISS_SOUND from 'asset/sound/miss.mp3';
@@ -64,6 +65,7 @@ import LEVEL_UP_SOUND from 'asset/sound/level_up.mp3';
 import FIRE_SOUND from 'asset/sound/fire.mp3';
 import ICE_SOUND from 'asset/sound/ice.mp3';
 import THUNDER_SOUND from 'asset/sound/thunder.mp3';
+import HEALING_SOUND from 'asset/sound/heal.mp3';
 
 interface ImageFiles {
   mapBase: Image;
@@ -118,6 +120,7 @@ interface ImageFiles {
   ice: Image;
   thunder: Image;
   magicBall: Image;
+  healing: Image;
 }
 
 interface SoundFiles {
@@ -133,6 +136,7 @@ interface SoundFiles {
   fire: HTMLAudioElement;
   ice: HTMLAudioElement;
   thunder: HTMLAudioElement;
+  healing: HTMLAudioElement;
 }
 
 export class Asset {
@@ -216,6 +220,7 @@ export class Asset {
     const ice = p.loadImage(ICE);
     const thunder = p.loadImage(THUNDER);
     const magicBall = p.loadImage(MAGIC_BALL);
+    const healing = p.loadImage(HEALING);
 
     const imageFiles = {
       mapBase: mapBase,
@@ -270,6 +275,7 @@ export class Asset {
       ice: ice,
       thunder: thunder,
       magicBall: magicBall,
+      healing: healing,
     };
 
     const soundFiles = {
@@ -285,6 +291,7 @@ export class Asset {
       fire: new Audio(FIRE_SOUND),
       ice: new Audio(ICE_SOUND),
       thunder: new Audio(THUNDER_SOUND),
+      healing: new Audio(HEALING_SOUND),
     };
 
     return new Asset(font, imageFiles, soundFiles);

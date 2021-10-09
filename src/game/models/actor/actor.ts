@@ -4,7 +4,11 @@ import {
   soundManager,
   soundStore,
 } from 'game';
-import { AttackAnimation, WalkAnimation } from 'game/animation';
+import {
+  AttackAnimation,
+  HealingAnimation,
+  WalkAnimation,
+} from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { Exit } from 'game/dungeon/exit';
@@ -101,15 +105,25 @@ export abstract class Actor implements IActor {
   heal(value: number): void {
     if (this.status.dmg === 0) return;
 
-    let healValue;
+    const calcHealValue = (): number => {
+      let healValue: number;
 
-    this.status.dmg < value
-      ? (healValue = this.status.dmg)
-      : (healValue = value);
+      this.status.dmg < value
+        ? (healValue = this.status.dmg)
+        : (healValue = value);
+      return healValue;
+    };
 
-    this.status.dmg -= healValue;
-    const indicator = BounceIndicator.ofHealing(healValue, this);
-    indicatorManager.bounceIndicators.push(indicator);
+    const callback = () => {
+      const value = calcHealValue();
+      this.status.dmg -= value;
+
+      const indicator = BounceIndicator.ofHealing(value, this);
+      indicatorManager.bounceIndicators.push(indicator);
+    };
+
+    const animation = HealingAnimation.generate(this.x, this.y, callback);
+    animationManager.push(animation);
   }
 
   move(board: Board): void {
