@@ -37,6 +37,11 @@ export class AnimationManager {
     this.refresh();
   }
 
+  execSync(): void {
+    this.animations[0]?.exec();
+    this.refresh();
+  }
+
   /**
    * 移動コマンドだけ処理
    */

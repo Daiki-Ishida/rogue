@@ -7,7 +7,6 @@ export interface SpecialArt {
   inRange: (x: number, y: number, actor: Actor, board: Board) => boolean;
 }
 
-// todo animation
 export const conditionAttackEffect = (level: number): SpecialArt => {
   /**
    * 毒攻撃

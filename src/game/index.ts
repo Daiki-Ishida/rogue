@@ -30,7 +30,7 @@ export let soundManager: SoundManager;
 export let playlogManager: PlaylogManager;
 export let indicatorManager: IndicatorManager;
 
-const PLAY_SPEED = 40;
+const PLAY_SPEED = 30;
 const SKIP_SPEED = 120;
 
 export const rogue = (p: p5): void => {

@@ -141,9 +141,9 @@ export abstract class Actor implements IActor {
     this.symbol.turnTo(direction);
   }
 
-  attack(board: Board): void {
+  attack(board: Board, callback?: () => void): void {
     const target = board.findActor(this.next.x, this.next.y);
-    const animation = AttackAnimation.generate(this);
+    const animation = AttackAnimation.generate(this, callback);
     animationManager.push(animation);
 
     const sound = soundStore.attack;

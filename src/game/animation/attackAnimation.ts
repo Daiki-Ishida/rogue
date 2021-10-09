@@ -11,14 +11,15 @@ export class AttackAnimation implements Animation {
     public frame: number,
     public done: boolean,
     readonly dx: number,
-    readonly dy: number
+    readonly dy: number,
+    readonly callback?: () => void
   ) {}
 
-  static generate(actor: Actor): AttackAnimation {
+  static generate(actor: Actor, callback?: () => void): AttackAnimation {
     const next = actor.d.next;
     const dx = (next.x * 0.5) / 10;
     const dy = (next.y * 0.5) / 10;
-    return new AttackAnimation(actor, 0, false, dx, dy);
+    return new AttackAnimation(actor, 0, false, dx, dy, callback);
   }
 
   exec(): void {
@@ -39,6 +40,9 @@ export class AttackAnimation implements Animation {
     this.frame++;
     if (this.frame > F) {
       this.actor.symbol.setAt(this.actor.x, this.actor.y);
+
+      if (this.callback) this.callback();
+
       this.done = true;
     }
   }

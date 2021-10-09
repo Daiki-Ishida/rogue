@@ -16,7 +16,6 @@ interface ISpecialArts {
   [key: string]: SpecialArt;
 }
 
-// todo animation
 const specialArtsGen = (): ISpecialArts => {
   /**
    * 特殊能力無し

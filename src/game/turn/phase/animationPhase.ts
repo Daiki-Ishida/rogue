@@ -24,7 +24,7 @@ export class AnimationPhase extends PhaseBase {
       return;
     }
 
-    animationManager.exec();
+    animationManager.execSync();
     if (animationManager.isAllDone) {
       this.completed = true;
     }

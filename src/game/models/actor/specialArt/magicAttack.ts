@@ -10,7 +10,6 @@ export interface SpecialArt {
   inRange: (x: number, y: number, actor: Actor, board: Board) => boolean;
 }
 
-// todo animation
 export const magickAttackEffect = (level: number): SpecialArt => {
   /**
    * １マスの火炎攻撃
@@ -25,7 +24,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
 
       // animation
       const animation = MagicAnimation.ofFire(target.x, target.y, () => {
-        const dmg = 20;
+        const dmg = 15;
         target.damage(dmg);
       });
       animationManager.push(animation);
@@ -48,7 +47,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
 
       // animation
       const animation = MagicAnimation.ofIce(target.x, target.y, () => {
-        const dmg = 30;
+        const dmg = 25;
         target.damage(dmg);
         // 空腹効果付与
         if (target.isPlayer()) {
