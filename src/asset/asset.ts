@@ -67,6 +67,9 @@ import ICE_SOUND from 'asset/sound/ice.mp3';
 import THUNDER_SOUND from 'asset/sound/thunder.mp3';
 import HEALING_SOUND from 'asset/sound/heal.mp3';
 import EATING_SOUND from 'asset/sound/eating.mp3';
+import START_SOUND from 'asset/sound/start.mp3';
+import DUNGEON_SOUND from 'asset/sound/dungeon.mp3';
+import BRIDGE_SOUND from 'asset/sound/bridge.mp3';
 
 interface ImageFiles {
   mapBase: Image;
@@ -139,6 +142,9 @@ interface SoundFiles {
   thunder: HTMLAudioElement;
   healing: HTMLAudioElement;
   eating: HTMLAudioElement;
+  start: HTMLAudioElement;
+  dungeon: HTMLAudioElement;
+  bridge: HTMLAudioElement;
 }
 
 export class Asset {
@@ -295,6 +301,9 @@ export class Asset {
       thunder: new Audio(THUNDER_SOUND),
       healing: new Audio(HEALING_SOUND),
       eating: new Audio(EATING_SOUND),
+      start: new Audio(START_SOUND),
+      dungeon: new Audio(DUNGEON_SOUND),
+      bridge: new Audio(BRIDGE_SOUND),
     };
 
     return new Asset(font, imageFiles, soundFiles);

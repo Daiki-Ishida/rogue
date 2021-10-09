@@ -9,7 +9,7 @@ class StartScreenController implements ControllerState {
     if (input !== 'Enter') return;
 
     textBox.show();
-    game.state = 'SET_UP';
+    game.setGameState('SET_UP');
     context.changeState(setupScreenController);
   }
 }

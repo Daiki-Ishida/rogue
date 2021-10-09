@@ -1,3 +1,4 @@
+import { soundManager, soundStore } from 'game';
 import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
@@ -35,6 +36,7 @@ export class Game {
     const inventory = Inventory.init();
 
     const game = new Game(player, board, commands, turn, inventory);
+    game.setGameState('START');
     return game;
   }
 
@@ -54,13 +56,28 @@ export class Game {
     this.mode = 'NORMAL';
   }
 
+  setGameState(state: GameState): void {
+    switch (state) {
+      case 'START': {
+        const sound = soundStore.startScreenBgm;
+        soundManager.register(sound);
+        break;
+      }
+      case 'PLAY': {
+        const sound = soundStore.dungeonBgm;
+        soundManager.register(sound);
+        break;
+      }
+    }
+    this.state = state;
+  }
+
   proc(): void {
     this.turn.proc(this);
   }
 
   next(): void {
-    this.state = 'BRIDGE';
-
+    this.setGameState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
   }

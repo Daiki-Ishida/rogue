@@ -20,7 +20,7 @@ class SetupScreenController implements ControllerState {
     game.player.changeName(name);
     textBox.remove();
 
-    game.state = 'PLAY';
+    game.setGameState('PLAY');
     context.changeState(actionController);
   }
 }

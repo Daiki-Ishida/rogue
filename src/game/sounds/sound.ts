@@ -1,3 +1,5 @@
+import { BackgroundSound, SoundEffect } from '.';
+
 export interface Sound {
   file: HTMLAudioElement;
   done: boolean;
@@ -6,6 +8,8 @@ export interface Sound {
   setVolume: (volume: number) => void;
   mute: () => void;
   unmute: () => void;
+  isSoundEffect(): this is SoundEffect;
+  isBgm(): this is BackgroundSound;
 }
 
 export abstract class BaseSound implements Sound {
@@ -24,5 +28,13 @@ export abstract class BaseSound implements Sound {
 
   unmute(): void {
     this.file.muted = false;
+  }
+
+  isSoundEffect(): this is SoundEffect {
+    return false;
+  }
+
+  isBgm(): this is BackgroundSound {
+    return false;
   }
 }

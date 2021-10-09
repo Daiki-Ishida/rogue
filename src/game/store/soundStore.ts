@@ -1,5 +1,5 @@
 import { Asset } from 'asset/asset';
-import { Sound, SoundEffect } from 'game/sounds';
+import { BackgroundSound, Sound, SoundEffect } from 'game/sounds';
 
 interface IImageStore {
   readonly attack: Sound;
@@ -16,6 +16,9 @@ interface IImageStore {
   readonly thunder: Sound;
   readonly healing: Sound;
   readonly eating: Sound;
+  readonly bridgeEffect: Sound;
+  readonly startScreenBgm: Sound;
+  readonly dungeonBgm: Sound;
 }
 
 export class SoundStore implements IImageStore {
@@ -33,7 +36,10 @@ export class SoundStore implements IImageStore {
     readonly ice: Sound,
     readonly thunder: Sound,
     readonly healing: Sound,
-    readonly eating: Sound
+    readonly eating: Sound,
+    readonly bridgeEffect: Sound,
+    readonly startScreenBgm: BackgroundSound,
+    readonly dungeonBgm: BackgroundSound
   ) {}
 
   static init(asset: Asset): SoundStore {
@@ -51,6 +57,10 @@ export class SoundStore implements IImageStore {
     const thunder = new SoundEffect(asset.soundFiles.thunder);
     const healing = new SoundEffect(asset.soundFiles.healing);
     const eating = new SoundEffect(asset.soundFiles.eating);
+    const bridgeEffect = new SoundEffect(asset.soundFiles.bridge);
+
+    const startScreenBgm = new BackgroundSound(asset.soundFiles.start);
+    const dungeonBgm = new BackgroundSound(asset.soundFiles.dungeon);
 
     return new SoundStore(
       attack,
@@ -66,7 +76,10 @@ export class SoundStore implements IImageStore {
       ice,
       thunder,
       healing,
-      eating
+      eating,
+      bridgeEffect,
+      startScreenBgm,
+      dungeonBgm
     );
   }
 }

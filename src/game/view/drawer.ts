@@ -260,7 +260,7 @@ export class Drawer {
     BRIDGE_EFFECT_FRAME++;
     if (BRIDGE_EFFECT_FRAME > 60) {
       BRIDGE_EFFECT_FRAME = 0;
-      game.state = 'PLAY';
+      game.setGameState('PLAY');
     }
 
     p.pop();

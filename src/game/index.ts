@@ -52,12 +52,13 @@ export const rogue = (p: p5): void => {
     imageStore = ImageStore.init(asset);
     soundStore = SoundStore.init(asset);
 
+    soundManager = SoundManager.init();
+
     game = Game.init();
     drawer = Drawer.init();
     controller = Controller.init();
 
     animationManager = AnimationManager.init();
-    soundManager = SoundManager.init();
     windowManager = WindowManager.init(game);
     playlogManager = PlaylogManager.init();
     indicatorManager = IndicatorManager.init();

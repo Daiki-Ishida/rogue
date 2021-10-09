@@ -1,10 +1,11 @@
-import { Sound } from '.';
+import { BackgroundSound, Sound } from '.';
 
 export class SoundManager {
   private constructor(
     public sounds: Sound[],
     public muted: boolean,
-    public volume: number
+    public volume: number,
+    public bgm?: BackgroundSound
   ) {}
 
   static init(): SoundManager {
@@ -21,7 +22,20 @@ export class SoundManager {
       sound.mute();
     }
     sound.setVolume(this.volume);
-    this.sounds.push(sound);
+
+    if (sound.isBgm()) {
+      this.bgm = sound;
+      this.bgm.play();
+    }
+
+    if (sound.isSoundEffect()) {
+      this.sounds.push(sound);
+    }
+  }
+
+  deregisterBgm(): void {
+    this.bgm?.stop();
+    this.bgm = undefined;
   }
 
   mute(): void {

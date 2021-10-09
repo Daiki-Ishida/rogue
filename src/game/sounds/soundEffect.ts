@@ -11,4 +11,8 @@ export class SoundEffect extends BaseSound {
     this.file.pause();
     this.file.currentTime = 0;
   }
+
+  isSoundEffect(): this is SoundEffect {
+    return true;
+  }
 }
