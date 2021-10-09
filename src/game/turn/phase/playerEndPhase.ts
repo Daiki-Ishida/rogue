@@ -36,22 +36,9 @@ export class PlayerEndPhase extends PhaseBase {
       player.damage(2);
     }
 
-    if (player.isCondition('CLEAR_SIGHTED')) {
-      player.visibility.setFullRange();
-    } else {
-      const room = board.findRoom(player.x, player.y);
-      room
-        ? player.visibility.setRoomRange(room)
-        : player.visibility.setActorRange(player);
-    }
-
-    board.visit(
-      player.visibility.x,
-      player.visibility.y,
-      player.visibility.w,
-      player.visibility.h
-    );
-
+    /**
+     * ワナの発動
+     */
     const trap = board.findTrap(player.x, player.y);
     if (trap) {
       player.isCondition('TRAP_MASTER')
@@ -61,6 +48,9 @@ export class PlayerEndPhase extends PhaseBase {
       game.resume();
     }
 
+    /**
+     * アイテム拾い
+     */
     const item = board.findItem(player.x, player.y);
     if (item) {
       if (player.isCondition('AUTO_IDENTIFY')) {
@@ -101,6 +91,28 @@ export class PlayerEndPhase extends PhaseBase {
       windowManager.selectWindow = window;
       controller.changeState(selectWindowController);
     }
+
+    /**
+     * 視野の更新
+     */
+    if (player.isCondition('CLEAR_SIGHTED')) {
+      player.visibility.setFullRange();
+    } else {
+      const room = board.findRoom(player.x, player.y);
+      room
+        ? player.visibility.setRoomRange(room)
+        : player.visibility.setActorRange(player);
+    }
+
+    /**
+     * ミニマップ更新
+     */
+    board.visit(
+      player.visibility.x,
+      player.visibility.y,
+      player.visibility.w,
+      player.visibility.h
+    );
 
     this.completed = true;
   }

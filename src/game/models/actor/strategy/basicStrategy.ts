@@ -43,6 +43,7 @@ class BasicStrategy implements Strategy {
     const random = RandomUtil.getRandomIntInclusive(0, 1);
     const artsAvailable =
       random === 0 &&
+      !enemy.isCondition('SEALED') &&
       enemy.specialArt.inRange(player.x, player.y, enemy, board);
 
     return artsAvailable

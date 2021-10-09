@@ -13,18 +13,25 @@ export class CleanUpPhase extends PhaseBase {
     for (const actor of board.actors) {
       if (actor.isPlayer()) continue;
 
+      // 死んだ敵は除外
+      if (actor.isDead) board.clearActor(actor);
+
+      // 状態異常自然治癒チェック
+      actor.conditions.conditions.forEach((cond) => cond.count++);
+      actor.conditions.refresh();
+
+      // 毒ダメージ
+      if (actor.isCondition('POISONED')) {
+        actor.damage(2);
+      }
+
+      // 視野更新
       const room = board.findRoom(actor.x, actor.y);
       room
         ? actor.visibility.setRoomRange(room)
         : actor.visibility.setActorRange(actor);
     }
 
-    // 死んだ敵は除外
-    board.actors.forEach((actor) => {
-      if (actor.isEnemy() && actor.isDead) {
-        board.clearActor(actor);
-      }
-    });
     this.completed = true;
   }
 }
