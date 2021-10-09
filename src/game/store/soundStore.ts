@@ -11,6 +11,7 @@ interface IImageStore {
   readonly exit: Sound;
   readonly select: Sound;
   readonly levelUp: Sound;
+  readonly levelDown: Sound;
   readonly fire: Sound;
   readonly ice: Sound;
   readonly thunder: Sound;
@@ -32,6 +33,7 @@ export class SoundStore implements IImageStore {
     readonly exit: Sound,
     readonly select: Sound,
     readonly levelUp: Sound,
+    readonly levelDown: Sound,
     readonly fire: Sound,
     readonly ice: Sound,
     readonly thunder: Sound,
@@ -52,6 +54,7 @@ export class SoundStore implements IImageStore {
     const exit = new SoundEffect(asset.soundFiles.exit);
     const select = new SoundEffect(asset.soundFiles.select);
     const levelUp = new SoundEffect(asset.soundFiles.levelUp);
+    const levelDown = new SoundEffect(asset.soundFiles.levelDown);
     const fire = new SoundEffect(asset.soundFiles.fire);
     const ice = new SoundEffect(asset.soundFiles.ice);
     const thunder = new SoundEffect(asset.soundFiles.thunder);
@@ -72,6 +75,7 @@ export class SoundStore implements IImageStore {
       exit,
       select,
       levelUp,
+      levelDown,
       fire,
       ice,
       thunder,

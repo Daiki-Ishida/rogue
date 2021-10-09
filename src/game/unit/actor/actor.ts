@@ -160,13 +160,19 @@ export abstract class Actor implements IActor {
     const animation = AttackAnimation.generate(this, callback);
     animationManager.push(animation);
 
-    const sound = soundStore.attack;
-    soundManager.register(sound);
+    let sound = soundStore.attack;
 
     if (target) {
       const battle = new Battle(this, target);
-      battle.exec();
+      const battleStatus = battle.exec();
+      if (battleStatus === 'CRITICAL_HIT') {
+        sound = soundStore.criticalHit;
+      } else if (battleStatus === 'MISSED') {
+        sound = soundStore.missHit;
+      }
     }
+
+    soundManager.register(sound);
   }
 
   underneath(board: Board): Item | Trap | Room | Exit | undefined {

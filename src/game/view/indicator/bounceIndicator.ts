@@ -44,6 +44,24 @@ export class BounceIndicator {
     return new BounceIndicator(value, x, y, y, color, 0, false);
   }
 
+  static ofLevelUp(target: Actor): BounceIndicator {
+    const value = `LEVEL UP`;
+    const x = target.x - 0.5;
+    const y = target.y - 0.5;
+    const color = '#FF865E';
+
+    return new BounceIndicator(value, x, y, y, color, 0, false);
+  }
+
+  static ofLevelDown(target: Actor): BounceIndicator {
+    const value = `LEVEL DOWN`;
+    const x = target.x - 0.5;
+    const y = target.y - 0.5;
+    const color = '#3D56B2';
+
+    return new BounceIndicator(value, x, y, y, color, 0, false);
+  }
+
   proc(): void {
     const progress = this.frame / F;
     const easing =

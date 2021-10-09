@@ -27,33 +27,49 @@ export class Battle {
    * 当たり判定
    * 1 / 7
    */
-  get isHit(): boolean {
-    return RandomUtil.getRandomIntInclusive(0, 6) !== 0;
+  get hitStatus(): 'HIT' | 'CRITICAL_HIT' | 'MISSED' {
+    if (RandomUtil.getRandomIntInclusive(0, 6) === 0) return 'MISSED';
+
+    if (this.attacker.isPlayer()) {
+      if (RandomUtil.getRandomIntInclusive(0, 9) === 0) {
+        return 'CRITICAL_HIT';
+      }
+    }
+
+    return 'HIT';
   }
 
   /**
    * 戦闘処理
    */
-  exec(): void {
-    // 攻撃失敗
-    if (!this.isHit) {
-      const missed = BounceIndicator.ofMissHit(this.defender);
-      indicatorManager.bounceIndicators.push(missed);
-      return;
+  exec(): 'HIT' | 'CRITICAL_HIT' | 'MISSED' {
+    const status = this.hitStatus;
+    switch (status) {
+      case 'MISSED': {
+        const missed = BounceIndicator.ofMissHit(this.defender);
+        indicatorManager.bounceIndicators.push(missed);
+        break;
+      }
+      case 'HIT': {
+        const dmg = this.damage;
+        this.defender.damage(dmg);
+        break;
+      }
+      case 'CRITICAL_HIT': {
+        const dmg = Math.floor(this.damage * 1.5);
+        this.defender.damage(dmg);
+        break;
+      }
     }
-
-    // ダメージ処理
-    const dmg = this.damage;
-    this.defender.damage(dmg);
-    if (!this.defender.isDead) return;
 
     // 経験値獲得
-    if (this.attacker.isPlayer()) {
+    if (this.defender.isDead && this.attacker.isPlayer()) {
       const exp = this.defender.status.exp;
       this.attacker.gainExp(exp);
-
       playlogManager.add(this.messageOnDefeated());
     }
+
+    return status;
   }
 
   private messageOnDefeated(): string {

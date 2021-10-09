@@ -1,6 +1,12 @@
-import { playlogManager, soundManager, soundStore } from 'game';
+import {
+  indicatorManager,
+  playlogManager,
+  soundManager,
+  soundStore,
+} from 'game';
 import { Board } from 'game/board';
 import { playerDataStore } from 'game/store';
+import { BounceIndicator } from 'game/view/indicator';
 import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
 import { PlayerStatus } from './status';
@@ -56,13 +62,23 @@ export class Player extends Actor {
   }
 
   levelUp(): void {
+    this.status.levelUp();
+
     const sound = soundStore.levelUp;
     soundManager.register(sound);
-    this.status.levelUp();
+
+    const indicator = BounceIndicator.ofLevelUp(this);
+    indicatorManager.bounceIndicators.push(indicator);
   }
 
   levelDown(): void {
     this.status.levelDown();
+
+    const sound = soundStore.levelDown;
+    soundManager.register(sound);
+
+    const indicator = BounceIndicator.ofLevelDown(this);
+    indicatorManager.bounceIndicators.push(indicator);
   }
 
   private isLevelUp(): boolean {
