@@ -40,16 +40,19 @@ export class SoundManager {
 
   mute(): void {
     this.muted = true;
+    this.bgm?.mute();
     this.sounds.forEach((sound) => sound.mute());
   }
 
   unmute(): void {
     this.muted = false;
+    this.bgm?.unmute();
     this.sounds.forEach((sound) => sound.unmute());
   }
 
   setVolume(volume: number): void {
     this.volume = volume;
+    this.bgm?.setVolume(volume);
     this.sounds.forEach((sound) => sound.setVolume(volume));
   }
 }
