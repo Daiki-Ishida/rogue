@@ -53,6 +53,8 @@ import ICE from 'asset/image/effects/ice.png';
 import THUNDER from 'asset/image/effects/thunder.png';
 import MAGIC_BALL from 'asset/image/effects/magic_ball.png';
 import HEALING from 'asset/image/effects/healing.png';
+import BLASTWAVE from 'asset/image/effects/blastwave.png';
+
 import ATTACK_SOUND from 'asset/sound/attack.mp3';
 import CRITICAL_HIT_SOUND from 'asset/sound/critical_hit.mp3';
 import MISS_SOUND from 'asset/sound/miss.mp3';
@@ -126,6 +128,7 @@ interface ImageFiles {
   thunder: Image;
   magicBall: Image;
   healing: Image;
+  blastwave: Image;
 }
 
 interface SoundFiles {
@@ -231,6 +234,7 @@ export class Asset {
     const thunder = p.loadImage(THUNDER);
     const magicBall = p.loadImage(MAGIC_BALL);
     const healing = p.loadImage(HEALING);
+    const blastwave = p.loadImage(BLASTWAVE);
 
     const imageFiles = {
       mapBase: mapBase,
@@ -286,6 +290,7 @@ export class Asset {
       thunder: thunder,
       magicBall: magicBall,
       healing: healing,
+      blastwave: blastwave,
     };
 
     const soundFiles = {

@@ -1,4 +1,5 @@
-import { playlogManager } from 'game';
+import { animationManager, playlogManager } from 'game';
+import { BlastwaveAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/unit/actor';
 import { TrapGenerator } from 'game/unit/generator';
@@ -10,14 +11,19 @@ interface IStaffEffects {
 
 const ScrollEffects = (): IStaffEffects => {
   const blastwave = (user: Player, board: Board): void => {
-    const range = effectRange(user, board);
-    for (const r of range) {
-      const target = board.findActor(r.x, r.y);
-      if (target) {
-        const dmg = RandomUtil.getRandomIntInclusive(25, 50);
-        target.damage(dmg);
+    const callback = () => {
+      const range = effectRange(user, board);
+      for (const r of range) {
+        const target = board.findActor(r.x, r.y);
+        if (target) {
+          const dmg = RandomUtil.getRandomIntInclusive(25, 50);
+          target.damage(dmg);
+        }
       }
-    }
+    };
+
+    const animation = BlastwaveAnimation.generate(callback);
+    animationManager.push(animation);
   };
 
   const confusion = (user: Player, board: Board): void => {

@@ -1,4 +1,5 @@
-import { playlogManager } from 'game';
+import { animationManager, playlogManager } from 'game';
+import { MagicBlessAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { Actor, Condition, Player } from 'game/unit/actor';
 import { GridUtil, RandomUtil } from 'game/util';
@@ -163,10 +164,14 @@ const HerbEffects = (): IHerbEffects => {
         }
       }
 
-      if (target) {
+      if (target === undefined) return;
+
+      const callback = () => {
         const dmg = RandomUtil.getRandomIntInclusive(45, 60);
-        target.damage(dmg);
-      }
+        target?.damage(dmg);
+      };
+      const animation = MagicBlessAnimation.ofFlame(user, current, callback);
+      animationManager.push(animation);
     },
   };
 

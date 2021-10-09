@@ -100,6 +100,7 @@ interface EffectImages {
   readonly ice: Image[];
   readonly thunder: Image[];
   readonly healing: Image[];
+  readonly blastwave: Image[];
 }
 
 interface IImageStore {
@@ -324,6 +325,7 @@ export class ImageStore implements IImageStore {
     const ice = parseImage(imgs.ice, 8, 1, 120, 120);
     const thunder = parseImage(imgs.thunder, 8, 1, 120, 120);
     const healing = parseImage(imgs.healing, 8, 1, 120, 120);
+    const blastwave = parseImage(imgs.blastwave, 1, 8, 640, 240);
 
     return {
       spelling: spelling,
@@ -338,6 +340,7 @@ export class ImageStore implements IImageStore {
       ice: ice,
       thunder: thunder,
       healing: healing,
+      blastwave: blastwave,
     };
   }
 }

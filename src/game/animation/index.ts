@@ -8,3 +8,4 @@ export * from './magicBlessAnimation';
 export * from './magicAnimation';
 export * from './thrownItemAnimation';
 export * from './healingAnimation';
+export * from './blastwaveAnimation';
