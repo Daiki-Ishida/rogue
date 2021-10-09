@@ -44,7 +44,7 @@ export const rogue = (p: p5): void => {
     p.textFont(asset.font);
     p.imageMode('center');
 
-    textBox = p.createInput();
+    textBox = p.createInput('ASUKA');
     textBox.hide();
     volumeSlider = p.createSlider(0, 100, 50, 5);
     volumeIcon = p.createSpan('🔊');

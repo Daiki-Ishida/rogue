@@ -1,3 +1,4 @@
+import p5 from 'p5';
 import { Board } from 'game/board';
 import { Actor, Player } from '../actor';
 import { ItemStatus } from './status';
@@ -9,7 +10,6 @@ import { GridUtil } from 'game/util';
 import { Game } from 'game/game';
 import { ThrownItemAnimation } from 'game/animation';
 import { animationManager, game, soundManager, soundStore } from 'game';
-import p5 from 'p5';
 import { Camera } from 'game/view';
 
 export interface IItem {
