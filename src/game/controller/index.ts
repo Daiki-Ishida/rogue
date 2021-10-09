@@ -5,3 +5,4 @@ export * from './inventoryController';
 export * from './startScreenCotroller';
 export * from './selectWindowController';
 export * from './setupScreenController';
+export * from './prologueScreenController';

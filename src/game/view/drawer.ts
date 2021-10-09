@@ -34,6 +34,9 @@ export class Drawer {
       case 'START':
         this.drawStartScreen(p);
         break;
+      case 'PROLOGUE':
+        this.drawStartScreen(p);
+        break;
       case 'SET_UP':
         this.drawSetupScreen(p);
         break;

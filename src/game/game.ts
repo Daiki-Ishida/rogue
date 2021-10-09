@@ -9,6 +9,7 @@ type PlayMode = 'NORMAL' | 'DASH' | 'STEP';
 type GameState =
   | 'START'
   | 'SET_UP'
+  | 'PROLOGUE'
   | 'PLAY'
   | 'BRIDGE'
   | 'GAME_OVER'
@@ -35,9 +36,7 @@ export class Game {
     const turn = Turn.init();
     const inventory = Inventory.init();
 
-    const game = new Game(player, board, commands, turn, inventory);
-    game.setGameState('START');
-    return game;
+    return new Game(player, board, commands, turn, inventory);
   }
 
   get isSkipMode(): boolean {
@@ -58,14 +57,17 @@ export class Game {
 
   setGameState(state: GameState): void {
     switch (state) {
-      case 'START': {
+      case 'PROLOGUE': {
         const sound = soundStore.startScreenBgm;
         soundManager.register(sound);
         break;
       }
       case 'PLAY': {
-        const sound = soundStore.dungeonBgm;
-        soundManager.register(sound);
+        if (this.state !== 'PLAY' && this.state !== 'BRIDGE') {
+          soundManager.deregisterBgm();
+          const sound = soundStore.dungeonBgm;
+          soundManager.register(sound);
+        }
         break;
       }
     }
