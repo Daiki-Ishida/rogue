@@ -52,6 +52,7 @@ export abstract class Item implements IItem {
     );
 
     let current: { x: number; y: number } = { x: thrower.x, y: thrower.y };
+    console.log(current);
     let target: Actor | undefined = undefined;
     for (const grid of grids) {
       current = { x: grid[0], y: grid[1] };
@@ -63,14 +64,15 @@ export abstract class Item implements IItem {
       }
     }
 
-    this.x = current.x;
-    this.y = current.y;
+    this.x = current.x - thrower.d.next.x;
+    this.y = current.y - thrower.d.next.y;
 
     const callback = () => {
       target !== undefined
         ? this.onHit(thrower, target, board)
         : this.onUnhit(thrower, board);
     };
+
     const animation = ThrownItemAnimation.generate(
       thrower,
       this,
@@ -81,10 +83,7 @@ export abstract class Item implements IItem {
   }
 
   onUnhit(thrower: Player, board: Board): void {
-    const x = this.x - thrower.d.next.x;
-    const y = this.y - thrower.d.next.y;
-
-    const dropedAt = this.dropAround(x, y, thrower, board);
+    const dropedAt = this.dropAround(this.x, this.y, thrower, board);
     if (dropedAt === null) {
       return;
     }
@@ -112,8 +111,6 @@ export abstract class Item implements IItem {
       const isEmpty = !(isBlocked || isExist);
       droppable.push(isEmpty);
     }
-
-    console.log(droppable);
 
     let idx: number | null = null;
     switch (p.d.key) {

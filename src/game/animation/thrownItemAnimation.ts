@@ -38,9 +38,10 @@ export class ThrownItemAnimation implements Animation {
     this.frame++;
 
     if (x === this.to.x && y === this.to.y) {
+      this.callback();
       this.item.symbol.x = this.item.x;
       this.item.symbol.y = this.item.y;
-      this.callback();
+
       this.done = true;
     }
   }
