@@ -328,13 +328,13 @@ export class ImageStore implements IImageStore {
     const stamp = parseImage(imgs.stamp, 7, 1, 120, 120);
     const panch = parseImage(imgs.panch, 9, 1, 120, 120);
     const pierce = parseImage(imgs.pierce, 7, 1, 120, 120);
-    const fire = parseImage(imgs.fire, 8, 1, 120, 120);
-    const ice = parseImage(imgs.ice, 8, 1, 120, 120);
-    const thunder = parseImage(imgs.thunder, 8, 1, 120, 120);
-    const healing = parseImage(imgs.healing, 8, 1, 120, 120);
+    const fire = parseImage(imgs.fire, 8, 1, 240, 240);
+    const ice = parseImage(imgs.ice, 8, 1, 240, 240);
+    const thunder = parseImage(imgs.thunder, 8, 1, 240, 240);
+    const healing = parseImage(imgs.healing, 8, 1, 240, 240);
     const blastwave = parseImage(imgs.blastwave, 1, 8, 640, 240);
     const rockSlide = parseImage(imgs.rockSlide, 8, 1, 240, 240);
-    const explosion = parseImage(imgs.explosion, 7, 1, 640, 240);
+    const explosion = parseImage(imgs.explosion, 7, 1, 240, 240);
 
     return {
       spelling: spelling,
