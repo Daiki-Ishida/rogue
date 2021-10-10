@@ -59,7 +59,7 @@ export class Dungeon {
       const roomsA = this.rooms.filter((r) => r.area.hasAncestor(childA));
       const roomsB = this.rooms.filter((r) => r.area.hasAncestor(childB));
 
-      const img = imageStore.maps.corridor[3];
+      const img = imageStore.maps.roomInside[0];
 
       if (childA.y === childB.y) {
         const border = childA.x + childA.w;

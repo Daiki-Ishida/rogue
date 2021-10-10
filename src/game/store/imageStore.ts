@@ -67,13 +67,9 @@ interface TrapImages {
 }
 
 interface MapImages {
-  readonly mapBase: Image;
   readonly roomEdge: Image[];
   readonly roomSide: Image[];
   readonly roomInside: Image[];
-  readonly wallEdge: Image[];
-  readonly wallSide: Image[];
-  readonly corridor: Image[];
   readonly exit: Image;
 }
 
@@ -272,25 +268,13 @@ export class ImageStore implements IImageStore {
   static parseMaps(asset: Asset): MapImages {
     const imgs = asset.imageFiles;
 
-    const dungeonSize = 16;
-
-    const mapBase = imgs.mapBase;
-    const { roomEdge, roomSide, roomInside } = parseRoom(
-      imgs.map01,
-      dungeonSize
-    );
-    const { wallEdge, wallSide } = parseWall(imgs.map02, dungeonSize);
-    const corridor = parseImage(imgs.map03, 2, 3, dungeonSize, dungeonSize);
-    const exit = imgs.map04;
+    const { roomEdge, roomSide, roomInside } = parseRoom(imgs.roomA, 32);
+    const exit = imgs.exit;
 
     return {
-      mapBase: mapBase,
       roomEdge: roomEdge,
       roomSide: roomSide,
       roomInside: roomInside,
-      wallEdge: wallEdge,
-      wallSide: wallSide,
-      corridor: corridor,
       exit: exit,
     };
   }
@@ -376,25 +360,25 @@ const parseRoom = (
   const inside: Image[] = [];
 
   for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
+    for (let j = 0; j < 3; j++) {
       // 上の辺
       if (i === 0) {
-        if (j === 0 || j === 3) {
-          edge.push(baseImage.get(j * size, i * size, size, size));
-        } else {
-          side.push(baseImage.get(j * size, i * size, size, size));
-        }
-      } else if (i === 3) {
-        if (j === 0 || j === 3) {
+        if (j === 0 || j === 2) {
           edge.push(baseImage.get(j * size, i * size, size, size * 2));
         } else {
           side.push(baseImage.get(j * size, i * size, size, size * 2));
         }
-      } else {
-        if (j === 0 || j === 3) {
+      } else if (i === 2) {
+        if (j === 0 || j === 2) {
           side.push(baseImage.get(j * size, i * size, size, size));
         } else {
           inside.push(baseImage.get(j * size, i * size, size, size));
+        }
+      } else if (i === 3) {
+        if (j === 0 || j === 2) {
+          edge.push(baseImage.get(j * size, i * size, size, size));
+        } else {
+          side.push(baseImage.get(j * size, i * size, size, size));
         }
       }
     }
@@ -404,74 +388,5 @@ const parseRoom = (
     roomEdge: edge,
     roomSide: side,
     roomInside: inside,
-  };
-};
-
-const parseWall = (baseImage: Image, size: number) => {
-  const edge: Image[] = [];
-  const side: Image[] = [];
-  const block: Image[] = [];
-
-  for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 6; j++) {
-      switch (i) {
-        case 0:
-          switch (j) {
-            case 0:
-            case 4:
-              edge.push(baseImage.get(j * size, i * size, size * 2, size * 4));
-              break;
-            case 1:
-            case 5:
-              break;
-            case 2:
-            case 3:
-              side.push(baseImage.get(j * size, i * size, size, size * 4));
-              break;
-          }
-          break;
-        case 1:
-        case 2:
-        case 3:
-        case 7:
-          break;
-        case 4:
-        case 5:
-          switch (j) {
-            case 0:
-            case 4:
-              side.push(baseImage.get(j * size, i * size, size * 2, size));
-              break;
-            case 1:
-            case 5:
-              break;
-            case 2:
-            case 3:
-              block.push(baseImage.get(j * size, i * size, size, size));
-              break;
-          }
-          break;
-        case 6:
-          switch (j) {
-            case 0:
-            case 4:
-              edge.push(baseImage.get(j * size, i * size, size * 2, size * 2));
-              break;
-            case 1:
-            case 5:
-              break;
-            case 2:
-            case 3:
-              side.push(baseImage.get(j * size, i * size, size, size * 2));
-              break;
-          }
-          break;
-      }
-    }
-  }
-
-  return {
-    wallEdge: edge,
-    wallSide: side,
   };
 };

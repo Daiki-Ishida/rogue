@@ -1,5 +1,4 @@
 import p5 from 'p5';
-import { imageStore } from 'game';
 import { Dungeon } from 'game/dungeon';
 import { Exit } from 'game/dungeon/exit';
 import { Room } from 'game/dungeon/room';
@@ -222,26 +221,6 @@ export class Board implements IBoard {
   }
 
   draw(p: p5, camera: Camera): void {
-    this.drawBoardBase(p, camera);
-    this.drawDungeon(p, camera);
-  }
-
-  private drawBoardBase(p: p5, camera: Camera): void {
-    p.push();
-    p.imageMode('corner');
-    const baseImg = imageStore.maps.mapBase;
-
-    const o = camera.adjust(0, 0);
-    const x = (0 - 2) * camera.zoom;
-    const y = (0 - 3) * camera.zoom;
-    const w = (baseImg.width / 16) * camera.zoom;
-    const h = (baseImg.height / 16) * camera.zoom;
-
-    p.image(baseImg, o.x + x, o.y + y, w, h);
-    p.pop();
-  }
-
-  private drawDungeon(p: p5, camera: Camera): void {
     this.dungeon.draw(p, camera);
   }
 }

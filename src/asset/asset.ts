@@ -33,11 +33,8 @@ import PEGASUS_02 from 'asset/image/enemys/pegasus_02.png';
 import SHADOW from 'asset/image/enemys/shadow.png';
 import MANTICORE from 'asset/image/enemys/manticore.png';
 import DARK_KNIGHT from 'asset/image/enemys/dark_knight.png';
-import MAP_BASE from 'asset/image/dungeon/map_base.png';
-import MAP_CHIP_1 from 'asset/image/dungeon/map_chip_01.png';
-import MAP_CHIP_2 from 'asset/image/dungeon/map_chip_02.png';
-import MAP_CHIP_3 from 'asset/image/dungeon/map_chip_03.png';
-import MAP_CHIP_4 from 'asset/image/dungeon/map_chip_04.png';
+import ROOM_CHIP_A from 'asset/image/dungeon/room_chip_a.png';
+import EXIT from 'asset/image/dungeon/exit.png';
 import ICONS_1 from 'asset/image/icons/icon01.png';
 import ICONS_2 from 'asset/image/icons/icon02.png';
 import ICONS_3 from 'asset/image/icons/icon03.png';
@@ -75,11 +72,8 @@ import DUNGEON_SOUND from 'asset/sound/dungeon.mp3';
 import BRIDGE_SOUND from 'asset/sound/bridge.mp3';
 
 interface ImageFiles {
-  mapBase: Image;
-  map01: Image;
-  map02: Image;
-  map03: Image;
-  map04: Image;
+  roomA: Image;
+  exit: Image;
   player: Image;
   dragon01: Image;
   dragon02: Image;
@@ -212,11 +206,8 @@ export class Asset {
     const manticore = p.loadImage(MANTICORE);
     const darkKnight = p.loadImage(DARK_KNIGHT);
 
-    const mapBase = p.loadImage(MAP_BASE);
-    const mapChip1 = p.loadImage(MAP_CHIP_1);
-    const mapChip2 = p.loadImage(MAP_CHIP_2);
-    const mapChip3 = p.loadImage(MAP_CHIP_3);
-    const mapChip4 = p.loadImage(MAP_CHIP_4);
+    const roomChipA = p.loadImage(ROOM_CHIP_A);
+    const exit = p.loadImage(EXIT);
 
     const icons1 = p.loadImage(ICONS_1);
     const icons2 = p.loadImage(ICONS_2);
@@ -237,11 +228,8 @@ export class Asset {
     const blastwave = p.loadImage(BLASTWAVE);
 
     const imageFiles = {
-      mapBase: mapBase,
-      map01: mapChip1,
-      map02: mapChip2,
-      map03: mapChip3,
-      map04: mapChip4,
+      roomA: roomChipA,
+      exit: exit,
       player: playerImg,
       dragon01: dragon01,
       dragon02: dragon02,

@@ -18,11 +18,11 @@ export class BasicRoom implements Room {
   ) {}
 
   static generate(node: Area): BasicRoom {
-    const w = RandomUtil.getRandomIntInclusive(MIN_WIDTH, node.w - 3);
-    const h = RandomUtil.getRandomIntInclusive(MIN_HEIGHT, node.h - 3);
+    const w = RandomUtil.getRandomIntInclusive(MIN_WIDTH, node.w - 6);
+    const h = RandomUtil.getRandomIntInclusive(MIN_HEIGHT, node.h - 6);
 
-    const x = node.x + RandomUtil.getRandomIntInclusive(3, node.w - w) - 1;
-    const y = node.y + RandomUtil.getRandomIntInclusive(3, node.h - h) - 1;
+    const x = node.x + RandomUtil.getRandomIntInclusive(5, node.w - w - 1);
+    const y = node.y + RandomUtil.getRandomIntInclusive(5, node.h - h - 1);
 
     return new BasicRoom(x, y, w, h, node);
   }
@@ -30,44 +30,68 @@ export class BasicRoom implements Room {
   draw(p: p5, camera: Camera): void {
     const mapChips = imageStore.maps;
 
-    for (let i = 0; i < this.w; i++) {
-      for (let j = 0; j < this.h; j++) {
+    for (let i = -1; i < this.w + 1; i++) {
+      for (let j = -1; j < this.h + 1; j++) {
         const { x, y } = camera.adjust(i + this.x, j + this.y);
+        if (j === -1) {
+          // 上の辺
+          switch (i) {
+            case -1:
+              p.image(
+                mapChips.roomEdge[0],
+                x,
+                y - 2,
+                camera.zoom,
+                camera.zoom * 2
+              );
+              break;
+            case this.w:
+              p.image(
+                mapChips.roomEdge[1],
+                x,
+                y - 2,
+                camera.zoom,
+                camera.zoom * 2
+              );
+              break;
+            default:
+              p.image(
+                mapChips.roomSide[0],
+                x,
+                y - 2,
+                camera.zoom,
+                camera.zoom * 2
+              );
+              break;
+          }
+        }
 
-        if (i === 0) {
-          switch (j) {
-            case 0:
-              p.image(mapChips.roomEdge[0], x, y, camera.zoom, camera.zoom);
+        if (j >= 0 && j < this.h) {
+          // 中
+          switch (i) {
+            case -1:
+              p.image(mapChips.roomSide[1], x, y, camera.zoom, camera.zoom);
               break;
-            case this.h - 1:
-              p.image(mapChips.roomEdge[2], x, y, camera.zoom, camera.zoom * 2);
+            case this.w:
+              p.image(mapChips.roomSide[2], x, y, camera.zoom, camera.zoom);
               break;
             default:
-              p.image(mapChips.roomSide[4], x, y, camera.zoom, camera.zoom);
+              p.image(mapChips.roomInside[0], x, y, camera.zoom, camera.zoom);
               break;
           }
-        } else if (i === this.w - 1) {
-          switch (j) {
-            case 0:
-              p.image(mapChips.roomEdge[1], x, y, camera.zoom, camera.zoom);
+        }
+
+        if (j === this.h) {
+          // 下の辺
+          switch (i) {
+            case -1:
+              p.image(mapChips.roomEdge[2], x, y, camera.zoom, camera.zoom);
               break;
-            case this.h - 1:
-              p.image(mapChips.roomEdge[3], x, y, camera.zoom, camera.zoom * 2);
-              break;
-            default:
-              p.image(mapChips.roomSide[5], x, y, camera.zoom, camera.zoom);
-              break;
-          }
-        } else {
-          switch (j) {
-            case 0:
-              p.image(mapChips.roomSide[0], x, y, camera.zoom, camera.zoom);
-              break;
-            case this.h - 1:
-              p.image(mapChips.roomSide[7], x, y, camera.zoom, camera.zoom * 2);
+            case this.w:
+              p.image(mapChips.roomEdge[3], x, y, camera.zoom, camera.zoom);
               break;
             default:
-              p.image(mapChips.roomInside[2], x, y, camera.zoom, camera.zoom);
+              p.image(mapChips.roomSide[3], x, y, camera.zoom, camera.zoom);
               break;
           }
         }

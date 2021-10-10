@@ -73,6 +73,7 @@ export const rogue = (p: p5): void => {
   };
 
   p.draw = () => {
+    p.background(0, 0, 0);
     controller.hold(game, p);
 
     game.isSkipMode ? p.frameRate(SKIP_SPEED) : p.frameRate(PLAY_SPEED);
