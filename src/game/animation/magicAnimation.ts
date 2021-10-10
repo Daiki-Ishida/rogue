@@ -58,7 +58,7 @@ export class MagicAnimation implements Animation {
   }
 
   private get currentImg(): Image {
-    return this.img[Math.floor(this.frame / 3)];
+    return this.img[Math.floor(this.frame / 2)];
   }
 
   draw(p: p5, camera: Camera): void {
