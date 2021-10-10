@@ -39,10 +39,10 @@ class BasicStrategy implements Strategy {
     const board = game.board;
     this.adjustDirection(enemy);
 
-    // 1/2で必殺技を使う
-    const random = RandomUtil.getRandomIntInclusive(0, 1);
+    // 3/4で必殺技を使う
+    const random = RandomUtil.getRandomIntInclusive(0, 3);
     const artsAvailable =
-      random === 0 &&
+      random !== 0 &&
       !enemy.isCondition('SEALED') &&
       enemy.specialArt.inRange(player.x, player.y, enemy, board);
 

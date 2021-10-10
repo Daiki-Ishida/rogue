@@ -32,11 +32,16 @@ export class Player extends Actor {
 
   autoHeal(): void {
     if (this.status.dmg === 0) return;
+    if (this.status.fullness <= 0) return;
+
     this.status.dmg--;
   }
 
   addHunger(value: number): void {
     this.status.hunger += value;
+    if (this.status.maxFullness < this.status.hunger) {
+      this.status.hunger = this.status.maxFullness;
+    }
   }
 
   removeHunger(value: number): void {
@@ -92,7 +97,7 @@ export class Player extends Actor {
   }
 
   throw(item: Item, board: Board): void {
-    if (item.isEquipment()) {
+    if (item.isEquipment() && item.status.equiped) {
       this.unequip(item);
     }
     item.throw(this, board);

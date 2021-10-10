@@ -21,8 +21,8 @@ export class PlayerEndPhase extends PhaseBase {
       player.addHunger(1);
     }
 
-    // 毎ターン１回復（調整するかも）
-    player.autoHeal();
+    // 毎ターン１回復 or ダメージ
+    player.status.fullness === 0 ? player.damage(1) : player.autoHeal();
 
     // 状態異常自然治癒チェック
     player.conditions.conditions.forEach((cond) => cond.count++);
