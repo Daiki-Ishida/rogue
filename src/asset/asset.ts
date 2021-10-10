@@ -53,6 +53,8 @@ import THUNDER from 'asset/image/effects/thunder.png';
 import MAGIC_BULLET from 'asset/image/effects/magic_bullet.png';
 import HEALING from 'asset/image/effects/healing.png';
 import BLASTWAVE from 'asset/image/effects/blastwave.png';
+import ROCK_SLIDE from 'asset/image/effects/rockslide.png';
+import EXPLOSION from 'asset/image/effects/explosion.png';
 
 import ATTACK_SOUND from 'asset/sound/attack.mp3';
 import CRITICAL_HIT_SOUND from 'asset/sound/critical_hit.mp3';
@@ -127,6 +129,8 @@ interface ImageFiles {
   magicBullet: Image;
   healing: Image;
   blastwave: Image;
+  rockSlide: Image;
+  explosion: Image;
 }
 
 interface SoundFiles {
@@ -232,6 +236,8 @@ export class Asset {
     const magicBullet = p.loadImage(MAGIC_BULLET);
     const healing = p.loadImage(HEALING);
     const blastwave = p.loadImage(BLASTWAVE);
+    const rockSlide = p.loadImage(ROCK_SLIDE);
+    const explosion = p.loadImage(EXPLOSION);
 
     const imageFiles = {
       bg: bg,
@@ -287,6 +293,8 @@ export class Asset {
       magicBullet: magicBullet,
       healing: healing,
       blastwave: blastwave,
+      rockSlide: rockSlide,
+      explosion: explosion,
     };
 
     const soundFiles = {

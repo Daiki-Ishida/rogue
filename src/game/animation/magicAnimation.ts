@@ -30,6 +30,24 @@ export class MagicAnimation implements Animation {
     return new MagicAnimation(thunder, x, y, 0, callback, false);
   }
 
+  static ofRockSlide(
+    x: number,
+    y: number,
+    callback: () => void
+  ): MagicAnimation {
+    const thunder = imageStore.effects.rockSlide;
+    return new MagicAnimation(thunder, x, y, 0, callback, false);
+  }
+
+  static ofExplosion(
+    x: number,
+    y: number,
+    callback: () => void
+  ): MagicAnimation {
+    const thunder = imageStore.effects.explosion;
+    return new MagicAnimation(thunder, x, y, 0, callback, false);
+  }
+
   exec(): void {
     this.frame++;
 
@@ -40,7 +58,7 @@ export class MagicAnimation implements Animation {
   }
 
   private get currentImg(): Image {
-    return this.img[Math.floor((this.frame / 3) % 3)];
+    return this.img[Math.floor(this.frame / 3)];
   }
 
   draw(p: p5, camera: Camera): void {

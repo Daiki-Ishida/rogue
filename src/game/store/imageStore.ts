@@ -97,6 +97,8 @@ interface EffectImages {
   readonly thunder: Image[];
   readonly healing: Image[];
   readonly blastwave: Image[];
+  readonly rockSlide: Image[];
+  readonly explosion: Image[];
 }
 
 interface IImageStore {
@@ -331,6 +333,8 @@ export class ImageStore implements IImageStore {
     const thunder = parseImage(imgs.thunder, 8, 1, 120, 120);
     const healing = parseImage(imgs.healing, 8, 1, 120, 120);
     const blastwave = parseImage(imgs.blastwave, 1, 8, 640, 240);
+    const rockSlide = parseImage(imgs.rockSlide, 8, 1, 240, 240);
+    const explosion = parseImage(imgs.explosion, 7, 1, 640, 240);
 
     return {
       spelling: spelling,
@@ -346,6 +350,8 @@ export class ImageStore implements IImageStore {
       thunder: thunder,
       healing: healing,
       blastwave: blastwave,
+      rockSlide: rockSlide,
+      explosion: explosion,
     };
   }
 }
