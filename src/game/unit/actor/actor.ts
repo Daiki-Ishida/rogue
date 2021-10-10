@@ -234,6 +234,8 @@ export abstract class Actor implements IActor {
   draw(p: p5, camera: Camera): void {
     if (this.isCondition('ASLEEP') || this.isCondition('PARALYZED')) {
       this.symbol.pause();
+    } else {
+      this.symbol.resume();
     }
 
     this.symbol.draw(p, camera);

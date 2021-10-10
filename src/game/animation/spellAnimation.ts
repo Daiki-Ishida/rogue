@@ -31,6 +31,7 @@ export class SpellAnimation implements Animation {
 
     if (this.frame > 30) {
       this.actor.symbol.resume();
+      this.actor.turnTo(this.actor.d.key);
       this.callback();
       this.done = true;
     }

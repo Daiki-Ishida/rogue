@@ -103,7 +103,9 @@ export class Board implements IBoard {
   }
 
   generateTraps(): void {
-    const trapCount = RandomUtil.getRandomIntInclusive(7, 12);
+    if (this.dungeon.level < 7) return;
+
+    const trapCount = RandomUtil.getRandomIntInclusive(5, 7);
     TrapGenerator.generate(trapCount, this);
   }
 
@@ -172,8 +174,14 @@ export class Board implements IBoard {
       );
       const room = this.dungeon.rooms[random];
 
-      const rx = RandomUtil.getRandomIntInclusive(room.x, room.x + room.w);
-      const ry = RandomUtil.getRandomIntInclusive(room.y, room.y + room.h);
+      const rx = RandomUtil.getRandomIntInclusive(
+        room.x + 1,
+        room.x + room.w - 2
+      );
+      const ry = RandomUtil.getRandomIntInclusive(
+        room.y + 1,
+        room.y + room.h - 2
+      );
 
       if (this.isEmpty(rx, ry)) {
         found = { x: rx, y: ry };

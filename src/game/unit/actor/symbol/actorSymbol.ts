@@ -42,7 +42,6 @@ export abstract class ActorSymbol implements IActorSymbol {
 
   resume(): void {
     this.active = true;
-    this.turnTo('DOWN');
   }
 
   proc(p: p5): void {
