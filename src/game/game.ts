@@ -82,6 +82,11 @@ export class Game {
   }
 
   next(): void {
+    if (this.board.dungeon.level === 30) {
+      alert('GAME CLEAR!');
+      this.setGameState('START');
+      return;
+    }
     this.setGameState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
