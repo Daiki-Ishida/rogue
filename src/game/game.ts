@@ -1,9 +1,11 @@
-import { soundManager, soundStore } from 'game';
+import { savedata, soundManager, soundStore } from 'game';
 import { Board } from './board';
 import { Commands } from './command';
 import { Inventory } from './inventory';
 import { Player } from './unit/actor';
 import { Turn } from './turn';
+import { itemDataStore } from './store/itemDataStore';
+import { ItemGenerator } from './unit/generator';
 
 type PlayMode = 'NORMAL' | 'DASH' | 'STEP';
 type GameState =
@@ -62,6 +64,7 @@ export class Game {
         soundManager.register(sound);
         break;
       }
+      case 'BRIDGE':
       case 'PLAY': {
         if (this.state !== 'PLAY' && this.state !== 'BRIDGE') {
           soundManager.deregisterBgm();
@@ -82,5 +85,69 @@ export class Game {
     this.setGameState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
+  }
+
+  save(): void {
+    const data = {
+      player: this.player.status,
+      inventory: {
+        items: this.inventory.items.map((i) => i.status),
+      },
+      game: {
+        gold: this.gold,
+        turn: this.turn.count,
+        level: this.board.dungeon.level,
+      },
+      itemStatus: itemDataStore.itemStatus,
+    };
+
+    savedata.status = 'SAVED';
+    savedata.data = data;
+    this.setGameState('START');
+  }
+
+  load(data: any): void {
+    itemDataStore.itemStatus = data.itemStatus;
+
+    this.player.status.name = data.player.name;
+    this.player.status.maxHp = data.player.maxHp;
+    this.player.status.dmg = data.player.dmg;
+    this.player.status.str = data.player.str;
+    this.player.status.vit = data.player.vit;
+    this.player.status.level = data.player.level;
+    this.player.status.exp = data.player.exp;
+    this.player.status.maxFullness = data.player.maxFullness;
+    this.player.status.hunger = data.player.hunger;
+
+    this.inventory.items = [];
+    data.inventory.items.forEach((status: any) => {
+      const item = ItemGenerator.load(status.category, status.id, this.board);
+
+      item.status.identified = status.identified;
+
+      if (item.isEquipment()) {
+        item.status.equiped = status.equiped;
+        item.status.cursed = status.cursed;
+        if (item.isSword() || item.isShield()) {
+          item.status.level = status.level;
+        }
+
+        if (item.status.equiped) {
+          this.player.equip(item);
+        }
+      }
+
+      if (item.isUsable() && item.isStaff()) {
+        item.status.durability = status.durability;
+      }
+
+      this.inventory.add(item);
+    });
+
+    this.gold = data.game.gold;
+    this.turn.count = data.game.turn;
+    this.board.dungeon.level = data.game.level;
+
+    this.setGameState('BRIDGE');
   }
 }

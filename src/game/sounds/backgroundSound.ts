@@ -17,7 +17,6 @@ export class BackgroundSound extends BaseSound {
   }
 
   stop(): void {
-    console.log('hogeeeee');
     this.file.pause();
     this.file.currentTime = 0;
     this.playing = false;

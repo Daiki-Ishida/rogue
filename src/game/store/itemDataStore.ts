@@ -44,7 +44,7 @@ interface ShieldStatus {
 class ItemDataStore {
   constructor(
     readonly itemDistribution: ItemDistribution[],
-    readonly itemStatus: ItemStatusList,
+    public itemStatus: ItemStatusList,
     readonly swordStatus: SwordStatus[],
     readonly shieldStatus: ShieldStatus[]
   ) {}

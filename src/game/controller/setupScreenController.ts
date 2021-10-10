@@ -1,4 +1,4 @@
-import { textBox } from 'game';
+import { fileInput, textBox } from 'game';
 import { Game } from '../game';
 import { Controller, actionController } from '.';
 import { ControllerState } from './controllerState';
@@ -19,6 +19,7 @@ class SetupScreenController implements ControllerState {
 
     game.player.changeName(name);
     textBox.remove();
+    fileInput.hide();
 
     game.setGameState('PLAY');
     context.changeState(actionController);

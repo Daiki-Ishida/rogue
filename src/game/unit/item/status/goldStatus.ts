@@ -4,13 +4,14 @@ import { ItemStatus } from '.';
 export class GoldStatus implements ItemStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     readonly identified: boolean,
     readonly amount: number
   ) {}
 
   static generate(): GoldStatus {
     const amount = RandomUtil.getRandomIntInclusive(10, 2000);
-    return new GoldStatus('GOLD', true, amount);
+    return new GoldStatus('GOLD', 'GOLD', true, amount);
   }
 
   get displayName(): string {

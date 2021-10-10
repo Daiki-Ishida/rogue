@@ -1,5 +1,6 @@
 export interface ItemStatus {
   id: string;
+  category: string;
   displayName: string;
   identified: boolean;
   description: string;

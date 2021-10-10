@@ -39,7 +39,7 @@ export abstract class Item implements IItem {
     public x: number,
     public y: number,
     readonly symbol: ItemSymbol,
-    readonly status: ItemStatus
+    public status: ItemStatus
   ) {}
 
   abstract identify(): void;

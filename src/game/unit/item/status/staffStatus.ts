@@ -5,6 +5,7 @@ import { UsableStatus } from './itemStatus';
 export class StaffStatus implements UsableStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     public used: boolean,
     public identified: boolean,
     public durability: number
@@ -12,7 +13,7 @@ export class StaffStatus implements UsableStatus {
 
   static init(id: string): StaffStatus {
     const durability = RandomUtil.getRandomIntInclusive(4, 7);
-    return new StaffStatus(id, false, false, durability);
+    return new StaffStatus(id, 'STAFF', false, false, durability);
   }
 
   get displayName(): string {

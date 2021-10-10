@@ -15,7 +15,7 @@ import { PlayerSymbol } from './symbol';
 export class Player extends Actor {
   private constructor(
     readonly symbol: PlayerSymbol,
-    readonly status: PlayerStatus
+    public status: PlayerStatus
   ) {
     super(symbol, status);
   }

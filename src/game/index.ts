@@ -3,7 +3,7 @@ import { Asset } from 'asset';
 import { Game } from './game';
 import { ImageStore, SoundStore } from './store';
 import { Drawer } from './view';
-import { Controller } from './controller';
+import { actionController, Controller } from './controller';
 import { WindowManager } from './view/window';
 import { AnimationManager } from './animation';
 import { PlaylogManager } from './log';
@@ -13,6 +13,7 @@ import { SoundManager } from './sounds';
 export let overlay: Graphics;
 
 export let textBox: Element;
+export let fileInput: Element;
 export let volumeSlider: Element;
 export let volumeIcon: Element;
 
@@ -30,6 +31,14 @@ export let soundManager: SoundManager;
 export let playlogManager: PlaylogManager;
 export let indicatorManager: IndicatorManager;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const savedata: {
+  status: 'NONE' | 'SAVED' | 'EXPORTED';
+  data: any;
+} = {
+  status: 'NONE',
+  data: {},
+};
 const PLAY_SPEED = 30;
 const SKIP_SPEED = 120;
 
@@ -44,10 +53,21 @@ export const rogue = (p: p5): void => {
     p.textFont(asset.font);
     p.imageMode('center');
 
+    // プレイヤー名入力ボックス
     textBox = p.createInput('アスカ');
     textBox.hide();
+
+    // ボリューム調整フォーム
     volumeSlider = p.createSlider(0, 100, 50, 5);
     volumeIcon = p.createSpan('🔊');
+
+    // セーブファイルロードボタン
+    fileInput = p.createFileInput((file) => {
+      game.load(file.data);
+      controller.changeState(actionController);
+      fileInput.hide();
+    });
+    fileInput.hide();
 
     imageStore = ImageStore.init(asset);
     soundStore = SoundStore.init(asset);
@@ -73,6 +93,11 @@ export const rogue = (p: p5): void => {
   };
 
   p.draw = () => {
+    if (savedata.status === 'SAVED') {
+      p.saveJSON(savedata.data, 'save.json');
+      savedata.status = 'EXPORTED';
+    }
+
     p.background(0, 0, 0);
     controller.hold(game, p);
 

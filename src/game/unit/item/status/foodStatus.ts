@@ -4,6 +4,7 @@ import { UsableStatus } from './itemStatus';
 export class FoodStatus implements UsableStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     public used: boolean,
     public identified: boolean,
     readonly value: number
@@ -28,7 +29,7 @@ export class FoodStatus implements UsableStatus {
         throw new Error(`Invalid Id: ${id}`);
     }
 
-    return new FoodStatus(id, false, true, value);
+    return new FoodStatus(id, 'FOOD', false, true, value);
   }
 
   get displayName(): string {

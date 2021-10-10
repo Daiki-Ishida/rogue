@@ -54,10 +54,13 @@ export class WindowManager {
     this.inventoryWindow.draw(p);
     this.statusWindow.draw(p);
 
-    const item = this.inventoryWindow.selected;
-    if (item) {
-      this.descriptionWindow.draw(p, item.status.description);
+    if (this.descriptionWindow.display) {
+      const item = this.inventoryWindow.selected;
+      if (item) {
+        this.descriptionWindow.draw(p, item.status.description);
+      }
     }
+
     this.helpWindow.draw(controller, p);
     this.selectWindow?.draw(p);
   }

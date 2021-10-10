@@ -4,6 +4,7 @@ import { EquipmentStatus } from '.';
 export class ShieldStatus implements EquipmentStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     private name: string,
     readonly def: number,
     public level: number,
@@ -16,6 +17,7 @@ export class ShieldStatus implements EquipmentStatus {
     const status = itemDataStore.getShieldStatus(id);
     return new ShieldStatus(
       status.id,
+      'SHIELD',
       status.name,
       status.def,
       1,

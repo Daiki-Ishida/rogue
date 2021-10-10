@@ -1,4 +1,14 @@
-import { Gold, Item } from '../item';
+import {
+  Bracelet,
+  Food,
+  Gold,
+  Herb,
+  Item,
+  Scroll,
+  Shield,
+  Staff,
+  Sword,
+} from '../item';
 import { Board } from 'game/board';
 import { BraceletGenerator } from './braceletGenerator';
 import { FoodGenerator } from './foodGenerator';
@@ -48,6 +58,38 @@ export class ItemGenerator {
       default:
         item = Gold.generate(board);
     }
+
+    return item;
+  }
+
+  static load(category: string, id: string, board: Board): Item {
+    let item: Item;
+    switch (category) {
+      case 'FOOD':
+        item = Food.generate(id, board);
+        break;
+      case 'HERB':
+        item = Herb.generate(id, board);
+        break;
+      case 'STAFF':
+        item = Staff.generate(id, board);
+        break;
+      case 'SCROLL':
+        item = Scroll.generate(id, board);
+        break;
+      case 'BRACELET':
+        item = Bracelet.generate(id, board);
+        break;
+      case 'SWORD':
+        item = Sword.generate(id, board);
+        break;
+      case 'SHIELD':
+        item = Shield.generate(id, board);
+        break;
+      default:
+        throw new Error('Invalid Data...');
+    }
+    board.clearItem(item);
 
     return item;
   }

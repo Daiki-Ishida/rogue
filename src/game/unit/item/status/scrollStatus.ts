@@ -4,12 +4,13 @@ import { UsableStatus } from './itemStatus';
 export class ScrollStatus implements UsableStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     public used: boolean,
     public identified: boolean
   ) {}
 
   static init(id: string): ScrollStatus {
-    return new ScrollStatus(id, false, false);
+    return new ScrollStatus(id, 'SCROLL', false, false);
   }
 
   get displayName(): string {

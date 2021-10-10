@@ -18,7 +18,7 @@ import { Tile } from 'game/board/layer';
 import { GridUtil } from 'game/util';
 import { Item } from 'game/unit/item';
 
-const ZOOM = 60;
+const ZOOM = 80;
 
 let BRIDGE_EFFECT_FRAME = 0;
 

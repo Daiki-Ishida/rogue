@@ -53,6 +53,10 @@ export class ActionController implements ControllerState {
         game.commands.push(command);
         break;
       }
+      case 'p': {
+        game.save();
+        break;
+      }
     }
   }
 }

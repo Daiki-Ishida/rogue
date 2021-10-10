@@ -5,6 +5,7 @@ import { EquipmentStatus } from './itemStatus';
 export class BraceletStatus implements EquipmentStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     public identified: boolean,
     public equiped: boolean,
     public cursed: boolean
@@ -14,7 +15,7 @@ export class BraceletStatus implements EquipmentStatus {
     const r = RandomUtil.getRandomIntInclusive(0, 3);
     const cursed = r === 0;
 
-    return new BraceletStatus(id, false, false, cursed);
+    return new BraceletStatus(id, 'BRACELET', false, false, cursed);
   }
 
   get displayName(): string {

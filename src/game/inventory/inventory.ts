@@ -15,12 +15,7 @@ export class Inventory {
   }
 
   get selected(): Item {
-    const item = this.items[this.idx];
-    if (item === undefined) {
-      console.log('Item Not Found.');
-    }
-
-    return item;
+    return this.items[this.idx];
   }
 
   get isEmpty(): boolean {

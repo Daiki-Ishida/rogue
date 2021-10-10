@@ -4,6 +4,7 @@ import { EquipmentStatus } from '.';
 export class SwordStatus implements EquipmentStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     private name: string,
     readonly baseAtk: number,
     public level: number,
@@ -16,6 +17,7 @@ export class SwordStatus implements EquipmentStatus {
     const status = itemDataStore.getSwordStatus(id);
     return new SwordStatus(
       status.id,
+      'SWORD',
       status.name,
       status.atk,
       1,

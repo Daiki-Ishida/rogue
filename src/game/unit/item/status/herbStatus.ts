@@ -4,12 +4,13 @@ import { UsableStatus } from './itemStatus';
 export class HerbStatus implements UsableStatus {
   private constructor(
     readonly id: string,
+    readonly category: string,
     public used: boolean,
     public identified: boolean
   ) {}
 
   static init(id: string): HerbStatus {
-    return new HerbStatus(id, false, false);
+    return new HerbStatus(id, 'HERB', false, false);
   }
 
   get displayName(): string {
