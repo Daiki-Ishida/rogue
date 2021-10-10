@@ -8,6 +8,7 @@ import {
   playlogManager,
   windowManager,
   controller,
+  imageStore,
 } from 'game';
 import { Game } from 'game/game';
 import { Board } from 'game/board';
@@ -35,7 +36,7 @@ export class Drawer {
         this.drawStartScreen(p);
         break;
       case 'PROLOGUE':
-        this.drawStartScreen(p);
+        this.drawProrogueScreen(p);
         break;
       case 'SET_UP':
         this.drawSetupScreen(p);
@@ -237,6 +238,35 @@ export class Drawer {
     p.pop();
   }
 
+  private drawProrogueScreen(p: p5): void {
+    const title = 'STAR GAZE';
+    const play = 'Press Enter To Play';
+
+    p.push();
+    p.imageMode('corner');
+    p.image(imageStore.bg, 0, 0, 1280, 720);
+
+    const f = p.frameCount % 250;
+    if (f >= 0 && f <= 19) {
+      p.image(imageStore.shootingStar[f], 0, 0, 1280, 720);
+    }
+
+    p.textSize(144);
+    p.fill('#FEF1E6');
+    p.text(title, 280, 380);
+
+    const r = p.frameCount % 45;
+    const on = r > 20 ? true : false;
+
+    if (on) {
+      p.textSize(48);
+      p.fill('#FEF1E6');
+      p.text(play, 400, 540);
+    }
+
+    p.pop();
+  }
+
   private drawBridgeEffect(game: Game, p: p5): void {
     p.push();
 
@@ -272,7 +302,8 @@ export class Drawer {
     const note = 'MAX 8 Letters';
 
     p.push();
-    p.background('#082032');
+    p.imageMode('corner');
+    p.image(imageStore.bg, 0, 0, 1280, 720);
 
     p.textSize(72);
     p.fill('#FEF1E6');

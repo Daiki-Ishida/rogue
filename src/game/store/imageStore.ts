@@ -100,6 +100,8 @@ interface EffectImages {
 }
 
 interface IImageStore {
+  readonly bg: Image;
+  readonly shootingStar: Image[];
   readonly actors: ActorImages;
   readonly items: ItemImages;
   readonly traps: TrapImages;
@@ -110,6 +112,8 @@ interface IImageStore {
 
 export class ImageStore implements IImageStore {
   constructor(
+    readonly bg: Image,
+    readonly shootingStar: Image[],
     readonly actors: ActorImages,
     readonly items: ItemImages,
     readonly traps: TrapImages,
@@ -119,6 +123,14 @@ export class ImageStore implements IImageStore {
   ) {}
 
   static init(asset: Asset): ImageStore {
+    const bg = asset.imageFiles.bg;
+    const shootingStar = parseImage(
+      asset.imageFiles.shootingStar,
+      5,
+      4,
+      192,
+      192
+    );
     const actors = this.parseActors(asset);
     const items = this.parseItems(asset);
     const traps = this.initTraps(asset);
@@ -126,7 +138,16 @@ export class ImageStore implements IImageStore {
     const conditions = this.parseConditions(asset);
     const effects = this.parseEffects(asset);
 
-    return new ImageStore(actors, items, traps, map, conditions, effects);
+    return new ImageStore(
+      bg,
+      shootingStar,
+      actors,
+      items,
+      traps,
+      map,
+      conditions,
+      effects
+    );
   }
 
   static parseActors(asset: Asset): ActorImages {

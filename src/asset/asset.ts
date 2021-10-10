@@ -1,5 +1,7 @@
 import p5, { Font, Image } from 'p5';
 import FONT from 'asset/font/PixelMplus12-Regular.ttf';
+import STARY_SKY from 'asset/image/bg/stary_sky.jpg';
+import SHOOTING_STAR from 'asset/image/bg/shooting_star.png';
 import PLAYER_IMAGE from 'asset/image/player/player03.png';
 import DRAGON_01 from 'asset/image/enemys/dragon_01.png';
 import DRAGON_02 from 'asset/image/enemys/dragon_02.png';
@@ -72,6 +74,8 @@ import DUNGEON_SOUND from 'asset/sound/dungeon.mp3';
 import BRIDGE_SOUND from 'asset/sound/bridge.mp3';
 
 interface ImageFiles {
+  bg: Image;
+  shootingStar: Image;
   roomA: Image;
   exit: Image;
   player: Image;
@@ -160,6 +164,8 @@ export class Asset {
   static preload(p: p5): Asset {
     const font = p.loadFont(FONT);
 
+    const bg = p.loadImage(STARY_SKY);
+    const shootingStar = p.loadImage(SHOOTING_STAR);
     const playerImg = p.loadImage(PLAYER_IMAGE);
 
     const dragon01 = p.loadImage(DRAGON_01);
@@ -228,6 +234,8 @@ export class Asset {
     const blastwave = p.loadImage(BLASTWAVE);
 
     const imageFiles = {
+      bg: bg,
+      shootingStar: shootingStar,
       roomA: roomChipA,
       exit: exit,
       player: playerImg,
