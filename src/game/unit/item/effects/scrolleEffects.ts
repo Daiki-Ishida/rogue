@@ -1,4 +1,4 @@
-import { animationManager, playlogManager } from 'game';
+import { animationManager, game, playlogManager } from 'game';
 import { BlastwaveAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/unit/actor';
@@ -115,8 +115,8 @@ const ScrollEffects = (): IStaffEffects => {
     }
   };
 
-  const identify = (user: Player, board: Board): void => {
-    console.log('todo');
+  const identify = (): void => {
+    game.inventory.items.forEach((item) => item.identify());
   };
 
   return {

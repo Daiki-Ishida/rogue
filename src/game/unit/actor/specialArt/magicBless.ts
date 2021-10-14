@@ -9,7 +9,6 @@ export interface SpecialArt {
   inRange: (x: number, y: number, actor: Actor, board: Board) => boolean;
 }
 
-// todo animation
 export const magicBlessEffect = (level: number): SpecialArt => {
   /**
    * 火炎による遠距離攻撃

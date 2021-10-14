@@ -100,7 +100,7 @@
   "FOOD": [
     {
       "id": "BREAD",
-      "identified": true,
+      "identified": false,
       "name": "パン",
       "fakeName": "",
       "description": "すこしおなかがふくれるぞ。",
@@ -108,7 +108,7 @@
     },
     {
       "id": "BIG_BREAD",
-      "identified": true,
+      "identified": false,
       "name": "大きなパン",
       "fakeName": "",
       "description": "おなかがふくれるぞ。",
@@ -116,7 +116,7 @@
     },
     {
       "id": "ROTTEN_BREAD",
-      "identified": true,
+      "identified": false,
       "name": "巨大なパン",
       "fakeName": "",
       "description": "おなかがいっぱいになるぞ。",
@@ -124,7 +124,7 @@
     },
     {
       "id": "GIANT_BREAD",
-      "identified": true,
+      "identified": false,
       "name": "腐ったパン",
       "fakeName": "",
       "description": "おなかがすこしふくれるが、毒でからだをこわしてしまうぞ。",
@@ -134,7 +134,7 @@
   "HERB": [
     {
       "id": "GREEN_HERB",
-      "identified": true,
+      "identified": false,
       "name": "薬草",
       "fakeName": "",
       "description": "HPが少し回復するぞ。",
@@ -142,7 +142,7 @@
     },
     {
       "id": "SUPER_HERB",
-      "identified": true,
+      "identified": false,
       "name": "上薬草",
       "fakeName": "",
       "description": "HPがたくさん回復するぞ。",
@@ -150,7 +150,7 @@
     },
     {
       "id": "POISON_HERB",
-      "identified": true,
+      "identified": false,
       "name": "毒草",
       "fakeName": "",
       "description": "毒になってしまうぞ。",
@@ -158,7 +158,7 @@
     },
     {
       "id": "CONFUSION_HERB",
-      "identified": true,
+      "identified": false,
       "name": "混乱草",
       "fakeName": "",
       "description": "混乱してしまうぞ。",
@@ -166,7 +166,7 @@
     },
     {
       "id": "SLEEPY_HERB",
-      "identified": true,
+      "identified": false,
       "name": "眠り草",
       "fakeName": "",
       "description": "しばらく眠ってしまうぞ。",
@@ -174,15 +174,15 @@
     },
     {
       "id": "FORTUNE_SEED",
-      "identified": true,
+      "identified": false,
       "name": "幸せの種",
-      "fakeName": "レベルが上がるぞ。",
-      "description": "",
+      "fakeName": "",
+      "description": "レベルが上がるぞ。",
       "ratio": 9
     },
     {
       "id": "UNFORTUNE_SEED",
-      "identified": true,
+      "identified": false,
       "name": "不幸の種",
       "fakeName": "",
       "description": "レベルが下がってしまうぞ。",
@@ -190,7 +190,7 @@
     },
     {
       "id": "STOMACH_EXPANDER",
-      "identified": true,
+      "identified": false,
       "name": "胃拡張の種",
       "fakeName": "",
       "description": "最大満腹度が上がるぞ。",
@@ -198,7 +198,7 @@
     },
     {
       "id": "STOMACH_SHRINKER",
-      "identified": true,
+      "identified": false,
       "name": "胃縮小の種",
       "fakeName": "",
       "description": "最大満腹度が下がるぞ。",
@@ -206,7 +206,7 @@
     },
     {
       "id": "LIFE_HERB",
-      "identified": true,
+      "identified": false,
       "name": "命の草",
       "fakeName": "",
       "description": "最大HPが上がるぞ。",
@@ -214,7 +214,7 @@
     },
     {
       "id": "SIGHT_HERB",
-      "identified": true,
+      "identified": false,
       "name": "めぐすり草",
       "fakeName": "",
       "description": "ワナが見えるようになるぞ。",
@@ -222,7 +222,7 @@
     },
     {
       "id": "ANTIDOTE_HERB",
-      "identified": true,
+      "identified": false,
       "name": "毒消し草",
       "fakeName": "",
       "description": "毒が回復するぞ。",
@@ -230,7 +230,7 @@
     },
     {
       "id": "DRAGON_HERB",
-      "identified": true,
+      "identified": false,
       "name": "ドラゴン草",
       "fakeName": "",
       "description": "口から火をふくぞ。遠くまで届くぞ。",
@@ -238,7 +238,7 @@
     },
     {
       "id": "WEED",
-      "identified": true,
+      "identified": false,
       "name": "雑草",
       "fakeName": "",
       "description": "ただの雑草だぞ。",
