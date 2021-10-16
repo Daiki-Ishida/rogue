@@ -239,6 +239,7 @@ export class ImageStore implements IImageStore {
       IRON_SWORD: icon02[1],
       RAPIER: icon02[2],
       TRIDENT: icon02[4],
+      KAMAITACHI: icon02[8],
       GREAT_AXE: icon02[5],
       DRAGON_KILLER: icon02[9],
       MIRACLE_SWORD: icon03[52],

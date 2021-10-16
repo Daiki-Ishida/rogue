@@ -4,6 +4,7 @@ import { ItemSymbol } from '../symbol';
 import { Board } from 'game/board';
 import { Player, Actor } from 'game/unit/actor';
 import { imageStore } from 'game';
+import { ISwordEffect, swordEffects } from '../effects';
 
 export class Sword extends Equipment {
   private constructor(
@@ -11,7 +12,7 @@ export class Sword extends Equipment {
     public y: number,
     readonly symbol: ItemSymbol,
     readonly status: SwordStatus,
-    public effects: string[]
+    public effects: ISwordEffect
   ) {
     super(x, y, symbol, status);
   }
@@ -19,8 +20,9 @@ export class Sword extends Equipment {
   static generate(id: string, board: Board): Sword {
     const symbol = new ItemSymbol(imageStore.items.sword[id]);
     const status = SwordStatus.init(id);
+    const effect = swordEffects[id];
 
-    const sword = new Sword(0, 0, symbol, status, []);
+    const sword = new Sword(0, 0, symbol, status, effect);
     sword.spawn(board);
     return sword;
   }
@@ -45,7 +47,7 @@ export class Sword extends Equipment {
     this.status.level += sword.status.level;
 
     // 特殊能力合成
-    this.effects = this.effects.concat(sword.effects);
+    // this.effects = this.effects.concat(sword.effects);
   }
 
   onHit(user: Player, target: Actor): void {

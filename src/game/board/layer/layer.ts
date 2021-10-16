@@ -3,6 +3,7 @@ import { GridUtil } from 'game/util';
 export enum Tile {
   VISITED,
   UNVISITED,
+  OUT_OF_BOARD,
   BLOCK,
   ROOM,
   CORRIDOR,
@@ -26,7 +27,7 @@ export abstract class LayerBase implements Layer {
 
   tileAt(x: number, y: number): Tile {
     const idx = GridUtil.gridToIndex(x, y);
-    return idx === -1 ? Tile.BLOCK : this.tiles[idx];
+    return idx === -1 ? Tile.OUT_OF_BOARD : this.tiles[idx];
   }
 
   putAt(tile: Tile, x: number, y: number): boolean {

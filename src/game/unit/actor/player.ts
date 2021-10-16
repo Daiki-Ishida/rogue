@@ -1,9 +1,12 @@
 import {
+  animationManager,
   indicatorManager,
   playlogManager,
   soundManager,
   soundStore,
 } from 'game';
+import { AttackAnimation } from 'game/animation';
+import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { playerDataStore } from 'game/store';
 import { BounceIndicator } from 'game/view/indicator';
@@ -94,6 +97,30 @@ export class Player extends Actor {
   private isLevelDown(): boolean {
     const level = playerDataStore.findLevelByExp(this.status.exp);
     return this.status.level > level;
+  }
+
+  // override
+  attack(board: Board): void {
+    const target = board.findActor(this.next.x, this.next.y);
+    const callback = () => {
+      this.status.sword?.effects.onAttack(this, board);
+    };
+    const animation = AttackAnimation.generate(this, callback);
+    animationManager.push(animation);
+
+    let sound = soundStore.attack;
+
+    if (target) {
+      const battle = new Battle(this, target);
+      const battleStatus = battle.exec();
+      if (battleStatus === 'CRITICAL_HIT') {
+        sound = soundStore.criticalHit;
+      } else if (battleStatus === 'MISSED') {
+        sound = soundStore.missHit;
+      }
+    }
+
+    soundManager.register(sound);
   }
 
   throw(item: Item, board: Board): void {

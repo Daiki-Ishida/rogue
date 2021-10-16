@@ -53,11 +53,25 @@ export class Battle {
       case 'HIT': {
         const dmg = this.damage;
         this.defender.damage(dmg);
+
+        if (this.attacker.isPlayer()) {
+          const attacker = this.attacker;
+          const defender = this.defender;
+          this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
+        }
+
         break;
       }
       case 'CRITICAL_HIT': {
         const dmg = Math.floor(this.damage * 1.5);
         this.defender.damage(dmg);
+
+        if (this.attacker.isPlayer()) {
+          const attacker = this.attacker;
+          const defender = this.defender;
+          this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
+        }
+
         break;
       }
     }
