@@ -35,7 +35,10 @@ import PEGASUS_02 from 'asset/image/enemys/pegasus_02.png';
 import SHADOW from 'asset/image/enemys/shadow.png';
 import MANTICORE from 'asset/image/enemys/manticore.png';
 import DARK_KNIGHT from 'asset/image/enemys/dark_knight.png';
-import ROOM_CHIP_A from 'asset/image/dungeon/room_chip_b.png';
+import ROOM_CHIP_A from 'asset/image/dungeon/room_chip_a.png';
+import ROOM_CHIP_B from 'asset/image/dungeon/room_chip_b.png';
+import ROOM_CHIP_C from 'asset/image/dungeon/room_chip_c.png';
+import ROOM_CHIP_D from 'asset/image/dungeon/room_chip_d.png';
 import EXIT from 'asset/image/dungeon/exit.png';
 import ICONS_1 from 'asset/image/icons/icon01.png';
 import ICONS_2 from 'asset/image/icons/icon02.png';
@@ -79,6 +82,9 @@ interface ImageFiles {
   bg: Image;
   shootingStar: Image;
   roomA: Image;
+  roomB: Image;
+  roomC: Image;
+  roomD: Image;
   exit: Image;
   player: Image;
   dragon01: Image;
@@ -217,6 +223,9 @@ export class Asset {
     const darkKnight = p.loadImage(DARK_KNIGHT);
 
     const roomChipA = p.loadImage(ROOM_CHIP_A);
+    const roomChipB = p.loadImage(ROOM_CHIP_B);
+    const roomChipC = p.loadImage(ROOM_CHIP_C);
+    const roomChipD = p.loadImage(ROOM_CHIP_D);
     const exit = p.loadImage(EXIT);
 
     const icons1 = p.loadImage(ICONS_1);
@@ -243,6 +252,9 @@ export class Asset {
       bg: bg,
       shootingStar: shootingStar,
       roomA: roomChipA,
+      roomB: roomChipB,
+      roomC: roomChipC,
+      roomD: roomChipD,
       exit: exit,
       player: playerImg,
       dragon01: dragon01,

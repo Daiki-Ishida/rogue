@@ -3,10 +3,25 @@ import { Camera } from 'game/view';
 import p5, { Image } from 'p5';
 
 export class Corridor {
-  constructor(readonly x: number, readonly y: number, readonly img: Image) {}
+  private constructor(
+    readonly x: number,
+    readonly y: number,
+    readonly img: Image
+  ) {}
 
-  static generate(x: number, y: number): Corridor {
-    const img = imageStore.maps.roomInside[0];
+  static generate(x: number, y: number, level: number): Corridor {
+    let mapChips;
+    if (level <= 3) {
+      mapChips = imageStore.maps.roomB;
+    } else if (level <= 14) {
+      mapChips = imageStore.maps.roomD;
+    } else if (level <= 25) {
+      mapChips = imageStore.maps.roomC;
+    } else {
+      mapChips = imageStore.maps.roomA;
+    }
+
+    const img = mapChips.roomInside[0];
     return new Corridor(x, y, img);
   }
 

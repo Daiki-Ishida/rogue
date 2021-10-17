@@ -27,8 +27,17 @@ export class BasicRoom implements Room {
     return new BasicRoom(x, y, w, h, node);
   }
 
-  draw(p: p5, camera: Camera): void {
-    const mapChips = imageStore.maps;
+  draw(p: p5, camera: Camera, level: number): void {
+    let mapChips;
+    if (level <= 3) {
+      mapChips = imageStore.maps.roomB;
+    } else if (level <= 14) {
+      mapChips = imageStore.maps.roomD;
+    } else if (level <= 25) {
+      mapChips = imageStore.maps.roomC;
+    } else {
+      mapChips = imageStore.maps.roomA;
+    }
 
     for (let i = -1; i < this.w + 1; i++) {
       for (let j = -1; j < this.h + 1; j++) {

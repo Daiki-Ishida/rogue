@@ -32,7 +32,7 @@ const SwordEffects = (): ISwordEffects => {
       const y = player.next.y;
       const tile = board.dungeonLayer.tileAt(x, y);
       if (tile === Tile.BLOCK) {
-        const corridor = Corridor.generate(x, y);
+        const corridor = Corridor.generate(x, y, board.dungeon.level);
         board.dungeon.corridors.push(corridor);
         board.dungeonLayer.putAt(Tile.CORRIDOR, x, y);
       }

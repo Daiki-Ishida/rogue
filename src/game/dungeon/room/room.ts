@@ -8,5 +8,5 @@ export interface Room {
   w: number;
   h: number;
   area: Area;
-  draw(p: p5, camera: Camera): void;
+  draw(p: p5, camera: Camera, level: number): void;
 }

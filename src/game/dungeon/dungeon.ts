@@ -5,7 +5,6 @@ import { Exit } from './exit';
 import { Corridor } from './corridor';
 import { Camera } from 'game/view';
 import { RandomUtil } from 'game/util';
-import { imageStore } from 'game';
 
 export class Dungeon {
   private constructor(
@@ -59,8 +58,6 @@ export class Dungeon {
       const roomsA = this.rooms.filter((r) => r.area.hasAncestor(childA));
       const roomsB = this.rooms.filter((r) => r.area.hasAncestor(childB));
 
-      const img = imageStore.maps.roomInside[0];
-
       if (childA.y === childB.y) {
         const border = childA.x + childA.w;
 
@@ -85,13 +82,13 @@ export class Dungeon {
         // roomB.connnectionPoint.push([roomB.x - 1, exit]);
 
         for (let i = roomA.x + roomA.w; i < border; i++) {
-          this.corridors.push(new Corridor(i, entry, img));
+          this.corridors.push(Corridor.generate(i, entry, this.level));
         }
         for (let i = roomB.x - 1; i > border; i--) {
-          this.corridors.push(new Corridor(i, exit, img));
+          this.corridors.push(Corridor.generate(i, exit, this.level));
         }
         for (let i = Math.min(entry, exit); i <= Math.max(entry, exit); i++) {
-          this.corridors.push(new Corridor(border, i, img));
+          this.corridors.push(Corridor.generate(border, i, this.level));
         }
       } else if (childA.x === childB.x) {
         const border = childA.y + childA.h;
@@ -117,13 +114,13 @@ export class Dungeon {
         // roomB.connnectionPoint.push([exit, roomB.y - 1]);
 
         for (let i = roomA.y + roomA.h; i < border; i++) {
-          this.corridors.push(new Corridor(entry, i, img));
+          this.corridors.push(Corridor.generate(entry, i, this.level));
         }
         for (let i = roomB.y - 1; i > border; i--) {
-          this.corridors.push(new Corridor(exit, i, img));
+          this.corridors.push(Corridor.generate(exit, i, this.level));
         }
         for (let i = Math.min(entry, exit); i <= Math.max(entry, exit); i++) {
-          this.corridors.push(new Corridor(i, border, img));
+          this.corridors.push(Corridor.generate(i, border, this.level));
         }
       }
     }
@@ -131,7 +128,7 @@ export class Dungeon {
 
   draw(p: p5, camera: Camera): void {
     for (const room of this.rooms) {
-      room.draw(p, camera);
+      room.draw(p, camera, this.level);
     }
 
     for (const corridor of this.corridors) {

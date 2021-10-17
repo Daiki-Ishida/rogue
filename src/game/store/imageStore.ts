@@ -67,10 +67,17 @@ interface TrapImages {
 }
 
 interface MapImages {
+  readonly roomA: RoomImages;
+  readonly roomB: RoomImages;
+  readonly roomC: RoomImages;
+  readonly roomD: RoomImages;
+  readonly exit: Image;
+}
+
+interface RoomImages {
   readonly roomEdge: Image[];
   readonly roomSide: Image[];
   readonly roomInside: Image[];
-  readonly exit: Image;
 }
 
 interface ConditionImages {
@@ -292,13 +299,17 @@ export class ImageStore implements IImageStore {
   static parseMaps(asset: Asset): MapImages {
     const imgs = asset.imageFiles;
 
-    const { roomEdge, roomSide, roomInside } = parseRoom(imgs.roomA, 32);
+    const roomA = parseRoom(imgs.roomA, 32);
+    const roomB = parseRoom(imgs.roomB, 32);
+    const roomC = parseRoom(imgs.roomC, 32);
+    const roomD = parseRoom(imgs.roomD, 32);
     const exit = imgs.exit;
 
     return {
-      roomEdge: roomEdge,
-      roomSide: roomSide,
-      roomInside: roomInside,
+      roomA: roomA,
+      roomB: roomB,
+      roomC: roomC,
+      roomD: roomD,
       exit: exit,
     };
   }
