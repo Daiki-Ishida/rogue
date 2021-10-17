@@ -35,6 +35,7 @@ interface ActorImages {
   readonly pigMaid3: Image[];
   readonly maskedSoldier1: Image[];
   readonly maskedSoldier2: Image[];
+  readonly boss: Image[];
 }
 
 interface ItemImages {
@@ -194,6 +195,7 @@ export class ImageStore implements IImageStore {
     const pigMaid3 = parseImage(imgs.pigMaid03, 3, 4, 32, 32);
     const maskedSoldier1 = parseImage(imgs.soldier01, 3, 4, 32, 32);
     const maskedSoldier2 = parseImage(imgs.soldier02, 3, 4, 32, 32);
+    const boss = parseImage(imgs.boss, 3, 4, 100, 70);
 
     return {
       player: player,
@@ -229,6 +231,7 @@ export class ImageStore implements IImageStore {
       pigMaid3: pigMaid3,
       maskedSoldier1: maskedSoldier1,
       maskedSoldier2: maskedSoldier2,
+      boss: boss,
     };
   }
 

@@ -13,6 +13,7 @@ import {
   ItemGenerator,
   TrapGenerator,
 } from 'game/unit/generator';
+import { Enemy } from 'game/unit/actor/enemy';
 
 export interface IBoard {
   w: number;
@@ -90,6 +91,10 @@ export class Board implements IBoard {
     this.generateTraps();
     this.generateItems();
     this.generateEnemys();
+
+    if (this.dungeon.level === 30) {
+      Enemy.generate('BOSS', this);
+    }
   }
 
   generateEnemys(): void {

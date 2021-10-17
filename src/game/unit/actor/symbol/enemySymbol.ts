@@ -25,17 +25,17 @@ export class EnemySymbol extends ActorSymbol {
       case 'DRAGON_01':
         img = imageStore.actors.dragon1;
         attackImg = imageStore.effects.fang;
-        resize = 2;
+        resize = 1.5;
         break;
       case 'DRAGON_02':
         img = imageStore.actors.dragon2;
         attackImg = imageStore.effects.fang;
-        resize = 2;
+        resize = 1.5;
         break;
       case 'DRAGON_03':
         img = imageStore.actors.dragon3;
         attackImg = imageStore.effects.fang;
-        resize = 2;
+        resize = 1.5;
         break;
       case 'INSECTOR_01':
         img = imageStore.actors.insector1;
@@ -55,17 +55,17 @@ export class EnemySymbol extends ActorSymbol {
       case 'WEREWOLF_01':
         img = imageStore.actors.werewolf1;
         attackImg = imageStore.effects.fang;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'WEREWOLF_02':
         img = imageStore.actors.werewolf2;
         attackImg = imageStore.effects.fang;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'WEREWOLF_03':
         img = imageStore.actors.werewolf3;
         attackImg = imageStore.effects.fang;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'GOLEM_01':
         img = imageStore.actors.golem1;
@@ -85,32 +85,32 @@ export class EnemySymbol extends ActorSymbol {
       case 'TATSUNOKO_01':
         img = imageStore.actors.tatsunoko1;
         attackImg = imageStore.effects.pierce;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'TATSUNOKO_02':
         img = imageStore.actors.tatsunoko2;
         attackImg = imageStore.effects.pierce;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'TATSUNOKO_03':
         img = imageStore.actors.tatsunoko3;
         attackImg = imageStore.effects.pierce;
-        resize = 1.2;
+        resize = 1;
         break;
       case 'GRIFFIN_01':
         img = imageStore.actors.griffin1;
         attackImg = imageStore.effects.panch;
-        resize = 1.5;
+        resize = 1.2;
         break;
       case 'GRIFFIN_02':
         img = imageStore.actors.griffin2;
         attackImg = imageStore.effects.panch;
-        resize = 1.5;
+        resize = 1.2;
         break;
       case 'GRIFFIN_03':
         img = imageStore.actors.griffin3;
         attackImg = imageStore.effects.panch;
-        resize = 1.5;
+        resize = 1.2;
         break;
       case 'PIG_MAID_01':
         img = imageStore.actors.pigMaid1;
@@ -160,12 +160,12 @@ export class EnemySymbol extends ActorSymbol {
       case 'PEGASUS_01':
         img = imageStore.actors.pegasus1;
         attackImg = imageStore.effects.panch;
-        resize = 1.3;
+        resize = 1;
         break;
       case 'PEGASUS_02':
         img = imageStore.actors.pegasus2;
         attackImg = imageStore.effects.panch;
-        resize = 1.3;
+        resize = 1;
         break;
       case 'SHADOW':
         img = imageStore.actors.shadow;
@@ -180,7 +180,12 @@ export class EnemySymbol extends ActorSymbol {
       case 'DARK_KNIGHT':
         img = imageStore.actors.darkKnight;
         attackImg = imageStore.effects.pierce;
-        resize = 1.5;
+        resize = 1.2;
+        break;
+      case 'BOSS':
+        img = imageStore.actors.boss;
+        attackImg = imageStore.effects.fang;
+        resize = 2;
         break;
       default:
         throw new Error(`Invalid ID: ${id}`);
@@ -209,6 +214,7 @@ export class EnemySymbol extends ActorSymbol {
     this.proc(p);
     const { x, y } = camera.adjust(this.x, this.y);
     const size = camera.zoom * this.resizeFactor;
-    p.image(this.currentChip, x, y - camera.zoom * 0.2, size, size);
+    const aspect = this.currentChip.width / this.currentChip.height;
+    p.image(this.currentChip, x, y - camera.zoom * 0.2, size * aspect, size);
   }
 }

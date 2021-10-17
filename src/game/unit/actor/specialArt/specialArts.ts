@@ -90,6 +90,7 @@ const specialArtsGen = (): ISpecialArts => {
     SHADOW: ramdomArts(),
     MANTICORE: noEffect,
     DARK_KNIGHT: noEffect,
+    BOSS: noEffect,
   };
 };
 
