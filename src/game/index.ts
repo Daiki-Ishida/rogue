@@ -31,9 +31,9 @@ export let soundManager: SoundManager;
 export let playlogManager: PlaylogManager;
 export let indicatorManager: IndicatorManager;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const savedata: {
   status: 'NONE' | 'SAVED' | 'EXPORTED';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 } = {
   status: 'NONE',

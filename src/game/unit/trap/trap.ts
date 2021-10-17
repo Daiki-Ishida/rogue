@@ -59,6 +59,7 @@ export class Trap {
   }
 
   draw(p: p5, camera: Camera): void {
+    if (this.status.hidden) return;
     this.symbol.draw(p, camera);
   }
 }

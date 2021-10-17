@@ -10,6 +10,7 @@ export class ItemSymbol {
 
   draw(p: p5, camera: Camera): void {
     const { x, y } = camera.adjust(this.x, this.y);
-    p.image(this.img, x, y, camera.zoom, camera.zoom);
+    const size = camera.zoom * 0.7;
+    p.image(this.img, x, y, size, size);
   }
 }

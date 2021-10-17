@@ -11,12 +11,12 @@ interface ITrapEffects {
 
 const TrapEffects = (): ITrapEffects => {
   const landmine = (actor: Actor, board: Board): void => {
-    const grids = GridUtil.aroundGrids(actor.x, actor.y);
-    for (const grid of grids) {
-      board.findActor(grid[0], grid[1])?.damage(999);
-    }
-
     const callback = () => {
+      const grids = GridUtil.aroundGrids(actor.x, actor.y);
+      for (const grid of grids) {
+        board.findActor(grid[0], grid[1])?.damage(999);
+      }
+
       const dmg = Math.floor(actor.status.hp / 2);
       actor.damage(dmg);
     };

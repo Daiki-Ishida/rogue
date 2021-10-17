@@ -83,7 +83,7 @@ export class Game {
   }
 
   next(): void {
-    if (this.board.dungeon.level === 30) {
+    if (this.board.dungeon.level > 30) {
       alert('GAME CLEAR!');
       this.setGameState('START');
       return;
@@ -153,7 +153,8 @@ export class Game {
 
     this.gold = data.game.gold;
     this.turn.count = data.game.turn;
-    this.board.dungeon.level = data.game.level;
+    this.board.dungeon.level = data.game.level - 1;
+    this.next();
 
     this.setGameState('BRIDGE');
   }
