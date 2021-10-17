@@ -77,6 +77,7 @@ import HEALING_SOUND from 'asset/sound/heal.mp3';
 import EATING_SOUND from 'asset/sound/eating.mp3';
 import START_SOUND from 'asset/sound/start.mp3';
 import DUNGEON_SOUND from 'asset/sound/dungeon.mp3';
+import BOSS_THEME_SOUND from 'asset/sound/boss.mp3';
 import BRIDGE_SOUND from 'asset/sound/bridge.mp3';
 
 interface ImageFiles {
@@ -160,6 +161,7 @@ interface SoundFiles {
   start: HTMLAudioElement;
   dungeon: HTMLAudioElement;
   bridge: HTMLAudioElement;
+  bossTheme: HTMLAudioElement;
 }
 
 export class Asset {
@@ -333,6 +335,7 @@ export class Asset {
       start: new Audio(START_SOUND),
       dungeon: new Audio(DUNGEON_SOUND),
       bridge: new Audio(BRIDGE_SOUND),
+      bossTheme: new Audio(BOSS_THEME_SOUND),
     };
 
     return new Asset(font, imageFiles, soundFiles);

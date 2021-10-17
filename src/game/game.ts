@@ -88,9 +88,16 @@ export class Game {
       this.setGameState('START');
       return;
     }
+
     this.setGameState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
+
+    if (this.board.dungeon.level === 30) {
+      soundManager.deregisterBgm();
+      const sound = soundStore.bossThemeBgm;
+      soundManager.register(sound);
+    }
   }
 
   save(): void {

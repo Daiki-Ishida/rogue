@@ -20,6 +20,7 @@ interface IImageStore {
   readonly bridgeEffect: Sound;
   readonly startScreenBgm: Sound;
   readonly dungeonBgm: Sound;
+  readonly bossThemeBgm: Sound;
 }
 
 export class SoundStore implements IImageStore {
@@ -41,7 +42,8 @@ export class SoundStore implements IImageStore {
     readonly eating: Sound,
     readonly bridgeEffect: Sound,
     readonly startScreenBgm: BackgroundSound,
-    readonly dungeonBgm: BackgroundSound
+    readonly dungeonBgm: BackgroundSound,
+    readonly bossThemeBgm: BackgroundSound
   ) {}
 
   static init(asset: Asset): SoundStore {
@@ -64,6 +66,7 @@ export class SoundStore implements IImageStore {
 
     const startScreenBgm = new BackgroundSound(asset.soundFiles.start);
     const dungeonBgm = new BackgroundSound(asset.soundFiles.dungeon);
+    const bossThemeBgm = new BackgroundSound(asset.soundFiles.bossTheme);
 
     return new SoundStore(
       attack,
@@ -83,7 +86,8 @@ export class SoundStore implements IImageStore {
       eating,
       bridgeEffect,
       startScreenBgm,
-      dungeonBgm
+      dungeonBgm,
+      bossThemeBgm
     );
   }
 }
