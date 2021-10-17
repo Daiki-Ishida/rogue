@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { savedata, soundManager, soundStore } from 'game';
 import { Board } from './board';
 import { Commands } from './command';
@@ -111,6 +112,7 @@ export class Game {
     this.setGameState('START');
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   load(data: any): void {
     itemDataStore.itemStatus = data.itemStatus;
 

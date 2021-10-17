@@ -44,12 +44,12 @@ const HerbEffects = (): IHerbEffects => {
     onHit: (user: Player, target: Actor): void => {
       const dmg = RandomUtil.getRandomIntInclusive(1, 2);
       target.damage(dmg);
-      const posion = Condition.ofPoison(30);
+      const posion = Condition.ofPoison(20);
       target.conditions.push(posion);
     },
     onUse: (user: Player) => {
       user.status.maxHp -= 5;
-      const posion = Condition.ofPoison(30);
+      const posion = Condition.ofPoison(20);
       user.conditions.push(posion);
     },
   };

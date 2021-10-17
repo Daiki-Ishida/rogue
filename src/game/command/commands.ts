@@ -1,3 +1,4 @@
+import { RandomUtil } from 'game/util';
 import { Command } from '.';
 import { Board } from '../board';
 
@@ -19,9 +20,17 @@ export class Commands {
   exec(board: Board): void {
     this.commands.forEach((command) => {
       const actor = command.actor;
-      if (actor.isCondition('ASLEEP') || actor.isCondition('PARALYZED')) {
+      if (actor.isCondition('ASLEEP')) {
         command.done = true;
         return;
+      }
+
+      if (actor.isCondition('PARALYZED')) {
+        const r = RandomUtil.getRandomIntInclusive(0, 1);
+        if (r === 0) {
+          command.done = true;
+          return;
+        }
       }
 
       if (actor.isCondition('CONFUSED')) {
@@ -32,24 +41,6 @@ export class Commands {
     });
     this.refresh();
   }
-
-  // execMove(game: Game): void {
-  //   this.commands.forEach((command) => {
-  //     if (command instanceof MoveCommand) {
-  //       command.exec(game);
-  //     }
-  //   });
-  //   this.clear();
-  // }
-
-  // execAct(game: Game): void {
-  //   this.commands.forEach((command) => {
-  //     if (!(command instanceof MoveCommand)) {
-  //       command.exec(game);
-  //     }
-  //   });
-  //   this.clear();
-  // }
 
   private refresh(): void {
     this.commands = this.commands.filter((c) => !c.done);

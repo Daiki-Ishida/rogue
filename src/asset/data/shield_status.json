@@ -2,13 +2,13 @@
   {
     "id": "WOODEN_SHIELD",
     "name": "木の盾",
-    "def": 2,
-    "ratio": 28
+    "def": 3,
+    "ratio": 42
   },
   {
     "id": "IRON_SHIELD",
     "name": "鉄の盾",
-    "def": 4,
+    "def": 5,
     "ratio": 86
   },
   {
@@ -20,19 +20,19 @@
   {
     "id": "HEAVY_SHIELD",
     "name": "重装の盾",
-    "def": 10,
+    "def": 9,
     "ratio": 43
   },
   {
     "id": "SILVER_SHIELD",
     "name": "みかがみの盾",
     "def": 12,
-    "ratio": 29
+    "ratio": 36
   },
   {
     "id": "PHANTASM_SHIELD",
     "name": "幻魔の盾",
-    "def": 18,
-    "ratio": 28
+    "def": 50,
+    "ratio": 5
   }
 ]

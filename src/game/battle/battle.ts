@@ -53,25 +53,13 @@ export class Battle {
       case 'HIT': {
         const dmg = this.damage;
         this.defender.damage(dmg);
-
-        if (this.attacker.isPlayer()) {
-          const attacker = this.attacker;
-          const defender = this.defender;
-          this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
-        }
-
+        this.onDamage(dmg);
         break;
       }
       case 'CRITICAL_HIT': {
         const dmg = Math.floor(this.damage * 1.5);
         this.defender.damage(dmg);
-
-        if (this.attacker.isPlayer()) {
-          const attacker = this.attacker;
-          const defender = this.defender;
-          this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
-        }
-
+        this.onDamage(dmg);
         break;
       }
     }
@@ -84,6 +72,21 @@ export class Battle {
     }
 
     return status;
+  }
+
+  private onDamage(dmg: number): void {
+    if (this.attacker.isPlayer()) {
+      const attacker = this.attacker;
+      const defender = this.defender;
+      this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
+    }
+
+    if (this.defender.isCondition('ASLEEP')) {
+      const r = RandomUtil.getRandomIntInclusive(0, 1);
+      if (r === 0) {
+        this.defender.conditions.recover('ASLEEP');
+      }
+    }
   }
 
   private messageOnDefeated(): string {
