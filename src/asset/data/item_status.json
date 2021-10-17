@@ -100,7 +100,7 @@
   "FOOD": [
     {
       "id": "BREAD",
-      "identified": false,
+      "identified": true,
       "name": "パン",
       "fakeName": "",
       "description": "すこしおなかがふくれるぞ。",
@@ -108,7 +108,7 @@
     },
     {
       "id": "BIG_BREAD",
-      "identified": false,
+      "identified": true,
       "name": "大きなパン",
       "fakeName": "",
       "description": "おなかがふくれるぞ。",
@@ -116,7 +116,7 @@
     },
     {
       "id": "ROTTEN_BREAD",
-      "identified": false,
+      "identified": true,
       "name": "巨大なパン",
       "fakeName": "",
       "description": "おなかがいっぱいになるぞ。",
@@ -124,7 +124,7 @@
     },
     {
       "id": "GIANT_BREAD",
-      "identified": false,
+      "identified": true,
       "name": "腐ったパン",
       "fakeName": "",
       "description": "おなかがすこしふくれるが、毒でからだをこわしてしまうぞ。",

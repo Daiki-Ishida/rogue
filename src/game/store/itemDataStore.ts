@@ -176,19 +176,19 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   const staffFakeNames = shuffle(fakeNames.STAFF);
   const scorllFakeNames = shuffle(fakeNames.SCROLL);
 
-  for (let i = 0; i < bracelets.length - 1; i++) {
+  for (let i = 0; i < bracelets.length; i++) {
     bracelets[i].fakeName = braceletFakeNames[i];
   }
-  for (let i = 0; i < foods.length - 1; i++) {
+  for (let i = 0; i < foods.length; i++) {
     foods[i].fakeName = foodFakeNames[0];
   }
-  for (let i = 0; i < herbs.length - 1; i++) {
+  for (let i = 0; i < herbs.length; i++) {
     herbs[i].fakeName = herbFakeNames[i];
   }
-  for (let i = 0; i < staffs.length - 1; i++) {
+  for (let i = 0; i < staffs.length; i++) {
     staffs[i].fakeName = staffFakeNames[i];
   }
-  for (let i = 0; i < scrolls.length - 1; i++) {
+  for (let i = 0; i < scrolls.length; i++) {
     scrolls[i].fakeName = scorllFakeNames[i];
   }
 
