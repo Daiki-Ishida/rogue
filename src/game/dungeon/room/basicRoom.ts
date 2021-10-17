@@ -40,7 +40,7 @@ export class BasicRoom implements Room {
               p.image(
                 mapChips.roomEdge[0],
                 x,
-                y - 2,
+                y - camera.zoom * 0.5,
                 camera.zoom,
                 camera.zoom * 2
               );
@@ -49,7 +49,7 @@ export class BasicRoom implements Room {
               p.image(
                 mapChips.roomEdge[1],
                 x,
-                y - 2,
+                y - camera.zoom * 0.5,
                 camera.zoom,
                 camera.zoom * 2
               );
@@ -58,7 +58,7 @@ export class BasicRoom implements Room {
               p.image(
                 mapChips.roomSide[0],
                 x,
-                y - 2,
+                y - camera.zoom * 0.5,
                 camera.zoom,
                 camera.zoom * 2
               );

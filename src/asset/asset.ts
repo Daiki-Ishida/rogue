@@ -35,7 +35,7 @@ import PEGASUS_02 from 'asset/image/enemys/pegasus_02.png';
 import SHADOW from 'asset/image/enemys/shadow.png';
 import MANTICORE from 'asset/image/enemys/manticore.png';
 import DARK_KNIGHT from 'asset/image/enemys/dark_knight.png';
-import ROOM_CHIP_A from 'asset/image/dungeon/room_chip_a.png';
+import ROOM_CHIP_A from 'asset/image/dungeon/room_chip_b.png';
 import EXIT from 'asset/image/dungeon/exit.png';
 import ICONS_1 from 'asset/image/icons/icon01.png';
 import ICONS_2 from 'asset/image/icons/icon02.png';
