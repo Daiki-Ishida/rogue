@@ -1,8 +1,11 @@
-import { ItemGenerator } from 'game/unit/generator';
+import { game, playlogManager } from 'game';
+import { Board } from 'game/board';
+import { EnemyGenerator, ItemGenerator } from 'game/unit/generator';
+import { GridUtil } from 'game/util';
 import { Item, Shield, Staff, Sword } from '..';
 
 export interface IPotEffect {
-  onPut: (item: Item, contents: Item[]) => void;
+  onPut: (item: Item, contents: Item[], board: Board) => void;
   onAged: (items: Item[]) => void;
   withdrawable: boolean;
 }
@@ -73,22 +76,35 @@ const PotEffects = (): IPotEffects => {
 
   const unify = {
     onPut: (item: Item, contents: Item[]) => {
+      if (contents.length === 0) {
+        contents.push(item);
+        return;
+      }
+
+      let unified = false;
       for (const content of contents) {
         if (assertSword(item) && assertSword(content)) {
           content.unify(item);
+          unified = true;
           break;
         }
 
         if (assertShield(item) && assertShield(content)) {
           content.unify(item);
+          unified = true;
           break;
         }
 
         if (assertStaff(item) && assertStaff(content)) {
           const durability = item.status.durability;
           content.addDurability(durability);
+          unified = true;
+          break;
         }
         continue;
+      }
+      if (!unified) {
+        contents.push(item);
       }
     },
     onAged: () => {
@@ -99,9 +115,41 @@ const PotEffects = (): IPotEffects => {
   };
 
   const conversion = {
-    onPut: (item: Item, contents: Item[]) => {
-      // todo const converted = ItemGenerator.generate(1)
-      contents.push(item);
+    onPut: (item: Item, contents: Item[], board: Board) => {
+      const converted = ItemGenerator.generate(1, board)[0];
+      contents.push(converted);
+    },
+    onAged: () => {
+      // 何も起こらない
+      return;
+    },
+    withdrawable: false,
+  };
+
+  const monsterSummon = {
+    onPut: (item: Item, contents: Item[], board: Board) => {
+      const grids = GridUtil.aroundGrids(game.player.x, game.player.y);
+      const emptyGrids: boolean[] = [];
+      for (const grid of grids) {
+        const exist = board.findActor(grid[0], grid[1]);
+        const block = board.isBlock(grid[0], grid[1]);
+        const isEmpty = !(exist || block);
+        emptyGrids.push(isEmpty);
+      }
+
+      const count = emptyGrids.filter((g) => g === true).length;
+      const enemys = EnemyGenerator.generate(count, board);
+      let c = 0;
+      for (let i = 0; i < emptyGrids.length - 1; i++) {
+        if (emptyGrids[i]) {
+          const xy = grids[i];
+          enemys[c].setAt(xy[0], xy[1]);
+          c++;
+        }
+      }
+
+      playlogManager.add('魔物のるつぼだ！');
+      playlogManager.add('たくさんの魔物が現れた！');
     },
     onAged: () => {
       // 何も起こらない
@@ -117,6 +165,7 @@ const PotEffects = (): IPotEffects => {
     ENHANCE_POT: enhance,
     WEAKENING_POT: weakening,
     MELDING_POT: unify,
+    MONSTER_POT: monsterSummon,
   };
 };
 

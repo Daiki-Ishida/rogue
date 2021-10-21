@@ -45,7 +45,7 @@ export class Shield extends Equipment {
     this.status.level += shield.status.level;
 
     // 特殊能力合成
-    this.effects = this.effects.concat(shield.effects);
+    // this.effects = this.effects.concat(shield.effects);
   }
 
   onHit(user: Player, target: Actor): void {

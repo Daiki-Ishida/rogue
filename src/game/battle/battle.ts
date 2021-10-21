@@ -78,7 +78,9 @@ export class Battle {
     if (this.attacker.isPlayer()) {
       const attacker = this.attacker;
       const defender = this.defender;
-      this.attacker.status.sword?.effects.onDamage(attacker, defender, dmg);
+      this.attacker.status.sword?.effects.forEach((effect) => {
+        effect.onDamage(attacker, defender, dmg);
+      });
     }
 
     if (this.defender.isCondition('ASLEEP')) {

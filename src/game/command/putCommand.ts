@@ -13,7 +13,7 @@ export class PutCommand implements Command {
   ) {}
 
   exec(board: Board): void {
-    this.storable.put(this.target);
+    this.storable.put(this.target, board);
     this.done = true;
   }
 }

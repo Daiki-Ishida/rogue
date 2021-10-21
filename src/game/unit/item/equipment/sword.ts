@@ -12,7 +12,7 @@ export class Sword extends Equipment {
     public y: number,
     readonly symbol: ItemSymbol,
     readonly status: SwordStatus,
-    public effects: ISwordEffect
+    public effects: ISwordEffect[]
   ) {
     super(x, y, symbol, status);
   }
@@ -22,7 +22,7 @@ export class Sword extends Equipment {
     const status = SwordStatus.init(id);
     const effect = swordEffects[id];
 
-    const sword = new Sword(0, 0, symbol, status, effect);
+    const sword = new Sword(0, 0, symbol, status, [effect]);
     sword.spawn(board);
     return sword;
   }
@@ -47,7 +47,7 @@ export class Sword extends Equipment {
     this.status.level += sword.status.level;
 
     // 特殊能力合成
-    // this.effects = this.effects.concat(sword.effects);
+    this.effects = this.effects.concat(sword.effects);
   }
 
   onHit(user: Player, target: Actor): void {

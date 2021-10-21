@@ -34,9 +34,9 @@ export class Pot extends Storable {
     return pot;
   }
 
-  put(item: Item): void {
+  put(item: Item, board: Board): void {
     if (this.contents.length >= this.status.capacity) return;
-    this.effect.onPut(item, this.contents);
+    this.effect.onPut(item, this.contents, board);
   }
 
   withdraw(inventory: Inventory): void {

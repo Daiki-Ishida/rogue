@@ -103,7 +103,9 @@ export class Player extends Actor {
   attack(board: Board): void {
     const target = board.findActor(this.next.x, this.next.y);
     const callback = () => {
-      this.status.sword?.effects.onAttack(this, board);
+      this.status.sword?.effects.forEach((effect) => {
+        effect.onAttack(this, board);
+      });
     };
     const animation = AttackAnimation.generate(this, callback);
     animationManager.push(animation);
