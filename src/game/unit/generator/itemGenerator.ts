@@ -19,6 +19,7 @@ import { ScrollGenerator } from './scrollGenerator';
 import { SwordGenerator } from './swordGenerator';
 import { ShieldGenerator } from './shieldGenerator';
 import { PotGenerator } from './potGenerator';
+import { Pot } from '../item/storable';
 
 export class ItemGenerator {
   static generate(n: number, board: Board): Item[] {
@@ -89,6 +90,9 @@ export class ItemGenerator {
         break;
       case 'SHIELD':
         item = Shield.generate(id, board);
+        break;
+      case 'POT':
+        item = Pot.generate(id, board);
         break;
       default:
         throw new Error('Invalid Data...');

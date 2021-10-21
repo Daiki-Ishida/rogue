@@ -29,12 +29,7 @@ export class ItemSelectionWindow extends SelectionWindowBase {
     }
 
     options.push(Option.ofThrow(item, game));
-
-    options.push(
-      new Option('もどる', () => {
-        return;
-      })
-    );
+    options.push(Option.ofCancel());
 
     const x = 650;
     return new ItemSelectionWindow(x, options);

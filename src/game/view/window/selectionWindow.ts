@@ -53,7 +53,7 @@ export abstract class SelectionWindowBase implements SelectionWindow {
 
   select(): void {
     this.selected.onSelection();
-    this.display = false;
+    this.close();
 
     this.setSound();
   }
@@ -64,6 +64,8 @@ export abstract class SelectionWindowBase implements SelectionWindow {
   }
 
   draw(p: p5): void {
+    if (!this.display) return;
+
     this.drawFrame(p);
     this.drawOptions(p);
   }

@@ -7,6 +7,7 @@ import { SelectionWindow } from './selectionWindow';
 import { StatusWindow } from './statusWindow';
 import { soundManager, soundStore } from 'game';
 import { DescriptionWindow } from './descriptionWindow';
+import { PotContentsWindow } from '.';
 
 export class WindowManager {
   constructor(
@@ -14,7 +15,8 @@ export class WindowManager {
     readonly statusWindow: StatusWindow,
     readonly descriptionWindow: DescriptionWindow,
     readonly helpWindow: HelpWindow,
-    public selectWindow?: SelectionWindow
+    public selectWindow?: SelectionWindow,
+    public potContentWindow?: PotContentsWindow
   ) {}
 
   static init(game: Game): WindowManager {
@@ -45,9 +47,15 @@ export class WindowManager {
     this.descriptionWindow.close();
 
     this.selectWindow = undefined;
+    this.potContentWindow = undefined;
 
     const sound = soundStore.select;
     soundManager.register(sound);
+  }
+
+  displayPotContent(window: PotContentsWindow): void {
+    this.potContentWindow = window;
+    this.inventoryWindow.close();
   }
 
   draw(p: p5, controller: Controller): void {
@@ -56,12 +64,19 @@ export class WindowManager {
 
     if (this.descriptionWindow.display) {
       const item = this.inventoryWindow.selected;
-      if (item) {
-        this.descriptionWindow.draw(p, item.status.description);
+      let description = item?.status.description + '\n';
+      if (item?.isStorable()) {
+        description += '\n[なかみ]';
+        for (const content of item.contents) {
+          description += `\n${content.status.displayName}`;
+        }
       }
+
+      this.descriptionWindow.draw(p, description);
     }
 
     this.helpWindow.draw(controller, p);
     this.selectWindow?.draw(p);
+    this.potContentWindow?.draw(p);
   }
 }

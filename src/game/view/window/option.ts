@@ -1,8 +1,12 @@
 import { Game } from 'game/game';
 import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
 import { Equipment, Item, Usable } from 'game/unit/item';
-import { soundManager, soundStore } from 'game';
+import { controller, soundManager, soundStore, windowManager } from 'game';
 import { Storable } from 'game/unit/item/storable';
+import { InventoryPotController } from 'game/controller/inventoryPotController';
+import { actionController } from 'game/controller';
+import { PotContentsWindow } from '.';
+import { PotContentsController } from 'game/controller/potContentsController';
 
 export class Option {
   constructor(readonly value: OptionValue, readonly onSelection: () => void) {}
@@ -11,6 +15,8 @@ export class Option {
     const onSelected = () => {
       const command = new UseCommand(game.player, item);
       game.commands.push(command);
+      windowManager.close();
+      controller.changeState(actionController);
     };
     return new Option('使う', onSelected);
   }
@@ -19,6 +25,9 @@ export class Option {
     const onSelected = () => {
       const command = new EquipCommand(game.player, item);
       game.commands.push(command);
+
+      windowManager.close();
+      controller.changeState(actionController);
     };
 
     const label = item.status.equiped ? '外す' : '装備する';
@@ -27,25 +36,29 @@ export class Option {
 
   static ofStorable(item: Storable, game: Game): Option[] {
     const put = () => {
-      console.log(`${item}: put`);
+      game.inventory.idx = 0;
+      const controllerState = new InventoryPotController(item);
+      controller.changeState(controllerState);
     };
     const withdraw = () => {
-      console.log(`${item}: withdraw`);
-    };
-    const lookInto = () => {
-      console.log(`${item}: look into`);
+      const window = PotContentsWindow.init(item);
+      windowManager.displayPotContent(window);
+      const controllerState = new PotContentsController(item);
+      controller.changeState(controllerState);
     };
 
     const op1 = new Option('入れる', put);
     const op2 = new Option('取り出す', withdraw);
-    const op3 = new Option('のぞく', lookInto);
-    return [op1, op2, op3];
+    return [op1, op2];
   }
 
   static ofThrow(item: Item, game: Game): Option {
     const onSelected = () => {
       const command = new ThrowCommand(game.player, item);
       game.commands.push(command);
+
+      windowManager.close();
+      controller.changeState(actionController);
     };
     return new Option('投げる', onSelected);
   }
@@ -54,6 +67,9 @@ export class Option {
     const onSelected = () => {
       game.next();
       soundManager.register(soundStore.exit);
+
+      windowManager.close();
+      controller.changeState(actionController);
     };
     return new Option('すすむ', onSelected);
   }
@@ -61,7 +77,8 @@ export class Option {
   static ofCancel(): Option {
     const onSelected = () => {
       // 何もしない
-      return;
+      windowManager.close();
+      controller.changeState(actionController);
     };
     return new Option('もどる', onSelected);
   }

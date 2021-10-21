@@ -59,7 +59,6 @@ export abstract class Item implements IItem {
     );
 
     let current: { x: number; y: number } = { x: thrower.x, y: thrower.y };
-    console.log(current);
     let target: Actor | undefined = undefined;
     for (const grid of grids) {
       current = { x: grid[0], y: grid[1] };

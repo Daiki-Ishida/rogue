@@ -127,7 +127,7 @@
       "identified": true,
       "name": "腐ったパン",
       "fakeName": "",
-      "description": "おなかがすこしふくれるが、毒でからだをこわしてしまうぞ。",
+      "description": "おなかがすこしふくれるが\n毒でからだをこわしてしまうぞ。",
       "ratio": 20
     }
   ],
@@ -341,7 +341,7 @@
       "identified": false,
       "name": "真空斬りの巻物",
       "fakeName": "",
-      "description": "つむじ風を呼び、真空波をつくりだし、部屋にいるすべてのモンスターにダメージを与えるぞ。",
+      "description": "つむじ風を呼び真空波をつくりだし\n部屋にいるすべてのモンスターにダメージを与えるぞ。",
       "ratio": 30
     },
     {
@@ -429,7 +429,7 @@
       "identified": false,
       "name": "自爆の巻物",
       "fakeName": "",
-      "description": "自分をも巻き込むすさまじい衝撃波で、近くにいるすべてのモンスターをこなごなに分解するぞ。",
+      "description": "自分をも巻き込むすさまじい衝撃波で\n近くにいるすべてのモンスターをこなごなに分解するぞ。",
       "ratio": 20
     },
     {
@@ -447,7 +447,7 @@
       "identified": false,
       "name": "保存の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "アイテムを出し入れできるぞ。",
       "ratio": 103
     },
     {
@@ -455,7 +455,7 @@
       "identified": false,
       "name": "識別の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "壺に入れたアイテムを識別できるぞ。",
       "ratio": 102
     },
     {
@@ -463,7 +463,7 @@
       "identified": false,
       "name": "変化の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "アイテムが変化するぞ。",
       "ratio": 102
     },
     {
@@ -471,7 +471,7 @@
       "identified": false,
       "name": "強化の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "しばらく入れたままにしておくと\nアイテムを強くできるぞ。",
       "ratio": 31
     },
     {
@@ -479,7 +479,7 @@
       "identified": false,
       "name": "弱化の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "しばらく入れたままにしておくと\nアイテムを弱くしてしまうぞ。",
       "ratio": 31
     },
     {
@@ -487,7 +487,7 @@
       "identified": false,
       "name": "合成の壺",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "剣、盾、杖を合成できるぞ。\n入れる順番に気をつけろ。",
       "ratio": 21
     },
     {
@@ -495,7 +495,7 @@
       "identified": false,
       "name": "魔物の坩堝",
       "fakeName": "",
-      "description": "アイテムが識別できるぞ。",
+      "description": "これはモンスターだ！！",
       "ratio": 31
     }
   ]

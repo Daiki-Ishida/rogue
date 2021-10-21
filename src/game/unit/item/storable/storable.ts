@@ -1,3 +1,4 @@
+import { Inventory } from 'game/inventory';
 import { Item } from '..';
 import { StorableStatus } from '../status';
 import { ItemSymbol } from '../symbol';
@@ -49,5 +50,6 @@ export abstract class Storable extends Item {
   }
 
   abstract put(item: Item): void;
-  abstract withdraw(item: Item): void;
+  abstract withdraw(inventory: Inventory): void;
+  abstract aging(): void;
 }

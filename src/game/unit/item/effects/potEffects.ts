@@ -3,7 +3,8 @@ import { Item, Shield, Staff, Sword } from '..';
 
 export interface IPotEffect {
   onPut: (item: Item, contents: Item[]) => void;
-  onWithdrawn: (item: Item) => void;
+  onAged: (items: Item[]) => void;
+  withdrawable: boolean;
 }
 
 interface IPotEffects {
@@ -15,9 +16,11 @@ const PotEffects = (): IPotEffects => {
     onPut: (item: Item, contents: Item[]) => {
       contents.push(item);
     },
-    onWithdrawn: (item: Item) => {
+    onAged: () => {
+      // 何も起こらない
       return;
     },
+    withdrawable: true,
   };
 
   const identify = {
@@ -25,39 +28,47 @@ const PotEffects = (): IPotEffects => {
       item.identify();
       contents.push(item);
     },
-    onWithdrawn: (item: Item) => {
+    onAged: () => {
+      // 何も起こらない
       return;
     },
+    withdrawable: false,
   };
 
   const enhance = {
     onPut: (item: Item, contents: Item[]) => {
-      if (assertSword(item) || assertShield(item)) {
-        item.levelUp();
-      }
-      if (assertStaff(item)) {
-        item.addDurability(1);
-      }
       contents.push(item);
     },
-    onWithdrawn: (item: Item) => {
-      return;
+    onAged: (items: Item[]) => {
+      for (const item of items) {
+        if (assertSword(item) || assertShield(item)) {
+          item.levelUp();
+        }
+        if (assertStaff(item)) {
+          item.addDurability(1);
+        }
+      }
     },
+
+    withdrawable: false,
   };
 
   const weakening = {
     onPut: (item: Item, contents: Item[]) => {
-      if (assertSword(item) || assertShield(item)) {
-        item.levelDown();
-      }
-      if (assertStaff(item)) {
-        item.reduceDurability(1);
-      }
       contents.push(item);
     },
-    onWithdrawn: (item: Item) => {
-      return;
+    onAged: (items: Item[]) => {
+      for (const item of items) {
+        if (assertSword(item) || assertShield(item)) {
+          item.levelDown();
+        }
+        if (assertStaff(item)) {
+          item.reduceDurability(1);
+        }
+      }
     },
+
+    withdrawable: false,
   };
 
   const unify = {
@@ -80,9 +91,11 @@ const PotEffects = (): IPotEffects => {
         continue;
       }
     },
-    onWithdrawn: () => {
+    onAged: () => {
+      // 何も起こらない
       return;
     },
+    withdrawable: false,
   };
 
   const conversion = {
@@ -90,9 +103,11 @@ const PotEffects = (): IPotEffects => {
       // todo const converted = ItemGenerator.generate(1)
       contents.push(item);
     },
-    onWithdrawn: (item: Item) => {
+    onAged: () => {
+      // 何も起こらない
       return;
     },
+    withdrawable: false,
   };
 
   return {

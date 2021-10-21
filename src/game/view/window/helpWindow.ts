@@ -5,11 +5,15 @@ import {
   InventoryController,
   SelectWindowController,
 } from 'game/controller';
+import { InventoryPotController } from 'game/controller/inventoryPotController';
+import { PotContentsController } from 'game/controller/potContentsController';
 
 const ACTION_HELP =
   'a,w,s,d:移動 / u:ダッシュ / o:足踏み / i:インベントリ / k:攻撃';
 const INVENTORY_HELP = 'w, s:△ ▽ / a,s:◁ ▷ / i:閉じる / u:選ぶ / e: ソート';
 const SELECT_HELP = 'w, s:△ ▽ / u:決定';
+const PUT_ITEM_HELP = 'どれをいれる？  w, s:△ ▽ / u:決定 / i:やめる';
+const WITHDRAW_ITEM_HELP = 'どれを取り出す？  w, s:△ ▽ / u:決定 / i:やめる';
 
 export class HelpWindow {
   constructor(
@@ -31,6 +35,10 @@ export class HelpWindow {
       text = INVENTORY_HELP;
     } else if (controller.state instanceof SelectWindowController) {
       text = SELECT_HELP;
+    } else if (controller.state instanceof InventoryPotController) {
+      text = PUT_ITEM_HELP;
+    } else if (controller.state instanceof PotContentsController) {
+      text = WITHDRAW_ITEM_HELP;
     }
 
     p.fill('white');

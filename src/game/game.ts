@@ -89,6 +89,12 @@ export class Game {
       return;
     }
 
+    this.inventory.items.forEach((item) => {
+      if (item.isStorable()) {
+        item.aging();
+      }
+    });
+
     this.setGameState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
