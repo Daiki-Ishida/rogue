@@ -1,1 +1,2 @@
-export const hogehoge = 1;
+export * from './storable';
+export * from './pot';

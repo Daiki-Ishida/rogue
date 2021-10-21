@@ -440,5 +440,63 @@
       "description": "アイテムが識別できるぞ。",
       "ratio": 72
     }
+  ],
+  "POT": [
+    {
+      "id": "STORAGE_POT",
+      "identified": false,
+      "name": "保存の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 103
+    },
+    {
+      "id": "IDENTIFY_POT",
+      "identified": false,
+      "name": "識別の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 102
+    },
+    {
+      "id": "CONVERSION_POT",
+      "identified": false,
+      "name": "変化の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 102
+    },
+    {
+      "id": "ENHANCE_POT",
+      "identified": false,
+      "name": "強化の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 31
+    },
+    {
+      "id": "WEAKENING_POT",
+      "identified": false,
+      "name": "弱化の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 31
+    },
+    {
+      "id": "MELDING_POT",
+      "identified": false,
+      "name": "合成の壺",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 21
+    },
+    {
+      "id": "MONSTER_POT",
+      "identified": false,
+      "name": "魔物の坩堝",
+      "fakeName": "",
+      "description": "アイテムが識別できるぞ。",
+      "ratio": 31
+    }
   ]
 }

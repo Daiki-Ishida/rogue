@@ -2,6 +2,7 @@ import { Game } from 'game/game';
 import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
 import { Equipment, Item, Usable } from 'game/unit/item';
 import { soundManager, soundStore } from 'game';
+import { Storable } from 'game/unit/item/storable';
 
 export class Option {
   constructor(readonly value: OptionValue, readonly onSelection: () => void) {}
@@ -22,6 +23,23 @@ export class Option {
 
     const label = item.status.equiped ? '外す' : '装備する';
     return new Option(label, onSelected);
+  }
+
+  static ofStorable(item: Storable, game: Game): Option[] {
+    const put = () => {
+      console.log(`${item}: put`);
+    };
+    const withdraw = () => {
+      console.log(`${item}: withdraw`);
+    };
+    const lookInto = () => {
+      console.log(`${item}: look into`);
+    };
+
+    const op1 = new Option('入れる', put);
+    const op2 = new Option('取り出す', withdraw);
+    const op3 = new Option('のぞく', lookInto);
+    return [op1, op2, op3];
   }
 
   static ofThrow(item: Item, game: Game): Option {
@@ -56,6 +74,6 @@ type OptionValue =
   | '投げる'
   | '装備する'
   | '外す'
-  | 'INSERT'
-  | 'REMOVE'
-  | 'LOOK_INTO';
+  | '入れる'
+  | '取り出す'
+  | 'のぞく';

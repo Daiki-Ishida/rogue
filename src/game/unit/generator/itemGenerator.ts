@@ -18,6 +18,7 @@ import { itemDataStore } from 'game/store/itemDataStore';
 import { ScrollGenerator } from './scrollGenerator';
 import { SwordGenerator } from './swordGenerator';
 import { ShieldGenerator } from './shieldGenerator';
+import { PotGenerator } from './potGenerator';
 
 export class ItemGenerator {
   static generate(n: number, board: Board): Item[] {
@@ -54,6 +55,9 @@ export class ItemGenerator {
         break;
       case 'SHIELD':
         item = ShieldGenerator.generate(board);
+        break;
+      case 'POT':
+        item = PotGenerator.generate(board);
         break;
       default:
         item = Gold.generate(board);

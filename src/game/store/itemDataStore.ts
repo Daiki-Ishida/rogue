@@ -16,6 +16,7 @@ interface ItemStatusList {
   HERB: ItemStatus[];
   STAFF: ItemStatus[];
   SCROLL: ItemStatus[];
+  POT: ItemStatus[];
 }
 
 interface ItemStatus {
@@ -80,6 +81,10 @@ class ItemDataStore {
     return this.selectRandomlyFrom(this.itemStatus.SCROLL);
   }
 
+  getPotIdRandomly(): string {
+    return this.selectRandomlyFrom(this.itemStatus.POT);
+  }
+
   getBraceletIdRandomly(): string {
     return this.selectRandomlyFrom(this.itemStatus.BRACELET);
   }
@@ -129,6 +134,13 @@ class ItemDataStore {
     return status;
   }
 
+  getPotStatus(id: string): ItemStatus {
+    const status = this.itemStatus.POT.find((pot) => pot.id === id);
+
+    if (status === undefined) throw new Error(`Invalid Id: ${id}`);
+    return status;
+  }
+
   getSwordStatus(id: string): SwordStatus {
     const status = this.swordStatus.find((sword) => sword.id === id);
     if (status === undefined) throw new Error(`Invalid Id: ${id}`);
@@ -168,6 +180,7 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   const herbs = data.HERB;
   const staffs = data.STAFF;
   const scrolls = data.SCROLL;
+  const pots = data.POT;
 
   const fakeNames = FAKE_NAMES;
   const braceletFakeNames = shuffle(fakeNames.BRACELET);
@@ -175,6 +188,7 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   const herbFakeNames = shuffle(fakeNames.HERB);
   const staffFakeNames = shuffle(fakeNames.STAFF);
   const scorllFakeNames = shuffle(fakeNames.SCROLL);
+  const potFakeNames = shuffle(fakeNames.POT);
 
   for (let i = 0; i < bracelets.length; i++) {
     bracelets[i].fakeName = braceletFakeNames[i];
@@ -190,6 +204,9 @@ const applyFakeName = (data: ItemStatusList): ItemStatusList => {
   }
   for (let i = 0; i < scrolls.length; i++) {
     scrolls[i].fakeName = scorllFakeNames[i];
+  }
+  for (let i = 0; i < pots.length; i++) {
+    pots[i].fakeName = potFakeNames[i];
   }
 
   return data;

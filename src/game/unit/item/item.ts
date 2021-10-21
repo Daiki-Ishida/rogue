@@ -17,6 +17,7 @@ import {
   soundStore,
 } from 'game';
 import { Camera } from 'game/view';
+import { Storable } from './storable';
 
 export interface IItem {
   x: number;
@@ -194,6 +195,10 @@ export abstract class Item implements IItem {
   }
 
   isEquipment(): this is Equipment {
+    return false;
+  }
+
+  isStorable(): this is Storable {
     return false;
   }
 

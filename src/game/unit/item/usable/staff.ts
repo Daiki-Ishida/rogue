@@ -31,6 +31,20 @@ export class Staff extends Usable {
     return staff;
   }
 
+  addDurability(value: number): void {
+    this.status.durability += value;
+    if (this.status.durability > 12) {
+      this.status.durability = 12;
+    }
+  }
+
+  reduceDurability(value: number): void {
+    this.status.durability -= value;
+    if (this.status.durability < 0) {
+      this.status.durability = 0;
+    }
+  }
+
   use(user: Player, board: Board): void {
     this.status.durability--;
     if (this.status.durability < 0) {

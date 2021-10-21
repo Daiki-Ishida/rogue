@@ -22,6 +22,12 @@ export class ItemSelectionWindow extends SelectionWindowBase {
       options.push(Option.ofEquip(item, game));
     }
 
+    if (item.isStorable()) {
+      for (const op of Option.ofStorable(item, game)) {
+        options.push(op);
+      }
+    }
+
     options.push(Option.ofThrow(item, game));
 
     options.push(

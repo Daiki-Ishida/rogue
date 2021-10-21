@@ -15,3 +15,7 @@ export interface EquipmentStatus extends ItemStatus {
 export interface UsableStatus extends ItemStatus {
   used: boolean;
 }
+
+export interface StorableStatus extends ItemStatus {
+  capacity: number;
+}

@@ -7,3 +7,4 @@ export * from './foodStatus';
 export * from './herbStatus';
 export * from './staffStatus';
 export * from './scrollStatus';
+export * from './potStatus';
