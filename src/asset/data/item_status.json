@@ -448,7 +448,7 @@
       "name": "保存の壺",
       "fakeName": "",
       "description": "アイテムを出し入れできるぞ。",
-      "ratio": 103
+      "ratio": 64
     },
     {
       "id": "IDENTIFY_POT",
@@ -456,7 +456,7 @@
       "name": "識別の壺",
       "fakeName": "",
       "description": "壺に入れたアイテムを識別できるぞ。",
-      "ratio": 102
+      "ratio": 43
     },
     {
       "id": "CONVERSION_POT",
@@ -464,7 +464,7 @@
       "name": "変化の壺",
       "fakeName": "",
       "description": "アイテムが変化するぞ。",
-      "ratio": 102
+      "ratio": 42
     },
     {
       "id": "ENHANCE_POT",
@@ -472,7 +472,7 @@
       "name": "強化の壺",
       "fakeName": "",
       "description": "しばらく入れたままにしておくと\nアイテムを強くできるぞ。",
-      "ratio": 31
+      "ratio": 32
     },
     {
       "id": "WEAKENING_POT",
@@ -480,7 +480,7 @@
       "name": "弱化の壺",
       "fakeName": "",
       "description": "しばらく入れたままにしておくと\nアイテムを弱くしてしまうぞ。",
-      "ratio": 31
+      "ratio": 32
     },
     {
       "id": "MELDING_POT",
@@ -488,7 +488,7 @@
       "name": "合成の壺",
       "fakeName": "",
       "description": "剣、盾、杖を合成できるぞ。\n入れる順番に気をつけろ。",
-      "ratio": 21
+      "ratio": 28
     },
     {
       "id": "MONSTER_POT",
@@ -496,7 +496,7 @@
       "name": "魔物の坩堝",
       "fakeName": "",
       "description": "これはモンスターだ！！",
-      "ratio": 31
+      "ratio": 15
     }
   ]
 }
