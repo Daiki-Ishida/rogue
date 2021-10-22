@@ -2,7 +2,7 @@ import p5, { Element, Graphics } from 'p5';
 import { Asset } from 'asset';
 import { Game } from './game';
 import { ImageStore, SoundStore } from './store';
-import { Drawer } from './view';
+import { DrawerManager } from './drawer';
 import { actionController, Controller } from './controller';
 import { WindowManager } from './view/window';
 import { AnimationManager } from './animation';
@@ -23,7 +23,7 @@ export let soundStore: SoundStore;
 
 export let game: Game;
 export let controller: Controller;
-export let drawer: Drawer;
+export let drawer: DrawerManager;
 
 export let windowManager: WindowManager;
 export let animationManager: AnimationManager;
@@ -75,7 +75,7 @@ export const rogue = (p: p5): void => {
     soundManager = SoundManager.init();
 
     game = Game.init();
-    drawer = Drawer.init();
+    drawer = DrawerManager.init();
     controller = Controller.init();
 
     animationManager = AnimationManager.init();
@@ -110,7 +110,10 @@ export const rogue = (p: p5): void => {
     const vol = (volumeSlider.value() as number) / 100;
     soundManager.setVolume(vol);
 
+    // 音声再生処理
     soundManager.play();
-    drawer.draw(game, p);
+
+    // 画面描画処理
+    drawer.proc(p, game);
   };
 };

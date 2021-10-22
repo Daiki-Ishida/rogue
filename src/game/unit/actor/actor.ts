@@ -14,7 +14,7 @@ import { Board } from 'game/board';
 import { Exit } from 'game/board/dungeon/exit';
 import { Room } from 'game/board/dungeon/room';
 import { RandomUtil } from 'game/util';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { BounceIndicator } from 'game/view/indicator';
 import p5 from 'p5';
 import { Item } from '../item';

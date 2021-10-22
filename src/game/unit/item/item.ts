@@ -16,7 +16,7 @@ import {
   soundManager,
   soundStore,
 } from 'game';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { Storable } from './storable';
 
 export interface IItem {

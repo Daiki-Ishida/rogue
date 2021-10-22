@@ -1,5 +1,5 @@
 import { imageStore } from 'game';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import p5, { Image } from 'p5';
 
 export class Corridor {

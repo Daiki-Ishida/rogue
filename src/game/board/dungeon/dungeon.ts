@@ -3,7 +3,7 @@ import { Area } from './area';
 import { Room } from './room';
 import { Exit } from './exit';
 import { Corridor } from './corridor';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { RandomUtil } from 'game/util';
 
 export class Dungeon {

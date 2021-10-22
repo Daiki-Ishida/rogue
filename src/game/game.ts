@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { savedata, soundManager, soundStore } from 'game';
+import { drawer, savedata, soundManager, soundStore } from 'game';
 import { Board } from './board';
 import { CommandManager } from './command';
 import { Inventory } from './inventory';
@@ -76,6 +76,7 @@ export class Game {
       }
     }
     this.state = state;
+    drawer.changeDrawer(this);
   }
 
   proc(): void {

@@ -1,6 +1,6 @@
 import p5, { Image } from 'p5';
 import { Animation } from '.';
-import { Camera } from '../view';
+import { Camera } from '../drawer';
 import { Actor } from 'game/unit/actor';
 import { imageStore } from 'game';
 

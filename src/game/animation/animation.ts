@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { Camera } from '../view';
+import { Camera } from '../drawer';
 
 export interface Animation {
   frame: number;

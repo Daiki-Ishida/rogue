@@ -1,6 +1,6 @@
 import p5, { Image } from 'p5';
 import { imageStore } from 'game';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { RandomUtil } from 'game/util/ramdom';
 import { Room } from './room';
 

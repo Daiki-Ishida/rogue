@@ -6,7 +6,7 @@ import { Actor } from 'game/unit/actor';
 import { Item } from 'game/unit/item';
 import { Trap } from 'game/unit/trap';
 import { RandomUtil } from 'game/util';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { BaseLayer, DungeonLayer, Tile } from './layer';
 import {
   EnemyGenerator,

@@ -1,6 +1,6 @@
 import { imageStore } from 'game';
 import p5, { Image } from 'p5';
-import { Camera } from '../../view';
+import { Camera } from '../../drawer';
 
 export interface ITrapSymbol {
   x: number;

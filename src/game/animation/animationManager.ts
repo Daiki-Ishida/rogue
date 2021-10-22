@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { Game } from 'game/game';
 import { WalkAnimation } from '.';
-import { Camera } from '../view';
+import { Camera } from '../drawer';
 import { Animation } from './animation';
 
 export class AnimationManager {

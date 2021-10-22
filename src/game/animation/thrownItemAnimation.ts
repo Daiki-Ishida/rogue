@@ -2,7 +2,7 @@ import p5 from 'p5';
 import { Animation } from '.';
 import { Item } from 'game/unit/item';
 import { Player } from 'game/unit/actor';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 
 export class ThrownItemAnimation implements Animation {
   private constructor(

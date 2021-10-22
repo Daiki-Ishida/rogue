@@ -1,7 +1,11 @@
 import { Actor } from 'game/unit/actor';
 
 export class Camera {
-  constructor(public x: number, public y: number, readonly zoom: number) {}
+  private constructor(
+    public x: number,
+    public y: number,
+    readonly zoom: number
+  ) {}
 
   static init(zoom: number): Camera {
     return new Camera(0, 0, zoom);

@@ -1,6 +1,6 @@
 import Eases from 'eases';
 import p5 from 'p5';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { Actor } from 'game/unit/actor';
 
 const F = 30;

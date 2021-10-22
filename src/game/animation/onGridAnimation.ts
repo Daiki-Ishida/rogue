@@ -1,5 +1,5 @@
 import p5, { Image } from 'p5';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { Animation } from '.';
 import { imageStore } from 'game';
 

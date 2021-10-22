@@ -1,4 +1,4 @@
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import p5 from 'p5';
 import { Condition, ConditionType } from './condition';
 

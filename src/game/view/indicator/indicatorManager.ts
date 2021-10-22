@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { Game } from 'game/game';
 import { BounceIndicator } from '.';
-import { Camera } from '..';
+import { Camera } from '../../drawer';
 import { StatusIndicator } from './statusIndicator';
 
 export class IndicatorManager {

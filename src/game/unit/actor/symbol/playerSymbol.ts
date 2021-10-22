@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { imageStore } from 'game';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import { ActorSymbol } from '.';
 import { DirectionKey } from '../direction';
 

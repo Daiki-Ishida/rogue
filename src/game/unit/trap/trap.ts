@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Camera } from 'game/view';
+import { Camera } from 'game/drawer';
 import p5 from 'p5';
 import { Actor } from '../actor';
 import { trapEffects } from './trapEffects';
