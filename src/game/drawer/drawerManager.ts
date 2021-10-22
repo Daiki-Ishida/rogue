@@ -1,4 +1,5 @@
 import p5 from 'p5';
+import { Drawer } from './drawer';
 import { Camera } from './camera';
 import { Game } from 'game/game';
 import { startScreenDrawer } from './startScreenDrawer';
@@ -8,10 +9,6 @@ import { playScreenDrawer } from './playScreenDrawer';
 import { gameOverScreenDrawer } from './gameoverScreenDrawer';
 
 const ZOOM = 80;
-
-export interface Drawer {
-  draw: (p: p5, game: Game, camera: Camera) => void;
-}
 
 /**
  * 画面描画処理を担うクラス

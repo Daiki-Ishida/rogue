@@ -1,15 +1,18 @@
 import { windowManager } from 'game';
 import { Game } from 'game/game';
+import { ControllerManager } from './controllerManager';
 import { Controller } from './controller';
-import { ControllerState } from './controllerState';
 import { actionController } from './actionController';
 import { Storable } from 'game/unit/item/storable';
 import { WithdrawCommand } from 'game/command/withdrawCommand';
 
-export class PotContentsController implements ControllerState {
+/**
+ * 壺の中身を開いている時の入力処理を扱うクラス
+ */
+export class PotContentsController implements Controller {
   constructor(readonly pot: Storable) {}
 
-  proc(input: string, game: Game, context: Controller): void {
+  proc(input: string, game: Game, context: ControllerManager): void {
     const window = windowManager.potContentWindow;
     if (window === undefined) {
       throw new Error('something went wrong...');

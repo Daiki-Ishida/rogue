@@ -3,10 +3,13 @@ import { windowManager } from 'game';
 import { AttackCommand, MoveCommand, StepCommand } from 'game/command';
 import { Game } from 'game/game';
 import { StandByPhase } from 'game/turn';
-import { Controller, ControllerState, inventoryController } from '.';
+import { ControllerManager, Controller, inventoryController } from '.';
 
-export class ActionController implements ControllerState {
-  proc(input: string, game: Game, context: Controller): void {
+/**
+ * プレイヤーの行動を受け付けるコントローラー
+ */
+export class ActionController implements Controller {
+  proc(input: string, game: Game, context: ControllerManager): void {
     if (!(game.turn.phase instanceof StandByPhase)) {
       return;
     }

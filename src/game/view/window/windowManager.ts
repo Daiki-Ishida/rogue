@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Game } from 'game/game';
-import { Controller } from 'game/controller';
+import { ControllerManager } from 'game/controller';
 import { HelpWindow } from './helpWindow';
 import { InventoryWindow } from './inventoryWindow';
 import { SelectionWindow } from './selectionWindow';
@@ -58,7 +58,7 @@ export class WindowManager {
     this.inventoryWindow.close();
   }
 
-  draw(p: p5, controller: Controller): void {
+  draw(p: p5, controller: ControllerManager): void {
     this.inventoryWindow.draw(p);
     this.statusWindow.draw(p);
 

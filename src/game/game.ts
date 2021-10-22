@@ -58,7 +58,7 @@ export class Game {
     this.mode = 'NORMAL';
   }
 
-  setGameState(state: GameState): void {
+  setState(state: GameState): void {
     switch (state) {
       case 'PROLOGUE': {
         const sound = soundStore.startScreenBgm;
@@ -86,7 +86,7 @@ export class Game {
   next(): void {
     if (this.board.dungeon.level > 30) {
       alert('GAME CLEAR!');
-      this.setGameState('START');
+      this.setState('START');
       return;
     }
 
@@ -96,7 +96,7 @@ export class Game {
       }
     });
 
-    this.setGameState('BRIDGE');
+    this.setState('BRIDGE');
     this.board.next();
     this.player.spawn(this.board);
 
@@ -123,7 +123,7 @@ export class Game {
 
     savedata.status = 'SAVED';
     savedata.data = data;
-    this.setGameState('START');
+    this.setState('START');
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -170,6 +170,6 @@ export class Game {
     this.board.dungeon.level = data.game.level - 1;
     this.next();
 
-    this.setGameState('BRIDGE');
+    this.setState('BRIDGE');
   }
 }

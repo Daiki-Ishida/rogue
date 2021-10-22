@@ -1,13 +1,16 @@
 import { windowManager } from 'game';
 import { Game } from 'game/game';
 import { ItemSelectionWindow } from 'game/view/window';
+import { ControllerManager } from './controllerManager';
 import { Controller } from './controller';
-import { ControllerState } from './controllerState';
 import { actionController } from './actionController';
 import { selectWindowController } from './selectWindowController';
 
-export class InventoryController implements ControllerState {
-  proc(input: string, game: Game, context: Controller): void {
+/**
+ * インベントリを開いている時の入力処理を扱うクラス
+ */
+export class InventoryController implements Controller {
+  proc(input: string, game: Game, context: ControllerManager): void {
     const window = windowManager.inventoryWindow;
 
     switch (input) {

@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import {
-  Controller,
+  ControllerManager,
   ActionController,
   InventoryController,
   SelectWindowController,
@@ -23,21 +23,21 @@ export class HelpWindow {
     readonly h = 30
   ) {}
 
-  draw(controller: Controller, p: p5): void {
+  draw(controller: ControllerManager, p: p5): void {
     p.push();
     p.fill(0, 0, 0, 200);
     p.rect(this.x, this.y, this.w, this.h);
 
     let text = '';
-    if (controller.state instanceof ActionController) {
+    if (controller.controller instanceof ActionController) {
       text = ACTION_HELP;
-    } else if (controller.state instanceof InventoryController) {
+    } else if (controller.controller instanceof InventoryController) {
       text = INVENTORY_HELP;
-    } else if (controller.state instanceof SelectWindowController) {
+    } else if (controller.controller instanceof SelectWindowController) {
       text = SELECT_HELP;
-    } else if (controller.state instanceof InventoryPotController) {
+    } else if (controller.controller instanceof InventoryPotController) {
       text = PUT_ITEM_HELP;
-    } else if (controller.state instanceof PotContentsController) {
+    } else if (controller.controller instanceof PotContentsController) {
       text = WITHDRAW_ITEM_HELP;
     }
 

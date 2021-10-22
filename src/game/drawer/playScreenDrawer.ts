@@ -216,7 +216,7 @@ class PlayScreenDrawer implements Drawer {
     BRIDGE_EFFECT_FRAME++;
     if (BRIDGE_EFFECT_FRAME > 60) {
       BRIDGE_EFFECT_FRAME = 0;
-      game.setGameState('PLAY');
+      game.setState('PLAY');
     }
 
     p.pop();

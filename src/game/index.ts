@@ -3,7 +3,7 @@ import { Asset } from 'asset';
 import { Game } from './game';
 import { ImageStore, SoundStore } from './store';
 import { DrawerManager } from './drawer';
-import { actionController, Controller } from './controller';
+import { actionController, ControllerManager } from './controller';
 import { WindowManager } from './view/window';
 import { AnimationManager } from './animation';
 import { PlaylogManager } from './log';
@@ -22,7 +22,7 @@ export let imageStore: ImageStore;
 export let soundStore: SoundStore;
 
 export let game: Game;
-export let controller: Controller;
+export let controller: ControllerManager;
 export let drawer: DrawerManager;
 
 export let windowManager: WindowManager;
@@ -76,7 +76,7 @@ export const rogue = (p: p5): void => {
 
     game = Game.init();
     drawer = DrawerManager.init();
-    controller = Controller.init();
+    controller = ControllerManager.init();
 
     animationManager = AnimationManager.init();
     windowManager = WindowManager.init(game);

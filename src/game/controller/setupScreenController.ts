@@ -1,10 +1,13 @@
 import { fileInput, textBox } from 'game';
 import { Game } from '../game';
-import { Controller, actionController } from '.';
-import { ControllerState } from './controllerState';
+import { ControllerManager, actionController } from '.';
+import { Controller } from './controller';
 
-class SetupScreenController implements ControllerState {
-  proc(input: string, game: Game, context: Controller): void {
+/**
+ * キャラ設定画面の入力処理を扱うクラス
+ */
+class SetupScreenController implements Controller {
+  proc(input: string, game: Game, context: ControllerManager): void {
     if (input !== 'Enter') return;
 
     const name = textBox.value().toString();
@@ -21,7 +24,7 @@ class SetupScreenController implements ControllerState {
     textBox.remove();
     fileInput.hide();
 
-    game.setGameState('PLAY');
+    game.setState('PLAY');
     context.changeState(actionController);
   }
 }

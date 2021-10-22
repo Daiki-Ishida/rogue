@@ -1,15 +1,18 @@
 import { windowManager } from 'game';
 import { Game } from 'game/game';
+import { ControllerManager } from './controllerManager';
 import { Controller } from './controller';
-import { ControllerState } from './controllerState';
 import { actionController } from './actionController';
 import { Storable } from 'game/unit/item/storable';
 import { PutCommand } from 'game/command/putCommand';
 
-export class InventoryPotController implements ControllerState {
+/**
+ * 壺に入れるアイテムを指定するためにインベントリを開いている時の入力処理を扱うクラス
+ */
+export class InventoryPotController implements Controller {
   constructor(readonly pot: Storable) {}
 
-  proc(input: string, game: Game, context: Controller): void {
+  proc(input: string, game: Game, context: ControllerManager): void {
     const window = windowManager.inventoryWindow;
 
     switch (input) {

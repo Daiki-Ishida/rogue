@@ -1,11 +1,14 @@
 import { windowManager } from 'game';
 import { Game } from 'game/game';
+import { ControllerManager } from './controllerManager';
 import { Controller } from './controller';
-import { ControllerState } from './controllerState';
 import { actionController } from './actionController';
 
-export class SelectWindowController implements ControllerState {
-  proc(input: string, game: Game, context: Controller): void {
+/**
+ * 選択ウィンドウを開いている時の入力処理を扱うクラス
+ */
+export class SelectWindowController implements Controller {
+  proc(input: string, game: Game, context: ControllerManager): void {
     const window = windowManager.selectWindow;
     if (window === undefined) {
       context.changeState(actionController);
