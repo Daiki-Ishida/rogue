@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-</head>
-<body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: '',
-      repo: ''
-    }
-  </script>
-  <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- Docsify v4 -->
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- githubへのリンクを生成するプラグイン -->
+    <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
+    <!-- シンタックスハイライトのプラグイン -->
+    <script src="//unpkg.com/prismjs/components/prism-typescript.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-diff.min.js"></script>
+    <script>
+      window.$docsify = {
+        name: 'Star Gaze',
+        repo: '',
+        auto2top: true,
+        coverpage: true,
+        loadNavbar: true,
+        loadSidebar: true,
+        loadSidebar: '_sidebar.md',
+        subMaxLevel: 2,
+        tabs: {
+          theme: 'material',
+        },
+        plugins: [],
+      };
+    </script>
+    <!-- 文章の強調表現のデザインをいい感じにできるプラグイン -->
+    <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+    <!-- コードブロックをクリップボードにワンクリックでコピーできるプラグイン -->
+    <script src="https://unpkg.com/docsify-copy-code@2"></script>
+    <!-- タブを作れるプラグイン -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+    <!-- 検索ボックスを追加するプラグイン -->
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <!-- ページネーションを追加するプラグイン -->
+    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <!-- 作図ライブラリのmermaidを導入するプラグイン -->
+    <script src="//unpkg.com/mermaid/dist/mermaid.js"></script>
+    <script src="//unpkg.com/docsify-mermaid@latest/dist/docsify-mermaid.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
 </html>
