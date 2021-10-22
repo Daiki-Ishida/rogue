@@ -23,7 +23,7 @@ const ScrollEffects = (): IStaffEffects => {
     };
 
     const animation = FullScreenEffectAnimation.ofBlastwave(callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
   };
 
   const confusion = (user: Player, board: Board): void => {

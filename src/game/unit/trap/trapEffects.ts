@@ -22,7 +22,7 @@ const TrapEffects = (): ITrapEffects => {
     };
 
     const animation = OnGridAnimation.ofExplosion(actor.x, actor.y, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     playlogManager.add('地雷を踏んでしまった！');
   };
@@ -69,7 +69,7 @@ const TrapEffects = (): ITrapEffects => {
     };
 
     const animation = OnGridAnimation.ofRockSlide(actor.x, actor.y, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     playlogManager.add('落石の罠を踏んでしまった！');
   };

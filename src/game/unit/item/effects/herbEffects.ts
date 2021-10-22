@@ -171,7 +171,7 @@ const HerbEffects = (): IHerbEffects => {
         target?.damage(dmg);
       };
       const animation = OnRayAnimation.ofFlame(user, current, callback);
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
   };
 

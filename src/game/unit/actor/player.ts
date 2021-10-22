@@ -108,7 +108,7 @@ export class Player extends Actor {
       });
     };
     const animation = AttackAnimation.generate(this, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     let sound = soundStore.attack;
 

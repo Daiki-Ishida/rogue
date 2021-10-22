@@ -96,7 +96,7 @@ export class Pot extends Storable {
       current,
       callback
     );
-    animationManager.push(animation);
+    animationManager.register(animation);
   }
 
   onHit(user: Player, target: Actor, board: Board): void {

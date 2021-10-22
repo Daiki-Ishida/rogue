@@ -85,7 +85,7 @@ export abstract class Item implements IItem {
       current,
       callback
     );
-    animationManager.push(animation);
+    animationManager.register(animation);
   }
 
   onUnhit(thrower: Player, board: Board): void {

@@ -30,11 +30,31 @@ export class AnimationManager {
     );
   }
 
+  /**
+   * アニメーションを登録する
+   */
+  register(animation: Animation): void {
+    this.animations.push(animation);
+  }
+
+  /**
+   * 描画完了したアニメーションを解除する
+   */
+  refresh(): void {
+    this.animations = this.animations.filter((a) => !a.done);
+  }
+
+  /**
+   * アニメーションを並列実行する
+   */
   exec(): void {
     this.animations.forEach((a) => a.exec());
     this.refresh();
   }
 
+  /**
+   * アニメーションを１つずつ実行する
+   */
   execSync(): void {
     this.animations[0]?.exec();
     this.refresh();
@@ -71,14 +91,6 @@ export class AnimationManager {
     for (const actor of game.board.actors) {
       actor.symbol.setAt(actor.x, actor.y);
     }
-  }
-
-  push(a: Animation): void {
-    this.animations.push(a);
-  }
-
-  refresh(): void {
-    this.animations = this.animations.filter((a) => !a.done);
   }
 
   draw(p: p5, camera: Camera): void {

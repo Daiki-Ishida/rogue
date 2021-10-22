@@ -30,7 +30,7 @@ export const magicBlessEffect = (level: number): SpecialArt => {
       const animation = OnRayAnimation.ofFlame(actor, hitAt, () => {
         target.damage(20);
       });
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     inRange: (x: number, y: number, actor: Actor, board: Board): boolean => {
       const target = getActorOnRayInRoom(actor, board);
@@ -57,7 +57,7 @@ export const magicBlessEffect = (level: number): SpecialArt => {
       const animation = OnRayAnimation.ofBlizzard(actor, hitAt, () => {
         target.damage(40);
       });
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     inRange: (x: number, y: number, actor: Actor, board: Board): boolean => {
       const target = getActorOnRayInRoom(actor, board);

@@ -123,7 +123,7 @@ export abstract class Actor implements IActor {
     };
 
     const animation = OnGridAnimation.ofHeal(this.x, this.y, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     const sound = soundStore.healing;
     soundManager.register(sound);
@@ -139,7 +139,7 @@ export abstract class Actor implements IActor {
     this.y += next.y;
 
     const animation = WalkAnimation.init(this);
-    animationManager.push(animation);
+    animationManager.register(animation);
   }
 
   canMove(board: Board): boolean {
@@ -161,7 +161,7 @@ export abstract class Actor implements IActor {
   attack(board: Board, callback?: () => void): void {
     const target = board.findActor(this.next.x, this.next.y);
     const animation = AttackAnimation.generate(this, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     let sound = soundStore.attack;
 

@@ -127,7 +127,7 @@ const SwordEffects = (): ISwordEffects => {
 
       // animation
       const animation = OnGridAnimation.ofThunder(x, y, callback);
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     onDamage: () => {
       return;

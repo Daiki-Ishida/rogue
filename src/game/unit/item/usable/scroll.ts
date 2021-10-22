@@ -41,7 +41,7 @@ export class Scroll extends Usable {
     const animation = SpellAnimation.generate(user, () => {
       this.effect(user, board);
     });
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     this.status.used = true;
 

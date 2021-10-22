@@ -27,7 +27,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
         const dmg = 15;
         target.damage(dmg);
       });
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
       return x === actor.next.x && y === actor.next.y;
@@ -54,7 +54,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
           target.addHunger(5);
         }
       });
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
       return x === actor.next.x && y === actor.next.y;
@@ -84,7 +84,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
           target.conditions.push(paralysis);
         }
       });
-      animationManager.push(animation);
+      animationManager.register(animation);
     },
     inRange: (x: number, y: number, actor: Actor): boolean => {
       return x === actor.next.x && y === actor.next.y;

@@ -75,7 +75,7 @@ export class Staff extends Usable {
     };
 
     const animation = OnRayAnimation.ofMagicBullet(user, current, callback);
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     playlogManager.add(`${this.status.displayName}を使った`);
   }
@@ -98,7 +98,7 @@ export class Staff extends Usable {
       const y = current.y - d.y;
       user.setAt(x, y);
     });
-    animationManager.push(animation);
+    animationManager.register(animation);
 
     playlogManager.add(`${this.status.displayName}を使った`);
   }
