@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { savedata, soundManager, soundStore } from 'game';
 import { Board } from './board';
-import { Commands } from './command';
+import { CommandManager } from './command';
 import { Inventory } from './inventory';
 import { Player } from './unit/actor';
 import { Turn } from './turn';
@@ -22,7 +22,7 @@ export class Game {
   private constructor(
     readonly player: Player,
     readonly board: Board,
-    readonly commands: Commands,
+    readonly commands: CommandManager,
     readonly turn: Turn,
     readonly inventory: Inventory,
     public gold: number = 0,
@@ -35,7 +35,7 @@ export class Game {
     const player = Player.init('Player');
     player.spawn(board);
 
-    const commands = Commands.init();
+    const commands = CommandManager.init();
     const turn = Turn.init();
     const inventory = Inventory.init();
 

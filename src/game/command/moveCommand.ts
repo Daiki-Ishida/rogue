@@ -2,8 +2,15 @@ import { Command } from '.';
 import { Actor } from 'game/unit/actor';
 import { Board } from 'game/board';
 
+/**
+ * 歩行コマンド
+ */
 export class MoveCommand implements Command {
-  constructor(readonly actor: Actor, public done: boolean = false) {}
+  private constructor(readonly actor: Actor, public done: boolean) {}
+
+  static of(actor: Actor): MoveCommand {
+    return new MoveCommand(actor, false);
+  }
 
   exec(board: Board): void {
     if (this.actor.isCondition('CONFUSED')) {

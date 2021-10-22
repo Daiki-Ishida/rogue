@@ -15,7 +15,7 @@ export class ActionController implements ControllerState {
 
     switch (input) {
       case 'k': {
-        const command = new AttackCommand(player);
+        const command = AttackCommand.of(player);
         game.commands.push(command);
         break;
       }
@@ -29,7 +29,7 @@ export class ActionController implements ControllerState {
       case 's': {
         const direction = KeyConfig.directionMapping[input];
         player.turnTo(direction);
-        const command = new MoveCommand(player);
+        const command = MoveCommand.of(player);
         game.commands.push(command);
         break;
       }
@@ -43,13 +43,13 @@ export class ActionController implements ControllerState {
       }
       case 'u': {
         game.dash();
-        const command = new MoveCommand(player);
+        const command = MoveCommand.of(player);
         game.commands.push(command);
         break;
       }
       case 'o': {
         game.step();
-        const command = new StepCommand(player);
+        const command = StepCommand.of(player);
         game.commands.push(command);
         break;
       }

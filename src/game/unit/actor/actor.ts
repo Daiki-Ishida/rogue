@@ -39,7 +39,6 @@ interface IActor {
   isDead: boolean;
   setAt(x: number, y: number): void;
   underneath(board: Board): Item | Trap | Room | Exit | undefined;
-  // updateVisibility(): void;
   move(board: Board): void;
   canMove(board: Board): boolean;
   turnTo(direction: DirectionKey): void;

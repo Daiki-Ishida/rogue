@@ -16,13 +16,13 @@ export class InitPhase extends PhaseBase {
 
     // ダッシュ
     if (game.mode === 'DASH') {
-      const command = new MoveCommand(game.player);
+      const command = MoveCommand.of(game.player);
       game.commands.push(command);
     }
 
     // 足踏み
     if (game.mode === 'STEP') {
-      const command = new StepCommand(game.player);
+      const command = StepCommand.of(game.player);
       game.commands.push(command);
     }
 

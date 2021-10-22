@@ -47,10 +47,10 @@ class BasicStrategy implements Strategy {
       enemy.specialArt.inRange(player.x, player.y, enemy, board);
 
     return artsAvailable
-      ? new ArtCommand(enemy)
+      ? ArtCommand.of(enemy)
       : enemy.isAttackable(player)
-      ? new AttackCommand(enemy)
-      : new MoveCommand(enemy);
+      ? AttackCommand.of(enemy)
+      : MoveCommand.of(enemy);
   }
 
   /**

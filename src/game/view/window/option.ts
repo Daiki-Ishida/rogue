@@ -13,7 +13,7 @@ export class Option {
 
   static ofUse(item: Usable, game: Game): Option {
     const onSelected = () => {
-      const command = new UseCommand(game.player, item);
+      const command = UseCommand.of(game.player, item);
       game.commands.push(command);
       windowManager.close();
       controller.changeState(actionController);
@@ -23,7 +23,7 @@ export class Option {
 
   static ofEquip(item: Equipment, game: Game): Option {
     const onSelected = () => {
-      const command = new EquipCommand(game.player, item);
+      const command = EquipCommand.of(game.player, item);
       game.commands.push(command);
 
       windowManager.close();
@@ -54,7 +54,7 @@ export class Option {
 
   static ofThrow(item: Item, game: Game): Option {
     const onSelected = () => {
-      const command = new ThrowCommand(game.player, item);
+      const command = ThrowCommand.of(game.player, item);
       game.commands.push(command);
 
       windowManager.close();

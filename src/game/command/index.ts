@@ -1,5 +1,5 @@
 export * from './command';
-export * from './commands';
+export * from './commandManager';
 export * from './moveCommand';
 export * from './stepCommand';
 export * from './attackCommand';

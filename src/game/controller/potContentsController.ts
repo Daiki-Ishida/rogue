@@ -30,7 +30,7 @@ export class PotContentsController implements ControllerState {
         const item = window.selected;
         if (item === undefined) break; // エラーで落ちないように握りつぶす。
 
-        const command = new WithdrawCommand(game.player, this.pot, item, false);
+        const command = WithdrawCommand.of(game.player, this.pot, item);
         game.commands.push(command);
 
         windowManager.close();

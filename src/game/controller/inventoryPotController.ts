@@ -35,7 +35,7 @@ export class InventoryPotController implements ControllerState {
         if (item.isStorable()) break;
         if (item.isEquipment() && item.status.equiped) break;
 
-        const command = new PutCommand(game.player, this.pot, item, false);
+        const command = PutCommand.of(game.player, this.pot, item);
         game.commands.push(command);
         game.inventory.delete();
 
