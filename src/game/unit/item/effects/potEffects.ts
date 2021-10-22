@@ -115,8 +115,8 @@ const PotEffects = (): IPotEffects => {
   };
 
   const conversion = {
-    onPut: (item: Item, contents: Item[], board: Board) => {
-      const converted = ItemGenerator.generate(1, board)[0];
+    onPut: (item: Item, contents: Item[]) => {
+      const converted = ItemGenerator.generate(1)[0];
       contents.push(converted);
     },
     onAged: () => {

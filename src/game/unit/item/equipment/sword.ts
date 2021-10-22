@@ -1,7 +1,6 @@
 import { Equipment } from './equipment';
 import { SwordStatus } from '../status';
 import { ItemSymbol } from '../symbol';
-import { Board } from 'game/board';
 import { Player, Actor } from 'game/unit/actor';
 import { imageStore } from 'game';
 import { ISwordEffect, swordEffects } from '../effects';
@@ -17,14 +16,12 @@ export class Sword extends Equipment {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Sword {
+  static generate(id: string): Sword {
     const symbol = new ItemSymbol(imageStore.items.sword[id]);
     const status = SwordStatus.init(id);
     const effect = swordEffects[id];
 
-    const sword = new Sword(0, 0, symbol, status, [effect]);
-    sword.spawn(board);
-    return sword;
+    return new Sword(0, 0, symbol, status, [effect]);
   }
 
   get atk(): number {

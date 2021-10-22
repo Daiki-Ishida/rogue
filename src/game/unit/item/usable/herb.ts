@@ -17,16 +17,14 @@ export class Herb extends Usable {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Herb {
+  static generate(id: string): Herb {
     const symbol = new ItemSymbol(imageStore.items.herb);
     const status = HerbStatus.init(id);
     const effect = herbEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const herb = new Herb(0, 0, symbol, status, effect);
-    herb.spawn(board);
-    return herb;
+    return new Herb(0, 0, symbol, status, effect);
   }
 
   use(user: Player, board: Board): void {

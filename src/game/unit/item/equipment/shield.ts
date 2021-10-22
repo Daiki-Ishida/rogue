@@ -1,5 +1,4 @@
 import { imageStore } from 'game';
-import { Board } from 'game/board';
 import { Player, Actor } from 'game/unit/actor';
 import { ShieldStatus } from '../status';
 import { ItemSymbol } from '../symbol';
@@ -16,13 +15,11 @@ export class Shield extends Equipment {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Shield {
+  static generate(id: string): Shield {
     const symbol = new ItemSymbol(imageStore.items.shield[id]);
     const status = ShieldStatus.init(id);
 
-    const sword = new Shield(0, 0, symbol, status, []);
-    sword.spawn(board);
-    return sword;
+    return new Shield(0, 0, symbol, status, []);
   }
 
   get def(): number {

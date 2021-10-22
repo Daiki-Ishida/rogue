@@ -1,10 +1,9 @@
-import { Board } from 'game/board';
 import { itemDataStore } from 'game/store/itemDataStore';
 import { Bracelet } from '../item';
 
 export class BraceletGenerator {
-  static generate(board: Board): Bracelet {
+  static generate(): Bracelet {
     const id = itemDataStore.getBraceletIdRandomly();
-    return Bracelet.generate(id, board);
+    return Bracelet.generate(id);
   }
 }

@@ -8,7 +8,7 @@ export class EnemyGenerator {
     for (let i = 0; i < n; i++) {
       const lv = board.dungeon.level;
       const id = enemyDataStore.getEnemyIdInLevelRandomly(lv);
-      const enemy = Enemy.generate(id, board);
+      const enemy = Enemy.generate(id);
       enemys.push(enemy);
     }
 

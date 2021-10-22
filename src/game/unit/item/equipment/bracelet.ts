@@ -18,16 +18,14 @@ export class Bracelet extends Equipment {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Bracelet {
+  static generate(id: string): Bracelet {
     const symbol = new ItemSymbol(imageStore.items.bracelet);
     const status = BraceletStatus.init(id);
     const effect = braceletEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const bracelet = new Bracelet(0, 0, symbol, status, effect);
-    bracelet.spawn(board);
-    return bracelet;
+    return new Bracelet(0, 0, symbol, status, effect);
   }
 
   onHit(user: Player, target: Actor): void {

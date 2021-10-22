@@ -32,7 +32,10 @@ const TrapEffects = (): ITrapEffects => {
     const MAX = 20;
 
     const additions = RandomUtil.getRandomIntInclusive(MIN, MAX);
-    TrapGenerator.generate(additions, board);
+    const traps = TrapGenerator.generate(additions);
+    for (const trap of traps) {
+      trap.spawn(board);
+    }
   };
 
   const poison = (actor: Actor): void => {

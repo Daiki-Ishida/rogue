@@ -21,7 +21,7 @@ export class Pot extends Storable {
     super(x, y, [], 0, symbol, status);
   }
 
-  static generate(id: string, board: Board): Pot {
+  static generate(id: string): Pot {
     const symbol = new ItemSymbol(imageStore.items.pot);
     const status = PotStatus.init(id);
     const effect = potEffects[id];
@@ -29,9 +29,7 @@ export class Pot extends Storable {
       throw new Error(`Invalid Id: ${id}`);
     }
 
-    const pot = new Pot(0, 0, symbol, status, effect);
-    pot.spawn(board);
-    return pot;
+    return new Pot(0, 0, symbol, status, effect);
   }
 
   put(item: Item, board: Board): void {

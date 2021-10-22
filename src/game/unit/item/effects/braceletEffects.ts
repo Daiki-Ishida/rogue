@@ -63,7 +63,7 @@ const BraceletEffects = (): IBraceletEffects => {
   const trap = (player: Player, board: Board): void => {
     const random = RandomUtil.getRandomIntInclusive(0, 2);
     if (random === 0) {
-      TrapGenerator.generate(1, board);
+      TrapGenerator.generate(1)[0].spawn(board);
     }
   };
 

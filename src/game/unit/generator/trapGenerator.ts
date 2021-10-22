@@ -1,14 +1,13 @@
-import { Board } from 'game/board';
 import { trapDataStore } from 'game/store';
 import { Trap } from '../trap';
 
 export class TrapGenerator {
-  static generate(n: number, board: Board): Trap[] {
+  static generate(n: number): Trap[] {
     const traps: Trap[] = [];
 
     for (let i = 0; i < n; i++) {
       const id = trapDataStore.getTrapNameRandomly();
-      const trap = Trap.generate(id, board);
+      const trap = Trap.generate(id);
       traps.push(trap);
     }
 

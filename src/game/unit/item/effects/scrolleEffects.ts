@@ -64,9 +64,9 @@ const ScrollEffects = (): IStaffEffects => {
 
   const trap = (user: Player, board: Board): void => {
     const n = RandomUtil.getRandomIntInclusive(7, 12);
-    const traps = TrapGenerator.generate(n, board);
+    const traps = TrapGenerator.generate(n);
     for (const trap of traps) {
-      board.traps.push(trap);
+      trap.spawn(board);
     }
     playlogManager.add('このフロアの罠が増えてしまったようだ・・・');
   };

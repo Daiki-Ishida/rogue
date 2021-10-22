@@ -19,16 +19,14 @@ export class Staff extends Usable {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Staff {
+  static generate(id: string): Staff {
     const symbol = new ItemSymbol(imageStore.items.staff);
     const status = StaffStatus.init(id);
     const effect = staffEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const staff = new Staff(0, 0, symbol, status, effect);
-    staff.spawn(board);
-    return staff;
+    return new Staff(0, 0, symbol, status, effect);
   }
 
   addDurability(value: number): void {

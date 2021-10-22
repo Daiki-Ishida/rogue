@@ -22,46 +22,46 @@ import { PotGenerator } from './potGenerator';
 import { Pot } from '../item/storable';
 
 export class ItemGenerator {
-  static generate(n: number, board: Board): Item[] {
+  static generate(n: number): Item[] {
     const items: Item[] = [];
     for (let i = 0; i < n; i++) {
-      const item = this.getItemRandomly(board);
+      const item = this.getItemRandomly();
       items.push(item);
     }
 
     return items;
   }
 
-  private static getItemRandomly(board: Board): Item {
+  private static getItemRandomly(): Item {
     const category = itemDataStore.getItemCategoryRandomly();
     let item: Item;
     switch (category) {
       case 'FOOD':
-        item = FoodGenerator.generate(board);
+        item = FoodGenerator.generate();
         break;
       case 'HERB':
-        item = HerbGenerator.generate(board);
+        item = HerbGenerator.generate();
         break;
       case 'STAFF':
-        item = StaffGenerator.generate(board);
+        item = StaffGenerator.generate();
         break;
       case 'SCROLL':
-        item = ScrollGenerator.generate(board);
+        item = ScrollGenerator.generate();
         break;
       case 'BRACELET':
-        item = BraceletGenerator.generate(board);
+        item = BraceletGenerator.generate();
         break;
       case 'SWORD':
-        item = SwordGenerator.generate(board);
+        item = SwordGenerator.generate();
         break;
       case 'SHIELD':
-        item = ShieldGenerator.generate(board);
+        item = ShieldGenerator.generate();
         break;
       case 'POT':
-        item = PotGenerator.generate(board);
+        item = PotGenerator.generate();
         break;
       default:
-        item = Gold.generate(board);
+        item = Gold.generate();
     }
 
     return item;
@@ -71,28 +71,28 @@ export class ItemGenerator {
     let item: Item;
     switch (category) {
       case 'FOOD':
-        item = Food.generate(id, board);
+        item = Food.generate(id);
         break;
       case 'HERB':
-        item = Herb.generate(id, board);
+        item = Herb.generate(id);
         break;
       case 'STAFF':
-        item = Staff.generate(id, board);
+        item = Staff.generate(id);
         break;
       case 'SCROLL':
-        item = Scroll.generate(id, board);
+        item = Scroll.generate(id);
         break;
       case 'BRACELET':
-        item = Bracelet.generate(id, board);
+        item = Bracelet.generate(id);
         break;
       case 'SWORD':
-        item = Sword.generate(id, board);
+        item = Sword.generate(id);
         break;
       case 'SHIELD':
-        item = Shield.generate(id, board);
+        item = Shield.generate(id);
         break;
       case 'POT':
-        item = Pot.generate(id, board);
+        item = Pot.generate(id);
         break;
       default:
         throw new Error('Invalid Data...');

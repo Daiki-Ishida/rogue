@@ -25,16 +25,14 @@ export class Scroll extends Usable {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Scroll {
+  static generate(id: string): Scroll {
     const symbol = new ItemSymbol(imageStore.items.scroll);
     const status = ScrollStatus.init(id);
     const effect = scrollEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const scroll = new Scroll(0, 0, symbol, status, effect);
-    scroll.spawn(board);
-    return scroll;
+    return new Scroll(0, 0, symbol, status, effect);
   }
 
   use(user: Player, board: Board): void {

@@ -15,16 +15,14 @@ export class Trap {
     readonly effect: (actor: Actor, board: Board) => void
   ) {}
 
-  static generate(id: string, board: Board): Trap {
+  static generate(id: string): Trap {
     const symbol = TrapSymbol.init(id);
     const status = TrapStatus.init();
     const effect = trapEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const trap = new Trap(0, 0, symbol, status, effect);
-    trap.spawn(board);
-    return trap;
+    return new Trap(0, 0, symbol, status, effect);
   }
 
   setAt(x: number, y: number): void {

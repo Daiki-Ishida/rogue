@@ -18,16 +18,14 @@ export class Food extends Usable {
     super(x, y, symbol, status);
   }
 
-  static generate(id: string, board: Board): Food {
+  static generate(id: string): Food {
     const symbol = new ItemSymbol(imageStore.items.bread);
     const status = FoodStatus.init(id);
     const effect = foodEffects[id];
 
     if (effect === undefined) throw new Error(`Invalid Id: ${id}`);
 
-    const food = new Food(0, 0, symbol, status, effect);
-    food.spawn(board);
-    return food;
+    return new Food(0, 0, symbol, status, effect);
   }
 
   use(user: Player, board: Board): void {

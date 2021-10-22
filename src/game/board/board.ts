@@ -93,25 +93,35 @@ export class Board implements IBoard {
     this.generateEnemys();
 
     if (this.dungeon.level === 30) {
-      Enemy.generate('BOSS', this);
+      const boss = Enemy.generate('BOSS');
+      boss.spawn(this);
     }
   }
 
   generateEnemys(): void {
     const enemyCount = RandomUtil.getRandomIntInclusive(4, 6);
-    EnemyGenerator.generate(enemyCount, this);
+    const enemys = EnemyGenerator.generate(enemyCount, this);
+    for (const enemy of enemys) {
+      enemy.spawn(this);
+    }
   }
 
   generateItems(): void {
     const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
-    ItemGenerator.generate(itemCount, this);
+    const items = ItemGenerator.generate(itemCount);
+    for (const item of items) {
+      item.spawn(this);
+    }
   }
 
   generateTraps(): void {
     if (this.dungeon.level < 7) return;
 
     const trapCount = RandomUtil.getRandomIntInclusive(5, 7);
-    TrapGenerator.generate(trapCount, this);
+    const traps = TrapGenerator.generate(trapCount);
+    for (const trap of traps) {
+      trap.spawn(this);
+    }
   }
 
   findTrap(x: number, y: number): Trap | undefined {

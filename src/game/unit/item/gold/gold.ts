@@ -1,5 +1,4 @@
 import { imageStore } from 'game';
-import { Board } from 'game/board';
 import { Actor, Player } from 'game/unit/actor';
 import { Item } from '../item';
 import { GoldStatus } from '../status';
@@ -15,12 +14,10 @@ export class Gold extends Item {
     super(x, y, symbol, status);
   }
 
-  static generate(board: Board): Gold {
+  static generate(): Gold {
     const symbol = new ItemSymbol(imageStore.items.gold);
     const status = GoldStatus.generate();
-    const gold = new Gold(0, 0, symbol, status);
-    gold.spawn(board);
-    return gold;
+    return new Gold(0, 0, symbol, status);
   }
 
   identify(): void {

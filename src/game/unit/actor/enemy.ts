@@ -34,14 +34,12 @@ export class Enemy extends Actor implements IEnemy {
     super(symbol, status);
   }
 
-  static generate(id: string, board: Board): Enemy {
+  static generate(id: string): Enemy {
     const symbol = EnemySymbol.init(id);
     const status = EnemyStatus.init(id);
     const arts = specialArts[id];
 
-    const enemy = new Enemy(symbol, status, arts, basicStrategy);
-    enemy.spawn(board);
-    return enemy;
+    return new Enemy(symbol, status, arts, basicStrategy);
   }
 
   get hasTarget(): boolean {
