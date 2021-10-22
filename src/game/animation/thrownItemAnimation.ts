@@ -23,10 +23,6 @@ export class ThrownItemAnimation implements Animation {
     return new ThrownItemAnimation(thrower, item, to, callback, 0, false);
   }
 
-  draw(p: p5, camera: Camera): void {
-    this.item.symbol.draw(p, camera);
-  }
-
   exec(): void {
     const next = this.thrower.d.next;
     const from = { x: this.thrower.x, y: this.thrower.y };
@@ -44,5 +40,9 @@ export class ThrownItemAnimation implements Animation {
 
       this.done = true;
     }
+  }
+
+  draw(p: p5, camera: Camera): void {
+    this.item.symbol.draw(p, camera);
   }
 }

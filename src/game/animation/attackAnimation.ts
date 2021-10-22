@@ -5,8 +5,11 @@ import { Camera } from '../view';
 
 const F = 5;
 
+/**
+ * 攻撃モーションクラス
+ */
 export class AttackAnimation implements Animation {
-  constructor(
+  private constructor(
     readonly actor: Actor,
     public frame: number,
     public done: boolean,

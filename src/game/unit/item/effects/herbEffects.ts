@@ -1,5 +1,5 @@
 import { animationManager, playlogManager } from 'game';
-import { MagicBlessAnimation } from 'game/animation';
+import { OnRayAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { Actor, Condition, Player } from 'game/unit/actor';
 import { GridUtil, RandomUtil } from 'game/util';
@@ -170,7 +170,7 @@ const HerbEffects = (): IHerbEffects => {
         const dmg = RandomUtil.getRandomIntInclusive(45, 60);
         target?.damage(dmg);
       };
-      const animation = MagicBlessAnimation.ofFlame(user, current, callback);
+      const animation = OnRayAnimation.ofFlame(user, current, callback);
       animationManager.push(animation);
     },
   };

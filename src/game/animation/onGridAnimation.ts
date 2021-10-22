@@ -5,7 +5,10 @@ import { imageStore } from 'game';
 
 const F = 15;
 
-export class MagicAnimation implements Animation {
+/**
+ * 特定の１マスの上に描画されるエフェクト
+ */
+export class OnGridAnimation implements Animation {
   constructor(
     readonly img: Image[],
     private x: number,
@@ -15,37 +18,52 @@ export class MagicAnimation implements Animation {
     public done: boolean
   ) {}
 
-  static ofFire(x: number, y: number, callback: () => void): MagicAnimation {
+  // 炎
+  static ofFire(x: number, y: number, callback: () => void): OnGridAnimation {
     const fire = imageStore.effects.fire;
-    return new MagicAnimation(fire, x, y, 0, callback, false);
+    return new OnGridAnimation(fire, x, y, 0, callback, false);
   }
 
-  static ofIce(x: number, y: number, callback: () => void): MagicAnimation {
+  // 氷
+  static ofIce(x: number, y: number, callback: () => void): OnGridAnimation {
     const ice = imageStore.effects.ice;
-    return new MagicAnimation(ice, x, y, 0, callback, false);
+    return new OnGridAnimation(ice, x, y, 0, callback, false);
   }
 
-  static ofThunder(x: number, y: number, callback: () => void): MagicAnimation {
+  // 雷
+  static ofThunder(
+    x: number,
+    y: number,
+    callback: () => void
+  ): OnGridAnimation {
     const thunder = imageStore.effects.thunder;
-    return new MagicAnimation(thunder, x, y, 0, callback, false);
+    return new OnGridAnimation(thunder, x, y, 0, callback, false);
   }
 
+  // 回復
+  static ofHeal(x: number, y: number, callback: () => void): OnGridAnimation {
+    const imgs = imageStore.effects.healing;
+    return new OnGridAnimation(imgs, x, y, 0, callback, false);
+  }
+
+  // 落石
   static ofRockSlide(
     x: number,
     y: number,
     callback: () => void
-  ): MagicAnimation {
+  ): OnGridAnimation {
     const thunder = imageStore.effects.rockSlide;
-    return new MagicAnimation(thunder, x, y, 0, callback, false);
+    return new OnGridAnimation(thunder, x, y, 0, callback, false);
   }
 
+  // 爆発
   static ofExplosion(
     x: number,
     y: number,
     callback: () => void
-  ): MagicAnimation {
+  ): OnGridAnimation {
     const thunder = imageStore.effects.explosion;
-    return new MagicAnimation(thunder, x, y, 0, callback, false);
+    return new OnGridAnimation(thunder, x, y, 0, callback, false);
   }
 
   exec(): void {

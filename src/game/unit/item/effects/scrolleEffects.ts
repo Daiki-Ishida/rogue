@@ -1,5 +1,5 @@
 import { animationManager, game, playlogManager } from 'game';
-import { BlastwaveAnimation } from 'game/animation';
+import { FullScreenEffectAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { Condition, Player } from 'game/unit/actor';
 import { TrapGenerator } from 'game/unit/generator';
@@ -22,7 +22,7 @@ const ScrollEffects = (): IStaffEffects => {
       }
     };
 
-    const animation = BlastwaveAnimation.generate(callback);
+    const animation = FullScreenEffectAnimation.ofBlastwave(callback);
     animationManager.push(animation);
   };
 

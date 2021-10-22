@@ -4,6 +4,9 @@ import { Camera } from '../view';
 import { Player } from 'game/unit/actor';
 import { imageStore } from 'game';
 
+/**
+ * 巻物詠唱時のエフェクト
+ */
 export class SpellAnimation implements Animation {
   private constructor(
     readonly img: Image[],

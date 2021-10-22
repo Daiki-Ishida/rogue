@@ -6,7 +6,7 @@ import {
 } from 'game';
 import {
   AttackAnimation,
-  HealingAnimation,
+  OnGridAnimation,
   WalkAnimation,
 } from 'game/animation';
 import { Battle } from 'game/battle';
@@ -122,8 +122,11 @@ export abstract class Actor implements IActor {
       indicatorManager.bounceIndicators.push(indicator);
     };
 
-    const animation = HealingAnimation.generate(this.x, this.y, callback);
+    const animation = OnGridAnimation.ofHeal(this.x, this.y, callback);
     animationManager.push(animation);
+
+    const sound = soundStore.healing;
+    soundManager.register(sound);
   }
 
   move(board: Board): void {

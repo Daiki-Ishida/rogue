@@ -3,18 +3,23 @@ import { imageStore } from 'game';
 import { Animation } from '.';
 
 const F = 15;
+const SCREEN_WIDTH = 1280;
+const SCREEN_HEIGHT = 720;
 
-export class BlastwaveAnimation implements Animation {
-  constructor(
+/**
+ * 全画面に描画するエフェクト
+ */
+export class FullScreenEffectAnimation implements Animation {
+  private constructor(
     readonly img: Image[],
     public frame: number,
     public done: boolean,
     readonly callback: () => void
   ) {}
 
-  static generate(callback: () => void): BlastwaveAnimation {
+  static ofBlastwave(callback: () => void): FullScreenEffectAnimation {
     const imgs = imageStore.effects.blastwave;
-    return new BlastwaveAnimation(imgs, 0, false, callback);
+    return new FullScreenEffectAnimation(imgs, 0, false, callback);
   }
 
   exec(): void {
@@ -33,7 +38,7 @@ export class BlastwaveAnimation implements Animation {
     if (this.frame <= 0) return;
     p.push();
     p.imageMode('corner');
-    p.image(this.currentImg, 0, 0, 1280, 720);
+    p.image(this.currentImg, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     p.pop();
   }
 }

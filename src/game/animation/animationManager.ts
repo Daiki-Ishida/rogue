@@ -5,9 +5,7 @@ import { Camera } from '../view';
 import { Animation } from './animation';
 
 export class AnimationManager {
-  private constructor(public animations: Animation[]) {
-    this.animations = animations;
-  }
+  private constructor(public animations: Animation[]) {}
 
   static init(): AnimationManager {
     return new AnimationManager([]);

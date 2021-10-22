@@ -1,7 +1,7 @@
 import { Actor } from '../actor';
 import { Board } from 'game/board';
 import { GridUtil } from 'game/util';
-import { MagicBlessAnimation } from 'game/animation';
+import { OnRayAnimation } from 'game/animation';
 import { animationManager, soundManager, soundStore } from 'game';
 
 export interface SpecialArt {
@@ -27,7 +27,7 @@ export const magicBlessEffect = (level: number): SpecialArt => {
       soundManager.register(soundStore.fire);
 
       // animation
-      const animation = MagicBlessAnimation.ofFlame(actor, hitAt, () => {
+      const animation = OnRayAnimation.ofFlame(actor, hitAt, () => {
         target.damage(20);
       });
       animationManager.push(animation);
@@ -54,7 +54,7 @@ export const magicBlessEffect = (level: number): SpecialArt => {
       soundManager.register(soundStore.ice);
 
       // animation
-      const animation = MagicBlessAnimation.ofBlizzard(actor, hitAt, () => {
+      const animation = OnRayAnimation.ofBlizzard(actor, hitAt, () => {
         target.damage(40);
       });
       animationManager.push(animation);

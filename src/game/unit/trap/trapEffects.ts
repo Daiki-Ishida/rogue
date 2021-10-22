@@ -1,5 +1,5 @@
 import { animationManager, playlogManager } from 'game';
-import { MagicAnimation } from 'game/animation';
+import { OnGridAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { GridUtil, RandomUtil } from 'game/util';
 import { Actor, Condition } from '../actor';
@@ -21,7 +21,7 @@ const TrapEffects = (): ITrapEffects => {
       actor.damage(dmg);
     };
 
-    const animation = MagicAnimation.ofExplosion(actor.x, actor.y, callback);
+    const animation = OnGridAnimation.ofExplosion(actor.x, actor.y, callback);
     animationManager.push(animation);
 
     playlogManager.add('地雷を踏んでしまった！');
@@ -68,7 +68,7 @@ const TrapEffects = (): ITrapEffects => {
       actor.damage(dmg);
     };
 
-    const animation = MagicAnimation.ofRockSlide(actor.x, actor.y, callback);
+    const animation = OnGridAnimation.ofRockSlide(actor.x, actor.y, callback);
     animationManager.push(animation);
 
     playlogManager.add('落石の罠を踏んでしまった！');

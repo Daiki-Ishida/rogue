@@ -6,7 +6,7 @@ import { StaffStatus } from '../status';
 import { ItemSymbol } from '../symbol';
 import { staffEffects } from '../effects';
 import { Usable } from './usable';
-import { MagicBulletAnimation } from 'game/animation';
+import { OnRayAnimation } from 'game/animation';
 
 export class Staff extends Usable {
   private constructor(
@@ -74,7 +74,7 @@ export class Staff extends Usable {
       }
     };
 
-    const animation = MagicBulletAnimation.generate(user, current, callback);
+    const animation = OnRayAnimation.ofMagicBullet(user, current, callback);
     animationManager.push(animation);
 
     playlogManager.add(`${this.status.displayName}を使った`);
@@ -93,7 +93,7 @@ export class Staff extends Usable {
       if (target || blocked) break;
     }
 
-    const animation = MagicBulletAnimation.generate(user, current, () => {
+    const animation = OnRayAnimation.ofMagicBullet(user, current, () => {
       const x = current.x - d.x;
       const y = current.y - d.y;
       user.setAt(x, y);

@@ -3,6 +3,9 @@ import { Animation } from '.';
 
 const F = 5;
 
+/**
+ * アクターの歩行を表現するクラス
+ */
 export class WalkAnimation implements Animation {
   constructor(
     readonly actor: Actor,

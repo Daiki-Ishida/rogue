@@ -1,5 +1,5 @@
 import { animationManager, soundManager, soundStore } from 'game';
-import { MagicAnimation } from 'game/animation';
+import { OnGridAnimation } from 'game/animation';
 import { Actor } from '../actor';
 import { Board } from 'game/board';
 import { RandomUtil } from 'game/util';
@@ -23,7 +23,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       soundManager.register(soundStore.fire);
 
       // animation
-      const animation = MagicAnimation.ofFire(target.x, target.y, () => {
+      const animation = OnGridAnimation.ofFire(target.x, target.y, () => {
         const dmg = 15;
         target.damage(dmg);
       });
@@ -46,7 +46,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       soundManager.register(soundStore.ice);
 
       // animation
-      const animation = MagicAnimation.ofIce(target.x, target.y, () => {
+      const animation = OnGridAnimation.ofIce(target.x, target.y, () => {
         const dmg = 25;
         target.damage(dmg);
         // 空腹効果付与
@@ -73,7 +73,7 @@ export const magickAttackEffect = (level: number): SpecialArt => {
       soundManager.register(soundStore.thunder);
 
       // animation
-      const animation = MagicAnimation.ofThunder(target.x, target.y, () => {
+      const animation = OnGridAnimation.ofThunder(target.x, target.y, () => {
         const dmg = 40;
         target.damage(dmg);
 

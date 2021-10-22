@@ -6,7 +6,10 @@ import { imageStore } from 'game';
 
 const SPEED = 1;
 
-export class MagicBlessAnimation implements Animation {
+/**
+ * 直線上を移動するアニメーション
+ */
+export class OnRayAnimation implements Animation {
   private constructor(
     readonly img: Image[],
     readonly actor: Actor,
@@ -17,24 +20,37 @@ export class MagicBlessAnimation implements Animation {
     public done: boolean
   ) {}
 
+  // 魔法弾
+  static ofMagicBullet(
+    actor: Actor,
+    to: { x: number; y: number },
+    callback: () => void
+  ): OnRayAnimation {
+    const img = imageStore.effects.magicBullet;
+    const current = { x: actor.x, y: actor.y };
+    return new OnRayAnimation(img, actor, current, to, callback, 0, false);
+  }
+
+  // 火炎ブレス
   static ofFlame(
     actor: Actor,
     to: { x: number; y: number },
     callback: () => void
-  ): MagicBlessAnimation {
+  ): OnRayAnimation {
     const img = imageStore.effects.fire;
     const current = { x: actor.next.x, y: actor.next.y };
-    return new MagicBlessAnimation(img, actor, current, to, callback, 0, false);
+    return new OnRayAnimation(img, actor, current, to, callback, 0, false);
   }
 
+  // 吹雪ブレス
   static ofBlizzard(
     actor: Actor,
     to: { x: number; y: number },
     callback: () => void
-  ): MagicBlessAnimation {
+  ): OnRayAnimation {
     const img = imageStore.effects.ice;
     const current = { x: actor.next.x, y: actor.next.y };
-    return new MagicBlessAnimation(img, actor, current, to, callback, 0, false);
+    return new OnRayAnimation(img, actor, current, to, callback, 0, false);
   }
 
   private get currentImg(): Image {
@@ -64,7 +80,7 @@ export class MagicBlessAnimation implements Animation {
     p.image(
       this.currentImg,
       x,
-      y - 20,
+      y,
       camera.zoom * 2, // 表示サイズ調整
       camera.zoom * 2 // 表示サイズ調整
     );

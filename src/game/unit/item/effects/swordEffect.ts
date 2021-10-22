@@ -1,5 +1,5 @@
 import { animationManager, soundManager, soundStore } from 'game';
-import { MagicAnimation } from 'game/animation';
+import { OnGridAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { Tile } from 'game/board/layer';
@@ -126,7 +126,7 @@ const SwordEffects = (): ISwordEffects => {
       };
 
       // animation
-      const animation = MagicAnimation.ofThunder(x, y, callback);
+      const animation = OnGridAnimation.ofThunder(x, y, callback);
       animationManager.push(animation);
     },
     onDamage: () => {
