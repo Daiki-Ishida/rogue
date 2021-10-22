@@ -1,5 +1,5 @@
 import { LayerBase, Tile } from './layer';
-import { Dungeon } from '../../dungeon';
+import { Dungeon } from '../dungeon';
 
 export class DungeonLayer extends LayerBase {
   static init(w: number, h: number): DungeonLayer {

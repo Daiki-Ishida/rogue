@@ -11,8 +11,8 @@ import {
 } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
-import { Exit } from 'game/dungeon/exit';
-import { Room } from 'game/dungeon/room';
+import { Exit } from 'game/board/dungeon/exit';
+import { Room } from 'game/board/dungeon/room';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
 import { BounceIndicator } from 'game/view/indicator';

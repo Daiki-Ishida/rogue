@@ -1,5 +1,5 @@
 import { VisibilityRange } from '.';
-import { Room } from 'game/dungeon/room';
+import { Room } from 'game/board/dungeon/room';
 
 const MARGIN = 1;
 

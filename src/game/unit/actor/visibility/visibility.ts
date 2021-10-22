@@ -1,5 +1,5 @@
 import { Board } from 'game/board';
-import { Room } from 'game/dungeon/room';
+import { Room } from 'game/board/dungeon/room';
 import { Item } from 'game/unit/item';
 import { Trap } from 'game/unit/trap';
 import { Actor } from '../actor';

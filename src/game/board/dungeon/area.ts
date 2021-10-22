@@ -1,4 +1,4 @@
-import { RandomUtil } from '../util';
+import { RandomUtil } from '../../util';
 import { BasicRoom, Room } from './room';
 
 const MIN_WIDTH = 12;

@@ -1,7 +1,7 @@
 import p5 from 'p5';
-import { Dungeon } from 'game/dungeon';
-import { Exit } from 'game/dungeon/exit';
-import { Room } from 'game/dungeon/room';
+import { Dungeon } from 'game/board/dungeon';
+import { Exit } from 'game/board/dungeon/exit';
+import { Room } from 'game/board/dungeon/room';
 import { Actor } from 'game/unit/actor';
 import { Item } from 'game/unit/item';
 import { Trap } from 'game/unit/trap';

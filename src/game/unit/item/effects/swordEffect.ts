@@ -3,7 +3,7 @@ import { OnGridAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { Tile } from 'game/board/layer';
-import { Corridor } from 'game/dungeon/corridor';
+import { Corridor } from 'game/board/dungeon/corridor';
 import { Actor, Condition, Player } from 'game/unit/actor';
 import { RandomUtil } from 'game/util';
 
