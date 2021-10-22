@@ -7,7 +7,7 @@ import { Item } from 'game/unit/item';
 import { Trap } from 'game/unit/trap';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/view';
-import { BaseLayer, DungeonLayer, Layer, Tile } from './layer';
+import { BaseLayer, DungeonLayer, Tile } from './layer';
 import {
   EnemyGenerator,
   ItemGenerator,
@@ -15,33 +15,10 @@ import {
 } from 'game/unit/generator';
 import { Enemy } from 'game/unit/actor/enemy';
 
-export interface IBoard {
-  w: number;
-  h: number;
-  dungeon: Dungeon;
-  actors: Actor[];
-  items: Item[];
-  traps: Trap[];
-  baseLayer: Layer;
-  dungeonLayer: Layer;
-  next(): void;
-  findTrap(x: number, y: number): Trap | undefined;
-  findItem(x: number, y: number): Item | undefined;
-  findActor(x: number, y: number): Actor | undefined;
-  findRoom(x: number, y: number): Room | undefined;
-  findExit(x: number, y: number): Exit | undefined;
-  clearActor(actor: Actor): void;
-  clearItem(item: Item): void;
-  clearTrap(trap: Trap): void;
-  isBlock(x: number, y: number): boolean;
-  isRoom(x: number, y: number): boolean;
-  isCorridor(x: number, y: number): boolean;
-  getExit(): { x: number; y: number };
-  getRandomEmpty(): { x: number; y: number };
-  draw(p: p5, camera: Camera): void;
-}
-
-export class Board implements IBoard {
+/**
+ * ゲームの盤面を表現するクラス
+ */
+export class Board {
   private constructor(
     readonly w: number,
     readonly h: number,
@@ -70,9 +47,11 @@ export class Board implements IBoard {
       dungeonLayer
     );
 
-    board.generateTraps();
-    board.generateItems();
-    board.generateEnemys();
+    if (board.dungeon.level > 6) {
+      board.generateTraps(5, 7);
+    }
+    board.generateItems(7, 12);
+    board.generateEnemys(4, 6);
 
     return board;
   }
@@ -88,9 +67,11 @@ export class Board implements IBoard {
     this.items = [];
     this.traps = [];
 
-    this.generateTraps();
-    this.generateItems();
-    this.generateEnemys();
+    if (this.dungeon.level > 6) {
+      this.generateTraps(5, 7);
+    }
+    this.generateItems(7, 12);
+    this.generateEnemys(4, 6);
 
     if (this.dungeon.level === 30) {
       const boss = Enemy.generate('BOSS');
@@ -98,26 +79,24 @@ export class Board implements IBoard {
     }
   }
 
-  generateEnemys(): void {
-    const enemyCount = RandomUtil.getRandomIntInclusive(4, 6);
+  generateEnemys(min: number, max: number): void {
+    const enemyCount = RandomUtil.getRandomIntInclusive(min, max);
     const enemys = EnemyGenerator.generate(enemyCount, this);
     for (const enemy of enemys) {
       enemy.spawn(this);
     }
   }
 
-  generateItems(): void {
-    const itemCount = RandomUtil.getRandomIntInclusive(7, 12);
+  generateItems(min: number, max: number): void {
+    const itemCount = RandomUtil.getRandomIntInclusive(min, max);
     const items = ItemGenerator.generate(itemCount);
     for (const item of items) {
       item.spawn(this);
     }
   }
 
-  generateTraps(): void {
-    if (this.dungeon.level < 7) return;
-
-    const trapCount = RandomUtil.getRandomIntInclusive(5, 7);
+  generateTraps(min: number, max: number): void {
+    const trapCount = RandomUtil.getRandomIntInclusive(min, max);
     const traps = TrapGenerator.generate(trapCount);
     for (const trap of traps) {
       trap.spawn(this);

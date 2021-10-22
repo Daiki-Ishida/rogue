@@ -139,6 +139,10 @@ const PotEffects = (): IPotEffects => {
 
       const count = emptyGrids.filter((g) => g === true).length;
       const enemys = EnemyGenerator.generate(count, board);
+      for (const enemy of enemys) {
+        enemy.spawn(board);
+      }
+
       let c = 0;
       for (let i = 0; i < emptyGrids.length - 1; i++) {
         if (emptyGrids[i]) {

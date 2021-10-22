@@ -3,7 +3,7 @@ import { OnGridAnimation } from 'game/animation';
 import { Board } from 'game/board';
 import { GridUtil, RandomUtil } from 'game/util';
 import { Actor, Condition } from '../actor';
-import { EnemyGenerator, TrapGenerator } from '../generator';
+import { EnemyGenerator } from '../generator';
 
 interface ITrapEffects {
   [key: string]: (actor: Actor, board: Board) => void;
@@ -30,12 +30,7 @@ const TrapEffects = (): ITrapEffects => {
   const multiplication = (actor: Actor, board: Board): void => {
     const MIN = 15;
     const MAX = 20;
-
-    const additions = RandomUtil.getRandomIntInclusive(MIN, MAX);
-    const traps = TrapGenerator.generate(additions);
-    for (const trap of traps) {
-      trap.spawn(board);
-    }
+    board.generateTraps(MIN, MAX);
   };
 
   const poison = (actor: Actor): void => {
@@ -110,6 +105,10 @@ const TrapEffects = (): ITrapEffects => {
 
     const count = emptyGrids.filter((g) => g === true).length;
     const enemys = EnemyGenerator.generate(count, board);
+    for (const enemy of enemys) {
+      enemy.spawn(board);
+    }
+
     let c = 0;
     for (let i = 0; i < emptyGrids.length - 1; i++) {
       if (emptyGrids[i]) {
