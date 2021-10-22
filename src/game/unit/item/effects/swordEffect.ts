@@ -87,12 +87,12 @@ const SwordEffects = (): ISwordEffects => {
       const targetR = board.findActor(nextR.x, nextR.y);
 
       if (targetL) {
-        const battle = new Battle(player, targetL);
+        const battle = Battle.generate(player, targetL);
         battle.exec();
       }
 
       if (targetR) {
-        const battle = new Battle(player, targetR);
+        const battle = Battle.generate(player, targetR);
         battle.exec();
       }
     },

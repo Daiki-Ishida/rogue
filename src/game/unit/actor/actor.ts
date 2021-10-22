@@ -166,11 +166,12 @@ export abstract class Actor implements IActor {
     let sound = soundStore.attack;
 
     if (target) {
-      const battle = new Battle(this, target);
-      const battleStatus = battle.exec();
-      if (battleStatus === 'CRITICAL_HIT') {
+      const battle = Battle.generate(this, target);
+      battle.exec();
+      if (battle.status === 'CRITICAL_HIT') {
         sound = soundStore.criticalHit;
-      } else if (battleStatus === 'MISSED') {
+      }
+      if (battle.status === 'MISSED') {
         sound = soundStore.missHit;
       }
     }

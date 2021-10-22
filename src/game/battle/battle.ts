@@ -3,13 +3,63 @@ import { Actor } from 'game/unit/actor';
 import { RandomUtil } from 'game/util';
 import { BounceIndicator } from 'game/view/indicator';
 
+type HitStatus = 'HIT' | 'CRITICAL_HIT' | 'MISSED';
+
+/**
+ * 戦闘のダメージ計算等を扱うクラス
+ */
 export class Battle {
-  constructor(readonly attacker: Actor, readonly defender: Actor) {}
+  private constructor(
+    readonly attacker: Actor,
+    readonly defender: Actor,
+    readonly status: HitStatus
+  ) {}
+
+  static generate(attacker: Actor, defender: Actor): Battle {
+    let status: HitStatus;
+    // 1/7でmiss
+    if (RandomUtil.getRandomIntInclusive(0, 6) === 0) {
+      status = 'MISSED';
+    } else if (attacker.isPlayer()) {
+      status =
+        RandomUtil.getRandomIntInclusive(0, 9) === 0 ? 'CRITICAL_HIT' : 'HIT';
+    } else {
+      status = 'HIT';
+    }
+
+    return new Battle(attacker, defender, status);
+  }
+
+  /**
+   * 戦闘処理
+   */
+  exec(): void {
+    const attacker = this.attacker;
+    const defender = this.defender;
+
+    const status = this.status;
+    if (status === 'MISSED') {
+      const missed = BounceIndicator.ofMissHit(defender);
+      indicatorManager.bounceIndicators.push(missed);
+      return;
+    }
+
+    // ダメージ処理
+    const dmg = this.calcDamage(status);
+    defender.damage(dmg);
+    this.onDamage(dmg);
+
+    // 経験値獲得
+    if (defender.isDead && attacker.isPlayer()) {
+      attacker.gainExp(defender.status.exp);
+      playlogManager.add(this.messageOnDefeated());
+    }
+  }
 
   /**
    * ダメージ計算
    */
-  get damage(): number {
+  private calcDamage(hit: HitStatus): number {
     let atkValue = this.attacker.status.atk;
     let defValue = this.defender.status.def;
 
@@ -20,84 +70,33 @@ export class Battle {
       defValue *= 1.5;
     }
 
-    return Math.floor(atkValue * (15 / 16) ** defValue);
-  }
+    const src = atkValue * (15 / 16) ** defValue;
+    const dmg = hit === 'CRITICAL_HIT' ? src * 1.5 : src;
 
-  /**
-   * 当たり判定
-   * 1 / 7
-   */
-  get hitStatus(): 'HIT' | 'CRITICAL_HIT' | 'MISSED' {
-    if (RandomUtil.getRandomIntInclusive(0, 6) === 0) return 'MISSED';
-
-    if (this.attacker.isPlayer()) {
-      if (RandomUtil.getRandomIntInclusive(0, 9) === 0) {
-        return 'CRITICAL_HIT';
-      }
-    }
-
-    return 'HIT';
-  }
-
-  /**
-   * 戦闘処理
-   */
-  exec(): 'HIT' | 'CRITICAL_HIT' | 'MISSED' {
-    const status = this.hitStatus;
-    switch (status) {
-      case 'MISSED': {
-        const missed = BounceIndicator.ofMissHit(this.defender);
-        indicatorManager.bounceIndicators.push(missed);
-        break;
-      }
-      case 'HIT': {
-        const dmg = this.damage;
-        this.defender.damage(dmg);
-        this.onDamage(dmg);
-        break;
-      }
-      case 'CRITICAL_HIT': {
-        const dmg = Math.floor(this.damage * 1.5);
-        this.defender.damage(dmg);
-        this.onDamage(dmg);
-        break;
-      }
-    }
-
-    // 経験値獲得
-    if (this.defender.isDead && this.attacker.isPlayer()) {
-      const exp = this.defender.status.exp;
-      this.attacker.gainExp(exp);
-      playlogManager.add(this.messageOnDefeated());
-    }
-
-    return status;
+    return Math.floor(dmg);
   }
 
   private onDamage(dmg: number): void {
-    if (this.attacker.isPlayer()) {
-      const attacker = this.attacker;
-      const defender = this.defender;
-      this.attacker.status.sword?.effects.forEach((effect) => {
+    const attacker = this.attacker;
+    const defender = this.defender;
+
+    if (attacker.isPlayer()) {
+      attacker.status.sword?.effects.forEach((effect) => {
         effect.onDamage(attacker, defender, dmg);
       });
     }
 
-    if (this.defender.isCondition('ASLEEP')) {
+    if (defender.isCondition('ASLEEP')) {
       const r = RandomUtil.getRandomIntInclusive(0, 1);
       if (r === 0) {
-        this.defender.conditions.recover('ASLEEP');
+        defender.conditions.recover('ASLEEP');
       }
     }
   }
 
   private messageOnDefeated(): string {
-    let message: string;
-    if (this.attacker.isPlayer()) {
-      message = `${this.defender.status.name}をやっつけた！`;
-    } else {
-      message = `${this.attacker.status.name}に倒された・・・`;
-    }
-    return message;
+    return this.attacker.isPlayer()
+      ? `${this.defender.status.name}をやっつけた！`
+      : `${this.attacker.status.name}に倒された・・・`;
   }
 }
