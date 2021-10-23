@@ -1,52 +1,18 @@
 import p5 from 'p5';
 import { game } from 'game';
-import { Window } from './window';
+import { WindowBase } from './window';
 
 const X = 100;
 const Y = 550;
 const W = 700;
 const H = 120;
 
-export class StatusWindow implements Window {
-  private constructor(
-    readonly x: number,
-    readonly y: number,
-    readonly w: number,
-    readonly h: number,
-    public display: boolean
-  ) {}
-
+export class StatusWindow extends WindowBase {
   static init(): StatusWindow {
     return new StatusWindow(X, Y, W, H, false);
   }
 
-  open(): void {
-    this.display = true;
-  }
-
-  close(): void {
-    this.display = false;
-  }
-
-  draw(p: p5): void {
-    if (!this.display) return;
-
-    this.drawFrame(p);
-    this.drawContent(p);
-  }
-
-  private drawFrame(p: p5): void {
-    p.push();
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(this.x, this.y, this.w, this.h, 10);
-
-    p.pop();
-  }
-
-  private drawContent(p: p5): void {
+  drawContent(p: p5): void {
     const player = game.player;
 
     const exp = player.status.exp;

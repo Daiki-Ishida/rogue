@@ -64,7 +64,10 @@ export class WindowManager {
 
     if (this.descriptionWindow.display) {
       const item = this.inventoryWindow.selected;
-      let description = item?.status.description + '\n';
+
+      let description =
+        item === undefined ? '' : item.status.description + '\n';
+
       if (item?.isStorable()) {
         description += '\n[なかみ]';
         for (const content of item.contents) {
@@ -72,7 +75,8 @@ export class WindowManager {
         }
       }
 
-      this.descriptionWindow.draw(p, description);
+      this.descriptionWindow.setDescription(description);
+      this.descriptionWindow.draw(p);
     }
 
     this.helpWindow.draw(controller, p);

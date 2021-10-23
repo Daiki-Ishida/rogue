@@ -1,13 +1,17 @@
 import p5 from 'p5';
+import { WindowBase } from './window';
 
-export class DescriptionWindow {
+export class DescriptionWindow extends WindowBase {
   private constructor(
     readonly x: number,
     readonly y: number,
     readonly w: number,
     readonly h: number,
-    public display: boolean
-  ) {}
+    public display: boolean,
+    private description: string
+  ) {
+    super(x, y, w, h, display);
+  }
 
   static init(): DescriptionWindow {
     const x = 100;
@@ -15,36 +19,14 @@ export class DescriptionWindow {
     const w = 700;
     const h = 420;
 
-    return new DescriptionWindow(x, y, w, h, false);
+    return new DescriptionWindow(x, y, w, h, false, '');
   }
 
-  open(): void {
-    this.display = true;
+  setDescription(description: string): void {
+    this.description = description;
   }
 
-  close(): void {
-    this.display = false;
-  }
-
-  draw(p: p5, description: string): void {
-    if (!this.display) return;
-
-    this.drawFrame(p);
-    this.drawContent(p, description);
-  }
-
-  private drawFrame(p: p5): void {
-    p.push();
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(this.x, this.y, this.w, this.h, 10);
-
-    p.pop();
-  }
-
-  private drawContent(p: p5, description: string): void {
+  drawContent(p: p5): void {
     p.push();
 
     p.textSize(24);
@@ -53,7 +35,7 @@ export class DescriptionWindow {
     const x = this.x + 30;
     const y = this.y + 30;
 
-    p.text(description, x, y);
+    p.text(this.description, x, y);
 
     p.pop();
   }

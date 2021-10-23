@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Item } from 'game/unit/item';
-import { Window } from './window';
+import { WindowBase } from './window';
 import { soundManager, soundStore } from 'game';
 import { Storable } from 'game/unit/item/storable';
 
@@ -10,7 +10,7 @@ const W = 400;
 const H = 570;
 const LINE_HEIGHT = 40;
 
-export class PotContentsWindow implements Window {
+export class PotContentsWindow extends WindowBase {
   private constructor(
     readonly x: number,
     readonly y: number,
@@ -18,7 +18,9 @@ export class PotContentsWindow implements Window {
     readonly h: number,
     public display: boolean,
     readonly storable: Storable
-  ) {}
+  ) {
+    super(x, y, w, h, display);
+  }
 
   static init(storable: Storable): PotContentsWindow {
     return new PotContentsWindow(X, Y, W, H, true, storable);
@@ -26,14 +28,6 @@ export class PotContentsWindow implements Window {
 
   get selected(): Item {
     return this.storable.selected;
-  }
-
-  open(): void {
-    this.display = true;
-  }
-
-  close(): void {
-    this.display = false;
   }
 
   next(): void {
@@ -51,23 +45,9 @@ export class PotContentsWindow implements Window {
     soundManager.register(sound);
   }
 
-  draw(p: p5): void {
-    if (!this.display) return;
-
-    this.drawFrame(p);
+  drawContent(p: p5): void {
     this.drawItems(p, this.storable.contents);
     this.drawPager(p);
-  }
-
-  private drawFrame(p: p5): void {
-    p.push();
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(this.x, this.y, this.w, this.h, 10);
-
-    p.pop();
   }
 
   private drawItems(p: p5, items: Item[]): void {

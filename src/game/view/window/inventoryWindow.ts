@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { Inventory } from 'game/inventory';
 import { Item } from 'game/unit/item';
-import { Window } from './window';
+import { WindowBase } from './window';
 import { soundManager, soundStore } from 'game';
 
 const X = 820;
@@ -10,7 +10,7 @@ const W = 400;
 const H = 570;
 const LINE_HEIGHT = 40;
 
-export class InventoryWindow implements Window {
+export class InventoryWindow extends WindowBase {
   private constructor(
     readonly x: number,
     readonly y: number,
@@ -19,7 +19,9 @@ export class InventoryWindow implements Window {
     public display: boolean,
     private page: 1 | 2,
     readonly inventory: Inventory
-  ) {}
+  ) {
+    super(x, y, w, h, display);
+  }
 
   static init(inventory: Inventory): InventoryWindow {
     return new InventoryWindow(X, Y, W, H, false, 1, inventory);
@@ -27,14 +29,6 @@ export class InventoryWindow implements Window {
 
   get selected(): Item {
     return this.inventory.selected;
-  }
-
-  open(): void {
-    this.display = true;
-  }
-
-  close(): void {
-    this.display = false;
   }
 
   next(): void {
@@ -71,28 +65,14 @@ export class InventoryWindow implements Window {
     soundManager.register(sound);
   }
 
-  draw(p: p5): void {
-    if (!this.display) return;
-
+  drawContent(p: p5): void {
     const list =
       this.page === 1
         ? this.inventory.items.slice(0, 13)
         : this.inventory.items.slice(14, 28);
 
-    this.drawFrame(p);
     this.drawItems(p, list);
     this.drawPager(p);
-  }
-
-  private drawFrame(p: p5): void {
-    p.push();
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(this.x, this.y, this.w, this.h, 10);
-
-    p.pop();
   }
 
   private drawItems(p: p5, items: Item[]): void {

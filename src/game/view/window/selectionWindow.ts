@@ -2,6 +2,7 @@ import p5 from 'p5';
 import { Window } from './window';
 import { Option } from './option';
 import { soundManager, soundStore } from 'game';
+import { WindowBase } from '.';
 
 export interface SelectionWindow extends Window {
   readonly options: Option[];
@@ -12,7 +13,10 @@ export interface SelectionWindow extends Window {
   select(): void;
 }
 
-export abstract class SelectionWindowBase implements SelectionWindow {
+export abstract class SelectionWindowBase
+  extends WindowBase
+  implements SelectionWindow
+{
   constructor(
     readonly x: number,
     readonly y: number,
@@ -21,14 +25,8 @@ export abstract class SelectionWindowBase implements SelectionWindow {
     public display: boolean,
     readonly options: Option[],
     public idx: number
-  ) {}
-
-  open(): void {
-    this.display = true;
-  }
-
-  close(): void {
-    this.display = false;
+  ) {
+    super(x, y, w, h, display);
   }
 
   get selected(): Option {
@@ -63,25 +61,7 @@ export abstract class SelectionWindowBase implements SelectionWindow {
     soundManager.register(sound);
   }
 
-  draw(p: p5): void {
-    if (!this.display) return;
-
-    this.drawFrame(p);
-    this.drawOptions(p);
-  }
-
-  private drawFrame(p: p5): void {
-    p.push();
-
-    p.fill('rgba(61,61,61,0.7)');
-    p.stroke('grey');
-    p.strokeWeight(2);
-    p.rect(this.x, this.y, this.w, this.h, 10);
-
-    p.pop();
-  }
-
-  private drawOptions(p: p5): void {
+  drawContent(p: p5): void {
     p.push();
 
     p.fill('white');
