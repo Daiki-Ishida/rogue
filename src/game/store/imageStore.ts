@@ -68,17 +68,11 @@ interface TrapImages {
 }
 
 interface MapImages {
-  readonly roomA: RoomImages;
-  readonly roomB: RoomImages;
-  readonly roomC: RoomImages;
-  readonly roomD: RoomImages;
+  readonly roomA: Image[];
+  readonly roomB: Image[];
+  readonly roomC: Image[];
+  readonly roomD: Image[];
   readonly exit: Image;
-}
-
-interface RoomImages {
-  readonly roomEdge: Image[];
-  readonly roomSide: Image[];
-  readonly roomInside: Image[];
 }
 
 interface ConditionImages {
@@ -302,10 +296,10 @@ export class ImageStore implements IImageStore {
   static parseMaps(asset: Asset): MapImages {
     const imgs = asset.imageFiles;
 
-    const roomA = parseRoom(imgs.roomA, 32);
-    const roomB = parseRoom(imgs.roomB, 32);
-    const roomC = parseRoom(imgs.roomC, 32);
-    const roomD = parseRoom(imgs.roomD, 32);
+    const roomA = parseImage(imgs.roomA, 3, 4, 32, 32);
+    const roomB = parseImage(imgs.roomB, 3, 4, 32, 32);
+    const roomC = parseImage(imgs.roomC, 3, 4, 32, 32);
+    const roomD = parseImage(imgs.roomD, 3, 4, 32, 32);
     const exit = imgs.exit;
 
     return {
@@ -387,48 +381,4 @@ const parseImage = (
   }
 
   return images;
-};
-
-const parseRoom = (
-  baseImage: Image,
-  size: number
-): {
-  roomEdge: Image[];
-  roomSide: Image[];
-  roomInside: Image[];
-} => {
-  const edge: Image[] = [];
-  const side: Image[] = [];
-  const inside: Image[] = [];
-
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 3; j++) {
-      // 上の辺
-      if (i === 0) {
-        if (j === 0 || j === 2) {
-          edge.push(baseImage.get(j * size, i * size, size, size * 2));
-        } else {
-          side.push(baseImage.get(j * size, i * size, size, size * 2));
-        }
-      } else if (i === 2) {
-        if (j === 0 || j === 2) {
-          side.push(baseImage.get(j * size, i * size, size, size));
-        } else {
-          inside.push(baseImage.get(j * size, i * size, size, size));
-        }
-      } else if (i === 3) {
-        if (j === 0 || j === 2) {
-          edge.push(baseImage.get(j * size, i * size, size, size));
-        } else {
-          side.push(baseImage.get(j * size, i * size, size, size));
-        }
-      }
-    }
-  }
-
-  return {
-    roomEdge: edge,
-    roomSide: side,
-    roomInside: inside,
-  };
 };

@@ -1,9 +1,9 @@
+import p5, { Image } from 'p5';
 import { imageStore } from 'game';
 import { RandomUtil } from 'game/util';
 import { Camera } from 'game/drawer';
-import p5 from 'p5';
-import { Area } from '../area';
 import { Room } from './room';
+import { Area } from '../area';
 
 const MIN_WIDTH = 6;
 const MIN_HEIGHT = 6;
@@ -14,97 +14,112 @@ export class BasicRoom implements Room {
     readonly y: number,
     readonly w: number,
     readonly h: number,
-    readonly area: Area
+    readonly area: Area,
+    private chips: Image[]
   ) {}
 
-  static generate(node: Area): BasicRoom {
+  static generate(node: Area, level: number): BasicRoom {
     const w = RandomUtil.getRandomIntInclusive(MIN_WIDTH, node.w - 6);
     const h = RandomUtil.getRandomIntInclusive(MIN_HEIGHT, node.h - 6);
 
     const x = node.x + RandomUtil.getRandomIntInclusive(5, node.w - w - 1);
     const y = node.y + RandomUtil.getRandomIntInclusive(5, node.h - h - 1);
 
-    return new BasicRoom(x, y, w, h, node);
-  }
+    const room = new BasicRoom(x, y, w, h, node, []);
 
-  draw(p: p5, camera: Camera, level: number): void {
-    let mapChips;
+    let map;
+    const chips: Image[] = [];
+
     if (level <= 3) {
-      mapChips = imageStore.maps.roomB;
+      map = imageStore.maps.roomB;
     } else if (level <= 14) {
-      mapChips = imageStore.maps.roomD;
+      map = imageStore.maps.roomD;
     } else if (level <= 25) {
-      mapChips = imageStore.maps.roomC;
+      map = imageStore.maps.roomC;
     } else {
-      mapChips = imageStore.maps.roomA;
+      map = imageStore.maps.roomA;
     }
 
-    for (let i = -1; i < this.w + 1; i++) {
-      for (let j = -1; j < this.h + 1; j++) {
-        const { x, y } = camera.adjust(i + this.x, j + this.y);
-        if (j === -1) {
+    for (let i = -2; i < room.h + 1; i++) {
+      for (let j = -1; j < room.w + 1; j++) {
+        if (i === -2) {
           // 上の辺
-          switch (i) {
+          switch (j) {
             case -1:
-              p.image(
-                mapChips.roomEdge[0],
-                x,
-                y - camera.zoom * 0.5,
-                camera.zoom,
-                camera.zoom * 2
-              );
+              chips.push(map[0]);
               break;
-            case this.w:
-              p.image(
-                mapChips.roomEdge[1],
-                x,
-                y - camera.zoom * 0.5,
-                camera.zoom,
-                camera.zoom * 2
-              );
+            case room.w:
+              chips.push(map[2]);
               break;
             default:
-              p.image(
-                mapChips.roomSide[0],
-                x,
-                y - camera.zoom * 0.5,
-                camera.zoom,
-                camera.zoom * 2
-              );
+              chips.push(map[1]);
               break;
           }
         }
-
-        if (j >= 0 && j < this.h) {
+        if (i === -1) {
+          // 上の辺
+          switch (j) {
+            case -1:
+              chips.push(map[3]);
+              break;
+            case room.w:
+              chips.push(map[5]);
+              break;
+            default:
+              chips.push(map[4]);
+              break;
+          }
+        }
+        if (i >= 0 && i < room.h) {
           // 中
-          switch (i) {
+          switch (j) {
             case -1:
-              p.image(mapChips.roomSide[1], x, y, camera.zoom, camera.zoom);
+              chips.push(map[6]);
               break;
-            case this.w:
-              p.image(mapChips.roomSide[2], x, y, camera.zoom, camera.zoom);
+            case room.w:
+              chips.push(map[8]);
               break;
             default:
-              p.image(mapChips.roomInside[0], x, y, camera.zoom, camera.zoom);
+              chips.push(map[7]);
               break;
           }
         }
 
-        if (j === this.h) {
+        if (i === room.h) {
           // 下の辺
-          switch (i) {
+          switch (j) {
             case -1:
-              p.image(mapChips.roomEdge[2], x, y, camera.zoom, camera.zoom);
+              chips.push(map[9]);
               break;
-            case this.w:
-              p.image(mapChips.roomEdge[3], x, y, camera.zoom, camera.zoom);
+            case room.w:
+              chips.push(map[11]);
               break;
             default:
-              p.image(mapChips.roomSide[3], x, y, camera.zoom, camera.zoom);
+              chips.push(map[10]);
               break;
           }
         }
       }
     }
+
+    room.chips = chips;
+    return room;
+  }
+
+  draw(p: p5, camera: Camera): void {
+    for (let i = 0; i < this.chips.length; i++) {
+      const grid = indexToGrid(i, this.w + 2);
+      const _x = this.x + grid[0] - 1;
+      const _y = this.y + grid[1] - 2;
+      const { x, y } = camera.adjust(_x, _y);
+      p.image(this.chips[i], x, y, camera.zoom, camera.zoom);
+    }
   }
 }
+
+// todo refactor
+const indexToGrid = (idx: number, w: number) => {
+  const x = idx % w;
+  const y = (idx - x) / w;
+  return [x, y];
+};

@@ -45,7 +45,7 @@ export class Dungeon {
 
   private initRooms(): void {
     this.area.split();
-    this.rooms = this.area.makeRooms();
+    this.rooms = this.area.makeRooms(this.level);
   }
 
   private initCorridor(): void {

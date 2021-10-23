@@ -99,13 +99,13 @@ export class Area {
     return this.childNodes.length === 0;
   }
 
-  makeRooms(): Room[] {
+  makeRooms(level: number): Room[] {
     const leafNodes = Array.from(this).filter(
       (node) => node != undefined && node.isLeafNode()
     );
 
     return leafNodes.map((node) => {
-      return BasicRoom.generate(node);
+      return BasicRoom.generate(node, level);
     });
   }
 

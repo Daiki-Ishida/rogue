@@ -21,7 +21,7 @@ export class Corridor {
       mapChips = imageStore.maps.roomA;
     }
 
-    const img = mapChips.roomInside[0];
+    const img = mapChips[7];
     return new Corridor(x, y, img);
   }
 
