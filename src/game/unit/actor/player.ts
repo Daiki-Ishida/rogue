@@ -114,6 +114,7 @@ export class Player extends Actor {
 
     if (target) {
       const battle = Battle.generate(this, target);
+      battle.exec();
       if (battle.status === 'CRITICAL_HIT') {
         sound = soundStore.criticalHit;
       } else if (battle.status === 'MISSED') {
