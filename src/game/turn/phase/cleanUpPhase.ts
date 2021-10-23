@@ -31,6 +31,7 @@ export class CleanUpPhase extends PhaseBase {
         ? actor.visibility.setRoomRange(room)
         : actor.visibility.setActorRange(actor);
     }
+    game.player.visibility.scanSymbols(board);
 
     this.completed = true;
   }

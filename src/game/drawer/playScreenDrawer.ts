@@ -27,10 +27,10 @@ class PlayScreenDrawer implements Drawer {
     camera.track(game.player);
 
     // ダンジョンマップ描画
-    this.drawBoard(game.board, p, camera);
+    game.board.draw(p, camera);
 
     // シンボル描画
-    this.drawSymbols(game.player, game.board, p, camera);
+    this.drawSymbols(game.player, p, camera);
 
     // 視野範囲描画
     this.drawVisibility(game.player, p, camera);
@@ -39,16 +39,16 @@ class PlayScreenDrawer implements Drawer {
     this.drawMiniMap(game.board, p);
 
     // アニメーション描画
-    this.drawAnimations(p, camera);
+    animationManager.draw(p, camera);
 
     // インジケーター描画
-    this.drawIndicators(game, p, camera);
+    indicatorManager.draw(game, p, camera);
 
     // ログ描画
-    this.drawLogs(p);
+    playlogManager.draw(p);
 
     // ウィンドウ描画
-    this.drawWindow(p);
+    windowManager.draw(p, controller);
 
     // ブリッジエフェクト描画
     if (game.state === 'BRIDGE') {
@@ -56,19 +56,9 @@ class PlayScreenDrawer implements Drawer {
     }
   }
 
-  private drawBoard(board: Board, p: p5, camera: Camera): void {
-    board.draw(p, camera);
-  }
-
-  private drawSymbols(
-    player: Player,
-    board: Board,
-    p: p5,
-    camera: Camera
-  ): void {
+  private drawSymbols(player: Player, p: p5, camera: Camera): void {
     // プレイヤー視野内のシンボル
-    const { traps, items, actors } =
-      player.visibility.listSymbolsInRange(board);
+    const { traps, items, actors } = player.visibility.symbols;
 
     actors.sort((a, b) => a.y - b.y);
 
@@ -127,23 +117,6 @@ class PlayScreenDrawer implements Drawer {
 
     p.image(overlay, c.x, c.y);
     p.pop();
-  }
-
-  // アニメーション描画
-  private drawAnimations(p: p5, camera: Camera): void {
-    animationManager.draw(p, camera);
-  }
-
-  private drawIndicators(game: Game, p: p5, camera: Camera): void {
-    indicatorManager.draw(game, p, camera);
-  }
-
-  private drawWindow(p: p5): void {
-    windowManager.draw(p, controller);
-  }
-
-  private drawLogs(p: p5): void {
-    playlogManager.draw(p);
   }
 
   private drawMiniMap(board: Board, p: p5): void {

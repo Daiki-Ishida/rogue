@@ -20,6 +20,7 @@ export class AnimationPhase extends PhaseBase {
     }
 
     animationManager.execWalk();
+    game.player.visibility.scanSymbols(game.board);
     if (!animationManager.isWalkDone) {
       return;
     }

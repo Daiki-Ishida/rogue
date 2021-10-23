@@ -103,6 +103,7 @@ export class PlayerEndPhase extends PhaseBase {
         ? player.visibility.setRoomRange(room)
         : player.visibility.setActorRange(player);
     }
+    player.visibility.scanSymbols(board);
 
     /**
      * ミニマップ更新

@@ -18,23 +18,16 @@ interface Symbols {
 }
 
 export class Visibility {
-  constructor(public range: VisibilityRange) {}
+  constructor(public range: VisibilityRange, public symbols: Symbols) {}
 
   static init(): Visibility {
     const range = new SingleRangeVisibility(0, 0);
-    return new Visibility(range);
-  }
-
-  setRoomRange(room: Room): void {
-    this.range = new RoomRangeVisibility(room);
-  }
-
-  setActorRange(actor: Actor): void {
-    this.range = new ActorRangeVisibility(actor);
-  }
-
-  setFullRange(): void {
-    this.range = new FullRangeVisibility();
+    const symbols = {
+      traps: [],
+      items: [],
+      actors: [],
+    };
+    return new Visibility(range, symbols);
   }
 
   get x(): number {
@@ -53,7 +46,19 @@ export class Visibility {
     return this.range.h;
   }
 
-  listSymbolsInRange(board: Board): Symbols {
+  setRoomRange(room: Room): void {
+    this.range = new RoomRangeVisibility(room);
+  }
+
+  setActorRange(actor: Actor): void {
+    this.range = new ActorRangeVisibility(actor);
+  }
+
+  setFullRange(): void {
+    this.range = new FullRangeVisibility();
+  }
+
+  scanSymbols(board: Board): void {
     const traps: Trap[] = [];
     const items: Item[] = [];
     const actors: Actor[] = [];
@@ -85,7 +90,7 @@ export class Visibility {
       actors.push(actor);
     }
 
-    return {
+    this.symbols = {
       traps: traps,
       items: items,
       actors: actors,

@@ -34,6 +34,7 @@ export class Game {
     const board = Board.init(60, 30);
     const player = Player.init('Player');
     player.spawn(board);
+    player.visibility.scanSymbols(board);
 
     const commands = CommandManager.init();
     const turn = Turn.init();
