@@ -1,6 +1,6 @@
 import p5 from 'p5';
 import { Drawer } from '.';
-import { imageStore, textBox } from 'game';
+import { imageStore } from 'game';
 
 const LABEL = 'YOUR NAME';
 const NOTICE = 'MAX 8 Letters';
@@ -20,10 +20,6 @@ class SetupScreenDrawer implements Drawer {
 
     p.textSize(48);
     p.text(NOTICE, 560, 240);
-
-    textBox.center();
-    textBox.size(820);
-    textBox.style('height: 86px; font-size:72px;');
 
     p.pop();
   }

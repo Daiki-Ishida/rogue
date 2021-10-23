@@ -1,7 +1,6 @@
-import { fileInput, textBox } from 'game';
+import { textBox } from 'game';
 import { Game } from '../game';
-import { ControllerManager, actionController } from '.';
-import { Controller } from './controller';
+import { ControllerManager, Controller, actionController } from '.';
 
 /**
  * キャラ設定画面の入力処理を扱うクラス
@@ -21,9 +20,6 @@ class SetupScreenController implements Controller {
     }
 
     game.player.changeName(name);
-    textBox.remove();
-    fileInput.hide();
-
     game.setState('PLAY');
     context.changeState(actionController);
   }

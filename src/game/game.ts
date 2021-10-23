@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { drawer, savedata, soundManager, soundStore } from 'game';
+import {
+  drawer,
+  fileInput,
+  savedata,
+  soundManager,
+  soundStore,
+  textBox,
+} from 'game';
 import { Board } from './board';
 import { CommandManager } from './command';
 import { Inventory } from './inventory';
@@ -61,7 +68,12 @@ export class Game {
 
   setState(state: GameState): void {
     switch (state) {
+      case 'SET_UP':
+        textBox.show();
+        fileInput.hide();
+        break;
       case 'PROLOGUE': {
+        fileInput.show();
         const sound = soundStore.startScreenBgm;
         soundManager.register(sound);
         break;
@@ -69,6 +81,7 @@ export class Game {
       case 'BRIDGE':
       case 'PLAY': {
         if (this.state !== 'PLAY' && this.state !== 'BRIDGE') {
+          textBox.remove();
           soundManager.deregisterBgm();
           const sound = soundStore.dungeonBgm;
           soundManager.register(sound);

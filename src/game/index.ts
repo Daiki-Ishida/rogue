@@ -55,6 +55,9 @@ export const rogue = (p: p5): void => {
 
     // プレイヤー名入力ボックス
     textBox = p.createInput('アスカ');
+    textBox.size(820);
+    textBox.position(280, 300);
+    textBox.style('height: 86px; font-size:72px;');
     textBox.hide();
 
     // ボリューム調整フォーム
@@ -67,17 +70,16 @@ export const rogue = (p: p5): void => {
       controller.changeState(actionController);
       fileInput.hide();
     });
+    fileInput.position(600, 600);
     fileInput.hide();
 
+    // 各種初期化処理
     imageStore = ImageStore.init(asset);
     soundStore = SoundStore.init(asset);
-
     soundManager = SoundManager.init();
-
     game = Game.init();
     drawer = DrawerManager.init();
     controller = ControllerManager.init();
-
     animationManager = AnimationManager.init();
     windowManager = WindowManager.init(game);
     playlogManager = PlaylogManager.init();
