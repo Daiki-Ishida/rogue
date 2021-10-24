@@ -87,7 +87,7 @@ export class Board {
       enemy.spawn(this);
     }
 
-    const npc = Npc.init('DRAGON_01');
+    const npc = Npc.init('PRIESTESS');
     npc.spawn(this);
   }
 

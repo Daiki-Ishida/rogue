@@ -3,7 +3,14 @@ import { windowManager } from 'game';
 import { AttackCommand, MoveCommand, StepCommand } from 'game/command';
 import { Game } from 'game/game';
 import { StandByPhase } from 'game/turn';
-import { ControllerManager, Controller, inventoryController } from '.';
+import { DirectionKey } from 'game/unit/actor/direction';
+import { ActionSelectionWindow } from 'game/view/window';
+import {
+  ControllerManager,
+  Controller,
+  inventoryController,
+  selectWindowController,
+} from '.';
 
 /**
  * プレイヤーの行動を受け付けるコントローラー
@@ -54,6 +61,36 @@ export class ActionController implements Controller {
         game.step();
         const command = StepCommand.of(player);
         game.commands.push(command);
+        break;
+      }
+      case 'j': {
+        const { x, y } = game.player.next;
+        const actor = game.board.findActor(x, y);
+        if (actor?.isNpc()) {
+          let d: DirectionKey;
+          switch (game.player.d.key) {
+            case 'DOWN':
+              d = 'UP';
+              break;
+            case 'UP':
+              d = 'DOWN';
+              break;
+            case 'LEFT':
+              d = 'RIGHT';
+              break;
+            case 'RIGHT':
+              d = 'LEFT';
+              break;
+          }
+          actor.turnTo(d);
+
+          const window = ActionSelectionWindow.ofNpcAbility(game.player, actor);
+          windowManager.selectWindow = window;
+          windowManager.statusWindow.setMode('MESSAGE');
+          windowManager.statusWindow.open();
+
+          context.changeState(selectWindowController);
+        }
         break;
       }
       case 'p': {

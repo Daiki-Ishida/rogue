@@ -1,5 +1,10 @@
 import { Game } from 'game/game';
-import { EquipCommand, ThrowCommand, UseCommand } from 'game/command';
+import {
+  AskCommand,
+  EquipCommand,
+  ThrowCommand,
+  UseCommand,
+} from 'game/command';
 import { Equipment, Item, Usable } from 'game/unit/item';
 import { controller, soundManager, soundStore, windowManager } from 'game';
 import { Storable } from 'game/unit/item/storable';
@@ -7,9 +12,14 @@ import { InventoryPotController } from 'game/controller/inventoryPotController';
 import { actionController } from 'game/controller';
 import { PotContentsWindow } from '.';
 import { PotContentsController } from 'game/controller/potContentsController';
+import { Player } from 'game/unit/actor';
+import { Npc } from 'game/unit/actor/npc';
 
 export class Option {
-  constructor(readonly value: OptionValue, readonly onSelection: () => void) {}
+  private constructor(
+    readonly value: OptionValue,
+    readonly onSelection: () => void
+  ) {}
 
   static ofUse(item: Usable, game: Game): Option {
     const onSelected = () => {
@@ -61,6 +71,18 @@ export class Option {
       controller.changeState(actionController);
     };
     return new Option('投げる', onSelected);
+  }
+
+  static ofNpcAbility(player: Player, npc: Npc, game: Game): Option {
+    const onSelected = () => {
+      const command = AskCommand.of(player, npc);
+      game.commands.push(command);
+
+      windowManager.close();
+      controller.changeState(actionController);
+    };
+
+    return new Option('すすむ', onSelected);
   }
 
   static ofExit(game: Game): Option {

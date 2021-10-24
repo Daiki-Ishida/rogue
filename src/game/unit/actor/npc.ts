@@ -1,4 +1,6 @@
 import { Game } from 'game/game';
+import { Player } from '.';
+import { Ability, NpcAbility } from './ability';
 import { Actor } from './actor';
 import { NpcStatus } from './status';
 import { Strategy } from './strategy';
@@ -12,7 +14,7 @@ export class Npc extends Actor {
   private constructor(
     readonly symbol: PlayerSymbol,
     readonly status: NpcStatus,
-    // readonly specialArt: SpecialArt, // TODO: 特殊能力
+    readonly ability: Ability,
     public strategy: Strategy,
     public targetX?: number,
     public targetY?: number
@@ -23,9 +25,9 @@ export class Npc extends Actor {
   static init(id: string): Npc {
     const symbol = PlayerSymbol.init();
     const status = NpcStatus.init(id);
-    // const arts = specialArts[id];
+    const ability = NpcAbility()[id];
 
-    return new Npc(symbol, status, npcWalkingAroundStrategy);
+    return new Npc(symbol, status, ability, npcWalkingAroundStrategy);
   }
 
   get hasTarget(): boolean {
@@ -44,6 +46,12 @@ export class Npc extends Actor {
 
     const command = this.strategy.command(this);
     game.commands.push(command);
+  }
+
+  // 能力発動
+  activateAbility(player: Player): void {
+    this.ability.exec(player);
+    this.status.state = 'INACTIVE';
   }
 
   // 左を向く

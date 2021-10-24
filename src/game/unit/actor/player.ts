@@ -10,8 +10,10 @@ import { Battle } from 'game/battle';
 import { Board } from 'game/board';
 import { playerDataStore } from 'game/store';
 import { BounceIndicator } from 'game/view/indicator';
+import { Option } from 'game/view/window';
 import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
+import { Npc } from './npc';
 import { PlayerStatus } from './status';
 import { PlayerSymbol } from './symbol';
 

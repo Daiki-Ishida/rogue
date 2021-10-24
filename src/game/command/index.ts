@@ -7,3 +7,4 @@ export * from './artCommand';
 export * from './useCommand';
 export * from './equipCommand';
 export * from './throwCommand';
+export * from './askCommand';

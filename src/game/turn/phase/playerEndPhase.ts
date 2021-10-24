@@ -1,7 +1,7 @@
 import { controller, windowManager } from 'game';
 import { selectWindowController } from 'game/controller';
 import { Game } from 'game/game';
-import { ExitSelectionWindow } from 'game/view/window';
+import { ActionSelectionWindow } from 'game/view/window';
 import { EnemyActionPhase } from '.';
 import { Phase, PhaseBase } from './phase';
 
@@ -87,7 +87,7 @@ export class PlayerEndPhase extends PhaseBase {
     // 階段の到着
     if (board.isExit(player.x, player.y)) {
       game.resume();
-      const window = ExitSelectionWindow.init(game);
+      const window = ActionSelectionWindow.ofExit(game);
       windowManager.selectWindow = window;
       controller.changeState(selectWindowController);
     }

@@ -1,31 +1,33 @@
-import { enemyDataStore } from 'game/store';
+import { npcDataStore } from 'game/store';
 import { ActorStatus } from './actorStatus';
+
+type State = 'ACTIVE' | 'INACTIVE' | 'HOSTILE';
 
 export class NpcStatus extends ActorStatus {
   constructor(
     readonly name: string,
-    readonly group: string,
-    public maxHp: number,
+    readonly maxHp: number,
     public dmg: number,
     readonly str: number,
     readonly vit: number,
-    public level: number,
-    public exp: number
+    readonly level: number,
+    readonly exp: number,
+    public state: State
   ) {
     super(name, maxHp, dmg, str, vit, level, exp);
   }
 
   static init(id: string): NpcStatus {
-    const status = enemyDataStore.findEnemyStatusById(id);
+    const status = npcDataStore.findStatusById(id);
     return new NpcStatus(
       status.name,
-      status.group,
       status.hp,
       0,
       status.atk,
       status.def,
-      status.level,
-      status.exp
+      1,
+      0,
+      'ACTIVE'
     );
   }
 
