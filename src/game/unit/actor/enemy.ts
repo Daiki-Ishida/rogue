@@ -1,4 +1,4 @@
-import { game } from 'game';
+import { Game } from 'game/game';
 import { Board } from 'game/board';
 import { enemyDataStore } from 'game/store';
 import { Actor } from './actor';
@@ -6,6 +6,7 @@ import { SpecialArt, specialArts } from './specialArt';
 import { EnemyStatus } from './status';
 import { basicStrategy, Strategy } from './strategy';
 import { EnemySymbol } from './symbol';
+import { game } from 'game';
 
 export interface IEnemy {
   targetX?: number;
@@ -15,7 +16,7 @@ export interface IEnemy {
   specialArt: SpecialArt;
   isInSightOfPlayer(): boolean;
   isAttackable(actor: Actor): boolean;
-  act(): void;
+  act(game: Game): void;
   unleashArt(board: Board): void;
   turnLeft(): void;
   turnRight(): void;
@@ -46,7 +47,7 @@ export class Enemy extends Actor implements IEnemy {
     return this.targetX !== undefined && this.targetY !== undefined;
   }
 
-  act(): void {
+  act(game: Game): void {
     if (this.x === this.targetX && this.y === this.targetY) {
       this.targetX = undefined;
       this.targetY = undefined;

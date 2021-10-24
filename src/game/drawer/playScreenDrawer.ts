@@ -143,7 +143,7 @@ class PlayScreenDrawer implements Drawer {
         continue;
       }
       // enemyマス
-      if (actor?.isEnemy()) {
+      if (actor?.isEnemy() || actor?.isNpc()) {
         p.fill('#BF0000');
         p.rect(s + x * n, s + y * n, n, n);
         continue;

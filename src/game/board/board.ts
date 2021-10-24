@@ -14,6 +14,7 @@ import {
   TrapGenerator,
 } from 'game/unit/generator';
 import { Enemy } from 'game/unit/actor/enemy';
+import { Npc } from 'game/unit/actor/npc';
 
 /**
  * ゲームの盤面を表現するクラス
@@ -85,6 +86,9 @@ export class Board {
     for (const enemy of enemys) {
       enemy.spawn(this);
     }
+
+    const npc = Npc.init('DRAGON_01');
+    npc.spawn(this);
   }
 
   generateItems(min: number, max: number): void {

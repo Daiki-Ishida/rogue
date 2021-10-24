@@ -1,14 +1,14 @@
 import { Command } from 'game/command';
-import { Enemy } from '../enemy';
+import { Actor } from '..';
 
 export interface Strategy {
   /**
    * ターゲットの設定
    */
-  target(enemy: Enemy): { x: number | undefined; y: number | undefined };
+  target(actor: Actor): { x: number | undefined; y: number | undefined };
 
   /**
    * コマンドの生成
    */
-  command(enemy: Enemy): Command;
+  command(actor: Actor): Command;
 }

@@ -26,6 +26,7 @@ import { Player } from './player';
 import { ActorStatus } from './status';
 import { ActorSymbol } from './symbol';
 import { Visibility } from './visibility';
+import { Npc } from './npc';
 
 interface IActor {
   x: number;
@@ -49,6 +50,7 @@ interface IActor {
   levelDown(): void;
   isPlayer(): this is Player;
   isEnemy(): this is Enemy;
+  isNpc(): this is Npc;
   spawn(board: Board): void;
   draw(p: p5, camera: Camera): void;
 }
@@ -231,6 +233,10 @@ export abstract class Actor implements IActor {
   }
 
   isEnemy(): this is Enemy {
+    return false;
+  }
+
+  isNpc(): this is Npc {
     return false;
   }
 

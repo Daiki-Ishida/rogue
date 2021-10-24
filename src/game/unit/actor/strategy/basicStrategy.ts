@@ -25,7 +25,7 @@ class BasicStrategy implements Strategy {
 
     const room = game.board.findRoom(enemy.x, enemy.y);
     if (room) {
-      return this.findExit(enemy);
+      return this.findDoor(enemy);
     }
 
     return {
@@ -67,7 +67,7 @@ class BasicStrategy implements Strategy {
   /**
    * 最も遠い部屋の出口を探す
    */
-  private findExit(enemy: Enemy): { x: number; y: number } {
+  private findDoor(enemy: Enemy): { x: number; y: number } {
     const candidates = this.findRoomExits(enemy);
 
     const distances = candidates.map((elem, idx) => {
