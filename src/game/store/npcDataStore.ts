@@ -1,4 +1,5 @@
 import NPC_STATUS from 'asset/data/npc_status.json';
+import { RandomUtil } from 'game/util';
 
 interface NpcStatus {
   id: string;
@@ -22,6 +23,12 @@ class NpcDataStore {
     }
 
     return found;
+  }
+
+  getIdRandomly(): string {
+    const l = this.status.length;
+    const r = RandomUtil.getRandomIntInclusive(0, l - 1);
+    return this.status[r].id;
   }
 }
 

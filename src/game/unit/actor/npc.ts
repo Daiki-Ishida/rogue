@@ -5,14 +5,14 @@ import { Actor } from './actor';
 import { NpcStatus } from './status';
 import { Strategy } from './strategy';
 import { npcWalkingAroundStrategy } from './strategy/npcStrategy';
-import { PlayerSymbol } from './symbol';
+import { NpcSymbol } from './symbol';
 
 /**
  * NPCクラス
  */
 export class Npc extends Actor {
   private constructor(
-    readonly symbol: PlayerSymbol,
+    readonly symbol: NpcSymbol,
     readonly status: NpcStatus,
     readonly ability: Ability,
     public strategy: Strategy,
@@ -22,8 +22,8 @@ export class Npc extends Actor {
     super(symbol, status);
   }
 
-  static init(id: string): Npc {
-    const symbol = PlayerSymbol.init();
+  static generate(id: string): Npc {
+    const symbol = NpcSymbol.init(id);
     const status = NpcStatus.init(id);
     const ability = NpcAbility()[id];
 

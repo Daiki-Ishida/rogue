@@ -4,6 +4,7 @@ import { Player } from '../player';
 
 export interface Ability {
   exec: (player: Player) => void;
+  dialogue: () => string;
 }
 
 interface IAbilitys {
@@ -17,6 +18,9 @@ export const NpcAbility = (): IAbilitys => {
       player.heal(999);
       player.conditions.cureAll();
     },
+    dialogue: () => {
+      return '私は旅の僧侶です。1000ゴールドお布施を頂ければ\n回復呪文で疲れを癒して差し上げます。';
+    },
   };
 
   // 鍛冶屋
@@ -24,6 +28,9 @@ export const NpcAbility = (): IAbilitys => {
     exec: (player: Player) => {
       player.status.sword?.levelUp();
       player.status.shield?.levelUp();
+    },
+    dialogue: () => {
+      return '俺は旅の鍛冶屋だ。\n1000ゴールドで武具を鍛えてやるがどうする？';
     },
   };
 
@@ -54,6 +61,9 @@ export const NpcAbility = (): IAbilitys => {
       }
       player.conditions.push(condition);
     },
+    dialogue: () => {
+      return 'おみくじ引いていきませんかー？（1000ゴールド）';
+    },
   };
 
   // シェフ
@@ -61,6 +71,9 @@ export const NpcAbility = (): IAbilitys => {
     exec: (player: Player) => {
       player.status.maxFullness += 20;
       player.removeHunger(999);
+    },
+    dialogue: () => {
+      return 'おいしくなーれ 萌え萌えキュン！\n『みっくすじゅ～ちゅ(はーと)』1000ゴールド';
     },
   };
 

@@ -11,10 +11,10 @@ import { BaseLayer, DungeonLayer, Tile } from './layer';
 import {
   EnemyGenerator,
   ItemGenerator,
+  NpcGenerator,
   TrapGenerator,
 } from 'game/unit/generator';
 import { Enemy } from 'game/unit/actor/enemy';
-import { Npc } from 'game/unit/actor/npc';
 
 /**
  * ゲームの盤面を表現するクラス
@@ -87,7 +87,7 @@ export class Board {
       enemy.spawn(this);
     }
 
-    const npc = Npc.init('PRIESTESS');
+    const npc = NpcGenerator.generate(1)[0];
     npc.spawn(this);
   }
 

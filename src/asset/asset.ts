@@ -2,7 +2,11 @@ import p5, { Font, Image } from 'p5';
 import FONT from 'asset/font/PixelMplus12-Regular.ttf';
 import STARY_SKY from 'asset/image/bg/stary_sky.jpg';
 import SHOOTING_STAR from 'asset/image/bg/shooting_star.png';
-import PLAYER_IMAGE from 'asset/image/player/player03.png';
+import PLAYER from 'asset/image/player/player.png';
+import HEALER from 'asset/image/player/healer.png';
+import BLACKSMITH from 'asset/image/player/blacksmith.png';
+import PRIESTESS from 'asset/image/player/priestess.png';
+import CHEF from 'asset/image/player/maid.png';
 import DRAGON_01 from 'asset/image/enemys/dragon_01.png';
 import DRAGON_02 from 'asset/image/enemys/dragon_02.png';
 import DRAGON_03 from 'asset/image/enemys/dragon_03.png';
@@ -89,6 +93,10 @@ interface ImageFiles {
   roomD: Image;
   exit: Image;
   player: Image;
+  healer: Image;
+  blacksmith: Image;
+  priestess: Image;
+  chef: Image;
   dragon01: Image;
   dragon02: Image;
   dragon03: Image;
@@ -180,7 +188,12 @@ export class Asset {
 
     const bg = p.loadImage(STARY_SKY);
     const shootingStar = p.loadImage(SHOOTING_STAR);
-    const playerImg = p.loadImage(PLAYER_IMAGE);
+
+    const playerImg = p.loadImage(PLAYER);
+    const healerImg = p.loadImage(HEALER);
+    const blacksmithImg = p.loadImage(BLACKSMITH);
+    const priestessImg = p.loadImage(PRIESTESS);
+    const chefImg = p.loadImage(CHEF);
 
     const dragon01 = p.loadImage(DRAGON_01);
     const dragon02 = p.loadImage(DRAGON_02);
@@ -263,6 +276,10 @@ export class Asset {
       roomD: roomChipD,
       exit: exit,
       player: playerImg,
+      healer: healerImg,
+      blacksmith: blacksmithImg,
+      priestess: priestessImg,
+      chef: chefImg,
       dragon01: dragon01,
       dragon02: dragon02,
       dragon03: dragon03,

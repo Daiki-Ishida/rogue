@@ -6,3 +6,4 @@ export * from './scrollGenerator';
 export * from './braceletGenerator';
 export * from './enemyGenerator';
 export * from './trapGenerator';
+export * from './npcGenerator';

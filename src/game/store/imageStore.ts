@@ -3,6 +3,10 @@ import { Image } from 'p5';
 
 interface ActorImages {
   readonly player: Image[];
+  readonly healer: Image[];
+  readonly blacksmith: Image[];
+  readonly priestess: Image[];
+  readonly chef: Image[];
   readonly dragon1: Image[];
   readonly dragon2: Image[];
   readonly dragon3: Image[];
@@ -157,6 +161,10 @@ export class ImageStore implements IImageStore {
   static parseActors(asset: Asset): ActorImages {
     const imgs = asset.imageFiles;
     const player = parseImage(imgs.player, 3, 5, 64, 64);
+    const healer = parseImage(imgs.healer, 3, 5, 64, 64);
+    const blacksmith = parseImage(imgs.blacksmith, 3, 5, 64, 64);
+    const priestess = parseImage(imgs.priestess, 3, 5, 64, 64);
+    const chef = parseImage(imgs.chef, 3, 5, 64, 64);
     const dragon1 = parseImage(imgs.dragon01, 3, 4, 80, 64);
     const dragon2 = parseImage(imgs.dragon02, 3, 4, 80, 64);
     const dragon3 = parseImage(imgs.dragon03, 3, 4, 80, 64);
@@ -193,6 +201,10 @@ export class ImageStore implements IImageStore {
 
     return {
       player: player,
+      healer: healer,
+      blacksmith: blacksmith,
+      priestess: priestess,
+      chef: chef,
       dragon1: dragon1,
       dragon2: dragon2,
       dragon3: dragon3,

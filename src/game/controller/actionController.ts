@@ -86,7 +86,10 @@ export class ActionController implements Controller {
 
           const window = ActionSelectionWindow.ofNpcAbility(game.player, actor);
           windowManager.selectWindow = window;
-          windowManager.statusWindow.setMode('MESSAGE');
+          windowManager.statusWindow.setMode(
+            'MESSAGE',
+            actor.ability.dialogue()
+          );
           windowManager.statusWindow.open();
 
           context.changeState(selectWindowController);

@@ -7,8 +7,6 @@ const Y = 550;
 const W = 700;
 const H = 120;
 
-const MESSAGE = '1,000ゴールド必要です。';
-
 type Mode = 'STATUS' | 'MESSAGE';
 
 export class StatusWindow extends WindowBase {
@@ -18,17 +16,19 @@ export class StatusWindow extends WindowBase {
     readonly w: number,
     readonly h: number,
     public display: boolean,
-    private mode: Mode
+    private mode: Mode,
+    private message: string
   ) {
     super(x, y, w, h, display);
   }
 
   static init(): StatusWindow {
-    return new StatusWindow(X, Y, W, H, false, 'STATUS');
+    return new StatusWindow(X, Y, W, H, false, 'STATUS', '');
   }
 
-  setMode(mode: Mode): void {
+  setMode(mode: Mode, message: string): void {
     this.mode = mode;
+    this.message = message;
   }
 
   drawContent(p: p5): void {
@@ -80,7 +80,7 @@ export class StatusWindow extends WindowBase {
     const x = this.x + 30;
     const y = this.y + 30;
 
-    p.text(MESSAGE, x, y);
+    p.text(this.message, x, y);
 
     p.pop();
   }
