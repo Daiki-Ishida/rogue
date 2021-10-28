@@ -1,3 +1,4 @@
+import { game, playlogManager } from 'game';
 import { Game } from 'game/game';
 import { Player } from '.';
 import { Ability, NpcAbility } from './ability';
@@ -49,6 +50,11 @@ export class Npc extends Actor {
 
   // 能力発動
   activateAbility(player: Player): void {
+    if (game.gold < 1000) {
+      playlogManager.add('しかし、お金が足りなかった。');
+      return;
+    }
+    game.gold -= 1000;
     this.ability.exec(player);
   }
 

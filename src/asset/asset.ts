@@ -63,6 +63,8 @@ import HEALING from 'asset/image/effects/healing.png';
 import BLASTWAVE from 'asset/image/effects/blastwave.png';
 import ROCK_SLIDE from 'asset/image/effects/rockslide.png';
 import EXPLOSION from 'asset/image/effects/explosion.png';
+import HEART from 'asset/image/effects/heart.png';
+import MAGIC_CIRCLE from 'asset/image/effects/magic_circle_2.png';
 
 import ATTACK_SOUND from 'asset/sound/attack.mp3';
 import CRITICAL_HIT_SOUND from 'asset/sound/critical_hit.mp3';
@@ -148,6 +150,8 @@ interface ImageFiles {
   blastwave: Image;
   rockSlide: Image;
   explosion: Image;
+  heart: Image;
+  magicCircle: Image;
 }
 
 interface SoundFiles {
@@ -266,6 +270,8 @@ export class Asset {
     const blastwave = p.loadImage(BLASTWAVE);
     const rockSlide = p.loadImage(ROCK_SLIDE);
     const explosion = p.loadImage(EXPLOSION);
+    const heart = p.loadImage(HEART);
+    const magicCircle = p.loadImage(MAGIC_CIRCLE);
 
     const imageFiles = {
       bg: bg,
@@ -331,6 +337,8 @@ export class Asset {
       blastwave: blastwave,
       rockSlide: rockSlide,
       explosion: explosion,
+      heart: heart,
+      magicCircle: magicCircle,
     };
 
     const soundFiles = {

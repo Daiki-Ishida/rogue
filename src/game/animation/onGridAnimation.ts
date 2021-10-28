@@ -52,8 +52,8 @@ export class OnGridAnimation implements Animation {
     y: number,
     callback: () => void
   ): OnGridAnimation {
-    const thunder = imageStore.effects.rockSlide;
-    return new OnGridAnimation(thunder, x, y, 0, callback, false);
+    const imgs = imageStore.effects.rockSlide;
+    return new OnGridAnimation(imgs, x, y, 0, callback, false);
   }
 
   // 爆発
@@ -62,8 +62,24 @@ export class OnGridAnimation implements Animation {
     y: number,
     callback: () => void
   ): OnGridAnimation {
-    const thunder = imageStore.effects.explosion;
-    return new OnGridAnimation(thunder, x, y, 0, callback, false);
+    const imgs = imageStore.effects.explosion;
+    return new OnGridAnimation(imgs, x, y, 0, callback, false);
+  }
+
+  // ハートマーク
+  static ofHeart(x: number, y: number, callback: () => void): OnGridAnimation {
+    const imgs = imageStore.effects.heart;
+    return new OnGridAnimation(imgs, x, y, 0, callback, false);
+  }
+
+  // 魔法陣
+  static ofMagicCircle(
+    x: number,
+    y: number,
+    callback: () => void
+  ): OnGridAnimation {
+    const imgs = imageStore.effects.magicCircle;
+    return new OnGridAnimation(imgs, x, y, 0, callback, false);
   }
 
   exec(): void {

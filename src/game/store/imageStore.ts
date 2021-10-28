@@ -105,6 +105,8 @@ interface EffectImages {
   readonly blastwave: Image[];
   readonly rockSlide: Image[];
   readonly explosion: Image[];
+  readonly heart: Image[];
+  readonly magicCircle: Image[];
 }
 
 interface IImageStore {
@@ -356,6 +358,8 @@ export class ImageStore implements IImageStore {
     const blastwave = parseImage(imgs.blastwave, 1, 8, 640, 240);
     const rockSlide = parseImage(imgs.rockSlide, 8, 1, 240, 240);
     const explosion = parseImage(imgs.explosion, 7, 1, 240, 240);
+    const heart = parseImage(imgs.heart, 8, 1, 240, 240);
+    const magicCircle = parseImage(imgs.magicCircle, 11, 1, 480, 480);
 
     return {
       spelling: spelling,
@@ -373,6 +377,8 @@ export class ImageStore implements IImageStore {
       blastwave: blastwave,
       rockSlide: rockSlide,
       explosion: explosion,
+      heart: heart,
+      magicCircle: magicCircle,
     };
   }
 }
