@@ -1,4 +1,4 @@
-import { ControllerManager, Controller, setupScreenController } from '.';
+import { ControllerManager, Controller, actionController } from '.';
 import { Game } from '../game';
 
 /**
@@ -7,8 +7,9 @@ import { Game } from '../game';
 class TitleScreenController implements Controller {
   proc(input: string, game: Game, context: ControllerManager): void {
     if (input !== 'Enter') return;
-    game.setState('SET_UP');
-    context.changeState(setupScreenController);
+    game.setState('PLAY');
+    // context.changeState(setupScreenController);
+    context.changeState(actionController);
   }
 }
 

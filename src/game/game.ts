@@ -39,7 +39,7 @@ export class Game {
 
   static init(): Game {
     const board = Board.init(60, 30);
-    const player = Player.init('Player');
+    const player = Player.init('アッシュ');
     player.spawn(board);
     player.visibility.scanSymbols(board);
 
@@ -82,6 +82,7 @@ export class Game {
       case 'PLAY': {
         if (this.state !== 'PLAY' && this.state !== 'BRIDGE') {
           textBox.remove();
+          fileInput.hide();
           soundManager.deregisterBgm();
           const sound = soundStore.dungeonBgm;
           soundManager.register(sound);

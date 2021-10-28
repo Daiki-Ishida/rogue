@@ -21,7 +21,7 @@
     "id": "HEAVY_SHIELD",
     "name": "重装の盾",
     "def": 9,
-    "ratio": 43
+    "ratio": 42
   },
   {
     "id": "SILVER_SHIELD",
@@ -33,6 +33,6 @@
     "id": "PHANTASM_SHIELD",
     "name": "幻魔の盾",
     "def": 50,
-    "ratio": 5
+    "ratio": 8
   }
 ]

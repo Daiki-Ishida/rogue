@@ -2,7 +2,7 @@ import p5 from 'p5';
 import { Drawer } from '.';
 import { imageStore } from 'game';
 
-const TITLE = 'STAR GAZE';
+const TITLE = 'GAME START';
 const MESSAGE = 'Press Enter To Play';
 
 /**
