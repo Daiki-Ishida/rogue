@@ -87,8 +87,11 @@ export class Board {
       enemy.spawn(this);
     }
 
-    const npc = NpcGenerator.generate(1)[0];
-    npc.spawn(this);
+    const r = RandomUtil.getRandomIntInclusive(0, 4);
+    if (r === 0) {
+      const npc = NpcGenerator.generate(1)[0];
+      npc.spawn(this);
+    }
   }
 
   generateItems(min: number, max: number): void {

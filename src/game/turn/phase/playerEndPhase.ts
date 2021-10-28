@@ -74,7 +74,7 @@ export class PlayerEndPhase extends PhaseBase {
     // 死んだらゲームオーバー
     if (player.isDead) {
       game.resume();
-      game.state = 'GAME_OVER';
+      game.setState('GAME_OVER');
     }
 
     // 死んだ敵は除外

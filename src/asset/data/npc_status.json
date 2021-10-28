@@ -3,28 +3,28 @@
     "id": "HEALER",
     "name": "僧侶",
     "hp": 60,
-    "atk": 20,
-    "def": 20
+    "atk": 28,
+    "def": 32
   },
   {
     "id": "BLACKSMITH",
     "name": "鍛冶屋",
-    "hp": 40,
+    "hp": 65,
     "atk": 45,
     "def": 20
   },
   {
     "id": "PRIESTESS",
     "name": "巫女",
-    "hp": 30,
+    "hp": 50,
     "atk": 30,
     "def": 30
   },
   {
     "id": "CHEF",
     "name": "料理人",
-    "hp": 40,
+    "hp": 60,
     "atk": 35,
-    "def": 15
+    "def": 18
   }
 ]

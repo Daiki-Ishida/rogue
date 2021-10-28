@@ -1,5 +1,6 @@
 import {
   animationManager,
+  game,
   indicatorManager,
   playlogManager,
   soundManager,
@@ -8,12 +9,12 @@ import {
 import { AttackAnimation } from 'game/animation';
 import { Battle } from 'game/battle';
 import { Board } from 'game/board';
+import { AttackCommand } from 'game/command';
 import { playerDataStore } from 'game/store';
 import { BounceIndicator } from 'game/view/indicator';
-import { Option } from 'game/view/window';
 import { Equipment, Item, Usable } from '../item';
 import { Actor } from './actor';
-import { Npc } from './npc';
+import { DirectionKey } from './direction';
 import { PlayerStatus } from './status';
 import { PlayerSymbol } from './symbol';
 
@@ -121,6 +122,27 @@ export class Player extends Actor {
         sound = soundStore.criticalHit;
       } else if (battle.status === 'MISSED') {
         sound = soundStore.missHit;
+      }
+
+      // todo refactor NPCの反撃
+      if (target.isNpc() && battle.status !== 'MISSED') {
+        let d: DirectionKey;
+        switch (this.d.key) {
+          case 'DOWN':
+            d = 'UP';
+            break;
+          case 'UP':
+            d = 'DOWN';
+            break;
+          case 'LEFT':
+            d = 'RIGHT';
+            break;
+          case 'RIGHT':
+            d = 'LEFT';
+            break;
+        }
+        target.turnTo(d);
+        game.commands.push(AttackCommand.of(target));
       }
     }
 

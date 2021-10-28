@@ -1,7 +1,7 @@
 import { npcDataStore } from 'game/store';
 import { ActorStatus } from './actorStatus';
 
-type State = 'ACTIVE' | 'INACTIVE' | 'HOSTILE';
+type State = 'FRIENDLY' | 'HOSTILE';
 
 export class NpcStatus extends ActorStatus {
   constructor(
@@ -27,7 +27,7 @@ export class NpcStatus extends ActorStatus {
       status.def,
       1,
       0,
-      'ACTIVE'
+      'FRIENDLY'
     );
   }
 

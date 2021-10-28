@@ -3,8 +3,7 @@ import { Player } from '.';
 import { Ability, NpcAbility } from './ability';
 import { Actor } from './actor';
 import { NpcStatus } from './status';
-import { Strategy } from './strategy';
-import { npcWalkingAroundStrategy } from './strategy/npcStrategy';
+import { Strategy, npcWalkingAroundStrategy } from './strategy';
 import { NpcSymbol } from './symbol';
 
 /**
@@ -51,7 +50,6 @@ export class Npc extends Actor {
   // 能力発動
   activateAbility(player: Player): void {
     this.ability.exec(player);
-    this.status.state = 'INACTIVE';
   }
 
   // 左を向く
