@@ -50,7 +50,6 @@ export class Sword extends Equipment {
   onHit(user: Player, target: Actor): void {
     const dmg = this.atk;
     target.damage(dmg);
-    console.log(`${target.status.name}に${dmg}ダメージを与えた。`);
   }
 
   isSword(): this is Sword {

@@ -1,4 +1,4 @@
-import { soundManager, soundStore } from 'game';
+import { playlogManager, soundManager, soundStore } from 'game';
 import { Bracelet, Shield, Sword } from '.';
 import { Item } from '../item';
 import { EquipmentStatus } from '../status';
@@ -21,7 +21,7 @@ export abstract class Equipment extends Item {
   equip(): void {
     this.identify();
     if (this.status.cursed) {
-      console.log('なんと呪われていた！');
+      playlogManager.add('なんと呪われていた！');
     }
     this.status.equiped = true;
 
@@ -30,7 +30,7 @@ export abstract class Equipment extends Item {
 
   unequip(): boolean {
     if (this.status.cursed) {
-      console.log('呪われている！');
+      playlogManager.add('呪われていて外れない・・・！');
       return false;
     }
 

@@ -164,12 +164,11 @@ const HerbEffects = (): IHerbEffects => {
         }
       }
 
-      if (target === undefined) return;
-
       const callback = () => {
         const dmg = RandomUtil.getRandomIntInclusive(45, 60);
         target?.damage(dmg);
       };
+
       const animation = OnRayAnimation.ofFlame(user, current, callback);
       animationManager.register(animation);
     },

@@ -86,8 +86,8 @@ export const magicBlessEffect = (level: number): SpecialArt => {
 
 const getActorOnRayInRoom = (actor: Actor, board: Board): Actor | undefined => {
   const rayGrids = GridUtil.rayToGrids(
-    actor.next.x,
-    actor.next.y,
+    actor.x,
+    actor.y,
     actor.d.next.x,
     actor.d.next.y
   );

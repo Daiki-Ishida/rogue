@@ -1,4 +1,4 @@
-import { windowManager } from 'game';
+import { playlogManager, windowManager } from 'game';
 import { Game } from 'game/game';
 import { ControllerManager } from './controllerManager';
 import { Controller } from './controller';
@@ -37,6 +37,11 @@ export class InventoryPotController implements Controller {
         if (item === undefined) break; // エラーで落ちないように握りつぶす。
         if (item.isStorable()) break;
         if (item.isEquipment() && item.status.equiped) break;
+
+        if (this.pot.isFull) {
+          playlogManager.add('しかし、壺の中身は既にいっぱいだ！');
+          break;
+        }
 
         const command = PutCommand.of(game.player, this.pot, item);
         game.commands.push(command);

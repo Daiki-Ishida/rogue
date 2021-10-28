@@ -24,6 +24,8 @@ export abstract class Storable extends Item {
     return this.contents.length === 0;
   }
 
+  abstract get isFull(): boolean;
+
   next(): void {
     if (this.isEmpty) {
       this.idx = 0;

@@ -32,9 +32,15 @@ export class Pot extends Storable {
     return new Pot(0, 0, symbol, status, effect);
   }
 
+  get isFull(): boolean {
+    return this.contents.length >= this.status.capacity;
+  }
+
   put(item: Item, board: Board): void {
-    if (this.contents.length >= this.status.capacity) return;
     this.effect.onPut(item, this.contents, board);
+    playlogManager.add(
+      `${this.status.displayName}に${item.status.displayName}を入れた。`
+    );
   }
 
   withdraw(inventory: Inventory): void {
@@ -45,6 +51,10 @@ export class Pot extends Storable {
 
     const withdrawn = this.contents.splice(this.idx, 1)[0];
     inventory.add(withdrawn);
+
+    playlogManager.add(
+      `${this.status.displayName}から${withdrawn.status.displayName}を取り出した。`
+    );
   }
 
   aging(): void {

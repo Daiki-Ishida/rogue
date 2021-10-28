@@ -38,7 +38,7 @@ export class OnRayAnimation implements Animation {
     callback: () => void
   ): OnRayAnimation {
     const img = imageStore.effects.fire;
-    const current = { x: actor.next.x, y: actor.next.y };
+    const current = { x: actor.x, y: actor.y };
     return new OnRayAnimation(img, actor, current, to, callback, 0, false);
   }
 
@@ -49,7 +49,7 @@ export class OnRayAnimation implements Animation {
     callback: () => void
   ): OnRayAnimation {
     const img = imageStore.effects.ice;
-    const current = { x: actor.next.x, y: actor.next.y };
+    const current = { x: actor.x, y: actor.y };
     return new OnRayAnimation(img, actor, current, to, callback, 0, false);
   }
 

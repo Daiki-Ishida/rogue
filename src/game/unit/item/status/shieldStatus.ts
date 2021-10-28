@@ -1,4 +1,5 @@
 import { itemDataStore } from 'game/store/itemDataStore';
+import { RandomUtil } from 'game/util';
 import { EquipmentStatus } from '.';
 
 export class ShieldStatus implements EquipmentStatus {
@@ -15,15 +16,18 @@ export class ShieldStatus implements EquipmentStatus {
 
   static init(id: string): ShieldStatus {
     const status = itemDataStore.getShieldStatus(id);
+    const level = RandomUtil.getRandomIntInclusive(0, 3);
+    const cursed = RandomUtil.getRandomIntInclusive(0, 7) === 0;
+
     return new ShieldStatus(
       status.id,
       'SHIELD',
       status.name,
       status.def,
-      1,
+      level,
       false,
       false,
-      false
+      cursed
     );
   }
 

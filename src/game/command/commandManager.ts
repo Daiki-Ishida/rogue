@@ -22,14 +22,14 @@ export class CommandManager {
       const actor = command.actor;
       if (actor.isCondition('ASLEEP')) {
         command.done = true;
-        return;
+        continue;
       }
 
       if (actor.isCondition('PARALYZED')) {
         const r = RandomUtil.getRandomIntInclusive(0, 1);
         if (r === 0) {
           command.done = true;
-          return;
+          continue;
         }
       }
 

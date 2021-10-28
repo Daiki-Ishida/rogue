@@ -48,7 +48,6 @@ export class Shield extends Equipment {
   onHit(user: Player, target: Actor): void {
     const dmg = Math.floor(this.def / 2);
     target.damage(dmg);
-    console.log(`${target.status.name}に${dmg}ダメージを与えた。`);
   }
 
   isShield(): this is Shield {
