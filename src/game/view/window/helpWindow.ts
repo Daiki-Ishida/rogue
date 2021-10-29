@@ -9,7 +9,7 @@ import { InventoryPotController } from 'game/controller/inventoryPotController';
 import { PotContentsController } from 'game/controller/potContentsController';
 
 const ACTION_HELP =
-  'a,w,s,d:移動 / u:ダッシュ / o:足踏み / i:インベントリ / k:攻撃';
+  'a,w,s,d:移動 / u:ダッシュ / o:足踏み / i:インベントリ / k:攻撃 / j: 話しかける / p: 中断';
 const INVENTORY_HELP = 'w, s:△ ▽ / a,s:◁ ▷ / i:閉じる / u:選ぶ / e: ソート';
 const SELECT_HELP = 'w, s:△ ▽ / u:決定';
 const PUT_ITEM_HELP = 'どれをいれる？  w, s:△ ▽ / u:決定 / i:やめる';
